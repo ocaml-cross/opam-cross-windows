@@ -1,0 +1,35 @@
+diff --git a/Makefile b/Makefile
+index 2984178a8..479e7dde2 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1025,7 +1025,7 @@ toplevel/opttoploop.cmx: otherlibs/dynlink/dynlink.cmxa
+ # The numeric opcodes
+ 
+ bytecomp/opcodes.ml: runtime/caml/instruct.h tools/make_opcodes
+-	runtime/ocamlrun tools/make_opcodes -opcodes < $< > $@
++	ocamlrun tools/make_opcodes -opcodes < $< > $@
+ 
+ bytecomp/opcodes.mli: bytecomp/opcodes.ml
+ 	$(CAMLC) -i $< > $@
+diff --git a/tools/Makefile b/tools/Makefile
+index dbad0b74f..a841ca1c8 100644
+--- a/tools/Makefile
++++ b/tools/Makefile
+@@ -75,7 +75,7 @@ endef
+ CAMLC = $(BOOT_OCAMLC) -g -nostdlib -I $(ROOTDIR)/boot \
+         -use-prims $(ROOTDIR)/runtime/primitives -I $(ROOTDIR)
+ CAMLOPT = $(CAMLRUN) $(ROOTDIR)/ocamlopt -g -nostdlib -I $(ROOTDIR)/stdlib
+-CAMLLEX = $(CAMLRUN) $(ROOTDIR)/boot/ocamllex
++CAMLLEX = ocamllex
+ INCLUDES = $(addprefix -I $(ROOTDIR)/,utils parsing typing bytecomp \
+                        middle_end middle_end/closure middle_end/flambda \
+                        middle_end/flambda/base_types driver toplevel \
+@@ -256,7 +256,7 @@ make_opcodes: make_opcodes.ml
+ 	$(CAMLC) make_opcodes.ml -o $@
+ 
+ opnames.ml: $(ROOTDIR)/runtime/caml/instruct.h make_opcodes
+-	$(ROOTDIR)/runtime/ocamlrun make_opcodes -opnames < $< > $@
++	ocamlrun make_opcodes -opnames < $< > $@
+ 
+ clean::
+ 	rm -f opnames.ml make_opcodes make_opcodes.ml

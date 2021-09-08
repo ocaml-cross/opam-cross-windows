@@ -8,7 +8,7 @@ if [ -z "${SYSTEM_TYPE}" ]; then
 fi
 
 if [ -z "${OCAML_VERSION}" ]; then
-  OCAML_VERSION=4.11.2
+  OCAML_VERSION=4.12.0
 fi
 
 if [ "${SYSTEM_TYPE}" = "x64" ]; then
