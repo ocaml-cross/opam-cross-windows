@@ -42,7 +42,7 @@ index 4e9a726..70d9c40 100644
  OPTCOMPFLAGS += -O3
  endif
 -MKLIB=$(CAMLRUN) $(ROOTDIR)/tools/ocamlmklib
-+MKLIB=ocamlrun $(ROOTDIR)/tools/ocamlmklib
++MKLIB=ocamlrun $(ROOTDIR)/tools/ocamlmklib$(EXE)
 
  # Variables that must be defined by individual libraries:
  # LIBNAME
