@@ -42,7 +42,7 @@ extra-files: [
   ["install.sh" "md5=995050a54b009b4ded377a221f4f6639"]
   ["Makefile.cross.in" "md5=749682376a375e2fba03f3ae145a722e"]
   ["patches/use-host-ocamldoc.patch" "md5=90dabeba5331e53ad38c77130ad1535c"]
-  ["patches/use-host-ocamlrun.patch" "md5=ab4d9c9c6e075a28de3305d7df2b4a53"]
+  ["patches/use-host-ocamlrun.patch" "md5=596b86ec78d00b0c22a244be422f35b3"]
   ["patches/ostype-fix.patch" "md5=1f4bdb07f95403db78fdb72cae704637"]
   [
     "patches/avoid-cygwin-specifics.patch"
