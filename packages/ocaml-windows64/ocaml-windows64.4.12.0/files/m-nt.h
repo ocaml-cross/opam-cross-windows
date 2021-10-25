@@ -25,7 +25,7 @@
 #undef ARCH_ALIGN_DOUBLE
 
 #define SIZEOF_INT 4
-#define SIZEOF_LONG 8
+#define SIZEOF_LONG 4
 #define SIZEOF_LONGLONG 8
 #ifdef _WIN64
 #define SIZEOF_PTR 8
