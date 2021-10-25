@@ -25,7 +25,8 @@
 #undef ARCH_ALIGN_DOUBLE
 
 #define SIZEOF_INT 4
-#define SIZEOF_LONG 4
+#define SIZEOF_LONG 8
+#define SIZEOF_LONGLONG 8
 #ifdef _WIN64
 #define SIZEOF_PTR 8
 #else
@@ -58,4 +59,3 @@
 #define FLAT_FLOAT_ARRAY
 
 #define SUPPORTS_ALIGNED_ATTRIBUTE 1
-
