@@ -34,8 +34,6 @@ depends: [
   "variantslib-windows-windows"         {>= "v0.14" & < "v0.15"}
   "ppx_optcomp-windows"         {>= "v0.14.3" & < "v0.15"}
   "dune"                {>= "2.0.0"}
-  "dune-windows"                {>= "2.0.0"}
-
 ]
 synopsis: "Industrial strength alternative to OCaml's standard library"
 description: "
