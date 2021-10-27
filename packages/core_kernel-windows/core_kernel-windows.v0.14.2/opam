@@ -7,7 +7,7 @@ dev-repo: "git+https://github.com/janestreet/core_kernel.git"
 doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/core_kernel/index.html"
 license: "MIT"
 build: [
-  ["dune" "build" "-p" name "-j" jobs "-x" "windows"]
+  ["dune" "build" "-p" "core_kernel" "-j" jobs "-x" "windows"]
 ]
 depends: [
   "ocaml-windows" {>= "4.08"}
