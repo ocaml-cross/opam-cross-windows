@@ -31,7 +31,7 @@ depends: [
   "stdio-windows"               {>= "v0.14" & < "v0.15"}
   "time_now-windows"            {>= "v0.14" & < "v0.15"}
   "typerep-windows"             {>= "v0.14" & < "v0.15"}
-  "variantslib-windows-windows"         {>= "v0.14" & < "v0.15"}
+  "variantslib-windows"         {>= "v0.14" & < "v0.15"}
   "ppx_optcomp-windows"         {>= "v0.14.3" & < "v0.15"}
   "dune"                {>= "2.0.0"}
 ]
