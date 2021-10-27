@@ -1,0 +1,51 @@
+opam-version: "2.0"
+maintainer: "Jane Street developers"
+authors: ["Jane Street Group, LLC"]
+homepage: "https://github.com/janestreet/core_kernel"
+bug-reports: "https://github.com/janestreet/core_kernel/issues"
+dev-repo: "git+https://github.com/janestreet/core_kernel.git"
+doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/core_kernel/index.html"
+license: "MIT"
+build: [
+  ["dune" "build" "-p" name "-j" jobs "-x" "windows"]
+]
+depends: [
+  "ocaml-windows" {>= "4.08"}
+  "base-windows"            {>= "v0.14" & < "v0.15"}
+  "base_bigstring-windows"  {>= "v0.14" & < "v0.15"}
+  "base_quickcheck-windows" {>= "v0.14" & < "v0.15"}
+  "bin_prot-windows"        {>= "v0.14" & < "v0.15"}
+  "fieldslib-windows"           {>= "v0.14" & < "v0.15"}
+  "jane-street-headers-windows" {>= "v0.14" & < "v0.15"}
+  "jst-config-windows"          {>= "v0.14" & < "v0.15"}
+  "ppx_assert-windows"          {>= "v0.14" & < "v0.15"}
+  "ppx_base-windows"            {>= "v0.14" & < "v0.15"}
+  "ppx_hash-windows"            {>= "v0.14" & < "v0.15"}
+  "ppx_inline_test-windows"     {>= "v0.14" & < "v0.15"}
+  "ppx_jane-windows"            {>= "v0.14" & < "v0.15"}
+  "ppx_jane-windows"            {>= "v0.14" & < "v0.15"}
+  "ppx_sexp_conv-windows"       {>= "v0.14" & < "v0.15"}
+  "ppx_sexp_message-windows"    {>= "v0.14" & < "v0.15"}
+  "sexplib-windows"             {>= "v0.14" & < "v0.15"}
+  "splittable_random-windows"   {>= "v0.14" & < "v0.15"}
+  "stdio-windows"               {>= "v0.14" & < "v0.15"}
+  "time_now-windows"            {>= "v0.14" & < "v0.15"}
+  "typerep-windows"             {>= "v0.14" & < "v0.15"}
+  "variantslib-windows-windows"         {>= "v0.14" & < "v0.15"}
+  "ppx_optcomp-windows"         {>= "v0.14.3" & < "v0.15"}
+  "dune"                {>= "2.0.0"}
+  "dune-windows"                {>= "2.0.0"}
+
+]
+synopsis: "Industrial strength alternative to OCaml's standard library"
+description: "
+The Core suite of libraries is an industrial strength alternative to
+OCaml's standard library that was developed by Jane Street, the
+largest industrial user of OCaml.
+
+Core_kernel is the system-independent part of Core.
+"
+url {
+  src: "https://github.com/janestreet/core_kernel/archive/v0.14.2.tar.gz"
+  checksum: "md5=ede2f6d22eaa8320f88bac67d41b5cff"
+}
