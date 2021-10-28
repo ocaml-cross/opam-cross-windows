@@ -1,0 +1,44 @@
+opam-version: "2.0"
+maintainer: "whitequark <whitequark@whitequark.org>"
+authors: [ "whitequark <whitequark@whitequark.org>" ]
+license: "MIT"
+homepage: "https://github.com/ocaml-ppx/ppx_deriving"
+doc: "https://ocaml-ppx.github.io/ppx_deriving/"
+bug-reports: "https://github.com/ocaml-ppx/ppx_deriving/issues"
+dev-repo: "git+https://github.com/ocaml-ppx/ppx_deriving.git"
+tags: [ "syntax" ]
+build: [
+  ["dune" "subst"] {pinned}
+  # this fails because
+  # "# Error: The file /home/brian/.opam/win11/windows-sysroot/lib/findlib/findlib_dynload.cmxa is not a compilation unit description"
+  # ["dune" "build" "-p" "ppx_deriving" "-j" jobs "-x" "windows"]
+  # but THIS fails because it is trying to run ppx.exe compiled for wrong system?
+  # "bash: ../default/.ppx/0224ad3443a846e54f1637fccb074e7d/ppx.exe: cannot execute binary file: Exec format error"
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" "dune" "build" "-p" "ppx_deriving" "-j" jobs "-x" "windows"]
+]
+depends: [
+  "ocaml-windows" {>= "4.05.0"}
+  "dune" {>= "1.6.3"}
+  "cppo" {build & >= "1.1.0"}
+  "ocamlfind"
+  "ppx_derivers-windows"
+  "ppx_derivers"
+  "ppxlib" {>= "0.20.0"}
+  "ppxlib-windows" {>= "0.20.0"}
+  "result-windows"
+]
+synopsis: "Type-driven code generation for OCaml"
+description: """
+ppx_deriving provides common infrastructure for generating
+code based on type definitions, and a set of useful plugins
+for common tasks.
+"""
+url {
+  src:
+    "https://github.com/ocaml-ppx/ppx_deriving/releases/download/v5.2/ppx_deriving-v5.2.tbz"
+  checksum: [
+    "sha256=1c2d2626824ca350c365bf6c8bc3a23c8045c3995c170f2bc500e53baeda2ee6"
+    "sha512=03ce8b3a0d8ed56b6c078212ac54862d99e4296c0e31cc982f9e632bae973a955207cfa968dbcd9d88aa444addda557556f549ef926ae7196534f9b7c007cf10"
+  ]
+}
+x-commit-hash: "b5c1c30692819393b3a6f9f5ffccf16b59594b4a"
