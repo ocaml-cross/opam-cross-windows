@@ -14,7 +14,9 @@ depends: [
   "base-windows"                {>= "v0.14" & < "v0.15"}
   "jane-street-headers-windows" {>= "v0.14" & < "v0.15"}
   "jst-config-windows"          {>= "v0.14" & < "v0.15"}
+  "ppx_base"            {>= "v0.14" & < "v0.15"}
   "ppx_base-windows"            {>= "v0.14" & < "v0.15"}
+  "ppx_optcomp"         {>= "v0.14" & < "v0.15"}
   "ppx_optcomp-windows"         {>= "v0.14" & < "v0.15"}
   "dune"                {build & >= "2.0.0"}
 ]

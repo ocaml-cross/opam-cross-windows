@@ -6,6 +6,9 @@ bug-reports: "https://github.com/janestreet/core_kernel/issues"
 dev-repo: "git+https://github.com/janestreet/core_kernel.git"
 doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/core_kernel/index.html"
 license: "MIT"
+patches: [
+  "patches/no-endian-header.patch"
+]
 build: [
   ["dune" "build" "-p" "core_kernel" "-j" jobs "-x" "windows"]
 ]

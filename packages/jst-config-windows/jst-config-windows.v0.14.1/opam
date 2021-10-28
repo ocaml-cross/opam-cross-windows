@@ -7,15 +7,16 @@ dev-repo: "git+https://github.com/janestreet/jst-config.git"
 doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/jst-config/index.html"
 license: "MIT"
 build: [
-  ["dune" "build" "-p" "jst-headers" "-j" jobs "-x" "windows"]
+  ["dune" "build" "-p" "jst-config" "-j" jobs "-x" "windows"]
 ]
 depends: [
   "ocaml-windows"             {>= "4.04.2"}
   "base-windows"              {>= "v0.14" & < "v0.15"}
+  "ppx_assert"        {>= "v0.14" & < "v0.15"}
   "ppx_assert-windows"        {>= "v0.14" & < "v0.15"}
   "stdio-windows"             {>= "v0.14" & < "v0.15"}
   "dune"              {build & >= "2.0.0"}
-  "dune-configurator"
+  "dune-configurator-windows"
 ]
 synopsis: "Compile-time configuration for Jane Street libraries"
 description: "
