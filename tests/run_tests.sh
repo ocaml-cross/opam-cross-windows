@@ -11,11 +11,11 @@ if [ -z "${OCAML_VERSION}" ]; then
   OCAML_VERSION=4.12.0
 fi
 
+ COMPILER="${OCAML_VERSION}"
+
 if [ "${SYSTEM_TYPE}" = "x64" ]; then
-  COMPILER="${OCAML_VERSION}"
   IMAGE="dockcross/windows-static-x64"
 else
-  COMPILER="${OCAML_VERSION}+32bit"
   IMAGE="dockcross/windows-static-x86"
 fi
 
