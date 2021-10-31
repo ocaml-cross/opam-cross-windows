@@ -1,0 +1,13 @@
+diff --git a/ocamldoc/Makefile b/ocamldoc/Makefile
+index 6b7093b61..07415a016 100644
+--- a/ocamldoc/Makefile
++++ b/ocamldoc/Makefile
+@@ -64,7 +64,7 @@ ifeq "$(UNIX_OR_WIN32)" "unix"
+   endif
+ else # Windows
+   OCAMLDOC_RUN_BYTE = \
+-    CAML_LD_LIBRARY_PATH="$(ROOTDIR)/otherlibs/win32unix;$(ROOTDIR)/otherlibs/str" $(OCAMLRUN) ./$(OCAMLDOC)
++    CAML_LD_LIBRARY_PATH="$(ROOTDIR)/otherlibs/win32unix;$(ROOTDIR)/otherlibs/str" $(OCAMLDOC)
+ endif
+ 
+ OCAMLDOC_RUN_OPT=./$(OCAMLDOC_OPT)
