@@ -27,6 +27,7 @@ depends: [
   "ocaml-migrate-parsetree-windows" {>= "2.2.0"}
   "ppx_derivers" {>= "1.0"}
   "ppx_derivers-windows" {>= "1.0"}
+  "sexplib0" {>= "v0.12"}
   "sexplib0-windows" {>= "v0.12"}
   "stdlib-shims"
   "stdlib-shims-windows"
