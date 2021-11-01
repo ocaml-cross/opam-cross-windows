@@ -14,8 +14,10 @@ depends: [
   "base-windows"              {>= "v0.14" & < "v0.15"}
   "ppx_assert"        {>= "v0.14" & < "v0.15"}
   "ppx_assert-windows"        {>= "v0.14" & < "v0.15"}
+  "stdio"             {>= "v0.14" & < "v0.15"}
   "stdio-windows"             {>= "v0.14" & < "v0.15"}
   "dune"              {build & >= "2.0.0"}
+  "dune-configurator"
   "dune-configurator-windows"
 ]
 synopsis: "Compile-time configuration for Jane Street libraries"
