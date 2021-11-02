@@ -8,13 +8,13 @@ bug-reports: "https://github.com/ocaml-ppx/ppx_deriving/issues"
 dev-repo: "git+https://github.com/ocaml-ppx/ppx_deriving.git"
 tags: [ "syntax" ]
 build: [
-  ["dune" "subst"] {pinned}
+  ["dune" "subst" "-x" "windows"] {pinned}
   # this fails because
   # "# Error: The file /home/brian/.opam/win11/windows-sysroot/lib/findlib/findlib_dynload.cmxa is not a compilation unit description"
-  # ["dune" "build" "-p" "ppx_deriving" "-j" jobs "-x" "windows"]
+  ["dune" "build" "-p" "ppx_deriving" "-j" jobs "-x" "windows"]
   # but THIS fails because it is trying to run ppx.exe compiled for wrong system?
   # "bash: ../default/.ppx/0224ad3443a846e54f1637fccb074e7d/ppx.exe: cannot execute binary file: Exec format error"
-  ["env" "OCAMLFIND_TOOLCHAIN=windows" "dune" "build" "-p" "ppx_deriving" "-j" jobs "-x" "windows"]
+  # ["env" "OCAMLFIND_TOOLCHAIN=windows" "dune" "build" "-p" "ppx_deriving" "-j" jobs "-x" "windows"]
 ]
 depends: [
   "ocaml-windows" {>= "4.05.0"}
