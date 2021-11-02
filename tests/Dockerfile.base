@@ -22,6 +22,9 @@ ENV CC="" CPP="" CXX="" LD="" AS="" AR=""
 
 RUN opam init --auto --compiler=$COMPILER --disable-sandboxing
 
+# Looks like we can't install the options at init at the moment..
+RUN if [ "$SYSTEM" = "x86" ]; then opam install -y --update-invariant ocaml-option-32bit ocaml.$COMPILER ; fi
+
 USER root
 
 ADD packages/ /home/opam/opam-cross-windows/packages

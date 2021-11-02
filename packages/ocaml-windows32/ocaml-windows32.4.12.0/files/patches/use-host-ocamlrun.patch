@@ -1,0 +1,48 @@
+diff --git a/Makefile b/Makefile
+index 41d8e26..12ba68d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1018,7 +1018,7 @@ toplevel/opttoploop.cmx: otherlibs/dynlink/dynlink.cmxa
+ make_opcodes := tools/make_opcodes$(EXE)
+
+ bytecomp/opcodes.ml: runtime/caml/instruct.h $(make_opcodes)
+-	runtime/ocamlrun$(EXE) $(make_opcodes) -opcodes < $< > $@
++	ocamlrun $(make_opcodes) -opcodes < $< > $@
+
+ bytecomp/opcodes.mli: bytecomp/opcodes.ml
+ 	$(CAMLC) -i $< > $@
+diff --git a/tools/Makefile b/tools/Makefile
+index 07e2eda..4be5b58 100644
+--- a/tools/Makefile
++++ b/tools/Makefile
+@@ -71,7 +71,7 @@ endef
+ CAMLC = $(BOOT_OCAMLC) -g -nostdlib -I $(ROOTDIR)/boot \
+         -use-prims $(ROOTDIR)/runtime/primitives -I $(ROOTDIR)
+ CAMLOPT = $(CAMLRUN) $(ROOTDIR)/ocamlopt$(EXE) -g -nostdlib -I $(ROOTDIR)/stdlib
+-CAMLLEX = $(CAMLRUN) $(ROOTDIR)/boot/ocamllex
++CAMLLEX = ocamllex
+ INCLUDES = $(addprefix -I $(ROOTDIR)/,utils parsing typing bytecomp \
+                        middle_end middle_end/closure middle_end/flambda \
+                        middle_end/flambda/base_types driver toplevel \
+@@ -248,7 +248,7 @@ $(make_opcodes): make_opcodes.ml
+ 	$(CAMLC) $< -o $@
+
+ opnames.ml: $(ROOTDIR)/runtime/caml/instruct.h $(make_opcodes)
+-	$(ROOTDIR)/runtime/ocamlrun$(EXE) $(make_opcodes) -opnames < $< > $@
++	ocamlrun $(make_opcodes) -opnames < $< > $@
+
+ clean::
+ 	rm -f opnames.ml make_opcodes make_opcodes.exe make_opcodes.ml
+diff --git a/otherlibs/Makefile.otherlibs.common b/otherlibs/Makefile.otherlibs.common
+index 4e9a726..70d9c40 100644
+--- a/otherlibs/Makefile.otherlibs.common
++++ b/otherlibs/Makefile.otherlibs.common
+@@ -37,7 +37,7 @@ COMPFLAGS=-absname -w +a-4-9-41-42-44-45-48 -warn-error A -bin-annot -g \
+ ifeq "$(FLAMBDA)" "true"
+ OPTCOMPFLAGS += -O3
+ endif
+-MKLIB=$(CAMLRUN) $(ROOTDIR)/tools/ocamlmklib
++MKLIB=ocamlrun $(ROOTDIR)/tools/ocamlmklib$(EXE)
+
+ # Variables that must be defined by individual libraries:
+ # LIBNAME
