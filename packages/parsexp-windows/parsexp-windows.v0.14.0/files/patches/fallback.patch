@@ -1,0 +1,11 @@
+diff --git a/src/dune b/src/dune
+index 5317bb6..561349c 100644
+--- a/src/dune
++++ b/src/dune
+@@ -5,4 +5,4 @@
+    -type-conv-keep-w32=impl -apply=js_style,type_conv)))
+
+ (rule (targets bytes0.ml) (deps (:first_dep gen/gen_bytes0.exe))
+- (action (bash "./%{first_dep} > %{targets}")))
+\ No newline at end of file
++ (action (bash "./%{first_dep} > %{targets}")) (mode fallback))
