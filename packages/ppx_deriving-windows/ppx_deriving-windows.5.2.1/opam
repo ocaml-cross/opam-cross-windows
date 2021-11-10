@@ -9,7 +9,7 @@ dev-repo: "git+https://github.com/ocaml-ppx/ppx_deriving.git"
 tags: [ "syntax" ]
 build: [
   ["dune" "subst"] {dev}
-  ["dune" "build" "-p" "ppx_deriving" "-j" "1" "-x" "windows" "--verbose"]
+  ["dune" "build" "-p" "ppx_deriving" "-j" jobs "-x" "windows"]
 ]
 depends: [
   "ocaml-windows" {>= "4.05.0"}
