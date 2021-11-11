@@ -1,0 +1,25 @@
+# Makefile.config manually edited for opam-cross-windows
+OCAML_CORE_STDLIB=%{prefix}%/windows-sysroot/lib/ocaml
+OCAML_CORE_BIN=%{prefix}%/windows-sysroot/bin
+OCAML_CORE_MAN=%{prefix}%/windows-sysroot/man
+OCAML_SITELIB=%{prefix}%/windows-sysroot/lib
+OCAML_THREADS=posix
+OCAMLFIND_BIN=%{prefix}%/windows-sysroot/bin
+OCAMLFIND_MAN=%{prefix}%/windows-sysroot/man
+OCAMLFIND_CONF=%{prefix}%/lib/findlib.conf
+OCAML_AUTOLINK=true
+OCAML_REMOVE_DIRECTORY=1
+EXEC_SUFFIX=.exe
+LIB_SUFFIX=.a
+CUSTOM=-custom
+PARTS=findlib
+INSTALL_TOPFIND=0
+USE_CYGPATH=0
+HAVE_NATDYNLINK=0
+VERSION=1.9.1
+ENABLE_TOPFIND_PPXOPT=true
+SYSTEM=linux
+NUMTOP=
+SH=
+OPAQUE=-opaque
+CHECK_BEFORE_INSTALL=0
