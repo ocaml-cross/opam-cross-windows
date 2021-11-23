@@ -9,6 +9,7 @@ license: "MIT"
 homepage: "https://github.com/ocaml-ppx/ppx_tools_versioned"
 bug-reports: "https://github.com/ocaml-ppx/ppx_tools_versioned/issues"
 dev-repo: "git://github.com/ocaml-ppx/ppx_tools_versioned.git"
+synopsis: "A variant of ppx_tools based on ocaml-migrate-parsetree"
 tags: [ "syntax" ]
 build: [
   ["dune" "build" "-p" "ppx_tools_versioned" "-x" "windows" "-j" jobs]
@@ -18,7 +19,6 @@ depends: [
   "dune" {>= "1.0"}
   "ocaml-migrate-parsetree-windows" {>= "1.7.0"}
 ]
-synopsis: "A variant of ppx_tools based on ocaml-migrate-parsetree"
 url {
   src: "https://github.com/ocaml-ppx/ppx_tools_versioned/archive/5.4.0.tar.gz"
   checksum: "md5=3e809a11cae99f57c051d3d0100311f6"
