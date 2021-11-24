@@ -17,6 +17,7 @@ build: [
 depends: [
   "ocaml-windows" {>= "4.02.0"}
   "dune" {>= "1.0"}
+  "ocaml-migrate-parsetree" {>= "1.7.0" & < "2.0.0"}
   "ocaml-migrate-parsetree-windows" {>= "1.7.0" & < "2.0.0"}
 ]
 url {
