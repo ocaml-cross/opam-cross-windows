@@ -17,7 +17,7 @@ build: [
 depends: [
   "ocaml-windows" {>= "4.02.0"}
   "dune" {>= "1.0"}
-  "ocaml-migrate-parsetree-windows" {>= "1.7.0"}
+  "ocaml-migrate-parsetree-windows" {>= "1.7.0" & < "2.0.0"}
 ]
 url {
   src: "https://github.com/ocaml-ppx/ppx_tools_versioned/archive/5.4.0.tar.gz"
