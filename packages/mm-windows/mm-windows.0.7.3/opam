@@ -39,7 +39,7 @@ depexts: [
 url {
   src: "https://github.com/savonet/ocaml-mm/archive/v0.7.3.tar.gz"
   checksum: [
-    "md5=aac5d727d81c2088860b733f46cf1b31"
-    "sha512=ea1ff00bd80574e1b546693c7b5eb8e160bf7a8a9cbc553e1c021b5d0bb7c11bb917b403640328e678272bff38065bb0a6be678158a4459b28a40140de512de0"
+    "md5=701626882691b5fdf0c9c90974159f03"
+    "sha512=f4fc072e6b0ca19fcda1335ebeccdff8ec84a8ac84476e5e4a39a27a316dce9ebfde9ae78fa8674749706710a2d24c55e3f97e7c87e56704545ca98496f5803e"
   ]
 }
