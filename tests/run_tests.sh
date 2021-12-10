@@ -88,7 +88,8 @@ PACKAGES=$(cd ${BASE_PWD}/packages && find . -maxdepth 2 -mindepth 2 -type d | c
 
 echo ""
 git remote set-branches origin '*'
-git fetch origin master
+git fetch origin main
+git checkout main
 echo ""
 
 echo "${PACKAGES}" | while read PACKAGE; do
@@ -96,7 +97,7 @@ echo "${PACKAGES}" | while read PACKAGE; do
     build_package "${PACKAGE}"
   else
     PACKAGE_DIR=`echo ${PACKAGE} | cut -d'.' -f 1`
-    RET=$(cd "${BASE_PWD}/packages/${PACKAGE_DIR}/${PACKAGE}" && git diff --name-only HEAD origin/master .)
+    RET=$(cd "${BASE_PWD}/packages/${PACKAGE_DIR}/${PACKAGE}" && git diff --name-only HEAD origin/main .)
 
     if [ -n "${RET}" ]; then
       build_package "${PACKAGE}"
