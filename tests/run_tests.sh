@@ -89,7 +89,6 @@ PACKAGES=$(cd ${BASE_PWD}/packages && find . -maxdepth 2 -mindepth 2 -type d | c
 echo ""
 git remote set-branches origin '*'
 git fetch origin main
-git checkout main
 echo ""
 
 echo "${PACKAGES}" | while read PACKAGE; do
