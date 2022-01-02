@@ -1,0 +1,13 @@
+diff --git a/src/config/discover.ml b/src/config/discover.ml
+index 11cabb1..6266f1c 100644
+--- a/src/config/discover.ml
++++ b/src/config/discover.ml
+@@ -12,7 +12,7 @@ let () =
+               match
+                 C.Pkg_config.query_expr_err pc ~package:"mad" ~expr:"mad"
+               with
+-                | Error msg -> failwith msg
++                | Error _ -> default
+                 | Ok deps -> deps)
+       in
+       C.Flags.write_sexp "c_flags.sexp" conf.cflags;

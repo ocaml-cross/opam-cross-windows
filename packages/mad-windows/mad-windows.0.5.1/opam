@@ -30,6 +30,12 @@ build: [
 depexts: [
   ["libmad"] {os-distribution = "mxe"}
 ]
+patches: [
+  "patches/fix-discover.diff"
+]
+extra-files: [
+  ["patches/fix-discover.diff" "md5=58d66bd40b155a0d5457dd2a2653c9f6"]
+]
 dev-repo: "git+https://github.com/savonet/ocaml-mad.git"
 url {
   src: "https://github.com/savonet/ocaml-mad/archive/v0.5.1.tar.gz"
