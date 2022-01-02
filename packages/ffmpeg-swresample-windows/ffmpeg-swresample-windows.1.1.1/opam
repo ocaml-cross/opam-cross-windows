@@ -27,7 +27,7 @@ build: [
     "-j"
     jobs
     "-x"
-    "windpws"
+    "windows"
     "@install"
   ]
 ]
