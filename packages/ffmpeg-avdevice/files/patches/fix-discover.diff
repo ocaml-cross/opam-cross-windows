@@ -1,0 +1,50 @@
+commit 39adbd5f2294094654f81213cfd27dae7c70fec7
+Author: Romain Beauxis <toots@rastageeks.org>
+Date:   Sun Jan 2 15:51:30 2022 -0600
+
+    Work around to build avdevice on windows.
+
+diff --git a/avdevice/config/discover.ml b/avdevice/config/discover.ml
+index 061e3f1..2db4298 100644
+--- a/avdevice/config/discover.ml
++++ b/avdevice/config/discover.ml
+@@ -1,7 +1,12 @@
+ module C = Configurator.V1
+ 
++let os_type = ref ""
++
+ let () =
+-  C.main ~name:"ffmpeg-avdevice-pkg-config" (fun c ->
++  C.main
++    ~args:[("--os_type", String (fun s -> os_type := s), "")]
++    ~name:"ffmpeg-avdevice-pkg-config"
++    (fun c ->
+       let default : C.Pkg_config.package_conf =
+         { libs = ["-lavdevice"]; cflags = [] }
+       in
+@@ -16,5 +21,14 @@ let () =
+                 | Error msg -> failwith msg
+                 | Ok deps -> deps)
+       in
++      let libs =
++        if !os_type = "Win32" then
++          List.filter
++            (fun flag ->
++              String.length flag < 3
++              || (String.sub flag 0 3 <> "-Wl" && flag <> "-static-libgcc"))
++            conf.libs
++        else conf.libs
++      in
+       C.Flags.write_sexp "c_flags.sexp" conf.cflags;
+-      C.Flags.write_sexp "c_library_flags.sexp" conf.libs)
++      C.Flags.write_sexp "c_library_flags.sexp" libs)
+diff --git a/avdevice/dune b/avdevice/dune
+index 549ad3a..73c4d63 100644
+--- a/avdevice/dune
++++ b/avdevice/dune
+@@ -14,4 +14,4 @@
+ (rule
+  (targets c_flags.sexp c_library_flags.sexp)
+  (action
+-  (run ./config/discover.exe)))
++  (run ./config/discover.exe --os_type %{os_type})))
