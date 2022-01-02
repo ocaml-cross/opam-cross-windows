@@ -1,0 +1,13 @@
+diff --git a/src/taglib_stubs.cc b/src/taglib_stubs.cc
+index d2342d3..ec0533c 100644
+--- a/src/taglib_stubs.cc
++++ b/src/taglib_stubs.cc
+@@ -180,7 +180,7 @@ CAMLprim value caml_taglib_file_new(value type, value name) {
+   File *f = NULL;
+ 
+ #ifdef WIN32
+-  const wchar_t *filename = caml_stat_strdup_to_os(String_val(name));
++  wchar_t *filename = caml_stat_strdup_to_os(String_val(name));
+ #else
+   char *filename = strdup(String_val(name));
+ #endif
