@@ -13,7 +13,6 @@ depends: [
   "ffmpeg-avutil-windows" {= version}
   "ffmpeg-avcodec-windows" {= version}
   "ffmpeg-avfilter-windows" {= version}
-  "ffmpeg-avdevice-windows" {= version}
   "ffmpeg-swscale-windows" {= version}
   "ffmpeg-swresample-windows" {= version}
   "odoc" {with-doc}
