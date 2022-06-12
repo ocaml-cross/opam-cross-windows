@@ -1,14 +1,12 @@
 opam-version: "2.0"
-synopsis: "Helper library for gathering system configuration"
+synopsis: "Embed build informations inside executable"
 description: """
-dune-configurator is a small library that helps writing OCaml scripts that
-test features available on the system, in order to generate config.h
-files for instance.
-Among other things, dune-configurator allows one to:
-- test if a C program compiles
-- query pkg-config
-- import #define from OCaml header files
-- generate config.h file
+The build-info library allows to access information about how the
+executable was built, such as the version of the project at which it
+was built or the list of statically linked libraries with their
+versions.  It supports reporting the version from the version control
+system during development to get an precise reference of when the
+executable was built.
 """
 maintainer: ["Jane Street Group, LLC <opensource@janestreet.com>"]
 authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
@@ -18,11 +16,8 @@ doc: "https://dune.readthedocs.io/"
 bug-reports: "https://github.com/ocaml/dune/issues"
 depends: [
   "dune" {>= "3.0"}
-  "ocaml-windows" {>= "4.04.0"}
   "pp-windows" {>= "1.1.0"}
-  "csexp" {>= "1.5.0"}
-  "csexp-windows" {>= "1.5.0"}
-  "stdune-windows" {= version}
+  "ocaml-windows" {>= "4.08"}
 ]
 dev-repo: "git+https://github.com/ocaml/dune.git"
 build: [
@@ -30,12 +25,13 @@ build: [
     "dune"
     "build"
     "-p"
-    "dune-configurator,dyn"
+    "dune-build-info,dyn"
     "-x"
     "windows"
     "-j"
     jobs
     "@install"
+    "@doc" {with-doc}
   ]
 ]
 url {
