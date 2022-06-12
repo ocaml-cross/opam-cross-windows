@@ -24,6 +24,7 @@ depends: [
   "ocaml-compiler-libs-windows" {>= "v0.11.0"}
   "ppx_derivers-windows" {>= "1.0"}
   "stdlib-shims-windows"
+  "stdlib-shims-windows"
   "sexplib0-windows" {>= "v0.12"}
 ]
 build: [
