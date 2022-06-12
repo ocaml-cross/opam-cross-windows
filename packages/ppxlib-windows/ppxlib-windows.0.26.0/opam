@@ -26,6 +26,7 @@ depends: [
   "ppx_derivers-windows" {>= "1.0"}
   "stdlib-shims"
   "stdlib-shims-windows"
+  "sexplib0" {>= "v0.12"}
   "sexplib0-windows" {>= "v0.12"}
 ]
 build: [
