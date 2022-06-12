@@ -16,7 +16,7 @@ build: [
     "dune"
     "build"
     "-p"
-    "dune-site"
+    "dune-site,dyn"
     "-x"
     "windows"
     "-j"
