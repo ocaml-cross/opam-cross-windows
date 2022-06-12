@@ -29,7 +29,7 @@ build: [
     "dune"
     "build"
     "-p"
-    "dune-private-libs,dyn"
+    "dune-private-libs,dyn,stdune"
     "-x"
     "windows"
     "-j"
