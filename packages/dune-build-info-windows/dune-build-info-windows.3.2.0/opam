@@ -25,7 +25,7 @@ build: [
     "dune"
     "build"
     "-p"
-    "dune-build-info,dyn"
+    "dune-build-info,dyn,ordering"
     "-x"
     "windows"
     "-j"
