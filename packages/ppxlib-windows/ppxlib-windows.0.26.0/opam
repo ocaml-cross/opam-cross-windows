@@ -23,6 +23,7 @@ depends: [
   "ocaml-windows" {>= "4.04.1" & < "4.15"}
   "ocaml-compiler-libs-windows" {>= "v0.11.0"}
   "ocaml-compiler-libs" {>= "v0.11.0"}
+  "ppx_derivers" {>= "1.0"}
   "ppx_derivers-windows" {>= "1.0"}
   "stdlib-shims"
   "stdlib-shims-windows"
