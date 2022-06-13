@@ -11,9 +11,11 @@ build: [
 ]
 depends: [
   "ocaml-windows"             {>= "4.10.0"}
+  "sexplib0"          {>= "v0.15" & < "v0.16"}
   "sexplib0-windows"          {>= "v0.15" & < "v0.16"}
   "dune"              {>= "2.0.0"}
-  "dune-configurator-windows"
+  "dune-configurator" {>= "3.2.0"}
+  "dune-configurator-windows" {>= "3.2.0"}
 ]
 synopsis: "Full standard library replacement for OCaml"
 description: "
