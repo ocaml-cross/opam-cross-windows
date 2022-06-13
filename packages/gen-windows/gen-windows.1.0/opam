@@ -7,8 +7,8 @@ build: [
 ]
 depends: [
   "dune" {>= "1.1"}
-  "dune-configurator"
-  "dune-configurator-windows"
+  "dune-configurator" {>= "3.2.0"}
+  "dune-configurator-windows" {>= "3.2.0"}
   "seq-windows"
   "ocaml-windows" { >= "4.03.0" }
 ]

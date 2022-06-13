@@ -18,7 +18,7 @@ depends: [
   "ocaml-windows" {>= "4.08"}
   "dune" {>= "2.8"}
   "ppxlib-windows" {>= "0.26.0"}
-  "gen-windows"
+  "gen-windows" {>= "1.0"}
   "uchar-windows"
 ]
 build: [
