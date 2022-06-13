@@ -11,8 +11,10 @@ build: [
 ]
 depends: [
   "ocaml-windows"  {>= "4.08.0"}
+  "base"   {>= "v0.15" & < "v0.16"}
   "base-windows"   {>= "v0.15" & < "v0.16"}
   "dune"   {>= "2.0.0"}
+  "ppxlib" {>= "0.23.0"}
   "ppxlib-windows" {>= "0.23.0"}
 ]
 synopsis: "Expands [@cold] into [@inline never][@specialise never][@local never]"
