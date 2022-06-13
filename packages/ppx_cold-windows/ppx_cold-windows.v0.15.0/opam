@@ -7,7 +7,7 @@ dev-repo: "git+https://github.com/janestreet/ppx_cold.git"
 doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_cold/index.html"
 license: "MIT"
 build: [
-  ["dune" "build" "-p" "ppx_cold" "-x" "windpws" "-j" jobs]
+  ["dune" "build" "-p" "ppx_cold" "-x" "windows" "-j" jobs]
 ]
 depends: [
   "ocaml-windows"  {>= "4.08.0"}
