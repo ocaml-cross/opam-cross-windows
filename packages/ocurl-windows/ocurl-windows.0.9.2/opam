@@ -9,7 +9,7 @@ bug-reports: "https://github.com/ygrek/ocurl/issues"
 tags: ["org:ygrek" "clib:curl"]
 build: [
   ["./configure" "--host=%{conf-gcc-windows:host}%" "--prefix=%{prefix}%" "OCAMLFIND_TOOLCHAIN=windows"]
-  ["env" "OCAMLFIND_TOOLCHAIN=windows" make]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" make "OCAMLOPT='ocamlfind ocamlopt'" "OCAMLC='ocamlfind ocamlc'"]
 ]
 install: [
   ["env" "OCAMLFIND_TOOLCHAIN=windows"
