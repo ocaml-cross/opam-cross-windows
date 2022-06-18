@@ -31,9 +31,5 @@ depexts: [
 ]
 dev-repo: "git+https://github.com/savonet/ocaml-taglib.git"
 url {
-  src: "https://github.com/savonet/ocaml-taglib/archive/v0.3.9.tar.gz"
-  checksum: [
-    "md5=4e99661c99ff48cdc742cb47626eb06e"
-    "sha512=7ec9cd2439c10079be0ab96a759557ef7254bd5dbb49fb82f8d628b880a70b0f768c22fd6b69100567eda67290b2c3c9272addb2ae3578e050a6a891688e2427"
-  ]
+  src: "https://github.com/savonet/ocaml-taglib/archive/main.tar.gz"
 }
