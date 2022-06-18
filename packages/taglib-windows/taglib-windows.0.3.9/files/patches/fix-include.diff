@@ -1,0 +1,18 @@
+commit fdaa0563b85a0d43eaeb56ce9fcffcf58436b270
+Author: Romain Beauxis <toots@rastageeks.org>
+Date:   Sat Jun 18 12:32:22 2022 -0500
+
+    Bring this back.
+
+diff --git a/src/taglib_stubs.cc b/src/taglib_stubs.cc
+index 38168b4..7576e2a 100644
+--- a/src/taglib_stubs.cc
++++ b/src/taglib_stubs.cc
+@@ -90,6 +90,7 @@ using namespace TagLib;
+ 
+ /* Declaring the functions which should be accessible on the C side. */
+ extern "C" {
++#define CAML_INTERNALS
+ #include <caml/alloc.h>
+ #include <caml/callback.h>
+ #include <caml/fail.h>

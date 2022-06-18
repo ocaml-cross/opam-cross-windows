@@ -8,6 +8,12 @@ authors: ["The Savonet Team <savonet-users@lists.sourceforge.net>"]
 license: "LGPL-2.1-only WITH OCaml-LGPL-linking-exception"
 homepage: "https://github.com/savonet/ocaml-taglib"
 bug-reports: "https://github.com/savonet/ocaml-taglib/issues"
+patches: [
+  "patches/fix-include.diff"
+]
+extra-files: [
+  ["patches/fix-include.diff" "md5=fbb83355f9efb3cf8beb57d1fdfb0fb1"]
+]
 depends: [
   "dune" {>= "2.8"}
   "ocaml-windows" {>= "4.07"}
