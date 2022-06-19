@@ -22,7 +22,7 @@ build: [
     "-p"
     "ffmpeg-avdevice"
     "-x"
-    "windpws" 
+    "windows" 
     "-j"
     jobs
     "@install"
