@@ -22,7 +22,7 @@ build: [
     "dune"
     "build"
     "-p"
-    "ffmpeg-windows"
+    "ffmpeg"
     "-x"
     "windows"
     "-j"
