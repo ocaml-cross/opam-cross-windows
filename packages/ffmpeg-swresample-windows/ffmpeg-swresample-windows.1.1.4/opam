@@ -21,7 +21,7 @@ build: [
     "dune"
     "build"
     "-p"
-    "ffmpeg-swscale" 
+    "ffmpeg-swresample" 
     "-x"
     "windows"
     "-j"
