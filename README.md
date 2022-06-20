@@ -19,7 +19,7 @@ Installation
 
 Add this repository to OPAM:
 
-    opam repository add windows http://github.com/ocaml-cross/opam-cross-windows.git
+    opam repository add windows https://github.com/ocaml-cross/opam-cross-windows.git
 
 On 64-bit build systems, switch to 32-bit compiler when compiling for 32-bit targets:
 
