@@ -1,0 +1,12 @@
+diff --git a/src/taglib_stubs.cc b/src/taglib_stubs.cc
+index 38168b4..7576e2a 100644
+--- a/src/taglib_stubs.cc
++++ b/src/taglib_stubs.cc
+@@ -90,6 +90,7 @@ using namespace TagLib;
+ 
+ /* Declaring the functions which should be accessible on the C side. */
+ extern "C" {
++#define CAML_INTERNALS
+ #include <caml/alloc.h>
+ #include <caml/callback.h>
+ #include <caml/fail.h>

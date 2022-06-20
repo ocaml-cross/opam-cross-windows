@@ -10,9 +10,7 @@ license: "typeof OCaml system"
 depends: [
   "ocaml" {>= "3.12.0"}
   "ocaml-windows"
-  "ocamlfind" {build}
   "ocamlbuild" {build}
-  "opam-installer" {build}
 ]
 build: [
   ["ocaml" "pkg/git.ml"]
@@ -25,8 +23,6 @@ build: [
     "native-dynlink=%{ocaml:native-dynlink}%"
   ]
 ]
-install: [["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "uchar.install"]]
-remove: [["ocamlfind" "-toolchain" "windows" "remove" "uchar"]]
 synopsis: "Compatibility library for OCaml's Uchar module"
 description: """
 The `uchar` package provides a compatibility library for the
