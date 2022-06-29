@@ -32,6 +32,5 @@ url {
   src: "https://github.com/savonet/ocaml-opus/archive/v0.2.2.tar.gz"
   checksum: [
     "md5=66f2646834191c65ba1ab81b35d92858"
-    "sha512=e6337fbbcff8e8afc4f664483616eced8a9a28d758d25e8c0ee036ae7b2d9839b7b8f7ea6a06785d6e80f1449fd5e2cac894fe5377944786381d2b87524a8815"
   ]
 }
