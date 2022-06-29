@@ -1,0 +1,265 @@
+# @configure_input@
+
+#**************************************************************************
+#*                                                                        *
+#*                                 OCaml                                  *
+#*                                                                        *
+#*            Xavier Leroy, projet Cristal, INRIA Rocquencourt            *
+#*                                                                        *
+#*   Copyright 1999 Institut National de Recherche en Informatique et     *
+#*     en Automatique.                                                    *
+#*                                                                        *
+#*   All rights reserved.  This file is distributed under the terms of    *
+#*   the GNU Lesser General Public License version 2.1, with the          *
+#*   special exception on linking described in the file LICENSE.          *
+#*                                                                        *
+#**************************************************************************
+
+# Cross-specific variables
+CAMLRUN=%{bin}%/ocamlrun
+OCAMLRUN=%{bin}%/ocamlrun
+CAMLYACC=%{bin}%/ocamlyacc
+OCAMLYACC=%{bin}%/ocamlyacc
+
+# The configuration Makefile
+
+## The EMPTY variable, used in other definitions
+EMPTY=
+
+## Arguments passed to the configure script
+
+CONFIGURE_ARGS=--host=%{conf-gcc-windows32:host}%
+
+## Top build directory
+
+TOP_BUILDDIR = .
+
+## Installation directories
+
+prefix=%{prefix}%/windows-sysroot
+
+exec_prefix=
+
+### Where to install the binaries
+BINDIR=$(prefix)/bin
+
+datarootdir=$(prefix)/man
+
+### Where to install the standard library
+LIBDIR=$(prefix)/lib/ocaml
+
+### Where to install the stub code for the standard library
+STUBLIBDIR=$(LIBDIR)/stublibs
+
+### Where to install the man pages
+# Man pages for commands go in $(MANDIR)/man$(PROGRAMS_MAN_SECTION)
+# Man pages for the library go in $(MANDIR)/man/man$(LIBRARIES_MAN_SECTION)
+MANDIR=$(datarootdir)
+PROGRAMS_MAN_SECTION=1
+LIBRARIES_MAN_SECTION=3
+
+### Do #! scripts work on your system?
+### Beware: on some systems (e.g. SunOS 4), this will work only if
+### the string "#!$(BINDIR)/ocamlrun" is less than 32 characters long.
+### In doubt, set HASHBANGSCRIPTS to false.
+SHEBANGSCRIPTS=false
+LONG_SHEBANG=false
+# For compatibility
+HASHBANGSCRIPTS:=$(SHEBANGSCRIPTS)
+
+### Path to the libtool script
+LIBTOOL = $(TOP_BUILDDIR)/libtool
+
+### Which C compiler to use
+TOOLPREF=%{conf-gcc-windows32:prefix}%
+CC=%{conf-gcc-windows32:prefix}%gcc
+
+CC_HAS_DEBUG_PREFIX_MAP=false
+AS_HAS_DEBUG_PREFIX_MAP=false
+
+### Additional link-time options
+# To support dynamic loading of shared libraries (they need to look at
+# our own symbols):
+OC_LDFLAGS=-municode
+
+### How to invoke the C preprocessor through the C compiler
+CPP=%{conf-gcc-windows32:prefix}%cpp
+
+### How to invoke ranlib
+RANLIB=%{conf-gcc-windows32:prefix}%ranlib
+RANLIBCMD=%{conf-gcc-windows32:prefix}%ranlib
+
+### How to invoke ar
+ARCMD=%{conf-gcc-windows32:prefix}%ar
+
+### Extension of object files
+O=o
+EXT_OBJ=.o
+
+### How to tell the C compiler to output an object file
+OUTPUTOBJ=-o $(EMPTY)
+
+### Extension of static libraries
+A=a
+EXT_LIB=.a
+
+### Extension of assembler files
+S=s
+EXT_ASM=.s
+
+### Extension for shared libraries
+SO=so
+EXT_DLL=.so
+
+SHAREDLIB_CFLAGS=
+
+# Compile-time option to $(CC) to add a directory to be searched
+# at run-time for shared libraries
+RPATH=
+
+############# Configuration for the native-code compiler
+
+### Whether the native compiler has been enabled or not
+NATIVE_COMPILER=true
+
+### Name of architecture for the native-code compiler
+### Currently supported:
+###
+### i386        Intel Pentium PCs under Linux, *BSD*, NextStep
+### power       Macintosh under Mac OS X and Linux
+### arm         ARM under Linux
+###
+### Set ARCH=none if your machine is not supported
+ARCH=amd64
+
+# Whether the architecture has 64 bits
+ARCH64=true
+
+# Endianess for this architecture
+ENDIANNESS=le
+
+### Name of architecture model for the native-code compiler.
+### Some architectures come in several slightly different flavors
+### that share a common code generator. This variable tailors the
+### behavior of the code generator to the particular flavor used.
+### Currently needed only if ARCH=power; leave MODEL=default for
+### other architectures.
+### If ARCH=power: set MODEL=ppc
+### For other architectures: leave MODEL=default
+###
+MODEL=default
+
+### Name of operating system family for the native-code compiler.
+SYSTEM=mingw64
+
+### Command and flags to use for assembling ocamlopt-generated code
+ASM=%{conf-gcc-windows32:prefix}%as
+
+### Command and flags to use for assembling .S files (often with preprocessing)
+ASPP=$(CC) -c
+
+### Set to "true" to install ".byte" executables (ocamlc.byte, etc.)
+INSTALL_BYTECODE_PROGRAMS=true
+
+############# Configuration for the contributed libraries
+
+### Which libraries to compile and install
+# Currently available:
+#       bigarray          Large, multidimensional numerical arrays
+#                           (legacy support: this library is now part of the
+#                            Standard Library)
+#       dynlink           Dynamic linking (bytecode and native)
+#       (win32)unix       Unix system calls
+#       str               Regular expressions and high-level string processing
+#       raw_spacetime_lib Parsing of spacetime traces
+#       systhreads        Same as threads, requires POSIX threads
+OTHERLIBRARIES=win32unix str dynlink bigarray systhreads
+
+### Link-time options to ocamlc or ocamlopt for linking with POSIX threads
+# Needed for the "systhreads" package
+PTHREAD_LINK=
+PTHREAD_CAML_LINK=
+
+UNIX_OR_WIN32=win32
+UNIXLIB=win32unix
+BFD_CPPFLAGS=
+BFD_LDFLAGS=
+BFD_LDLIBS=
+INSTALL_SOURCE_ARTIFACTS=
+
+OC_CFLAGS=-O2 -mms-bitfields -fno-strict-aliasing -Wall -fno-tree-vrp -I%{flexdll-windows:lib}%
+OC_CPPFLAGS=-DCAML_NAME_SPACE -DUNICODE -D_UNICODE -DWINDOWS_UNICODE=$(WINDOWS_UNICODE)
+OCAMLC_CFLAGS=-O2 -mms-bitfields
+
+OCAMLC_CPPFLAGS=
+BYTECCLIBS=-lws2_32 -lversion
+EXE=
+OUTPUTEXE=-o $(EMPTY)
+SUPPORTS_SHARED_LIBRARIES=true
+MKSHAREDLIBRPATH=
+DYNLINKOPTS=
+NATDYNLINK=$(SUPPORTS_SHARED_LIBRARIES)
+NATDYNLINKOPTS=
+SYSLIB=-l$(1)
+MKLIB=%{conf-gcc-windows32:prefix}%ar rc $(1) $(2); %{conf-gcc-windows32:prefix}%ranlib $(1)
+# #7678: ocamlopt uses these only to compile .c files, and the behaviour for the
+#        two drivers should be identical.
+OCAMLOPT_CFLAGS=-O2 -mms-bitfields
+OCAMLOPT_CPPFLAGS=
+NATIVECCLIBS=$(BYTECCLIBS)
+SYSTHREAD_SUPPORT=true
+PACKLD=%{conf-gcc-windows32:prefix}%ld -r -o
+EXTRALIBS=
+CCOMPTYPE=cc
+TOOLCHAIN=mingw
+CMXS=cmxa
+
+# On Windows, MKDLL, MKEXE and MKMAINDLL must ultimately be equivalent to
+#   $(FLEXLINK_CMD) $(FLEXLINK_FLAGS) [-exe|-maindll]
+# or OCAML_FLEXLINK overriding will not work (see utils/config.mlp)
+
+FLEXLINK=%{flexdll-windows:lib}%/flexlink -chain $(SYSTEM) -stack 16777216 -link -static-libgcc
+MKEXE=$(FLEXLINK) -exe $(if $(OC_LDFLAGS),-link "$(OC_LDFLAGS)")
+MKDLL=$(FLEXLINK)
+MKMAINDLL=$(FLEXLINK) -maindll
+
+MKEXEDEBUGFLAG=-g
+RUNTIMED=true
+RUNTIMEI=true
+WITH_DEBUGGER=ocamldebugger
+WITH_CAMLTEX=false
+WITH_OCAMLDOC=ocamldoc
+WITH_OCAMLTEST=
+ASM_CFI_SUPPORTED=false
+WITH_FRAME_POINTERS=false
+WITH_SPACETIME=%{conf-spacetime-windows:installed?true:false}%
+ENABLE_CALL_COUNTS=false
+WITH_PROFINFO=%{conf-spacetime-windows:installed?true:false}%
+PROFINFO_WIDTH=0
+LIBUNWIND_AVAILABLE=false
+LIBUNWIND_INCLUDE_FLAGS=
+LIBUNWIND_LINK_FLAGS=
+WITH_FPIC=
+TARGET=x86_64-w64-mingw32
+HOST=
+FLAMBDA=%{conf-flambda-windows:installed?true:false}%
+WITH_CMM_INVARIANTS=false
+WITH_FLAMBDA_INVARIANTS=false
+FORCE_SAFE_STRING=false
+DEFAULT_SAFE_STRING=true
+NAKED_POINTERS=true
+WINDOWS_UNICODE=1
+AFL_INSTRUMENT=false
+MAX_TESTSUITE_DIR_RETRIES=1
+FLAT_FLOAT_ARRAY=true
+FUNCTION_SECTIONS=false
+AWK=gawk
+STDLIB_MANPAGES=
+
+
+### Native command to build ocamlrun.exe
+
+MKEXE_BOOT=$(CC) $(OC_CFLAGS) $(OC_LDFLAGS) $(OUTPUTEXE)$(1) $(2)
+
+SHEBANGSCRIPTS=true
+LONG_SHEBANG=true
