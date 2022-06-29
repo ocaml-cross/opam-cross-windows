@@ -7,7 +7,6 @@ HOST=$1
 make -C runtime primitives sak SAK_CC=cc SAK_LINK='cc -o $(1) $(2)'
 
 cp `which ocamlrun` runtime/ocamlrun
-cp `which ocamlc` boot/ocamlc 
 cp -f Makefile.cross Makefile.config
 cp -f s-nt.h runtime/caml/s.h
 cp -f m-nt.h runtime/caml/m.h
