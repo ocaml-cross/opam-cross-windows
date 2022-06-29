@@ -17,7 +17,8 @@ remove: [
   ["/bin/sh" "./remove.sh" "%{prefix}%"]
 ]
 depends: [
-  "ocaml" {"4.14.0" & arch = "x86" | "4.14.0+32bit"}
+  "ocaml" {= "4.14.0"}
+  "ocaml-option-32bit" {arch = "x86_64"}
   "ocamlfind" {>= "1.5.4"}
   "conf-gcc-windows32"
   "flexdll-windows"
@@ -26,6 +27,7 @@ depopts: [
   "conf-flambda-windows"
   "conf-spacetime-windows"
 ]
+available: arch = "x86_32" | arch = "x86_64"
 conflicts: [
   "ocaml-windows64"
 ]
