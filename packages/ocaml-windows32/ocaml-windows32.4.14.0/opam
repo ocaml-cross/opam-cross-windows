@@ -36,7 +36,7 @@ extra-files: [
   ["s-nt.h" "md5=168fb57183722c5b5c03014e614a2e2e"]
   ["m-nt.h" "md5=b021fa0ff2866387df29b2483d002db7"]
   ["windows.conf.in" "md5=8457fb3000403fb7145f20e8a0095f89"]
-  ["build.sh"]
+  ["build.sh" "md5=4174b4cd3981305757a45f51f34845ae"]
   ["remove.sh" "md5=d2ebe7ce54e4a93a4d71d5fd889f17e3"]
   ["install.sh" "md5=4c6f7f0e06f685aa8ca1f12508860182"]
   ["Makefile.cross.in" "md5=1df0551f6a67b035d879c265f07ce7c4"]

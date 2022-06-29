@@ -130,10 +130,10 @@ NATIVE_COMPILER=true
 ### arm         ARM under Linux
 ###
 ### Set ARCH=none if your machine is not supported
-ARCH=amd64
+ARCH=i386
 
 # Whether the architecture has 64 bits
-ARCH64=true
+ARCH64=false
 
 # Endianess for this architecture
 ENDIANNESS=le
@@ -150,7 +150,7 @@ ENDIANNESS=le
 MODEL=default
 
 ### Name of operating system family for the native-code compiler.
-SYSTEM=mingw64
+SYSTEM=mingw
 
 ### Command and flags to use for assembling ocamlopt-generated code
 ASM=%{conf-gcc-windows32:prefix}%as
@@ -240,7 +240,7 @@ LIBUNWIND_AVAILABLE=false
 LIBUNWIND_INCLUDE_FLAGS=
 LIBUNWIND_LINK_FLAGS=
 WITH_FPIC=
-TARGET=x86_64-w64-mingw32
+TARGET=i686-w64-mingw32
 HOST=
 FLAMBDA=%{conf-flambda-windows:installed?true:false}%
 WITH_CMM_INVARIANTS=false
