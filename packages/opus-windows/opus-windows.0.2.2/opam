@@ -31,6 +31,7 @@ dev-repo: "git+https://github.com/savonet/ocaml-opus.git"
 url {
   src: "https://github.com/savonet/ocaml-opus/archive/v0.2.2.tar.gz"
   checksum: [
-    "md5=66f2646834191c65ba1ab81b35d92858"
+    "md5=900a6d3daeb5025c8380971ebcc4b825"
+    "sha512=f773fac31e31877f4039ce97faa4291f64a3b10d7a50f2fb591799478d5ac0f4d29e5a71ddbd50c64194f76c0263883b40eeadff343d2d924485d5358487c5a0"
   ]
 }
