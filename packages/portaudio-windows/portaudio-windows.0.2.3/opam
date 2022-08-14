@@ -11,6 +11,7 @@ depends: [
   "conf-pkg-config"
   "dune" {>= "2.8"}
   "dune-configurator"
+  "ocaml-windows"
 ]
 build: [
   ["dune" "subst"] {dev}
