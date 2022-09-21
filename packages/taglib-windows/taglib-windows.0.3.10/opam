@@ -1,0 +1,39 @@
+opam-version: "2.0"
+synopsis: "Bindings for the taglib library"
+description:
+  "Bindings for the taglib library which provides functions for reading tags in headers of audio files"
+maintainer: ["The Savonet Team <savonet-users@lists.sourceforge.net>"]
+authors: ["The Savonet Team <savonet-users@lists.sourceforge.net>"]
+license: "LGPL-2.1-only WITH OCaml-LGPL-linking-exception"
+homepage: "https://github.com/savonet/ocaml-taglib"
+bug-reports: "https://github.com/savonet/ocaml-taglib/issues"
+depends: [
+  "dune" {>= "2.8"}
+  "ocaml-windows" {>= "4.07"}
+  "dune-configurator"
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    "taglib"
+    "-x"
+    "windows"
+    "-j"
+    jobs
+    "@install"
+  ]
+]
+depexts: [
+ ["taglib"] {os-distribution = "mxe"}
+]
+dev-repo: "git+https://github.com/savonet/ocaml-taglib.git"
+url {
+  src: "https://github.com/savonet/ocaml-taglib/archive/v0.3.10.tar.gz"
+  checksum: [
+    "md5=1c88e858d3d1b821ffac89b465df8ab2"
+    "sha512=70193babf3ddca744de00ad43de12d71bdfbdd2d2081435a546ecccd1ead15c20b2ea91e226a98638935c20d6cd546e4b20111164a28255867192acec1a78ef2"
+  ]
+}
