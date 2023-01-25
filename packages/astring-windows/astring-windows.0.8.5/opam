@@ -9,6 +9,7 @@ tags: [ "string" "org:erratique" ]
 license: "ISC"
 depends: [
   "ocaml" {>= "4.05.0"}
+  "opam-installer" {build}
   "ocamlfind" {build}
   "ocamlbuild" {build}
   "topkg" {build} ]
