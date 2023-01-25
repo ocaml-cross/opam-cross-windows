@@ -28,8 +28,8 @@ depends: [
   "ctypes-windows" {>= "0.14.0"}
   "bos-windows"
 ]
-conflicts:[
-  "result-windows" {< "1.5"}
+depexts: [
+  ["libyaml"] {os-distribution = "mxe"}
 ]
 build: [
   ["dune" "build" "-p" "yaml" "-x" "windows" "-j" jobs]
