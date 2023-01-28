@@ -3,14 +3,12 @@ opam-cross-windows
 
 This repository contains an up-to-date Windows toolchain featuring OCaml 4.07.0, 4.08.0, 4.12.0 and 4.14.0, as well as some commonly used packages.
 
-The supported build systems are 32-bit and 64-bit x86 Linux. The supported target systems are 32-bit and 64-bit x86 Windows.
+The supported build systems are 32-bit and 64-bit x86 Linux and arm64 macos. The supported target systems are 32-bit and 64-bit x86 Windows.
 
 If you need support for other platforms or versions, please [open an issue](https://github.com/ocaml-cross/opam-cross-windows/issues).
 
 Prerequisites
 -------------
-
-On 64-bit Linux build systems, 32-bit libraries must be installed. On Debian derivatives they are provided in the `gcc-multilib` package.
 
 A C cross-compiler targeting the appropriate Windows platform must be installed. On Debian derivatives they are provided in the `gcc-mingw-w64-i686` (for 32-bit x86 Windows targets) or `gcc-mingw-w64-x86-64` (for 64-bit x86 Windows targets) packages. Alternatively, the [MXE environment](http://mxe.cc) can be used.
 
@@ -21,14 +19,9 @@ Add this repository to OPAM:
 
     opam repository add windows https://github.com/ocaml-cross/opam-cross-windows.git
 
-On 64-bit build systems, switch to 32-bit compiler when compiling for 32-bit targets:
+The version of the regular compiler installed in your current `opam` switch must match the version of the cross-compiler:
 
-    opam switch 4.14.0 --package=ocaml-option-32bit
-    eval `opam config env`
-
-Otherwise, use a regular compiler; its version must match the version of the cross-compiler:
-
-    opam switch 4.14.0
+    opam switch 4.14.1
     eval `opam config env`
 
 If desired, request the compiler to be built with [flambda][] optimizers:

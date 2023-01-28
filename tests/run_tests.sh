@@ -8,7 +8,7 @@ if [ -z "${SYSTEM_TYPE}" ]; then
 fi
 
 if [ -z "${OCAML_VERSION}" ]; then
-  OCAML_VERSION=4.14.0
+  OCAML_VERSION=4.14.1
 fi
 
  COMPILER="${OCAML_VERSION}"

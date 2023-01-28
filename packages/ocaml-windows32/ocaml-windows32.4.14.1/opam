@@ -17,7 +17,7 @@ remove: [
   ["/bin/sh" "./remove.sh" "%{prefix}%"]
 ]
 depends: [
-  "ocaml" {= "4.14.0"}
+  "ocaml" {= "4.14.1"}
   "ocamlfind" {>= "1.5.4"}
   "conf-gcc-windows32"
   "flexdll-windows"
@@ -40,6 +40,6 @@ extra-files: [
   ["patches/configure.patch" "md5=653aaf39feb4f0ecbca26f5a57f26747"]
 ]
 url {
-  src: "https://github.com/ocaml/ocaml/archive/4.14.0.tar.gz"
-  checksum: "md5=32cfb000312c9d0e2c187e891c34e8d3"
+  src: "https://github.com/ocaml/ocaml/archive/4.14.1.tar.gz"
+  checksum: "md5=92e7b1f8acb2b2de5c63d93ed9e5cc21"
 }

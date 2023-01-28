@@ -1,24 +1,69 @@
 #!/bin/sh -e
 
 HOST=$1
+OPAM_PREFIX="$2"
+FLEXDLL="$3"
 
-./configure --host=$1
+OPTS=""
 
-make -C runtime primitives sak SAK_CC=cc SAK_LINK='cc -o $(1) $(2)'
-
-cp `which ocamlrun` runtime/ocamlrun
-cp -f Makefile.cross Makefile.config
-cp -f s-nt.h runtime/caml/s.h
-cp -f m-nt.h runtime/caml/m.h
-
-if grep "WITH_SPACETIME=true" Makefile.config >/dev/null 2>/dev/null; then
-  echo "#define WITH_SPACETIME" >> runtime/caml/m.h
-  echo "#define WITH_PROFINFO" >> runtime/caml/m.h
+if [ `opam var conf-flambda-windows:installed` = "true" ]; then
+  OPTS="--enable-flambda"
 fi
 
-make world opt \
-  compilerlibs/ocamlcommon.cmxa compilerlibs/ocamlbytecomp.cmxa \
-  compilerlibs/ocamloptcomp.cmxa driver/main.cmx driver/optmain.cmx \
-  PROGRAMS= \
-  OCAMLRUN=ocamlrun \
-  NEW_OCAMLRUN=ocamlrun
+./configure --host=$1 --with-flexdll="${FLEXDLL}" --prefix="${OPAM_PREFIX}/windows-sysroot" ${OPTS}
+
+PWD=`pwd`
+CAMLC="${OPAM_PREFIX}/bin/ocamlc"
+
+make -C runtime sak.exe SAK_CC=cc SAK_CFLAGS= SAK_LINK='cc -o $(1) $(2)'
+make ocamlc ocamlopt OCAMLRUN=ocamlrun NEW_OCAMLRUN=ocamlrun CAMLC="${CAMLC}"
+make -C tools ocamlmklib CAMLC="${CAMLC}"
+make -C runtime all libasmrun.a CAMLC="${CAMLC}"
+
+make -C stdlib \
+     OCAMLRUN=ocamlrun \
+     NEW_OCAMLRUN=ocamlrun \
+     CAMLC=ocamlc \
+     CAMLC="${CAMLC}" \
+     COMPILER=ocamlc \
+     OPTCOMPILER="${PWD}/ocamlopt.exe" \
+     OCAMLOPT="${PWD}/ocamlopt.exe" \
+     OTHERLIBRARIES="bigarray str win32unix systhreads" \
+     MKLIB="ocamlrun \"${PWD}/tools/ocamlmklib.exe\"" \
+     FLEXLINK_CMD="${FLEXDLL}/flexlink" \
+     OCAMLYACC=ocamlyacc
+
+make -C yacc \
+     OCAMLRUN=ocamlrun \
+     NEW_OCAMLRUN=ocamlrun \
+     CAMLC=ocamlc \
+     CAMLC="${CAMLC}" \
+     COMPILER=ocamlc \
+     OPTCOMPILER="${PWD}/ocamlopt.exe" \
+     OCAMLOPT="${PWD}/ocamlopt.exe" \
+     OTHERLIBRARIES="bigarray str win32unix systhreads" \
+     MKLIB="ocamlrun \"${PWD}/tools/ocamlmklib.exe\"" \
+     FLEXLINK_CMD="${FLEXDLL}/flexlink" \
+     OCAMLYACC=ocamlyacc \
+     installed_tools=
+
+make library \
+     otherlibraries \
+     opt \
+     compilerlibs/ocamlcommon.cmxa \
+     compilerlibs/ocamlbytecomp.cmxa \
+     compilerlibs/ocamloptcomp.cmxa \
+     driver/main.cmx \
+     driver/optmain.cmx \
+     OCAMLRUN=ocamlrun \
+     NEW_OCAMLRUN=ocamlrun \
+     CAMLC=ocamlc \
+     CAMLC="${CAMLC}" \
+     COMPILER=ocamlc \
+     OPTCOMPILER="${PWD}/ocamlopt.exe" \
+     OCAMLOPT="${PWD}/ocamlopt.exe" \
+     OTHERLIBRARIES="bigarray str win32unix systhreads" \
+     MKLIB="ocamlrun \"${PWD}/tools/ocamlmklib.exe\"" \
+     FLEXLINK_CMD="${FLEXDLL}/flexlink" \
+     OCAMLYACC=ocamlyacc \
+     installed_tools=

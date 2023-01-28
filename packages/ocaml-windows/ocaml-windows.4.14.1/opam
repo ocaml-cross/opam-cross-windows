@@ -9,7 +9,7 @@ remove: [
 depends: [
   "ocaml"
   "conf-gcc-windows"
-  "ocaml-windows32" {= "4.14.0"} | "ocaml-windows64" {= "4.14.0"}
+  "ocaml-windows32" {= "4.14.1"} | "ocaml-windows64" {= "4.14.1"}
 ]
 synopsis: "A meta-package depending on any OCaml cross-compiler"
 extra-files: [
