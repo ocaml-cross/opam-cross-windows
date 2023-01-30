@@ -1,0 +1,5 @@
+#!/bin/sh
+
+DIRNAME=`dirname $0`
+
+${DIRNAME}/../lib/flexdll-windows/flexlink.exe "$@"

@@ -1,0 +1,70 @@
+opam-version: "2.0"
+maintainer: "whitequark@whitequark.org"
+substs: [
+  "version.ml"
+]
+build: [
+  ["touch" "Compat.ml"]
+  ["sh" "-c" "cat Compat402.ml >> Compat.ml"] {ocaml:compiler < "4.02.0"}
+  ["sh" "-c" "cat Compat403.ml >> Compat.ml"] {ocaml:compiler < "4.03.0"}
+  ["sh" "-c" "cat Compat405.ml >> Compat.ml"] {ocaml:compiler < "4.05.0"}
+  ["sh" "-c" "cat Compat406.ml >> Compat.ml"] {ocaml:compiler < "4.06.0"}
+  [
+    "%{conf-gcc-windows32:prefix}%gcc"
+    "-c"
+    "-DMINGW"
+    "flexdll.c"
+    "-o"
+    "flexdll_mingw.o"
+  ] {conf-gcc-windows32:installed}
+  [
+    "%{conf-gcc-windows32:prefix}%gcc"
+    "-c"
+    "-DMINGW"
+    "flexdll_initer.c"
+    "-o"
+    "flexdll_initer_mingw.o"
+  ] {conf-gcc-windows32:installed}
+  [
+    "%{conf-gcc-windows64:prefix}%gcc"
+    "-c"
+    "-DMINGW"
+    "flexdll.c"
+    "-o"
+    "flexdll_mingw64.o"
+  ] {conf-gcc-windows64:installed}
+  [
+    "%{conf-gcc-windows64:prefix}%gcc"
+    "-c"
+    "-DMINGW"
+    "flexdll_initer.c"
+    "-o"
+    "flexdll_initer_mingw64.o"
+  ] {conf-gcc-windows64:installed}
+  [
+    "ocamlopt"
+    "version.ml"
+    "Compat.ml"
+    "coff.ml"
+    "cmdline.ml"
+    "create_dll.ml"
+    "reloc.ml"
+    "-g"
+    "-w"
+    "-165"
+    "-o"
+    "flexlink.exe"
+  ]
+]
+depends: ["ocaml" "conf-gcc-windows32" | "conf-gcc-windows64"]
+synopsis:
+  "FlexDLL is a Windows dynamic linker extension allowing DLLs to depend on each other"
+extra-files: [
+  ["flexlink" "md5=e4522fc7b43c35e45278158caf45159d"]
+  ["version.ml.in" "md5=f1bb53b9442eeda71d4963c02bf9fa84"]
+  ["flexdll-windows.install" "md5=1b80c115bb264f51debdd24c5b25b306"]
+]
+url {
+  src: "https://github.com/alainfrisch/flexdll/archive/0.42.tar.gz"
+  checksum: "9464ae7a7e566ba7c96336cf2f34cc73"
+}

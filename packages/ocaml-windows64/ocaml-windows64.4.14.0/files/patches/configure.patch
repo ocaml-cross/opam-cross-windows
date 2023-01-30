@@ -72,7 +72,7 @@
 
      case $host in #(
 -  *-w64-mingw32|*-pc-windows) :
-+  *-w64-mingw32*|*-pc-windows) :
++  *-pc-windows) :
      flexlink_where="$(cmd /c "$flexlink" -where 2>/dev/null)"
        if test -z "$flexlink_where"; then :
    as_fn_error $? "$flexlink is not executable from a native Win32 process" "$LINENO" 5

@@ -17,7 +17,7 @@ depends: [
   "ocaml" {= "4.14.0"}
   "ocamlfind" {>= "1.5.4"}
   "conf-gcc-windows64"
-  "flexdll-windows"
+  "flexdll-windows" {>= "0.42"}
 ]
 depopts: [
   "conf-flambda-windows"
@@ -29,10 +29,10 @@ available: arch = "x86_64" | (os = "macos" & arch = "arm64")
 synopsis: "OCaml cross-compiler for 64-bit x86 Windows targets"
 extra-files: [
   ["windows.conf.in" "md5=b2e35e8fb7973a2d7ca801c042e286b4"]
-  ["build.sh" "md5=656bdaa241fc595153c8d83edd2ac824"]
-  ["install.sh" "md5=4e4dfd19cea64aaf0bfc27434bbf35bc"]
+  ["build.sh" "md5=97e2621a2ba8ff1ffced8bd7647197ee"]
+  ["install.sh" "md5=3005f8309c64b735395b2f2f75a3a89"]
   ["patches/ostype-fix.patch" "md5=05919aebf4e0894bf8f0bc60a6932b46"]
-  ["patches/configure.patch" "md5=653aaf39feb4f0ecbca26f5a57f26747"]
+  ["patches/configure.patch" "md5=c25f44edc3ed6b7d53efaee49b97146a"]
 ]
 url {
   src: "https://github.com/ocaml/ocaml/archive/4.14.0.tar.gz"
