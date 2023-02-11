@@ -1,5 +1,5 @@
---- configure.orig	2023-02-11 11:41:02
-+++ configure	2023-02-11 11:41:31
+--- a/configure.orig	2023-02-11 11:41:02
++++ b/configure	2023-02-11 11:41:31
 @@ -12657,7 +12657,7 @@
  # Libraries to build depending on the host
  
