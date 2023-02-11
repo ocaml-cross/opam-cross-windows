@@ -11,33 +11,27 @@ build: [
   ["/bin/sh" "./build.sh" "%{conf-gcc-windows32:host}%" "%{prefix}%" "%{flexdll-windows:lib}%"]
 ]
 install: [
-  ["/bin/sh" "./install.sh" "%{prefix}%"]
-]
-remove: [
-  ["/bin/sh" "./remove.sh" "%{prefix}%"]
+  ["/bin/sh" "./install.sh" "%{prefix}%" "%{flexdll-windows:lib}%"]
 ]
 depends: [
   "ocaml" {= "4.14.0"}
   "ocamlfind" {>= "1.5.4"}
   "conf-gcc-windows32"
-  "flexdll-windows"
+  "flexdll-windows" {>= "0.42"}
 ]
 depopts: [
   "conf-flambda-windows"
-  "conf-spacetime-windows"
 ]
-available: arch = "x86_32" | arch = "x86_64" | (os = "macos" & arch = "arm64")
 conflicts: [
   "ocaml-windows64"
 ]
 synopsis: "OCaml cross-compiler for 32-bit x86 Windows targets"
 extra-files: [
-  ["windows.conf.in" "md5=8457fb3000403fb7145f20e8a0095f89"]
-  ["build.sh" "md5=3ba65a2881f0fe415ee051caa3f2bcbe"]
-  ["remove.sh" "md5=d2ebe7ce54e4a93a4d71d5fd889f17e3"]
-  ["install.sh" "md5=dc72c46922d42b8801486a620dcba204"]
+  ["windows.conf.in" "md5=b2e35e8fb7973a2d7ca801c042e286b4"]
+  ["build.sh" "md5=97e2621a2ba8ff1ffced8bd7647197ee"]
+  ["install.sh" "md5=9e5ea5955b38546684c93082f5fc4344"]
   ["patches/ostype-fix.patch" "md5=05919aebf4e0894bf8f0bc60a6932b46"]
-  ["patches/configure.patch" "md5=653aaf39feb4f0ecbca26f5a57f26747"]
+  ["patches/configure.patch" "md5=c25f44edc3ed6b7d53efaee49b97146a"]
 ]
 url {
   src: "https://github.com/ocaml/ocaml/archive/4.14.0.tar.gz"

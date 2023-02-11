@@ -1,7 +1,6 @@
 #!/bin/sh -e
 
 PREFIX="$1"
-PWD=`pwd`
 
 touch \
   tools/profiling.cmo \
@@ -24,37 +23,33 @@ make install \
   RUNTIMED=false \
   INSTRUMENTED_RUNTIME=false \
   INSTALL_SOURCE_ARTIFACTS=false \
-  installed_tools= \
+  installed_tools=ocamlmklib \
   OTHERLIBRARIES="bigarray str win32unix systhreads" \
   programs= \
-  ocamldebugger= \
-  BOOTSTRAPPING_FLEXDLL=false
+  ocamldebugger=
+
+CAMLC=`which ocamlc`
 
 # Dynlink only compiles after the above has been installed
 make otherlibraries opt \
   OCAMLRUN=ocamlrun \
   NEW_OCAMLRUN=ocamlrun \
-  CAMLC=ocamlc \
   CAMLC="${CAMLC}" \
-  COMPILER=ocamlc \
   OPTCOMPILER="${PWD}/ocamlopt.exe" \
   OCAMLOPT="${PWD}/ocamlopt.exe" \
   OTHERLIBRARIES="bigarray dynlink str win32unix systhreads" \
   MKLIB="ocamlrun \"${PWD}/tools/ocamlmklib.exe\"" \
-  FLEXLINK_CMD=flexlink \
-  OCAMLYACC=ocamlyacc \
-  installed_tools=
+  OCAMLYACC=ocamlyacc
 
 make install \
   PROGRAMS=ocamlrun.exe \
   RUNTIMED=false \
   INSTRUMENTED_RUNTIME=false \
   INSTALL_SOURCE_ARTIFACTS=false \
-  installed_tools= \
+  installed_tools=ocamlmklib \
   OTHERLIBRARIES="bigarray dynlink str win32unix systhreads" \
   programs= \
-  ocamldebugger= \
-  BOOTSTRAPPING_FLEXDLL=false
+  ocamldebugger=
 
 cp compilerlibs/ocamlcommon.cmxa compilerlibs/ocamlcommon.a \
    compilerlibs/ocamlbytecomp.cmxa compilerlibs/ocamlbytecomp.a \
@@ -63,12 +58,12 @@ cp compilerlibs/ocamlcommon.cmxa compilerlibs/ocamlcommon.a \
    driver/optmain.cmx driver/optmain.o \
    "${PREFIX}/windows-sysroot/lib/ocaml/compiler-libs"
 
-for bin in ocamlc ocamlopt ocamlcp ocamlmklib ocamlmktop ocamldoc ocamldep; do
-  cat >"${PREFIX}/windows-sysroot/bin/${bin}" <<END
-#!/bin/sh
-${PREFIX}/bin/ocamlrun "${PREFIX}/windows-sysroot/bin/${bin}.exe" "\$@"
-END
-  chmod +x "${PREFIX}/windows-sysroot/bin/${bin}"
+# Copy META files from ocamlfind
+for pkg in bigarray bytes compiler-libs dynlink findlib graphics stdlib str threads unix; do
+  if [ -f "${PREFIX}/lib/${pkg}/META" ]; then
+    mkdir -p "${PREFIX}/windows-sysroot/lib/${pkg}"
+    cp -r "${PREFIX}/lib/${pkg}/META" "${PREFIX}/windows-sysroot/lib/${pkg}/META"
+  fi
 done
 
 mkdir -p "${PREFIX}/lib/findlib.conf.d"

@@ -25,7 +25,6 @@ depopts: [
 conflicts: [
   "ocaml-windows32"
 ]
-available: arch = "x86_64" | (os = "macos" & arch = "arm64")
 synopsis: "OCaml cross-compiler for 64-bit x86 Windows targets"
 extra-files: [
   ["windows.conf.in" "md5=b2e35e8fb7973a2d7ca801c042e286b4"]
