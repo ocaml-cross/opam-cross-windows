@@ -54,6 +54,7 @@ make install \
 cp compilerlibs/ocamlcommon.cmxa compilerlibs/ocamlcommon.a \
    compilerlibs/ocamlbytecomp.cmxa compilerlibs/ocamlbytecomp.a \
    compilerlibs/ocamloptcomp.cmxa compilerlibs/ocamloptcomp.a \
+   compilerlibs/ocamltoplevel.cmxa \
    driver/main.cmx driver/main.o \
    driver/optmain.cmx driver/optmain.o \
    "${PREFIX}/windows-sysroot/lib/ocaml/compiler-libs"

@@ -47,6 +47,7 @@ make library \
      compilerlibs/ocamlcommon.cmxa \
      compilerlibs/ocamlbytecomp.cmxa \
      compilerlibs/ocamloptcomp.cmxa \
+     compilerlibs/compilerlibs/ocamltoplevel.cmxa \
      driver/main.cmx \
      driver/optmain.cmx \
      OCAMLRUN=ocamlrun \
