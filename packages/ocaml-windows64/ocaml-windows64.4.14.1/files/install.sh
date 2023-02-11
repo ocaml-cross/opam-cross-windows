@@ -42,6 +42,7 @@ make otherlibraries opt \
   OCAMLYACC=ocamlyacc
 
 make compilerlibs/ocamltoplevel.cmxa \
+     compilerlibs/ocamltoplevel.cma \
      OCAMLRUN=ocamlrun \
      NEW_OCAMLRUN=ocamlrun \
      CAMLC="${CAMLC}" \
@@ -66,7 +67,7 @@ make install \
 cp compilerlibs/ocamlcommon.cmxa compilerlibs/ocamlcommon.a \
    compilerlibs/ocamlbytecomp.cmxa compilerlibs/ocamlbytecomp.a \
    compilerlibs/ocamloptcomp.cmxa compilerlibs/ocamloptcomp.a \
-   compilerlibs/ocamltoplevel.cmxa \
+   compilerlibs/ocamltoplevel.cmxa compilerlibs/ocamltoplevel.cma \
    driver/main.cmx driver/main.o \
    driver/optmain.cmx driver/optmain.o \
    "${PREFIX}/windows-sysroot/lib/ocaml/compiler-libs"
