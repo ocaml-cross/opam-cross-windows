@@ -41,6 +41,18 @@ make otherlibraries opt \
   MKLIB="ocamlrun \"${PWD}/tools/ocamlmklib.exe\"" \
   OCAMLYACC=ocamlyacc
 
+make compilerlibs/ocamltoplevel.cmxa \
+     OCAMLRUN=ocamlrun \
+     NEW_OCAMLRUN=ocamlrun \
+     CAMLC="${CAMLC}" \
+     COMPILER="${CAMLC}" \
+     OPTCOMPILER="${PWD}/ocamlopt.exe" \
+     OCAMLOPT="${PWD}/ocamlopt.exe" \
+     OTHERLIBRARIES="bigarray str win32unix systhreads" \
+     MKLIB="ocamlrun \"${PWD}/tools/ocamlmklib.exe\"" \
+     OCAMLYACC=ocamlyacc \
+     installed_tools=
+
 make install \
   PROGRAMS=ocamlrun.exe \
   RUNTIMED=false \
