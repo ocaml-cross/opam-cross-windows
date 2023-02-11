@@ -14,9 +14,9 @@ fi
 CAMLC=`which ocamlc`
 
 make -C runtime sak.exe SAK_CC=cc SAK_CFLAGS= SAK_LINK='cc -o $(1) $(2)'
-make ocamlc ocamlopt OCAMLRUN=ocamlrun NEW_OCAMLRUN=ocamlrun CAMLC="${CAMLC}" FLEXLINK_FLAGS="-link -static-libgcc"
-make -C tools ocamlmklib CAMLC="${CAMLC}" FLEXLINK_FLAGS="-link -static-libgcc"
-make -C runtime all libasmrun.a CAMLC="${CAMLC}" FLEXLINK_FLAGS="-link -static-libgcc"
+make ocamlc ocamlopt OCAMLRUN=ocamlrun NEW_OCAMLRUN=ocamlrun CAMLC="${CAMLC}"
+make -C tools ocamlmklib CAMLC="${CAMLC}"
+make -C runtime all libasmrun.a CAMLC="${CAMLC}"
 
 make -C stdlib \
      OCAMLRUN=ocamlrun \
