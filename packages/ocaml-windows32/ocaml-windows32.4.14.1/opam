@@ -14,7 +14,7 @@ install: [
   ["/bin/sh" "./install.sh" "%{prefix}%" "%{flexdll-windows:lib}%"]
 ]
 depends: [
-  "ocaml" {= "4.14.0"}
+  "ocaml" {= "4.14.1"}
   "ocamlfind" {>= "1.5.4"}
   "conf-gcc-windows32"
   "flexdll-windows" {>= "0.42"}
@@ -34,6 +34,6 @@ extra-files: [
   ["patches/configure.patch" "md5=287096c9d177456e90daa4b2a5f1a95b"]
 ]
 url {
-  src: "https://github.com/ocaml/ocaml/archive/4.14.0.tar.gz"
-  checksum: "md5=32cfb000312c9d0e2c187e891c34e8d3"
+  src: "https://github.com/ocaml/ocaml/archive/4.14.1.tar.gz"
+  checksum: "md5=92e7b1f8acb2b2de5c63d93ed9e5cc21"
 }

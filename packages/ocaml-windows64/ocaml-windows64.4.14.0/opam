@@ -31,7 +31,7 @@ extra-files: [
   ["build.sh" "md5=97e2621a2ba8ff1ffced8bd7647197ee"]
   ["install.sh" "md5=9e5ea5955b38546684c93082f5fc4344"]
   ["patches/ostype-fix.patch" "md5=05919aebf4e0894bf8f0bc60a6932b46"]
-  ["patches/configure.patch" "md5=c25f44edc3ed6b7d53efaee49b97146a"]
+  ["patches/configure.patch" "md5=287096c9d177456e90daa4b2a5f1a95b"]
 ]
 url {
   src: "https://github.com/ocaml/ocaml/archive/4.14.0.tar.gz"

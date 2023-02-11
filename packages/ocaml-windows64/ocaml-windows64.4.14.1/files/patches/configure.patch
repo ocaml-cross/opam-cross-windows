@@ -1,8 +1,8 @@
---- ocaml-4.14.0.old/configure	2022-03-28 12:27:36.000000000 +0000
-+++ ocaml-4.14.0/configure	2023-01-29 23:35:10.270519014 +0000
+--- configure.orig	2023-02-11 11:41:02
++++ configure	2023-02-11 11:41:31
 @@ -12657,7 +12657,7 @@
  # Libraries to build depending on the host
-
+ 
  case $host in #(
 -  *-*-mingw32|*-pc-windows) :
 +  *-*-mingw32*|*-pc-windows) :
@@ -28,7 +28,7 @@
    gcc-[01234]-*) :
      as_fn_error $? "This version of Mingw GCC is too old. Please use GCC version 5 or above." "$LINENO" 5 ;; #(
 @@ -12889,7 +12889,7 @@
-
+ 
  # Enable SSE2 on x86 mingw to avoid using 80-bit registers.
  case $host in #(
 -  i686-*-mingw32) :
@@ -67,9 +67,18 @@
      if test x"$with_flexdll" = 'x' -o x"$with_flexdll" = 'xflexdll'; then :
    if test -f 'flexdll/flexdll.h'; then :
    flexdir=flexdll
+@@ -13094,7 +13094,7 @@
+ else
+   { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+ $as_echo "no" >&6; }
+-      as_fn_error $? "$flexlink does not work" "$LINENO" 5
++      #as_fn_error $? "$flexlink does not work" "$LINENO" 5
+ fi
+ rm -f core conftest.err conftest.$ac_objext \
+     conftest$ac_exeext conftest.$ac_ext
 @@ -13118,7 +13118,7 @@
-
-
+ 
+ 
      case $host in #(
 -  *-w64-mingw32|*-pc-windows) :
 +  *-pc-windows) :
@@ -95,7 +104,7 @@
    *) :
       ;;
 @@ -13269,7 +13269,7 @@
-
+ 
  fi
      ostype="Cygwin" ;; #(
 -  *,*-*-mingw32) :
@@ -177,7 +186,7 @@
      case $ocaml_cv_cc_vendor in #(
 @@ -15159,7 +15159,7 @@
  sockets=true
-
+ 
  case $host in #(
 -  *-*-mingw32|*-pc-windows) :
 +  *-*-mingw32*|*-pc-windows) :
@@ -186,7 +195,7 @@
  $as_echo_n "checking for library containing socket... " >&6; }
 @@ -15423,7 +15423,7 @@
  ## socklen_t
-
+ 
  case $host in #(
 -  *-*-mingw32|*-pc-windows) :
 +  *-*-mingw32*|*-pc-windows) :
@@ -195,7 +204,7 @@
  if test "x$ac_cv_type_socklen_t" = xyes; then :
 @@ -15451,7 +15451,7 @@
  ## Unix domain sockets support on Windows
-
+ 
  case $host in #(
 -  *-*-mingw32|*-pc-windows) :
 +  *-*-mingw32*|*-pc-windows) :
@@ -204,7 +213,7 @@
    ac_fn_c_check_header_compile "$LINENO" "afunix.h" "ac_cv_header_afunix_h" "#include <winsock2.h>
 @@ -15475,7 +15475,7 @@
  ipv6=true
-
+ 
  case $host in #(
 -  *-*-mingw32|*-pc-windows) :
 +  *-*-mingw32*|*-pc-windows) :
@@ -231,7 +240,7 @@
    *) :
 @@ -15827,7 +15827,7 @@
  ## setsid
-
+ 
  case $host in #(
 -  *-cygwin|*-*-mingw32|*-pc-windows) :
 +  *-cygwin|*-*-mingw32*|*-pc-windows) :
@@ -248,7 +257,7 @@
    *) :
      ac_fn_c_check_func "$LINENO" "dlopen" "ac_cv_func_dlopen"
 @@ -16023,7 +16023,7 @@
-
+ 
  ## -fdebug-prefix-map support by the C compiler
  case $ocaml_cv_cc_vendor,$host in #(
 -  *,*-*-mingw32) :
@@ -273,10 +282,10 @@
 +  *-*-mingw32*|*-pc-windows) :
       ;; #(
    *) :
-
+ 
 @@ -17822,7 +17822,7 @@
  cclibs="$cclibs $mathlib"
-
+ 
  case $host in #(
 -  *-*-mingw32) :
 +  *-*-mingw32*) :
@@ -285,7 +294,7 @@
    *-pc-windows) :
 @@ -17842,7 +17842,7 @@
  fi
-
+ 
  case $host in #(
 -  *-*-mingw32|*-pc-windows) :
 +  *-*-mingw32*|*-pc-windows) :
@@ -311,5 +320,5 @@
 -  *-*-mingw32) :
 +  *-*-mingw32*) :
      $as_echo "#define HAS_BROKEN_PRINTF 1" >>confdefs.h
-
+ 
      $as_echo "#define HAS_STRERROR 1" >>confdefs.h
