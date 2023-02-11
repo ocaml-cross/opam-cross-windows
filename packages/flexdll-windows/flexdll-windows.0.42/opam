@@ -3,6 +3,9 @@ maintainer: "whitequark@whitequark.org"
 substs: [
   "version.ml"
 ]
+patches: [
+  "patches/no-gcc_eh.patch"
+]
 build: [
   ["touch" "Compat.ml"]
   ["sh" "-c" "cat Compat402.ml >> Compat.ml"] {ocaml:compiler < "4.02.0"}
@@ -63,6 +66,7 @@ extra-files: [
   ["flexlink" "md5=e4522fc7b43c35e45278158caf45159d"]
   ["version.ml.in" "md5=f1bb53b9442eeda71d4963c02bf9fa84"]
   ["flexdll-windows.install" "md5=1b80c115bb264f51debdd24c5b25b306"]
+  ["patches/no-gcc_eh.patch" "md5=65bdd2a32d0777a9d8b315df91632166"]
 ]
 url {
   src: "https://github.com/alainfrisch/flexdll/archive/0.42.tar.gz"
