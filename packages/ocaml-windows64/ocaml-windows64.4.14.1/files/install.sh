@@ -41,19 +41,6 @@ make otherlibraries opt \
   MKLIB="ocamlrun \"${PWD}/tools/ocamlmklib.exe\"" \
   OCAMLYACC=ocamlyacc
 
-make compilerlibs/ocamltoplevel.cmxa \
-     compilerlibs/ocamltoplevel.cma \
-     OCAMLRUN=ocamlrun \
-     NEW_OCAMLRUN=ocamlrun \
-     CAMLC="${CAMLC}" \
-     COMPILER="${CAMLC}" \
-     OPTCOMPILER="${PWD}/ocamlopt.exe" \
-     OCAMLOPT="${PWD}/ocamlopt.exe" \
-     OTHERLIBRARIES="bigarray str win32unix systhreads" \
-     MKLIB="ocamlrun \"${PWD}/tools/ocamlmklib.exe\"" \
-     OCAMLYACC=ocamlyacc \
-     installed_tools=
-
 make install \
   PROGRAMS=ocamlrun.exe \
   RUNTIMED=false \
@@ -64,10 +51,7 @@ make install \
   programs= \
   ocamldebugger=
 
-cp compilerlibs/ocamlcommon.cmxa compilerlibs/ocamlcommon.a \
-   compilerlibs/ocamlbytecomp.cmxa compilerlibs/ocamlbytecomp.a \
-   compilerlibs/ocamloptcomp.cmxa compilerlibs/ocamloptcomp.a \
-   compilerlibs/ocamltoplevel.cmxa compilerlibs/ocamltoplevel.cma \
+cp compilerlibs/*.cm* \
    driver/main.cmx driver/main.o \
    driver/optmain.cmx driver/optmain.o \
    "${PREFIX}/windows-sysroot/lib/ocaml/compiler-libs"
