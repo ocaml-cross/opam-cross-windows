@@ -1,5 +1,5 @@
---- a/configure.orig	2023-02-11 11:41:02
-+++ b/configure	2023-02-11 11:41:31
+--- ocaml-4.14.0/configure.orig	2023-02-11 14:06:25
++++ ocaml-4.14.0/configure	2023-02-11 14:06:49
 @@ -12657,7 +12657,7 @@
  # Libraries to build depending on the host
  
@@ -67,15 +67,6 @@
      if test x"$with_flexdll" = 'x' -o x"$with_flexdll" = 'xflexdll'; then :
    if test -f 'flexdll/flexdll.h'; then :
    flexdir=flexdll
-@@ -13094,7 +13094,7 @@
- else
-   { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
- $as_echo "no" >&6; }
--      as_fn_error $? "$flexlink does not work" "$LINENO" 5
-+      #as_fn_error $? "$flexlink does not work" "$LINENO" 5
- fi
- rm -f core conftest.err conftest.$ac_objext \
-     conftest$ac_exeext conftest.$ac_ext
 @@ -13118,7 +13118,7 @@
  
  
