@@ -15,6 +15,7 @@ install: [
 ]
 depends: [
   "ocaml" {= version}
+  "ocaml-option-32bit" {arch = "x86_64"}
   "ocamlfind" {>= "1.5.4"}
   "conf-gcc-windows32"
   "flexdll-windows" {>= "0.42"}
@@ -22,6 +23,7 @@ depends: [
 depopts: [
   "conf-flambda-windows"
 ]
+available: arch = "x86_32" | arch = "x86_64" | (arch = "arm64" & os = "macos")
 conflicts: [
   "ocaml-windows64"
 ]
