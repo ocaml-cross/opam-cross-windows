@@ -28,7 +28,7 @@ conflicts: [
 synopsis: "OCaml cross-compiler for 64-bit x86 Windows targets"
 extra-files: [
   ["windows.conf.in" "md5=b2e35e8fb7973a2d7ca801c042e286b4"]
-  ["build.sh" "md5=bf405648eb18a587b331127bcb0acaf4"]
+  ["build.sh" "md5=cd01fbb7439cde838c8ad51877110ad5"]
   ["install.sh" "md5=1c5be5783a409c2c48b4c7a1e2852d07"]
   ["patches/ostype-fix.patch" "md5=05919aebf4e0894bf8f0bc60a6932b46"]
   ["patches/configure.patch" "md5=2947eb1d16daec3d35f769093574249f"]
