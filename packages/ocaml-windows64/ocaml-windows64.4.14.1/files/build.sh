@@ -11,51 +11,20 @@ fi
 
 ./configure --host=$1 --prefix="${OPAM_PREFIX}/windows-sysroot" --enable-systhreads ${OPTS}
 
-CAMLC=`which ocamlc`
-
 make -C runtime sak.exe SAK_CC=cc SAK_CFLAGS= SAK_LINK='cc -o $(1) $(2)'
-make ocamlc ocamlopt OCAMLRUN=ocamlrun NEW_OCAMLRUN=ocamlrun CAMLC="${CAMLC}"
-make -C tools ocamlmklib CAMLC="${CAMLC}"
-make -C runtime all libasmrun.a CAMLC="${CAMLC}"
 
-make -C stdlib \
-     OCAMLRUN=ocamlrun \
-     NEW_OCAMLRUN=ocamlrun \
-     CAMLC="${CAMLC}" \
-     COMPILER="${CAMLC}" \
-     OPTCOMPILER="${PWD}/ocamlopt.exe" \
-     OCAMLOPT="${PWD}/ocamlopt.exe" \
-     OTHERLIBRARIES="bigarray str win32unix systhreads" \
-     MKLIB="ocamlrun \"${PWD}/tools/ocamlmklib.exe\"" \
-     OCAMLYACC=ocamlyacc
+make ocamlc OCAMLRUN=ocamlrun NEW_OCAMLRUN=ocamlrun
+make boot/ocamlruns.exe
+make  -C runtime all
+make  -C stdlib OCAMLRUN=ocamlrun all
+make -C yacc OCAMLRUN=ocamlrun NEW_OCAMLRUN=ocamlrun
+make -C lex OCAMLRUN=ocamlrun NEW_OCAMLRUN=ocamlrun OCAMLYACC=ocamlyacc
+make coldstart OCAMLRUN=ocamlrun NEW_OCAMLRUN=ocamlrun
+make -C tools ocamlmklib OCAMLRUN=ocamlrun NEW_OCAMLRUN=ocamlrun
+make -C runtime all libasmrun.a
 
-make -C yacc \
-     OCAMLRUN=ocamlrun \
-     NEW_OCAMLRUN=ocamlrun \
-     CAMLC="${CAMLC}" \
-     COMPILER="${CAMLC}" \
-     OPTCOMPILER="${PWD}/ocamlopt.exe" \
-     OCAMLOPT="${PWD}/ocamlopt.exe" \
-     OTHERLIBRARIES="bigarray str win32unix systhreads" \
-     MKLIB="ocamlrun \"${PWD}/tools/ocamlmklib.exe\"" \
-     OCAMLYACC=ocamlyacc \
-     installed_tools=
-
-make library \
-     otherlibraries \
-     opt \
-     compilerlibs/ocamlcommon.cmxa \
-     compilerlibs/ocamlbytecomp.cmxa \
-     compilerlibs/ocamloptcomp.cmxa \
-     driver/main.cmx \
-     driver/optmain.cmx \
-     OCAMLRUN=ocamlrun \
-     NEW_OCAMLRUN=ocamlrun \
-     CAMLC="${CAMLC}" \
-     COMPILER="${CAMLC}" \
-     OPTCOMPILER="${PWD}/ocamlopt.exe" \
-     OCAMLOPT="${PWD}/ocamlopt.exe" \
-     OTHERLIBRARIES="bigarray str win32unix systhreads" \
-     MKLIB="ocamlrun \"${PWD}/tools/ocamlmklib.exe\"" \
-     OCAMLYACC=ocamlyacc \
-     installed_tools=
+make library otherlibs opt ocamlnat ocaml ocamldoc ocamldebugger \
+  OCAMLRUN=ocamlrun NEW_OCAMLRUN=ocamlrun \
+  OPTCOMPILER="${PWD}/ocamlopt.exe"  \
+  MKLIB="ocamlrun \"${PWD}/tools/ocamlmklib.exe\"" \
+  OCAMLYACC=ocamlyacc
