@@ -2,23 +2,7 @@
 
 PREFIX="$1"
 
-touch \
-  tools/profiling.cmo \
-  tools/profiling.cmi \
-  tools/ocamlcmt.exe \
-  debugger/ocamldebug.exe \
-  yacc/ocamlyacc.exe \
-  ocamldoc/ocamldoc.exe \
-  ocamldoc/odoc_info.cma \
-  ocamldoc/odoc_info.cmi \
-  ocaml.exe \
-  expunge.exe \
-  eventlog_metadata \
-  toplevel/topdirs.cmi \
-  toplevel/topstart.cmo \
-  toplevel/byte/topeval.cmi
-
-make install \
+make installopt \
   PROGRAMS=ocamlrun.exe \
   RUNTIMED=false \
   INSTRUMENTED_RUNTIME=false \
@@ -31,7 +15,7 @@ make install \
 CAMLC=`which ocamlc`
 
 # Dynlink only compiles after the above has been installed
-make otherlibraries opt \
+make otherlibraries opt ocamlnat ocaml ocamldoc \
   OCAMLRUN=ocamlrun \
   NEW_OCAMLRUN=ocamlrun \
   CAMLC="${CAMLC}" \
@@ -50,11 +34,6 @@ make install \
   OTHERLIBRARIES="bigarray dynlink str win32unix systhreads" \
   programs= \
   ocamldebugger=
-
-cp compilerlibs/*.cm* \
-   driver/main.cmx driver/main.o \
-   driver/optmain.cmx driver/optmain.o \
-   "${PREFIX}/windows-sysroot/lib/ocaml/compiler-libs"
 
 # Copy META files from ocamlfind
 for pkg in bigarray bytes compiler-libs dynlink findlib graphics stdlib str threads unix; do
