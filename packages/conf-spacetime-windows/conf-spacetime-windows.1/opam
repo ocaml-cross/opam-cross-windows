@@ -3,4 +3,4 @@ maintainer: "whitequark@whitequark.org"
 conflicts: [
   "ocaml-windows32"
 ]
-depends: ["ocaml"]
+depends: ["ocaml" {<= "4.12.0"}]

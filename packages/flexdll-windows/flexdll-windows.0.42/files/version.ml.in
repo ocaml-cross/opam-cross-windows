@@ -1,0 +1,3 @@
+let version = "%{version}%"
+let mingw_prefix = "%{conf-gcc-windows32:prefix}%"
+let mingw64_prefix = "%{conf-gcc-windows64:prefix}%"

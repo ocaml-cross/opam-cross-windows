@@ -1,21 +1,18 @@
-#!/bin/sh -e
+#!/bin/sh
+
+set -e
 
 PREFIX="$1"
 
-cp -f yacc/ocamlyacc.exe yacc/ocamlyacc
+make install installopt RUNTIMED=false INSTRUMENTED_RUNTIME=false
 
-make install PROGRAMS=ocamlrun
+cp -rf compilerlibs/*.cmxa compilerlibs/*.a "${PREFIX}/windows-sysroot/lib/ocaml/compiler-libs"
 
-cp compilerlibs/ocamlcommon.cmxa compilerlibs/ocamlcommon.a \
-   compilerlibs/ocamlbytecomp.cmxa compilerlibs/ocamlbytecomp.a \
-   compilerlibs/ocamloptcomp.cmxa compilerlibs/ocamloptcomp.a \
-   driver/main.cmx driver/main.o \
-   driver/optmain.cmx driver/optmain.o \
-   "${PREFIX}/windows-sysroot/lib/ocaml/compiler-libs"
-
+# Copy META files from ocamlfind
 for pkg in bigarray bytes compiler-libs dynlink findlib graphics stdlib str threads unix; do
-  if [ -d "${PREFIX}/lib/${pkg}" ]; then
-    cp -r "${PREFIX}/lib/${pkg}" "${PREFIX}/windows-sysroot/lib/"
+  if [ -f "${PREFIX}/lib/${pkg}/META" ]; then
+    mkdir -p "${PREFIX}/windows-sysroot/lib/${pkg}"
+    cp -r "${PREFIX}/lib/${pkg}/META" "${PREFIX}/windows-sysroot/lib/${pkg}/META"
   fi
 done
 

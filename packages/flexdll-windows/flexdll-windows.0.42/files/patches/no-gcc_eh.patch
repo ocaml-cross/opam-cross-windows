@@ -1,0 +1,13 @@
+diff --git a/reloc.ml b/reloc.ml
+index 827413f..523dc72 100644
+--- a/reloc.ml
++++ b/reloc.ml
+@@ -1279,7 +1279,7 @@ let setup_toolchain () =
+       flush stdout
+     end;
+     default_libs :=
+-      ["-lmingw32"; "-lgcc"; "-lgcc_eh"; "-lmoldname"; "-lmingwex"; "-lmsvcrt";
++      ["-lmingw32"; "-lgcc"; "-lmoldname"; "-lmingwex"; "-lmsvcrt";
+        "-luser32"; "-lkernel32"; "-ladvapi32"; "-lshell32" ];
+     if !exe_mode = `EXE then default_libs := "crt2.o" :: !default_libs
+     else default_libs := "dllcrt2.o" :: !default_libs

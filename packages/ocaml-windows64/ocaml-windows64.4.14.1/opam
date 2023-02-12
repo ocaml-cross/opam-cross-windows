@@ -8,26 +8,25 @@ substs: [
   "windows.conf"
 ]
 build: [
-  ["/bin/sh" "./build.sh" "%{conf-gcc-windows32:host}%" "%{prefix}%"]
+  ["/bin/sh" "./build.sh" "%{conf-gcc-windows64:host}%" "%{prefix}%"]
 ]
 install: [
   ["/bin/sh" "./install.sh" "%{prefix}%"]
 ]
 depends: [
   "ocaml" {= version}
-  "ocaml-option-32bit" {arch = "x86_64"}
   "ocamlfind" {>= "1.5.4"}
-  "conf-gcc-windows32"
+  "conf-gcc-windows64"
   "flexdll-windows" {>= "0.42"}
 ]
 depopts: [
   "conf-flambda-windows"
 ]
-available: arch = "x86_32" | arch = "x86_64" | (arch = "arm64" & os = "macos")
+available: arch = "x86_64" | (arch = "arm64" & os = "macos")
 conflicts: [
-  "ocaml-windows64"
+  "ocaml-windows32"
 ]
-synopsis: "OCaml cross-compiler for 32-bit x86 Windows targets"
+synopsis: "OCaml cross-compiler for 64-bit x86 Windows targets"
 extra-files: [
   ["windows.conf.in" "md5=b2e35e8fb7973a2d7ca801c042e286b4"]
   ["build.sh" "md5=cd01fbb7439cde838c8ad51877110ad5"]
@@ -36,6 +35,6 @@ extra-files: [
   ["patches/configure.patch" "md5=2947eb1d16daec3d35f769093574249f"]
 ]
 url {
-  src: "https://github.com/ocaml/ocaml/archive/4.14.0.tar.gz"
-  checksum: "md5=32cfb000312c9d0e2c187e891c34e8d3"
+  src: "https://github.com/ocaml/ocaml/archive/4.14.1.tar.gz"
+  checksum: "md5=92e7b1f8acb2b2de5c63d93ed9e5cc21"
 }

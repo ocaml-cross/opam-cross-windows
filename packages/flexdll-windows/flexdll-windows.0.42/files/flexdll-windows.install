@@ -1,0 +1,13 @@
+bin: [
+  "flexlink"
+]
+libexec: [
+  "flexlink.exe"
+]
+lib: [
+  "flexdll.h"
+  "?flexdll_mingw.o"
+  "?flexdll_initer_mingw.o"
+  "?flexdll_mingw64.o"
+  "?flexdll_initer_mingw64.o"
+]

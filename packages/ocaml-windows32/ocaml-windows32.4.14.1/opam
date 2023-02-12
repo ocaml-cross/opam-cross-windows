@@ -36,6 +36,6 @@ extra-files: [
   ["patches/configure.patch" "md5=2947eb1d16daec3d35f769093574249f"]
 ]
 url {
-  src: "https://github.com/ocaml/ocaml/archive/4.14.0.tar.gz"
-  checksum: "md5=32cfb000312c9d0e2c187e891c34e8d3"
+  src: "https://github.com/ocaml/ocaml/archive/4.14.1.tar.gz"
+  checksum: "md5=92e7b1f8acb2b2de5c63d93ed9e5cc21"
 }
