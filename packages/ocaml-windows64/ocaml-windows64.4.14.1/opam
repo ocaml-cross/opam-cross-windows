@@ -8,10 +8,10 @@ substs: [
   "windows.conf"
 ]
 build: [
-  ["/bin/sh" "./build.sh" "%{conf-gcc-windows64:host}%" "%{prefix}%" "%{flexdll-windows:lib}%"]
+  ["/bin/sh" "./build.sh" "%{conf-gcc-windows64:host}%" "%{prefix}%"]
 ]
 install: [
-  ["/bin/sh" "./install.sh" "%{prefix}%" "%{flexdll-windows:lib}%"]
+  ["/bin/sh" "./install.sh" "%{prefix}%"]
 ]
 depends: [
   "ocaml" {= "4.14.1"}
