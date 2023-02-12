@@ -16,13 +16,13 @@ fi
 make -C runtime sak.exe SAK_CC=cc SAK_CFLAGS= SAK_LINK='cc -o $(1) $(2)'
 
 make ocamlopt ocamlc OCAMLRUN=ocamlrun NEW_OCAMLRUN=ocamlrun CAMLC="`which ocamlc`"
+make -C tools ocamlmklib OCAMLRUN=ocamlrun NEW_OCAMLRUN=ocamlrun CAMLC="`which ocamlc`"
 make boot/ocamlruns.exe
 make  -C runtime all
 make -C stdlib OCAMLRUN=ocamlrun COMPILER="${PWD}/boot/ocamlc"
 make -C yacc OCAMLRUN=ocamlrun NEW_OCAMLRUN=ocamlrun
 make -C lex OCAMLRUN=ocamlrun NEW_OCAMLRUN=ocamlrun OCAMLYACC=ocamlyacc CAMLC="`which ocamlc`"
 make coldstart OCAMLRUN=ocamlrun NEW_OCAMLRUN=ocamlrun
-make -C tools ocamlmklib OCAMLRUN=ocamlrun NEW_OCAMLRUN=ocamlrun
 make -C runtime all libasmrun.a
 
 make library otherlibs opt ocamlnat ocaml ocamldoc ocamldebugger \
