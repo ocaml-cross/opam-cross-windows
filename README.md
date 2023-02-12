@@ -3,7 +3,7 @@ opam-cross-windows
 
 This repository contains an up-to-date Windows toolchain featuring OCaml 4.07.0, 4.08.0, 4.12.0 and 4.14.0, as well as some commonly used packages.
 
-The supported build systems are 32-bit and 64-bit x86 Linux and arm64 macos. The supported target systems are 32-bit and 64-bit x86 Windows.
+The supported build systems are 32-bit and 64-bit x86 Linux and `arm64` macos (Apple Silicon). The supported target systems are 32-bit and 64-bit x86 Windows.
 
 If you need support for other platforms or versions, please [open an issue](https://github.com/ocaml-cross/opam-cross-windows/issues).
 
@@ -29,6 +29,9 @@ If desired, request the compiler to be built with [flambda][] optimizers:
     opam install conf-flambda-windows
 
 [flambda]: https://caml.inria.fr/pub/docs/manual-ocaml/flambda.html
+
+If you are compiling for 32bit windows on a 64bit `x86_64` architecture, you will also need to install `ocaml-option-32bit` to make sure 
+that your ocaml compiler is configured to output 32bit binary objects. This does not seem to be required on `arm64` macos (Apple Silicon).
 
 Install the compiler:
 
