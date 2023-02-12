@@ -1,8 +1,12 @@
-#!/bin/sh -e
+#!/bin/sh
+
+set -e
 
 PREFIX="$1"
 
-make install RUNTIMED=false INSTRUMENTED_RUNTIME=false
+make install installopt RUNTIMED=false INSTRUMENTED_RUNTIME=false
+
+cp -rf compilerlibs/*.cmxa compilerlibs/*.a "${PREFIX}/windows-sysroot/lib/ocaml/compiler-libs"
 
 # Copy META files from ocamlfind
 for pkg in bigarray bytes compiler-libs dynlink findlib graphics stdlib str threads unix; do
