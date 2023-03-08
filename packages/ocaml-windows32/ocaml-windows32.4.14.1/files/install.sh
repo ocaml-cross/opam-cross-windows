@@ -3,10 +3,20 @@
 set -e
 
 PREFIX="$1"
+FLEXDLL_PATH="$2"
 
 make install installopt RUNTIMED=false INSTRUMENTED_RUNTIME=false
 
 cp -rf compilerlibs/*.cmxa compilerlibs/*.a "${PREFIX}/windows-sysroot/lib/ocaml/compiler-libs"
+
+for bin in ocamlc ocamlopt ocamlcp ocamlmklib ocamlmktop ocamldoc ocamldep; do
+  cat >"${PREFIX}/windows-sysroot/bin/${bin}" <<END
+#!/bin/sh
+export PATH=${FLEXDLL_PATH}:\$PATH
+${PREFIX}/bin/ocamlrun "${PREFIX}/windows-sysroot/bin/${bin}.exe" "\$@"
+END
+  chmod +x "${PREFIX}/windows-sysroot/bin/${bin}"
+done
 
 # Copy META files from ocamlfind
 for pkg in bigarray bytes compiler-libs dynlink findlib graphics stdlib str threads unix; do

@@ -1,5 +1,6 @@
 #!/bin/sh
 
 DIRNAME=`dirname $0`
+PWD=`cd ${DIRNAME} && pwd`
 
-${DIRNAME}/../lib/flexdll-windows/flexlink.exe "$@"
+${PWD}/flexlink.exe "$@"
