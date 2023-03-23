@@ -15,6 +15,7 @@ bug-reports: "https://github.com/savonet/Camomile/issues"
 depends: [
   "dune" {>= "3.4"}
   "dune-site-windows"
+  "camlp-streams"
   "camlp-streams-windows"
   "ocaml-windows" {>= "4.13"}
 ]
