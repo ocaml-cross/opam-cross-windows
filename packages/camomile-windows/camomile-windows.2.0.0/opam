@@ -14,6 +14,7 @@ doc: "https://savonet.github.io/Camomile/"
 bug-reports: "https://github.com/savonet/Camomile/issues"
 depends: [
   "dune" {>= "3.4"}
+  "dune-site"
   "dune-site-windows"
   "camlp-streams"
   "camlp-streams-windows"
