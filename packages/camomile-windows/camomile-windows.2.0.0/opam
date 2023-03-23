@@ -30,10 +30,8 @@ build: [
     "-j"
     jobs
     "-x" "windows"
-    "--promote-install-files=false"
     "@install"
   ]
-  ["dune" "install" "-p" "camomile-windows" "--create-install-files" "camomile"]
 ]
 dev-repo: "git+https://github.com/savonet/Camomile.git"
 url {
