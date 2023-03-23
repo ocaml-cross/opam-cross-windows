@@ -33,7 +33,7 @@ build: [
     "--promote-install-files=false"
     "@install"
   ]
-  ["dune" "install" "-p" "camomile" "--create-install-files" "camomile-windows"]
+  ["dune" "install" "-p" "camomile-windows" "--create-install-files" "camomile"]
 ]
 dev-repo: "git+https://github.com/savonet/Camomile.git"
 url {
