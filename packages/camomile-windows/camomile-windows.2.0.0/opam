@@ -23,6 +23,9 @@ depends: [
 build: [
   ["dune" "subst"] {dev}
   [
+    "env"
+    "CAMOMILE_CONFIG=env"
+    "CAMOMILE_PREFIX=%{prefix}%/windows-sysroot"
     "dune"
     "build"
     "-p"
