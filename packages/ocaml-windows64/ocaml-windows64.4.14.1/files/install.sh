@@ -9,7 +9,7 @@ make install installopt RUNTIMED=false INSTRUMENTED_RUNTIME=false
 
 cp -rf compilerlibs/*.cmxa compilerlibs/*.a "${PREFIX}/windows-sysroot/lib/ocaml/compiler-libs"
 
-for bin in ocamlc ocamlopt ocamlcp ocamlmklib ocamlmktop ocamldoc ocamldep; do
+for bin in ocaml ocamlc ocamlopt ocamlcp ocamlmklib ocamlmktop ocamldoc ocamldep; do
   cat >"${PREFIX}/windows-sysroot/bin/${bin}" <<END
 #!/bin/sh
 export PATH=${FLEXDLL_PATH}:\$PATH
