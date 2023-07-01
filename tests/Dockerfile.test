@@ -14,7 +14,10 @@ RUN opam list --short --recursive --external --vars os-distribution=mxe,os-famil
 
 USER root
 
-RUN cd /usr/src/mxe/ && git fetch && git cherry-pick 254fe06cde7fa787a9ce1a264f04bbc9443c7f57
+RUN cd /usr/src/mxe/ && git fetch && \
+    git config --global user.email "test@test.com" && \
+    git config --global user.name "Test CI" && \
+    git cherry-pick 254fe06cde7fa787a9ce1a264f04bbc9443c7f57
 
 RUN cd /usr/src/mxe/ && cat /home/opam/mxe-deps | xargs make
 
