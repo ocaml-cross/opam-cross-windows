@@ -14,7 +14,7 @@ RUN opam list --short --recursive --external --vars os-distribution=mxe,os-famil
 
 USER root
 
-RUN cd /usr/src/mxe/ && git pull
+RUN cd /usr/src/mxe/ && git checkout master && git pull
 
 RUN cd /usr/src/mxe/ && cat /home/opam/mxe-deps | xargs make
 
