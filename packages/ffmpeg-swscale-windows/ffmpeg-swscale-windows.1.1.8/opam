@@ -33,7 +33,7 @@ url {
   src:
     "https://github.com/savonet/ocaml-ffmpeg/archive/refs/tags/v1.1.8.tar.gz"
   checksum: [
-    "md5=70eff98c4d4689f81a9185532e5013f6"
-    "sha512=2799e8736a1291ba6585fa5bf7b84207e9ea0816fac41b161246b9c30bdc202cbc1b6e561d2139c1d45ae7e7ef567d5cac21a157b55899e6d809a8e962f0b8a2"
+    "md5=7ffc99827d516494abfd803351699cdd"
+    "sha512=8ccbb5f48f9d827520cf5bf8527c95ec50fa016952b816a174385f94263b2a3692b2f49f7d0cab8ce6f07a6fd7b6073595e0e8ac5aa8bc7f61e09d36002e2bc2"
   ]
 }
