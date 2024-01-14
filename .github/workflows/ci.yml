@@ -14,14 +14,46 @@ jobs:
         with:
           access_token: ${{ github.token }}
 
+  build_details:
+    runs-on: ubuntu-latest
+    outputs:
+      packages: ${{ steps.packages.outputs.packages }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Grab packages to build
+        id: packages
+        run: |
+          PACKAGES_TO_RUN=$(OUTPUT_ONLY=true ./tests/run_tests.sh | while read i; do echo "\\\"$i\\\""; done | xargs | sed -e 's# #,#g' | tr -d '\n')
+          echo "Packages to run: ${PACKAGES_TO_RUN}"
+          echo "packages=[${PACKAGES_TO_RUN}]" >> "${GITHUB_OUTPUT}"
+
   test:
     runs-on: ubuntu-latest
+    needs: build_details
     strategy:
       fail-fast: false
       matrix:
+        package: ${{ fromJson(needs.build_details.outputs.packages) }}
         arch: [x64, x86]
+        ocaml_version: [4.14.1]
+    container:
+      image: ocamlcross/windows-${{ matrix.arch }}-base:${{ matrix.ocaml_version }}
+      options: --user root
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Run tests
-        run: VERBOSE=1 SYSTEM_TYPE=${{ matrix.arch }} ./tests/run_tests.sh
+      - name: Build package
+        env:
+          PKG_CONFIG_PATH: ${{ matrix.arch == 'x64' && '/usr/src/mxe/usr/x86_64-w64-mingw32.static/lib/pkgconfig/' || '/usr/src/mxe/usr/i686-w64-mingw32.static/lib/pkgconfig/' }}
+        run: |
+          rm -rf /home/opam/opam-cross-windows/packages /home/opam/opam-cross-windows/repo
+          mv packages /home/opam/opam-cross-windows
+          mv repo /home/opam/opam-cross-windows
+          sudo -u opam opam update
+          sudo -u opam opam list --short --recursive --external --vars os-distribution=mxe,os-family=mingw --required-by=${{ matrix.package }} > /home/opam/mxe-deps
+          if [ -s /home/opam/mxe-deps ]; then
+            cd /usr/src/mxe/ && cat /home/opam/mxe-deps | xargs make
+          fi
+          eval $(sudo -u opam opam env)
+          sudo -u opam opam reinstall --verbose -y ${{ matrix.package }}
