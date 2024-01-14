@@ -28,7 +28,7 @@ jobs:
           echo "Packages to run: ${PACKAGES_TO_RUN}"
           echo "packages=[${PACKAGES_TO_RUN}]" >> "${GITHUB_OUTPUT}"
 
-  test:
+  build_package:
     runs-on: ubuntu-latest
     needs: build_details
     strategy:
@@ -44,6 +44,42 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Build package
+        env:
+          PKG_CONFIG_PATH: ${{ matrix.arch == 'x64' && '/usr/src/mxe/usr/x86_64-w64-mingw32.static/lib/pkgconfig/' || '/usr/src/mxe/usr/i686-w64-mingw32.static/lib/pkgconfig/' }}
+        run: |
+          rm -rf /home/opam/opam-cross-windows/packages /home/opam/opam-cross-windows/repo
+          mv packages /home/opam/opam-cross-windows
+          mv repo /home/opam/opam-cross-windows
+          sudo -u opam opam update
+          sudo -u opam opam list --short --recursive --external --vars os-distribution=mxe,os-family=mingw --required-by=${{ matrix.package }} > /home/opam/mxe-deps
+          if [ -s /home/opam/mxe-deps ]; then
+            cd /usr/src/mxe/ && cat /home/opam/mxe-deps | xargs make
+          fi
+          eval $(sudo -u opam opam env)
+          sudo -u opam opam reinstall --verbose -y ${{ matrix.package }}
+      - name: Export revdeps
+        id: revdeps
+        run: |
+          REVDEPS_TO_BUILD=$(opam list --rec --short --sort --depends-on=${{ matrix.package }} | while read i; do echo "\\\"$i\\\""; done | xargs | sed -e 's# #,#g' | tr -d '\n')
+          echo "Revdeps to build: ${REVDEPS_TO_BUILD}"
+          echo "revdeps=[${REVDEPS_TO_BUILD}]" >> "${GITHUB_OUTPUT}"
+
+  build_revdeps:
+    runs-on: ubuntu-latest
+    needs: build_package
+    strategy:
+      fail-fast: false
+      matrix:
+        package: ${{ fromJson(needs.build_package.outputs.revdeps) }}
+        arch: [x64, x86]
+        ocaml_version: [4.14.1]
+    container:
+      image: ocamlcross/windows-${{ matrix.arch }}-base:${{ matrix.ocaml_version }}
+      options: --user root
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Build revdep
         env:
           PKG_CONFIG_PATH: ${{ matrix.arch == 'x64' && '/usr/src/mxe/usr/x86_64-w64-mingw32.static/lib/pkgconfig/' || '/usr/src/mxe/usr/i686-w64-mingw32.static/lib/pkgconfig/' }}
         run: |
