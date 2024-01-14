@@ -32,7 +32,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: build_details
     strategy:
-      fail-fast: false
       matrix:
         package: ${{ fromJson(needs.build_details.outputs.packages) }}
         arch: [x64, x86]
@@ -59,20 +58,54 @@ jobs:
           sudo -u opam opam reinstall --verbose -y ${{ matrix.package }}
       - name: Export revdeps
         id: revdeps
+        if: matrix.arch == 'x64'
         run: |
           REVDEPS_TO_BUILD=$(opam list --rec --short --sort --depends-on=${{ matrix.package }} | while read i; do echo "\\\"$i\\\""; done | xargs | sed -e 's# #,#g' | tr -d '\n')
           echo "Revdeps to build: ${REVDEPS_TO_BUILD}"
           echo "revdeps=[${REVDEPS_TO_BUILD}]" >> "${GITHUB_OUTPUT}"
+      - name: Write matrix output
+        if: matrix.arch == 'x64'
+        id: matrix_output
+        uses: cloudposse/github-action-matrix-outputs-write@main
+        with:
+          matrix-step-name: ${{ github.job }}
+          matrix-key: ${{ matrix.package }}
+          outputs: |-
+            revdeps: ${{ steps.revdeps.outputs.revdeps }}
+
+  collect_revdeps:
+    runs-on: ubuntu-latest
+    needs: [build_package]
+    outputs:
+      revdeps: ${{ steps.revdeps.outputs.revdeps }} 
+    steps:
+      - name: Collect revdeps
+        uses: cloudposse/github-action-matrix-outputs-read@main
+        id: collect_revdeps
+        with:
+          matrix-step-name: build_package
+      - name: Export all revdeps
+        uses: satackey/action-js-inline@v0.0.2
+        id: revdeps
+        with:
+          script: |
+            const core = require("@actions/core")
+            const { revdeps } = JSON.parse('${{ steps.collect_revdeps.outputs.result }}')
+            const result = Object.keys(revdeps).reduce((result, key) =>
+              [...result, ...revdeps[key]], []);
+            console.log(`Collected revdeps: ${result}`);
+            core.setOutput("revdeps", JSON.stringify(result));
 
   build_revdeps:
     runs-on: ubuntu-latest
-    needs: build_package
+    needs: collect_revdeps
+    if: ${{ fromJson(needs.collect_revdeps.outputs.revdeps) != [] }} 
     strategy:
-      fail-fast: false
       matrix:
-        package: ${{ fromJson(needs.build_package.outputs.revdeps) }}
+        package: ${{ fromJson(needs.collect_revdeps.outputs.revdeps) }}
         arch: [x64, x86]
         ocaml_version: [4.14.1]
+        include: ${{ fromJson(needs.collect_revdeps.outputs.revdeps) }}
     container:
       image: ocamlcross/windows-${{ matrix.arch }}-base:${{ matrix.ocaml_version }}
       options: --user root
