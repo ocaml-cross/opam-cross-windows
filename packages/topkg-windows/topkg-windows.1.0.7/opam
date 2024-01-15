@@ -37,6 +37,7 @@ depends: [
   "ocaml" {>= "4.05.0"}
   "ocaml-windows" {>= "4.05.0"}
   "ocamlfind" {build & >= "1.6.1"}
+  "opam-installer"
   "ocamlbuild"
 ]
 build: [
