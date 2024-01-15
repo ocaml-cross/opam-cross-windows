@@ -86,7 +86,6 @@ build_package() {
   else
     if [ -n "${OUTPUT_ONLY}" ]; then
       echo "${PACKAGE}"
-      exit 0
     else
       SYSTEM_TYPE="${SYSTEM_TYPE}" OCAML_VERSION="${OCAML_VERSION}" ${TEST_PWD}/run_test.sh "${PACKAGE}"
 
@@ -97,22 +96,19 @@ build_package() {
   fi
 }
 
-PACKAGES=$(cd ${BASE_PWD}/packages && find . -maxdepth 2 -mindepth 2 -type d | cut -d '/' -f 3 | sort -u)
-
 git remote set-branches origin '*' >/dev/null 2>&1
 git fetch origin main >/dev/null 2>&1
 
-echo "${PACKAGES}" | while read PACKAGE; do
+cd "${BASE_PWD}"
+find packages -maxdepth 2 -mindepth 2 -type d | cut -d '/' -f 3 | sort -u | while read PACKAGE; do
   if [ -n "${WORLD}" ]; then
     build_package "${PACKAGE}"
   else
     PACKAGE_DIR=`echo ${PACKAGE} | cut -d'.' -f 1`
-    if [ -d "${BASE_PWD}/packages/${PACKAGE_DIR}/${PACKAGE}" ]; then
-      RET=$(cd "${BASE_PWD}/packages/${PACKAGE_DIR}/${PACKAGE}" && git diff --name-only HEAD origin/main .)
+    RET=$(cd "packages/${PACKAGE_DIR}/${PACKAGE}" && git diff --name-only HEAD origin/main .)
 
-      if [ -n "${RET}" ]; then
-        build_package "${PACKAGE}"
-      fi
+    if [ -n "${RET}" ]; then
+      build_package "${PACKAGE}"
     fi
   fi
 done
