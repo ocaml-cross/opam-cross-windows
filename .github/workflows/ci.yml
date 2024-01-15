@@ -78,6 +78,7 @@ jobs:
     needs: [build_package]
     outputs:
       revdeps: ${{ steps.revdeps.outputs.revdeps }} 
+      has_revdeps: ${{ steps.revdeps.outputs.has_revdeps }}
     steps:
       - name: Collect revdeps
         uses: cloudposse/github-action-matrix-outputs-read@main
@@ -95,11 +96,12 @@ jobs:
               [...result, ...revdeps[key]], []);
             console.log(`Collected revdeps: ${result}`);
             core.setOutput("revdeps", JSON.stringify(result));
+            core.setOutput("has_revdeps", result.length !== 0);
 
   build_revdeps:
     runs-on: ubuntu-latest
     needs: collect_revdeps
-    if: ${{ fromJson(needs.collect_revdeps.outputs.revdeps) != [] }} 
+    if: needs.collect_revdeps.outputs.has_revdeps
     strategy:
       matrix:
         package: ${{ fromJson(needs.collect_revdeps.outputs.revdeps) }}
