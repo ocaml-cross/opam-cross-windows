@@ -108,7 +108,7 @@ jobs:
     strategy:
       matrix:
         package: ${{ fromJson(needs.collect_revdeps.outputs.revdeps) }}
-        arch: [x64, x86]
+        arch: [x64]
         ocaml_version: [4.14.1]
     container:
       image: ocamlcross/windows-${{ matrix.arch }}-base:${{ matrix.ocaml_version }}
