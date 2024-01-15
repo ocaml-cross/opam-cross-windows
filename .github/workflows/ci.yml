@@ -34,7 +34,8 @@ jobs:
     strategy:
       matrix:
         package: ${{ fromJson(needs.build_details.outputs.packages) }}
-        arch: [x64, x86]
+        # ocaml compiler 4.14.1 does not have an option to build in 32 bit mode anymore.
+        arch: [x64]
         ocaml_version: [4.14.1]
     container:
       image: ocamlcross/windows-${{ matrix.arch }}-base:${{ matrix.ocaml_version }}
@@ -61,7 +62,8 @@ jobs:
         if: matrix.arch == 'x64'
         run: |
           eval $(sudo -u opam opam env)
-          REVDEPS_TO_BUILD=$(sudo -u opam opam list --rec --short --sort --depends-on=${{ matrix.package }} | while read i; do echo "\\\"$i\\\""; done | xargs | sed -e 's# #,#g' | tr -d '\n')
+          BASE_PACKAGE=$(echo ${{ matrix.package }} | cut -d'.' -f 1)
+          REVDEPS_TO_BUILD=$(sudo -u opam opam list --rec --short --sort --depends-on=${{ matrix.package }} | grep -v "${BASE_PACKAGE}" |  while read i; do echo "\\\"$i\\\""; done | xargs | sed -e 's# #,#g' | tr -d '\n')
           echo "Revdeps to build: ${REVDEPS_TO_BUILD}"
           echo "revdeps=[${REVDEPS_TO_BUILD}]" >> "${GITHUB_OUTPUT}"
       - name: Write matrix output
