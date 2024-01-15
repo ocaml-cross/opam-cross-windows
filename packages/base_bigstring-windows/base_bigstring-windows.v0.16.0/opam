@@ -6,6 +6,9 @@ bug-reports: "https://github.com/janestreet/base_bigstring/issues"
 dev-repo: "git+https://github.com/janestreet/base_bigstring.git"
 doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/base_bigstring/index.html"
 license: "MIT"
+patches: [
+  "patches/memmem-shim.patch"
+]
 build: [
   ["dune" "build" "-p" "base_bigstring" "-j" jobs "-x" "windows"]
 ]
