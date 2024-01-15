@@ -13,6 +13,7 @@ depends: ["ocaml" {>= "4.03.0"}
           "ocamlfind" {build}
           "ocamlbuild" {build}
           "topkg-windows" {build & >= "1.0.3"}]
+          "topkg" {build & >= "1.0.3"}]
 depopts: ["cmdliner-windows"]
 conflicts: ["cmdliner-windows" {< "0.9.8"}]
 build: [["ocaml" "pkg/pkg.ml" "build" "--toolchain" "windows" "--pkg-name" "uutf" "--dev-pkg" "%{dev}%"
