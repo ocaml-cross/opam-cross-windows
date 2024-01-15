@@ -15,6 +15,7 @@ depends: [
   "ocaml-windows"
   "opam-installer" {build}
   "uchar-windows"
+  "uchar"
 ]
 depopts: ["cmdliner-windows"]
 build: [[
