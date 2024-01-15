@@ -60,7 +60,8 @@ jobs:
         id: revdeps
         if: matrix.arch == 'x64'
         run: |
-          REVDEPS_TO_BUILD=$(opam list --rec --short --sort --depends-on=${{ matrix.package }} | while read i; do echo "\\\"$i\\\""; done | xargs | sed -e 's# #,#g' | tr -d '\n')
+          eval $(sudo -u opam opam env)
+          REVDEPS_TO_BUILD=$(sudo -u opam opam list --rec --short --sort --depends-on=${{ matrix.package }} | while read i; do echo "\\\"$i\\\""; done | xargs | sed -e 's# #,#g' | tr -d '\n')
           echo "Revdeps to build: ${REVDEPS_TO_BUILD}"
           echo "revdeps=[${REVDEPS_TO_BUILD}]" >> "${GITHUB_OUTPUT}"
       - name: Write matrix output
@@ -101,13 +102,12 @@ jobs:
   build_revdeps:
     runs-on: ubuntu-latest
     needs: collect_revdeps
-    if: needs.collect_revdeps.outputs.has_revdeps
+    if: needs.collect_revdeps.outputs.has_revdeps == 'true'
     strategy:
       matrix:
         package: ${{ fromJson(needs.collect_revdeps.outputs.revdeps) }}
         arch: [x64, x86]
         ocaml_version: [4.14.1]
-        include: ${{ fromJson(needs.collect_revdeps.outputs.revdeps) }}
     container:
       image: ocamlcross/windows-${{ matrix.arch }}-base:${{ matrix.ocaml_version }}
       options: --user root
