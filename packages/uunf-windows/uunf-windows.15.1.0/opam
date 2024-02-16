@@ -25,7 +25,7 @@ depends: [
   "topkg" {build & >= "1.0.3"}
   "uucd-windows" {dev & >= "15.1.0" & < "16.0.0"}
 ]
-depopts: ["uutf-windows" "cmdliner"]
+depopts: ["uutf-windows" "cmdliner-windows"]
 conflicts: [
   "uutf-windows" {< "1.0.0"}
   "cmdliner-windows" {< "1.1.0"}
@@ -36,12 +36,14 @@ build: [
   "build"
   "--toolchain"
   "windows"
+  "--pkg-name" 
+  "uunf"
   "--dev-pkg"
   "%{dev}%"
   "--with-uutf"
-  "%{uutf:installed}%"
+  "%{uutf-windows:installed}%"
   "--with-cmdliner"
-  "%{cmdliner:installed}%"
+  "%{cmdliner-windows:installed}%"
 ]
 post-messages:
   "If the build fails with \"ocamlopt.opt got signal and exited\", issue 'ulimit -s unlimited' and retry."
