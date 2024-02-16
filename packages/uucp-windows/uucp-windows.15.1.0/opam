@@ -35,12 +35,14 @@ build: [
   "build"
   "--toolchain"
   "windows"
+  "--pkg-name"
+  "uucp"
   "--dev-pkg"
   "%{dev}%"
   "--with-uunf"
-  "%{uunf:installed}%"
+  "%{uunf-windows:installed}%"
   "--with-cmdliner"
-  "%{cmdliner:installed}%"
+  "%{cmdliner-windows:installed}%"
 ]
 post-messages:
   "If the build fails with \"ocamlopt.opt got signal and exited\", issue 'ulimit -s unlimited' and retry."
