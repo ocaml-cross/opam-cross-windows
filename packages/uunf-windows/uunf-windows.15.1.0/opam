@@ -29,6 +29,7 @@ depopts: ["uutf-windows" "cmdliner-windows"]
 conflicts: [
   "uutf-windows" {< "1.0.0"}
   "cmdliner-windows" {< "1.1.0"}
+  "conf-flambda-windows"
 ]
 build: [
   "ocaml"
