@@ -12,6 +12,7 @@ depends: ["ocaml" {>= "4.03.0"}
           "ocaml-windows" {>= "4.03.0"}
           "ocamlfind" {build}
           "ocamlbuild" {build}
+          "opam-installer" {build}
           "topkg-windows" {build & >= "1.0.3"}
           "topkg" {build & >= "1.0.3"}]
 depopts: ["cmdliner-windows"]
@@ -36,5 +37,5 @@ can be found in the Stdlib and you are encouraged to migrate to it.
 
 Uutf has no dependency and is distributed under the ISC license.
 
-Home page: http://erratique.ch/software/uutf  
+Home page: http://erratique.ch/software/uutf
 Contact: Daniel Bünzli `<daniel.buenzl i@erratique.ch>`"""

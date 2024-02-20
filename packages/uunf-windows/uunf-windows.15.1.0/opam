@@ -22,6 +22,7 @@ depends: [
   "ocaml-windows" {>= "4.14.0"}
   "ocamlfind" {build}
   "ocamlbuild" {build}
+  "opam-installer" {build}
   "topkg" {build & >= "1.0.3"}
   "uucd-windows" {dev & >= "15.1.0" & < "16.0.0"}
 ]

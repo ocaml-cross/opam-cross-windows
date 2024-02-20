@@ -25,6 +25,7 @@ depends: [
   "ocaml-windows" {>= "4.08.0"}
   "ocamlfind" {build}
   "ocamlbuild" {build}
+  "opam-installer" {build}
   "topkg" {build & >= "1.0.3"}
   "xmlm-windows"
 ]
