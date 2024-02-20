@@ -37,7 +37,7 @@ build: [
   "build"
   "--toolchain"
   "windows"
-  "--pkg-name" 
+  "--pkg-name"
   "uunf"
   "--dev-pkg"
   "%{dev}%"
@@ -46,6 +46,8 @@ build: [
   "--with-cmdliner"
   "%{cmdliner-windows:installed}%"
 ]
+install: ["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "uunf.install"]
+remove: ["ocamlfind" "-toolchain" "windows" "remove" "uunf"]
 post-messages:
   "If the build fails with \"ocamlopt.opt got signal and exited\", issue 'ulimit -s unlimited' and retry."
     {failure & (arch = "ppc64" | arch = "arm64")}

@@ -29,6 +29,8 @@ depends: [
   "xmlm-windows"
 ]
 build: ["ocaml" "pkg/pkg.ml" "build" "--toolchain" "windows" "--pkg-name" "uucd" "--dev-pkg" "%{dev}%"]
+install: ["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "uucd.install"]
+remove: ["ocamlfind" "-toolchain" "windows" "remove" "uucd"]
 dev-repo: "git+https://erratique.ch/repos/uucd.git"
 url {
   src: "https://erratique.ch/software/uucd/releases/uucd-15.1.0.tbz"

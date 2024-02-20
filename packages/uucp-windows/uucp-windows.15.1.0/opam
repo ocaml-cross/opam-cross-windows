@@ -44,6 +44,8 @@ build: [
   "--with-cmdliner"
   "%{cmdliner-windows:installed}%"
 ]
+install: ["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "uucp.install"]
+remove: ["ocamlfind" "-toolchain" "windows" "remove" "uucp"]
 post-messages:
   "If the build fails with \"ocamlopt.opt got signal and exited\", issue 'ulimit -s unlimited' and retry."
     {failure & (arch = "ppc64" | arch = "arm64")}
