@@ -20,6 +20,7 @@ depends: [
   "ocaml-windows" {>= "4.14.0"}
   "ocamlfind" {build}
   "ocamlbuild" {build}
+  "opam-installer" {build}
   "topkg" {build & >= "1.0.3"}
   "uucd-windows" {with-test & dev & >= "15.1.0" & < "16.0.0"}
   "uunf-windows" {with-test}
@@ -44,6 +45,8 @@ build: [
   "--with-cmdliner"
   "%{cmdliner-windows:installed}%"
 ]
+install: ["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "uucp.install"]
+remove: ["ocamlfind" "-toolchain" "windows" "remove" "uucp"]
 post-messages:
   "If the build fails with \"ocamlopt.opt got signal and exited\", issue 'ulimit -s unlimited' and retry."
     {failure & (arch = "ppc64" | arch = "arm64")}

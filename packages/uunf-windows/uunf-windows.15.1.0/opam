@@ -22,6 +22,7 @@ depends: [
   "ocaml-windows" {>= "4.14.0"}
   "ocamlfind" {build}
   "ocamlbuild" {build}
+  "opam-installer" {build}
   "topkg" {build & >= "1.0.3"}
   "uucd-windows" {dev & >= "15.1.0" & < "16.0.0"}
 ]
@@ -29,6 +30,7 @@ depopts: ["uutf-windows" "cmdliner-windows"]
 conflicts: [
   "uutf-windows" {< "1.0.0"}
   "cmdliner-windows" {< "1.1.0"}
+  "conf-flambda-windows"
 ]
 build: [
   "ocaml"
@@ -36,7 +38,7 @@ build: [
   "build"
   "--toolchain"
   "windows"
-  "--pkg-name" 
+  "--pkg-name"
   "uunf"
   "--dev-pkg"
   "%{dev}%"
@@ -45,6 +47,8 @@ build: [
   "--with-cmdliner"
   "%{cmdliner-windows:installed}%"
 ]
+install: ["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "uunf.install"]
+remove: ["ocamlfind" "-toolchain" "windows" "remove" "uunf"]
 post-messages:
   "If the build fails with \"ocamlopt.opt got signal and exited\", issue 'ulimit -s unlimited' and retry."
     {failure & (arch = "ppc64" | arch = "arm64")}
