@@ -1,0 +1,40 @@
+opam-version: "2.0"
+maintainer: "whitequark@whitequark.org"
+patches: [
+  "patches/ostype-fix.patch"
+  "patches/configure.patch"
+]
+substs: [
+  "windows.conf"
+]
+build: [
+  ["/bin/sh" "./build.sh" "%{conf-gcc-windows64:host}%" "%{prefix}%" "%{flexdll-windows:lib}%"]
+]
+install: [
+  ["/bin/sh" "./install.sh" "%{prefix}%" "%{flexdll-windows:lib}%"]
+]
+depends: [
+  "ocaml" {= version}
+  "ocamlfind" {>= "1.5.4"}
+  "conf-gcc-windows64"
+  "flexdll-windows" {>= "0.42"}
+]
+depopts: [
+  "conf-flambda-windows"
+]
+available: arch = "x86_64" | (arch = "arm64" & os = "macos")
+conflicts: [
+  "ocaml-windows32"
+]
+synopsis: "OCaml cross-compiler for 64-bit x86 Windows targets"
+extra-files: [
+  ["windows.conf.in" "md5=69f2a64db241a28e172eb316ddd9cef1"]
+  ["build.sh" "md5=93e8e83fed757be1e6c59b65873b5c93"]
+  ["install.sh" "md5=771227318703c168f819281d3c051b29"]
+  ["patches/ostype-fix.patch" "md5=57404edca01e9a353f28d3b3c0139f55"]
+  ["patches/configure.patch" "md5=668bfb4f3fccd959daa553f70b28e803"]
+]
+url {
+  src: "https://github.com/ocaml/ocaml/archive/5.1.1.tar.gz"
+  checksum: "md5=ac4a19e57d1ed6c2efc70d1a9b97c567"
+}
