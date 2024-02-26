@@ -1,4 +1,4 @@
-path(windows) = "%{prefix}%/windows-sysroot/lib"
+path(windows) = "%{prefix}%/windows-sysroot/lib:%{prefix}%/windows-sysroot/lib/ocaml"
 destdir(windows) = "%{prefix}%/windows-sysroot/lib"
 stdlib(windows) = "%{prefix}%/windows-sysroot/lib/ocaml"
 ocamlc(windows) = "%{prefix}%/windows-sysroot/bin/ocamlc"
