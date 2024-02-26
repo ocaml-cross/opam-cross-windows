@@ -1,9 +1,11 @@
 opam-cross-windows
 ==================
 
-This repository contains an up-to-date Windows toolchain featuring OCaml 4.07.0, 4.08.0, 4.12.0, 4.14.0 and 5.1.1, as well as some commonly used packages.
+This repository contains an up-to-date Windows toolchain featuring OCaml `4.07.0`, `4.08.0`, `4.12.0`, `4.14.0` and `5.1.1`, as well as some commonly used packages.
 
 The supported build systems are 32-bit and 64-bit x86 Linux and `arm64` macos (Apple Silicon). The supported target systems are 32-bit and 64-bit x86 Windows.
+
+Only 64-bit build and target are supported for OCaml `5.1.1`.
 
 If you need support for other platforms or versions, please [open an issue](https://github.com/ocaml-cross/opam-cross-windows/issues).
 
