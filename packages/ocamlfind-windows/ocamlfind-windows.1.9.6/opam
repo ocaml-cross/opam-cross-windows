@@ -30,17 +30,17 @@ build: [
   ["env" "OCAMLFIND_TOOLCHAIN=windows" make "opt"] {ocaml:native}
 ]
 install: [
-  ["env" "OCAMLFIND_TOOLCHAIN=windows" make "install"]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" "INSTALLDIR=mkdir -p" "INSTALLFILE=cp" make "install"]
 ]
 extra-files: [
-  ["patches/use-host-ocamlfind.patch" "md5=ad77f0d9f8a730670b3ff84e9b663fab"]
+  ["patches/use-host-ocamlfind.patch" "md5=3d2b8e64f8cd4f0aad9af2d667da43b3"]
   ["Makefile.config.in" "md5=361631c295fc31df6a163b0fdf78df0e"]
 ]
 dev-repo: "git+https://github.com/ocaml/ocamlfind.git"
 url {
-  src: "http://download.camlcity.org/download/findlib-1.9.1.tar.gz"
+  src: "http://download.camlcity.org/download/findlib-1.9.6.tar.gz"
   checksum: [
-    "md5=65e6dc9b305ccbed1267275fe180f538"
-    "sha512=83a05f3e310fa7cabb0475c5525f7a87c1b6bc2dc5e39f094cabfb5d944a826a5581844ba00ec1a48dd96184eb9de3c4d1055cdddee2b83c700a2de5a6dc6f84"
+    "md5=96c6ee50a32cca9ca277321262dbec57"
+    "sha512=cfaf1872d6ccda548f07d32cc6b90c3aafe136d2aa6539e03143702171ee0199add55269bba894c77115535dc46a5835901a5d7c75768999e72db503bfd83027"
   ]
 }
