@@ -133,15 +133,6 @@ For projects installing the files via OPAM's `.install` files (e.g. [topkg](http
     remove: [["ocamlfind" "-toolchain" "windows" "remove" "pkg"]]
     depends: ["ocaml-windows" ...]
 
-Internals
----------
-
-The aim of this repository is to build a cross-compiler while altering the original codebase in the minimal possible way. (Indeed, only about 50 lines are changed.) There are no attempts to alter the `configure` script; rather, the configuration is provided directly. The resulting cross-compiler has several interesting properties:
-
-  * All paths to the Windows toolchain are embedded inside `ocamlc` and `ocamlopt`; thus, no knowledge of the Windows toolchain is required even for packages that have components in C, provided they use the OCaml driver to compile the C code. (This is usually the case.)
-  * The build system makes several assumptions that are not strictly valid while cross-compiling, mainly the fact that the bytecode the cross-compiler has just built can be ran by the `ocamlrun` on the build system. Thus, the requirement for a 32-bit build compiler for 32-bit targets, as well as for the matching versions.
-  * The `.opt` versions of the compiler are built using itself, which doesn't work while cross-compiling, so all provided tools are bytecode-based.
-
 License
 -------
 
