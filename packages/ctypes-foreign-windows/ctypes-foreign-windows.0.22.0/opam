@@ -31,6 +31,12 @@ build: [
     "@install"
   ]
 ]
+extra-files: [
+  ["patches/fix-config.patch" "md5=aabfea16327b5549e9a559f3ae99ba21"]
+]
+patches: [
+  "patches/fix-config.patch"
+]
 depexts: [
   ["libffi"] {os-distribution = "mxe"}
 ]
