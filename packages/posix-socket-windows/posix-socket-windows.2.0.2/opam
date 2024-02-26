@@ -13,8 +13,8 @@ depends: [
   "ocaml-windows"
   "ctypes"
   "ctypes-windows"
-  "posix-base"
-  "posix-base-windows"
+  "posix-base" {= version}
+  "posix-base-windows" {= version}
 ]
 build: [
   [
