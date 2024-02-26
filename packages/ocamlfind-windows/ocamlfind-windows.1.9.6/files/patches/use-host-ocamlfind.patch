@@ -1,0 +1,37 @@
+--- findlib-1.9.6/src/findlib/Makefile.orig	2024-02-26 09:43:44
++++ findlib-1.9.6/src/findlib/Makefile	2024-02-26 09:44:33
+@@ -13,9 +13,9 @@
+ NAME = findlib
+ 
+ # Need compiler-libs since ocaml-4.00
+-OCAMLC = ocamlc -I +compiler-libs
+-OCAMLOPT = ocamlopt -I +compiler-libs $(OCAMLOPT_G)
+-OCAMLDEP = ocamldep
++OCAMLC = ocamlfind ocamlc -I +compiler-libs
++OCAMLOPT = ocamlfind ocamlopt -I +compiler-libs $(OCAMLOPT_G)
++OCAMLDEP = ocamlfind ocamldep
+ OCAMLLEX = ocamllex
+ #CAMLP4O =  camlp4 pa_o.cmo pa_op.cmo pr_o.cmo --
+ #CAMLP4O =  camlp4 pa_o.cmo pa_op.cmo pr_dump.cmo --
+@@ -41,10 +41,10 @@
+ DYNLOAD_XOBJECTS = $(DYNLOAD_OBJECTS:.cmo=.cmx)
+ 
+ 
+-all: ocamlfind$(EXEC_SUFFIX) findlib.cma findlib_top.cma topfind $(NUMTOP) \
++all: findlib.cma findlib_top.cma topfind $(NUMTOP) \
+      findlib_dynload.cma
+ 
+-opt: ocamlfind_opt$(EXEC_SUFFIX) findlib.cmxa findlib_top.cmxa topfind \
++opt: findlib.cmxa findlib_top.cmxa topfind \
+      findlib_dynload.cmxa
+ 
+ num-top: num_top.cma
+@@ -134,8 +134,6 @@
+ 	findlib_dynload.cma findlib_dynload.cmxa findlib_dynload$(LIB_SUFFIX) findlib_dynload.cmxs fl_dynload.mli fl_dynload.cmi \
+ 	META` && \
+ 	$(INSTALLFILE) $$files "$(DESTDIR)$(prefix)$(OCAML_SITELIB)/$(NAME)/"
+-	f="ocamlfind$(EXEC_SUFFIX)"; { test -f ocamlfind_opt$(EXEC_SUFFIX) && f="ocamlfind_opt$(EXEC_SUFFIX)"; }; \
+-	$(INSTALLFILE) $$f "$(DESTDIR)$(prefix)$(OCAMLFIND_BIN)/ocamlfind$(EXEC_SUFFIX)"
+ 	# the following "if" block is only needed for 4.00beta2
+ 	if [ $(OCAML_REMOVE_DIRECTORY) -eq 0 -a -f "$(OCAML_CORE_STDLIB)/compiler-libs/topdirs.cmi" ]; then \
+ 	    cd "$(OCAML_CORE_STDLIB)/compiler-libs/"; \
