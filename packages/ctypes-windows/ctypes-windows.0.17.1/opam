@@ -15,7 +15,7 @@ install: [
   [make "OCAMLFIND=ocamlfind -toolchain windows" "install"]
 ]
 depends: [
-   "ocaml-windows" {>= "4.02.3"}
+   "ocaml-windows" {>= "4.02.3" & < "5.0"}
    "integers-windows" { >= "0.3.0" }
    "ocamlfind" {build}
 ]
