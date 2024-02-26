@@ -16,7 +16,7 @@ depends: [
   "conf-pkg-config" {build}
   "dune" {> "2.0"}
   "dune-configurator" {build}
-  "ctypes-windows"
+  "ctypes-foreign-windows"
   "integers-windows"
   "posix-socket-windows"
   "posix-socket"
