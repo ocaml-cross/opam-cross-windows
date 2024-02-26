@@ -14,7 +14,7 @@ build: [
 ]
 
 depends: [
-  "ocaml-windows"
+  "ocaml-windows" {>= "4.02" & < "5.0"}
   "dune"
 ]
 doc: "http://ocamllabs.github.io/ocaml-integers/api.docdir/"
