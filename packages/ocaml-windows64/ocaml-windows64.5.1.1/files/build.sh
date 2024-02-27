@@ -14,7 +14,7 @@ fi
 
 export PATH=${FLEXDLL_DIR}:$PATH
 
-./configure --host="${HOST}" --prefix="${OPAM_PREFIX}/windows-sysroot" --enable-systhreads ${OPTS}
+./configure --host="${HOST}" --prefix="${OPAM_PREFIX}/windows-sysroot" --without-zstd --enable-systhreads ${OPTS}
 
 make runtime/sak.exe DEP_CC="${HOST}-gcc -MM" SAK_CC=cc SAK_CFLAGS= SAK_LINK='cc -o $(1) $(2)'
 
