@@ -32,7 +32,7 @@ extra-files: [
   ["build.sh" "md5=60fbd2b09fecf1e886605f38e81922ed"]
   ["install.sh" "md5=771227318703c168f819281d3c051b29"]
   ["patches/ostype-fix.patch" "md5=57404edca01e9a353f28d3b3c0139f55"]
-  ["patches/configure.patch" "md5=668bfb4f3fccd959daa553f70b28e803"]
+  ["patches/configure.patch" "md5=31e9d8c2a8af36a563eddc3ab307725d"]
 ]
 url {
   src: "https://github.com/ocaml/ocaml/archive/5.1.1.tar.gz"
