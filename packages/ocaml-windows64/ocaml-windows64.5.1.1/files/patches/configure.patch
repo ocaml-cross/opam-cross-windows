@@ -1,6 +1,6 @@
---- a/configure.orig	2024-02-27 21:25:44.466769008 +0000
-+++ a/configure	2024-02-27 21:25:50.233769010 +0000
-@@ -14274,9 +14274,17 @@
+--- a/configure.orig	2024-02-27 21:34:50.504700010 +0000
++++ a/configure	2024-02-27 21:34:58.246637000 +0000
+@@ -14022,9 +14022,17 @@
 
 
 
@@ -16,10 +16,10 @@
    *-w64-mingw32*|*-pc-windows) :
 -    flexlink_where="$(cmd /c "$flexlink" -where 2>/dev/null)"
 +    flexlink_where="$($flexlink_exec_cmd "$flexlink" -where 2>/dev/null)"
-         if test -z "$flexlink_where"
+       if test -z "$flexlink_where"
  then :
    as_fn_error $? "$flexlink is not executable from a native Win32 process" "$LINENO" 5
-@@ -18801,9 +18809,51 @@
+@@ -18358,9 +18366,51 @@
 
  ## Determine how to link with the POSIX threads library
 
