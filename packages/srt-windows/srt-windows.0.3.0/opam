@@ -18,7 +18,6 @@ depends: [
   "dune-configurator" {build}
   "ctypes-foreign-windows"
   "integers-windows"
-  "posix-socket-windows"
   "posix-socket-windows" {>= "2.0.2"
   "posix-socket"
 ]
