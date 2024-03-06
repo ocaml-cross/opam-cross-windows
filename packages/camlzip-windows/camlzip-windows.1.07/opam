@@ -15,8 +15,8 @@ remove: [
   ["ocamlfind" "-toolchain" "windows" "remove" "zip"]
 ]
 depends: [
-  "ocaml"
-  "ocaml-windows"
+  "ocaml" {< "5.0"}
+  "ocaml-windows" {< "5.0"}
   "ocamlfind" {build}
 ]
 synopsis:
