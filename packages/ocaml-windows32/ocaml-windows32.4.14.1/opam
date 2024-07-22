@@ -3,6 +3,7 @@ maintainer: "whitequark@whitequark.org"
 patches: [
   "patches/ostype-fix.patch"
   "patches/configure.patch"
+  "patches/windows-append.patch"
 ]
 substs: [
   "windows.conf"
