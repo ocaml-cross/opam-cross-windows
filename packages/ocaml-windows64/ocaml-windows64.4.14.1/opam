@@ -33,6 +33,7 @@ extra-files: [
   ["install.sh" "md5=1935c48b6df9c902c73b287b71ed1e76"]
   ["patches/ostype-fix.patch" "md5=05919aebf4e0894bf8f0bc60a6932b46"]
   ["patches/configure.patch" "md5=2947eb1d16daec3d35f769093574249f"]
+  ["patches/windows-append.patch" "md5=2511c8b038691e3d58b12f0144827e45"]
 ]
 url {
   src: "https://github.com/ocaml/ocaml/archive/4.14.1.tar.gz"
