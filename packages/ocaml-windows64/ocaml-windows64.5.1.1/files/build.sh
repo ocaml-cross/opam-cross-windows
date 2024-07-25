@@ -12,7 +12,7 @@ if [ `opam var conf-flambda-windows:installed` = "true" ]; then
   OPTS="--enable-flambda"
 fi
 
-export PATH=${FLEXDLL_DIR}:$PATH
+export PATH="${FLEXDLL_DIR}:$PATH"
 
 ./configure --host="${HOST}" --prefix="${OPAM_PREFIX}/windows-sysroot" --without-zstd --enable-systhreads ${OPTS}
 
