@@ -12,7 +12,7 @@ cp -rf compilerlibs/*.cmxa compilerlibs/*.a "${PREFIX}/windows-sysroot/lib/ocaml
 for bin in ocaml ocamlc ocamlopt ocamlcp ocamlmklib ocamlmktop ocamldoc ocamldep; do
   cat >"${PREFIX}/windows-sysroot/bin/${bin}" <<END
 #!/bin/sh
-export PATH=${FLEXDLL_PATH}:\$PATH
+export PATH="${FLEXDLL_PATH}:\$PATH"
 ${PREFIX}/bin/ocamlrun "${PREFIX}/windows-sysroot/bin/${bin}.exe" "\$@"
 END
   chmod +x "${PREFIX}/windows-sysroot/bin/${bin}"
