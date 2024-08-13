@@ -27,7 +27,7 @@ build: [
     "dune"
     "build"
     "-p"
-    name
+    "yojson-five"
     "-j"
     jobs
     "-x"
