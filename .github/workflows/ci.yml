@@ -16,7 +16,7 @@ jobs:
       packages: ${{ steps.packages.outputs.packages }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Grab packages to build
         id: packages
         run: |
@@ -39,7 +39,7 @@ jobs:
       options: --user root
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Build package
         env:
           PKG_CONFIG_PATH: ${{ matrix.arch == 'x64' && '/usr/src/mxe/usr/x86_64-w64-mingw32.static/lib/pkgconfig/' || '/usr/src/mxe/usr/i686-w64-mingw32.static/lib/pkgconfig/' }}
@@ -115,7 +115,7 @@ jobs:
       options: --user root
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Build revdep
         env:
           PKG_CONFIG_PATH: ${{ matrix.arch == 'x64' && '/usr/src/mxe/usr/x86_64-w64-mingw32.static/lib/pkgconfig/' || '/usr/src/mxe/usr/i686-w64-mingw32.static/lib/pkgconfig/' }}
