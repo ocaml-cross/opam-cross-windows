@@ -28,7 +28,7 @@ build: [
     "build"
     "-p"
     "yojson-five"
-    "-j"
+    "-j"e
     jobs
     "-x"
     "windows"
