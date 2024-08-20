@@ -66,7 +66,7 @@ jobs:
           echo "Revdeps to build: ${REVDEPS_TO_BUILD}"
           echo "revdeps=[${REVDEPS_TO_BUILD}]" >> "${GITHUB_OUTPUT}"
       - name: Write matrix output
-        if: matrix.arch == 'x64'
+        if: matrix.arch == 'x64' && matrix.ocaml_version == '5.1.1'
         id: matrix_output
         uses: cloudposse/github-action-matrix-outputs-write@main
         with:
