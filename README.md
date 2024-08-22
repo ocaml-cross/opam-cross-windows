@@ -141,4 +141,4 @@ All files contained in this repository are licensed under the [CC0 1.0 Universal
 References
 ----------
 
-See also [ocaml-cross-android](https://github.com/whitequark/ocaml-cross-android) and [ocaml-cross-ios](https://github.com/whitequark/ocaml-cross-ios).
+See also [opam-cross-android](https://github.com/ocaml-cross/opam-cross-android) and [opam-cross-ios](https://github.com/ocaml-cross/opam-cross-ios).
