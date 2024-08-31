@@ -1,0 +1,27 @@
+opam-version: "2.0"
+
+synopsis: "A fuse filesystem for Toulouse-INP's moodle."
+license: "MIT"
+homepage: "https://github.com/pisentt/moodle_ocamlfuse"
+doc: "https://url/to/documentation"
+bug-reports: "https://github.com/pisentt/moodle_ocamlfuse/issues"
+authors: ["Teo Pisenti"]
+maintainer: ["Teo Pisenti"]
+dev-repo: "git+https://github.com/pisentt/moodle_ocamlfuse.git"
+
+depends: [
+  "ocaml-windows" {>= "4.14"}
+  "dune" {>= "3.10"}
+  "cohttp-lwt-unix-windows"
+  "lambdasoup-windows"
+  "decompress-windows"
+  "lwt_ppx"
+  "lwt_ssl-windows"
+]
+
+build: [
+  ["dune" "build" "-p" "moodle-client" "-j" jobs "-x" "windows"]
+]
+url {
+  src: "file:///mnt/moodle-ocamlfuse"
+}
