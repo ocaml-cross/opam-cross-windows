@@ -14,7 +14,7 @@ bug-reports: "https://github.com/mirage/ocaml-ipaddr/issues"
 depends: [
   "ocaml-windows" {>= "4.08.0"}
   "dune" {>= "1.9.0"}
-  "ipaddr-windows" {= version}
+  "ipaddr-windows" {>= "5.6.0"}
   "ppx_sexp_conv-windows" {>= "v0.9.0"}
   "sexplib0-windows"
 ]
