@@ -1,8 +1,26 @@
 opam-version: "2.0"
+maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+authors: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
+homepage: "http://erratique.ch/software/cmdliner"
+doc: "http://erratique.ch/software/cmdliner/doc/Cmdliner"
+dev-repo: "git+http://erratique.ch/repos/cmdliner.git"
+bug-reports: "https://github.com/dbuenzli/cmdliner/issues"
+tags: [ "cli" "system" "declarative" "org:erratique" ]
+license: "ISC"
+build: [["ocaml" "pkg/pkg.ml" "build" "--toolchain" "windows"]]
+install: [["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "cmdliner.install"]]
+remove: [["ocamlfind" "-toolchain" "windows" "remove" "cmdliner"]]
+depends: [
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "topkg" {build}
+  "ocaml-windows"
+  "opam-installer" {build}
+]
 synopsis: "Declarative definition of command line interfaces for OCaml"
-description: """\
-Cmdliner allows the declarative definition of command line interfaces
-for OCaml.
+description: """
+Cmdliner is a module for the declarative definition of command line
+interfaces.
 
 It provides a simple and compositional mechanism to convert command
 line arguments to OCaml values and pass them to your functions. The
@@ -10,28 +28,12 @@ module automatically handles syntax errors, help messages and UNIX man
 page generation. It supports programs with single or multiple commands
 and respects most of the [POSIX][1] and [GNU][2] conventions.
 
-Cmdliner has no dependencies and is distributed under the ISC license.
+Cmdliner is made of a single independent module and distributed under
+the BSD3 license.
 
 [1]: http://pubs.opengroup.org/onlinepubs/009695399/basedefs/xbd_chap12.html
-[2]: http://www.gnu.org/software/libc/manual/html_node/Argument-Syntax.html
-
-Home page: http://erratique.ch/software/cmdliner"""
-maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
-authors: "The cmdliner programmers"
-license: "ISC"
-tags: ["cli" "system" "declarative" "org:erratique"]
-homepage: "https://erratique.ch/software/cmdliner"
-doc: "https://erratique.ch/software/cmdliner/doc"
-bug-reports: "https://github.com/dbuenzli/cmdliner/issues"
-depends: [
-  "ocaml-windows" {>= "4.08.0"}
-]
-build: [make "all" "PREFIX=%{prefix}%"]
-install: [
-  [make "install" "LIBDIR=%{_:lib}%" "DOCDIR=%{_:doc}%"]
-  [make "install-doc" "LIBDIR=%{_:lib}%" "DOCDIR=%{_:doc}%"]
-]
-dev-repo: "git+https://erratique.ch/repos/cmdliner.git"
+[2]: http://www.gnu.org/software/libc/manual/html_node/Argument-Syntax.html"""
+flags: light-uninstall
 url {
   src: "https://erratique.ch/software/cmdliner/releases/cmdliner-1.3.0.tbz"
   checksum:
