@@ -15,7 +15,7 @@ depends: [
   "cohttp-lwt-unix-windows"
   "lambdasoup-windows"
   "decompress-windows"
-  "lwt_ppx"
+  "lwt_ppx-windows"
   "lwt_ssl-windows"
 ]
 
