@@ -23,7 +23,7 @@ depends: [
   "mirage-crypto" {>= "1.0.0"}
   "x509" {>= "1.0.0"}
   "ocaml-windows" {>= "4.13.0"}
-  "ohex" {>= "0.2.0"}
+  "ohex-windows" {>= "0.2.0"}
 ]
 conflicts: [
   "result" {< "1.5"}
