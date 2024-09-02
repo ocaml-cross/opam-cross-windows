@@ -1,0 +1,44 @@
+diff --git a/src-os/ptime_stubs.c b/src-os/ptime_stubs.c
+index 35c1406..d79124f 100644
+--- a/src-os/ptime_clock_stubs.c
++++ b/src-os/ptime_clock_stubs.c
+@@ -10,7 +10,10 @@
+
+ /* Detect platform */
+
+-#if defined(__APPLE__) && defined(__MACH__)
++#if defined(_WIN32)
++ #define OCAML_MTIME_WIN32
++
++#elif defined(__APPLE__) && defined(__MACH__)
+   #define OCAML_MTIME_DARWIN
+
+ #elif defined (__unix__) || defined(__unix)
+@@ -63,6 +66,27 @@ CAMLprim value ocaml_ptime_elapsed_ns (value unit)
+                           (uint64_t)(now.tv_nsec - start.tv_nsec));
+ }
+
++/* Windows */
++
++#elif defined(OCAML_MTIME_WIN32)
++
++#include <windows.h>
++
++CAMLprim value ocaml_ptime_elapsed_ns (value unit)
++{
++  static ULONGLONG start = 0L;
++  if (start == 0L)
++  {
++    /* XXX: This provides ms granularity at best.
++     * Subtracting one to guarantee an initial value
++     * other than 0. */
++    start = GetTickCount64 () - 1L;
++  }
++
++  ULONGLONG now = GetTickCount64 ();
++  return caml_copy_int64 ((now - start) * (ULONGLONG)1000);
++}
++
+ /* Unsupported */
+
+ #else
