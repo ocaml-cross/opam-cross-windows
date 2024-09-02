@@ -17,9 +17,9 @@ depends: [
   "dune" {>= "2.0"}
   "bos-windows"
   "fpath-windows"
-  "ptime"
+  "ptime-windows"
   "logs-windows"
-  "digestif" {>= "1.2.0"}
+  "digestif-windows" {>= "1.2.0"}
   "mirage-crypto" {>= "1.0.0"}
   "x509" {>= "1.0.0"}
   "ocaml-windows" {>= "4.13.0"}
