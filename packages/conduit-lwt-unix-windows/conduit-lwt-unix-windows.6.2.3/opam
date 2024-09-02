@@ -18,7 +18,7 @@ depends: [
   "uri-windows" {>= "1.9.4"}
   "ipaddr-windows" {>= "4.0.0"}
   "ipaddr-sexp-windows"
-  "ca-certs"
+  "ca-certs-windows"
 ]
 depopts: ["tls-lwt" "lwt_ssl" "launchd"]
 conflicts: [
