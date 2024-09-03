@@ -27,9 +27,9 @@ index 5a56d92dc5..c324ce0ea2 100644
 +  if (fileaccess & FILE_APPEND_DATA) {
 +    dwMoved = SetFilePointer(h, 0, NULL, FILE_END);
 +    if (dwMoved == INVALID_SET_FILE_POINTER) {
-+      caml_win32_maperr(GetLastError());
++      win32_maperr(GetLastError());
 +      CloseHandle(h);
-+      caml_uerror("open", path);
++      uerror("open", path);
 +    }
 +  }
 +
