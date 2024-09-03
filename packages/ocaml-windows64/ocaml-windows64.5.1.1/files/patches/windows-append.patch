@@ -1,7 +1,16 @@
 diff --git a/otherlibs/unix/open_win32.c b/otherlibs/unix/open_win32.c
-index b4e02aefe9..1dc8c9b654 100644
+index b4e02aefe9..726080d6b1 100644
 --- a/otherlibs/unix/open_win32.c
 +++ b/otherlibs/unix/open_win32.c
+@@ -24,7 +24,7 @@
+ 
+ static int open_access_flags[15] = {
+   GENERIC_READ, GENERIC_WRITE, GENERIC_READ|GENERIC_WRITE,
+-  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
++  0, FILE_APPEND_DATA, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+ };
+ 
+ static int open_create_flags[15] = {
 @@ -46,6 +46,7 @@ CAMLprim value caml_unix_open(value path, value flags, value perm)
    int fileaccess, createflags, fileattrib, filecreate, sharemode, cloexec;
    SECURITY_ATTRIBUTES attr;
@@ -10,22 +19,12 @@ index b4e02aefe9..1dc8c9b654 100644
    wchar_t * wpath;
  
    caml_unix_check_path(path, "open");
-@@ -70,6 +71,9 @@ CAMLprim value caml_unix_open(value path, value flags, value perm)
-   else
-     fileattrib = FILE_ATTRIBUTE_NORMAL;
- 
-+  if (flags & O_APPEND)
-+    fileaccess |= FILE_APPEND_DATA;
-+
-   cloexec = caml_convert_flag_list(flags, open_cloexec_flags);
-   attr.nLength = sizeof(attr);
-   attr.lpSecurityDescriptor = NULL;
-@@ -87,5 +91,15 @@ CAMLprim value caml_unix_open(value path, value flags, value perm)
+@@ -87,5 +88,15 @@ CAMLprim value caml_unix_open(value path, value flags, value perm)
      caml_win32_maperr(GetLastError());
      caml_uerror("open", path);
    }
 +
-+  if (flags & O_APPEND) {
++  if (fileaccess & FILE_APPEND_DATA) {
 +    dwMoved = SetFilePointer(h, 0, NULL, FILE_END);
 +    if (dwMoved == INVALID_SET_FILE_POINTER) {
 +      caml_win32_maperr(GetLastError());

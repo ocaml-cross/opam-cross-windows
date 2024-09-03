@@ -34,7 +34,7 @@ extra-files: [
   ["install.sh" "md5=771227318703c168f819281d3c051b29"]
   ["patches/ostype-fix.patch" "md5=57404edca01e9a353f28d3b3c0139f55"]
   ["patches/configure.patch" "md5=11532eb26b881d38db59a00341823b99"]
-  ["patches/windows-append.patch" "md5=ed6b18f389855747c573b92b067bf78c"]
+  ["patches/windows-append.patch" "md5=137c69d696dc857d663f49df7385923b"]
 ]
 url {
   src: "https://github.com/ocaml/ocaml/archive/5.1.1.tar.gz"
