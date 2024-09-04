@@ -3,6 +3,7 @@ maintainer: "whitequark@whitequark.org"
 patches: [
   "patches/ostype-fix.patch"
   "patches/configure.patch"
+  "patches/windows-append.patch"
 ]
 substs: [
   "windows.conf"
@@ -33,6 +34,7 @@ extra-files: [
   ["install.sh" "md5=166b007726c8a1de4a172eb2ae5a4355"]
   ["patches/ostype-fix.patch" "md5=57404edca01e9a353f28d3b3c0139f55"]
   ["patches/configure.patch" "md5=11532eb26b881d38db59a00341823b99"]
+  ["patches/windows-append.patch" "md5=137c69d696dc857d663f49df7385923b"]
 ]
 url {
   src: "https://github.com/ocaml/ocaml/archive/5.1.1.tar.gz"
