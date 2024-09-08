@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       packages: ${{ steps.packages.outputs.packages }}
+      should_run: ${{ steps.packages.outputs.should_run }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -21,12 +22,15 @@ jobs:
         id: packages
         run: |
           PACKAGES_TO_RUN=$(OUTPUT_ONLY=true ./tests/run_tests.sh | while read i; do echo "\\\"$i\\\""; done | xargs | sed -e 's# #,#g' | tr -d '\n')
+          SHOULD_RUN=$(if [ -n "${PACKAGES_TO_RUN}"]; then echo "false"; else echo "true"; fi)
           echo "Packages to run: ${PACKAGES_TO_RUN}"
           echo "packages=[${PACKAGES_TO_RUN}]" >> "${GITHUB_OUTPUT}"
+          echo "should_run=${SHOULD_RUN}" >> "${GITHUB_OUTPUT}"
 
   build_package:
     runs-on: ubuntu-latest
     needs: build_details
+    if: needs.build_details.outputs.should_run == 'true'
     strategy:
       fail-fast: false
       matrix:
