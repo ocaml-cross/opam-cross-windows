@@ -2,3 +2,4 @@ archives
 /scripts/local.sh
 *.sw*
 .tested
+depot.json

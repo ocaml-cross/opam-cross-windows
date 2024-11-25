@@ -1,5 +1,5 @@
 ARG IMAGE
-FROM $IMAGE
+FROM $IMAGE AS base
 MAINTAINER Romain Beauxis <toots@rastageeks.org>
 
 ARG COMPILER
@@ -8,6 +8,8 @@ ARG SYSTEM
 RUN (apt-get update || true) && \
       apt-get install -y --force-yes gawk aspcud binutils automake lzip && \
       apt-get -y --force-yes autoremove && apt-get -y --force-yes clean
+
+RUN cd /usr/src/mxe && git fetch && git checkout master && git pull && make
 
 RUN wget https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh -O /tmp/install.sh && echo /usr/local/bin | sh /tmp/install.sh
 
@@ -44,3 +46,6 @@ RUN if [ "$SYSTEM" = "x86" ]; then \
       eval $(opam env) && \
       opam install -y ocaml-windows ocaml-windows32; \
     fi
+
+FROM $IMAGE
+COPY --from=base / /
