@@ -1,0 +1,40 @@
+opam-version: "2.0"
+synopsis: "Bindings for the ffmpeg libraries"
+maintainer: "Romain Beauxis <toots@rastageeks.org>"
+authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
+license: "LGPL-2.1-only"
+homepage: "https://github.com/savonet/ocaml-ffmpeg"
+bug-reports: "https://github.com/savonet/ocaml-ffmpeg/issues"
+depends: [
+  "ocaml-windows" {>= "4.08.0"}
+  "dune" {>= "3.6"}
+  "ffmpeg-av-windows" {= version}
+  "ffmpeg-avutil-windows" {= version}
+  "ffmpeg-avcodec-windows" {= version}
+  "ffmpeg-avfilter-windows" {= version}
+  "ffmpeg-avdevice-windows" {= version}
+  "ffmpeg-swscale-windows" {= version}
+  "ffmpeg-swresample-windows" {= version}
+]
+build: [
+  [
+    "dune"
+    "build"
+    "-p"
+    "ffmpeg"
+    "-x"
+    "windows"
+    "-j"
+    jobs
+    "@install"
+  ]
+]
+dev-repo: "git+https://github.com/savonet/ocaml-ffmpeg.git"
+url {
+  src:
+    "https://github.com/savonet/ocaml-ffmpeg/archive/refs/tags/v1.2.1.tar.gz"
+  checksum: [
+    "md5=0246dce16d3fd1ad00b8ab8cb562e2c0"
+    "sha512=c72adb6ba5651e47c343d28b6be7759a5958ea1ea712ce98d3d4b86de35370f79e8c4833aa35b0633907d813abc080f6472186ad433ff5b8eeb31d5b5e012913"
+  ]
+}
