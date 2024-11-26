@@ -27,6 +27,7 @@ build: [
 ]
 depends: [
   "ocaml-windows" {>= "4.02.0"}
+  "dune"
   "ocamlfind" {build}
 ]
 depopts: ["lwt" "lwt_ppx"]
