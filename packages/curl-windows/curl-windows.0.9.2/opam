@@ -33,5 +33,5 @@ depexts: [
 synopsis: "Bindings to libcurl"
 description: "libcurl is a client-side URL transfer library, supporting HTTP and a multitude of other network protocols (FTP/SMTP/RTSP/etc). This library wrap easy synchronous API (Curl), synchronous parallel and generic asynchronous API (Curl.Multi), and provides an Lwt-enabled asynchronous interface (Curl_lwt)."
 url {
-  src: "git+https://github.com/ygrek/ocurl.git#f0c6f47"
+  src: "git+https://github.com/ygrek/ocurl.git#1bc75b8"
 }
