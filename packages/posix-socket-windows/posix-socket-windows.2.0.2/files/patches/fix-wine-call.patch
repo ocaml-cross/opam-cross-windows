@@ -1,0 +1,17 @@
+diff --git a/posix-socket/src/generator/exec.sh b/posix-socket/src/generator/exec.sh
+index 9ec22dc..b9f586a 100755
+--- a/posix-socket/src/generator/exec.sh
++++ b/posix-socket/src/generator/exec.sh
+@@ -7,7 +7,11 @@ ARG=$3
+ if test "${SYSTEM}" = "mingw"; then
+   wine $CMD $ARG
+ elif test "${SYSTEM}" = "mingw64"; then
+-  wine64 $CMD $ARG
++  if command -v wine64 > /dev/null 2>&1; then
++    wine64 $CMD $ARG
++  else
++    wine $CMD $ARG
++  fi
+ else
+   $CMD $ARG
+ fi

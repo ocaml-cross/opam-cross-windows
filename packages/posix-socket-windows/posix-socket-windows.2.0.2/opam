@@ -29,6 +29,12 @@ build: [
     "@install"
   ]
 ]
+patches: [
+  "patches/fix-wine-call.patch"
+]
+extra-files: [
+  ["patches/fix-wine-call.patch" "md5=3edda19e24f47830691d8931c8299b84"]
+]
 dev-repo: "git+https://github.com/savonet/ocaml-posix.git"
 url {
   src:
