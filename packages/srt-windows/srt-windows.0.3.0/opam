@@ -35,6 +35,12 @@ build: [
     "@install"
   ]
 ]
+patches: [
+  "patches/fix-wine-call.patch"
+]
+extra-files: [
+  ["patches/fix-wine-call.patch" "md5=ba87c13e7913a3f667824ede80b937ae"]
+]
 depexts: [
   ["libsrt"] {os-distribution = "mxe"}
 ]
