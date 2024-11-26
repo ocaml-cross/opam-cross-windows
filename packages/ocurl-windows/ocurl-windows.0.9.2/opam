@@ -8,12 +8,22 @@ dev-repo: "git+https://github.com/ygrek/ocurl.git"
 bug-reports: "https://github.com/ygrek/ocurl/issues"
 tags: ["org:ygrek" "clib:curl"]
 build: [
-  ["./configure" "--host=%{conf-gcc-windows:host}%" "--prefix=%{prefix}%" "OCAMLFIND_TOOLCHAIN=windows"]
-  ["env" "OCAMLFIND_TOOLCHAIN=windows" make "OCAMLOPT=ocamlfind ocamlopt" "OCAMLC=ocamlfind ocamlc"]
-]
-install: [
-  ["env" "OCAMLFIND_TOOLCHAIN=windows"
-   make "install"]
+  [ "./configure"
+    "--host=%{conf-gcc-windows:host}%"
+    "--prefix=%{prefix}%"
+    "OCAMLFIND_TOOLCHAIN=windows"
+  ]
+  [
+    "dune"
+    "build"
+    "-p"
+    "curl"
+    "-x"
+    "windows"
+    "-j"
+    jobs
+    "@install"
+  ]
 ]
 depends: [
   "ocaml-windows" {>= "4.02.0"}
