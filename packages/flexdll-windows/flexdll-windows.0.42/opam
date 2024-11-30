@@ -69,6 +69,6 @@ extra-files: [
   ["patches/no-gcc_eh.patch" "md5=65bdd2a32d0777a9d8b315df91632166"]
 ]
 url {
-  src: "https://github.com/alainfrisch/flexdll/archive/0.42.tar.gz"
+  src: "https://github.com/ocaml/flexdll/archive/0.42.tar.gz"
   checksum: "9464ae7a7e566ba7c96336cf2f34cc73"
 }

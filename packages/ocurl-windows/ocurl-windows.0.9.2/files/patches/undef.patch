@@ -1,0 +1,18 @@
+diff --git a/curl-helper.c b/curl-helper.c
+index 6e3c748..9558cfa 100644
+--- a/curl-helper.c
++++ b/curl-helper.c
+@@ -3329,10 +3329,13 @@ SETOPT_LONG( BUFFERSIZE)
+   SETOPT_STRING( AWS_SIGV4)
+ #endif
+
++#undef TCP_KEEPALIVE
+ SETOPT_BOOL( TCP_KEEPALIVE)
+
++#undef TCP_KEEPIDLE
+ SETOPT_LONG( TCP_KEEPIDLE)
+
++#undef TCP_KEEPINTVL
+ SETOPT_LONG( TCP_KEEPINTVL)
+
+ /**
