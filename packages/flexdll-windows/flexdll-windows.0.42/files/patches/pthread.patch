@@ -1,0 +1,14 @@
+diff --git a/cmdline.ml b/cmdline.ml
+index 37a3a41..028cb02 100644
+--- a/cmdline.ml
++++ b/cmdline.ml
+@@ -90,6 +90,9 @@ let specs = [
+   "-base", Arg.String (fun s -> base_addr := s),
+   " Specify base address (Win64 only)";
+
++  "-pthread", Arg.Unit (fun () -> ()),
++  "Ignored";
++
+   "-I", Arg.String (fun dir -> dirs := dir :: !dirs),
+   "<dir> Add a directory where to search for files";
+

@@ -5,6 +5,7 @@ substs: [
 ]
 patches: [
   "patches/no-gcc_eh.patch"
+  "patches/pthread.patch"
 ]
 build: [
   ["touch" "Compat.ml"]
@@ -67,6 +68,7 @@ extra-files: [
   ["version.ml.in" "md5=f1bb53b9442eeda71d4963c02bf9fa84"]
   ["flexdll-windows.install" "md5=d2a0e6caf837c1f9e1c687089eee7869"]
   ["patches/no-gcc_eh.patch" "md5=65bdd2a32d0777a9d8b315df91632166"]
+  ["patches/pthread.patch" "md5=b7bf5fff6fa4e477fe12c0819c548f2b"]
 ]
 url {
   src: "https://github.com/alainfrisch/flexdll/archive/0.42.tar.gz"
