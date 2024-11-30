@@ -15,6 +15,12 @@ depends: [
 conflicts: [
   "ffmpeg-windows" {< "0.5.0"}
 ]
+patches: [
+  "patches/strndup.patch"
+]
+extra-files: [
+  ["patches/strndup.patch" "md5=ac7db67fe5aa4fa741b92b79d01a3c82"]
+]
 depexts: [
   ["ffmpeg"] {os-distribution = "mxe"}
 ]

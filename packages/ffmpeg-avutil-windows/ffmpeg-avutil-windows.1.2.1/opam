@@ -18,6 +18,12 @@ conflicts: [
 depexts: [
   ["ffmpeg"] {os-distribution = "mxe"}
 ]
+patches: [
+  "patches/strndup.patch"
+]
+extra-files: [
+  ["patches/strndup.patch" "md5=08f071e74e62aa8ce837e954570ec598"]
+]
 build: [
   [
     "dune"

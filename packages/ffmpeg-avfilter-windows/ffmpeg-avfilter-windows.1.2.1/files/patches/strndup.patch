@@ -1,0 +1,36 @@
+diff --git a/avfilter/avfilter_stubs.c b/avfilter/avfilter_stubs.c
+index 892bca4..63a48ab 100644
+--- a/avfilter/avfilter_stubs.c
++++ b/avfilter/avfilter_stubs.c
+@@ -14,6 +14,7 @@
+ #include <libavfilter/avfilter.h>
+ #include <libavfilter/buffersink.h>
+ #include <libavfilter/buffersrc.h>
++#include <libavutil/mem.h>
+
+ #define AvFilterContext_val(v) (*(AVFilterContext **)Data_abstract_val(v))
+
+@@ -178,12 +179,12 @@ CAMLprim value ocaml_avfilter_create_filter(value _args, value _instance_name,
+     caml_raise_not_found();
+
+   name =
+-      strndup(String_val(_instance_name), caml_string_length(_instance_name));
++      av_strndup(String_val(_instance_name), caml_string_length(_instance_name));
+   if (!name)
+     caml_raise_out_of_memory();
+
+   if (_args != Val_none) {
+-    args = strndup(String_val(Some_val(_args)),
++    args = av_strndup(String_val(Some_val(_args)),
+                    caml_string_length(Some_val(_args)));
+
+     if (!args) {
+@@ -309,7 +310,7 @@ CAMLprim value ocaml_avfilter_parse(value _inputs, value _outputs,
+     append_avfilter_in_out(&outputs, name, filter_ctx, idx);
+   }
+
+-  filters = strndup(String_val(_filters), caml_string_length(_filters));
++  filters = av_strndup(String_val(_filters), caml_string_length(_filters));
+
+   if (!filters) {
+     if (inputs)

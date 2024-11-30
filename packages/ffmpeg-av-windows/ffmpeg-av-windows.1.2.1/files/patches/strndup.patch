@@ -1,0 +1,64 @@
+diff --git a/av/av_stubs.c b/av/av_stubs.c
+index ca9fbdf..90c0888 100644
+--- a/av/av_stubs.c
++++ b/av/av_stubs.c
+@@ -24,6 +24,7 @@
+ #include <libavutil/opt.h>
+ #include <libavutil/parseutils.h>
+ #include <libavutil/timestamp.h>
++#include <libavutil/mem.h>
+
+ #include "av_stubs.h"
+ #include "avcodec_stubs.h"
+@@ -644,7 +645,7 @@ CAMLprim value ocaml_av_find_input_format(value _short_name) {
+   CAMLparam1(_short_name);
+   CAMLlocal1(ret);
+   char *short_name =
+-      strndup(String_val(_short_name), caml_string_length(_short_name));
++      av_strndup(String_val(_short_name), caml_string_length(_short_name));
+
+   if (!short_name)
+     caml_raise_out_of_memory();
+@@ -776,7 +777,7 @@ CAMLprim value ocaml_av_open_input(value _url, value _format, value _interrupt,
+   }
+
+   if (ulen > 0)
+-    url = strndup(String_val(_url), ulen);
++    url = av_strndup(String_val(_url), ulen);
+
+   if (_format != Val_none)
+     format = InputFormat_val(Some_val(_format));
+@@ -1351,13 +1352,13 @@ CAMLprim value ocaml_av_output_format_guess(value _short_name, value _filename,
+
+   if (caml_string_length(_short_name) > 0) {
+     short_name =
+-        strndup(String_val(_short_name), caml_string_length(_short_name));
++        av_strndup(String_val(_short_name), caml_string_length(_short_name));
+     if (!short_name)
+       caml_raise_out_of_memory();
+   };
+
+   if (caml_string_length(_filename) > 0) {
+-    filename = strndup(String_val(_filename), caml_string_length(_filename));
++    filename = av_strndup(String_val(_filename), caml_string_length(_filename));
+     if (!filename) {
+       if (short_name)
+         free(short_name);
+@@ -1366,7 +1367,7 @@ CAMLprim value ocaml_av_output_format_guess(value _short_name, value _filename,
+   }
+
+   if (caml_string_length(_mime) > 0) {
+-    mime = strndup(String_val(_mime), caml_string_length(_mime));
++    mime = av_strndup(String_val(_mime), caml_string_length(_mime));
+     if (!mime) {
+       if (short_name)
+         free(short_name);
+@@ -1553,7 +1554,7 @@ CAMLprim value ocaml_av_open_output(value _interrupt, value _format,
+   CAMLparam3(_interrupt, _filename, _opts);
+   CAMLlocal3(ans, ret, unused);
+   char *filename =
+-      strndup(String_val(_filename), caml_string_length(_filename));
++      av_strndup(String_val(_filename), caml_string_length(_filename));
+   avioformat_const AVOutputFormat *format = NULL;
+   AVDictionary *options = NULL;
+   char *key, *val;

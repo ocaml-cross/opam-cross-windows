@@ -1,0 +1,21 @@
+diff --git a/avutil/avutil_stubs.c b/avutil/avutil_stubs.c
+index 78d2f8d..6e99a7d 100644
+--- a/avutil/avutil_stubs.c
++++ b/avutil/avutil_stubs.c
+@@ -17,6 +17,7 @@
+ #include <libavutil/avstring.h>
+ #include <libavutil/pixdesc.h>
+ #include <libavutil/pixfmt.h>
++#include <libavutil/mem.h>
+
+ #include "avutil_stubs.h"
+ #include "channel_layout_stubs.h"
+@@ -512,7 +513,7 @@ enum caml_ba_kind bigarray_kind_of_AVSampleFormat(enum AVSampleFormat sf) {
+ CAMLprim value ocaml_avutil_find_sample_fmt(value _name) {
+   CAMLparam1(_name);
+   CAMLlocal1(ans);
+-  char *name = strndup(String_val(_name), caml_string_length(_name));
++  char *name = av_strndup(String_val(_name), caml_string_length(_name));
+   if (!name)
+     caml_raise_out_of_memory();
+
