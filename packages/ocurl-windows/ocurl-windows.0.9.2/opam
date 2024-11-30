@@ -13,4 +13,4 @@ depends: [
   "curl-windows" {= version}
 ]
 synopsis: "Transitional dummy package: ocurl -> curl"
-description: "Use `opam install curl`"
+description: "Use `opam install curl-windows`"
