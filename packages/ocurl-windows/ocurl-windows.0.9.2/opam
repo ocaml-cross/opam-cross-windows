@@ -25,6 +25,12 @@ build: [
     "@install"
   ]
 ]
+patches: [
+  "patches/undef.patch"
+]
+extra-files: [
+  ["patches/undef.patch" "md5=6a9b6d85af9f73c6c22ae918baa36ed9"]
+]
 depends: [
   "ocaml-windows" {>= "4.02.0"}
   "dune"
