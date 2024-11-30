@@ -1,0 +1,13 @@
+diff --git a/dune b/dune
+index 8e5ce15..de03e2f 100644
+--- a/dune
++++ b/dune
+@@ -7,7 +7,7 @@
+   (language c)
+   (flags -DHAVE_CONFIG_H :standard (:include cflags.sexp))
+   (names curl-helper))
+- (c_library_flags (:include clibs.sexp))
++ (c_library_flags -lcurl (:include clibs.sexp))
+  (libraries unix)
+  (modules curl))
+

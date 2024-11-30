@@ -27,9 +27,11 @@ build: [
 ]
 patches: [
   "patches/undef.patch"
+  "patches/link.patch"
 ]
 extra-files: [
   ["patches/undef.patch" "md5=6a9b6d85af9f73c6c22ae918baa36ed9"]
+  ["patches/link.patch" "md5=08ab5ee99d00ac5c7986f60037448cb4"]
 ]
 depends: [
   "ocaml-windows" {>= "4.02.0"}
