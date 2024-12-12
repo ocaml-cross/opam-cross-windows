@@ -26,6 +26,7 @@ bug-reports: "https://github.com/dbuenzli/cmdliner/issues"
 depends: [
   "ocaml" {>= "4.08.0"}
   "ocaml-windows"
+  "dune" {build}
 ]
 build: [
     ["dune" "build" "-p" "cmdliner" "-x" "windows" "-j" jobs]
