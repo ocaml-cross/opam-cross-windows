@@ -24,7 +24,7 @@ homepage: "https://erratique.ch/software/cmdliner"
 doc: "https://erratique.ch/software/cmdliner/doc"
 bug-reports: "https://github.com/dbuenzli/cmdliner/issues"
 depends: [
-  "ocaml" {>= "4.08.0"},
+  "ocaml" {>= "4.08.0"}
   "ocaml-windows"
 ]
 build: [
