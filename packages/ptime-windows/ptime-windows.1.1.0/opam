@@ -1,0 +1,36 @@
+opam-version: "2.0"
+
+synopsis: "Platform independent POSIX time support in pure OCaml"
+maintainer: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
+authors: ["The ptime programmers"]
+license: "ISC"
+homepage: "https://erratique.ch/software/ptime"
+bug-reports: "https://github.com/dbuenzli/ptime/issues"
+
+depends: [
+  "dune" {>= "2.8"}
+  "ocaml-windows" {>= "4.03.0"}
+]
+
+depopts: ["js_of_ocaml"]
+conflicts: [
+  "js_of_ocaml" {< "3.3.0"}
+]
+build: [
+  [
+    "dune"
+    "build"
+    "-p"
+    "ptime"
+    "-j"
+    jobs
+    "@install"
+    "-x"
+    "windows"
+  ]
+]
+dev-repo: "git+https://github.com/dbuenzli/ptime.git"
+
+url {
+  src: "file:///mnt/ptime"
+}
