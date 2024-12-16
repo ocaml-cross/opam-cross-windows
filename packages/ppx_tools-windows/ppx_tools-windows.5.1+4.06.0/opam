@@ -26,3 +26,6 @@ url {
   src: "https://github.com/ocaml-ppx/ppx_tools/archive/5.1+4.06.0.tar.gz"
   checksum: "md5=6ba2e9690b1f579ba562b86022d1c308"
 }
+extra-files: [
+  "patches/use-ocamlfind.patch" "md5=96b4cdf6fbff8a22458ed57f479e8834"
+]
