@@ -29,12 +29,13 @@ conflicts: [
 ]
 synopsis: "OCaml cross-compiler for 64-bit x86 Windows targets"
 extra-files: [
-  ["windows.conf.in" "md5=e3b6250be08dc3a108695b6610bcd7f8"]
   ["build.sh" "md5=3c18095f474f74dc832262fe7f3dd587"]
   ["install.sh" "md5=166b007726c8a1de4a172eb2ae5a4355"]
-  ["patches/ostype-fix.patch" "md5=57404edca01e9a353f28d3b3c0139f55"]
   ["patches/configure.patch" "md5=11532eb26b881d38db59a00341823b99"]
+  ["patches/ostype-fix.patch" "md5=57404edca01e9a353f28d3b3c0139f55"]
   ["patches/windows-append.patch" "md5=137c69d696dc857d663f49df7385923b"]
+  ["remove.sh" "md5=d2ebe7ce54e4a93a4d71d5fd889f17e3"]
+  ["windows.conf.in" "md5=e3b6250be08dc3a108695b6610bcd7f8"]
 ]
 url {
   src: "https://github.com/ocaml/ocaml/archive/5.1.1.tar.gz"
