@@ -32,7 +32,7 @@ url {
   src:
     "https://github.com/savonet/ocaml-posix/archive/refs/tags/v2.1.0.tar.gz"
   checksum: [
-    "md5=7cfd38e29c57cac45bf1b1b08302f30a"
-    "sha512=ab09426bd053e3cb5a47cedfbe1b963c05c083dc5cf8d41aedf62a4acfa8431042f9d07e9c79f7a5a6a7b9120949769a8ff14cdd7dd99cf969a147f477f9d10d"
+    "md5=0c6a8cd7b7f5e163160abb8a62f75a5b"
+    "sha512=735c6afd48e36af0a032f51217e7558629a198fd39a0484883831bdbff511b331033696b8ad73c6896fa9df0a0b1fd2f27336c2b0b7447dd10902e6bc64e4886"
   ]
 }
