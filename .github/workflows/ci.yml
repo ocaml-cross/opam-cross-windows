@@ -82,6 +82,7 @@ jobs:
   collect_revdeps:
     runs-on: ubuntu-latest
     needs: [build_package]
+    if: ${{ always() }}
     outputs:
       revdeps: ${{ steps.revdeps.outputs.revdeps }}
       has_revdeps: ${{ steps.revdeps.outputs.has_revdeps }}
