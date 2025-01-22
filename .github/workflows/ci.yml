@@ -82,6 +82,7 @@ jobs:
   collect_revdeps:
     runs-on: ubuntu-latest
     needs: [build_package]
+    if: ${{ always() }}
     outputs:
       revdeps: ${{ steps.revdeps.outputs.revdeps }}
       has_revdeps: ${{ steps.revdeps.outputs.has_revdeps }}
@@ -100,7 +101,7 @@ jobs:
             const { revdeps } = JSON.parse('${{ steps.collect_revdeps.outputs.result }}')
             const resultHash = Object.keys(revdeps).reduce((result, key) =>
               revdeps[key].reduce((result, key) =>
-                ({...result, [key]: true}), result), {}); 
+                ({...result, [key]: true}), result), {});
             const result = Object.keys(resultHash);
             console.log(`Collected revdeps: ${result}`);
             core.setOutput("revdeps", JSON.stringify(result));
