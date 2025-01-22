@@ -98,8 +98,9 @@ jobs:
           script: |
             const core = require("@actions/core")
             const { revdeps } = JSON.parse('${{ steps.collect_revdeps.outputs.result }}')
-            const result = Object.keys(revdeps).reduce((result, key) =>
-              [...result, ...revdeps[key]], []);
+            const resultHash = Object.keys(revdeps).reduce((result, key) =>
+              {...result, [key]: true}, {});
+            const result = Object.keys(resultHash);
             console.log(`Collected revdeps: ${result}`);
             core.setOutput("revdeps", JSON.stringify(result));
             core.setOutput("has_revdeps", result.length !== 0);
