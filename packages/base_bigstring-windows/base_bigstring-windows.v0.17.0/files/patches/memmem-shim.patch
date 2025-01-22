@@ -1,0 +1,31 @@
+diff --git a/orig.c b/new.c
+index 20c11bf..e355198 100644
+--- a/src/base_bigstring_stubs.c
++++ b/src/base_bigstring_stubs.c
+@@ -43,6 +43,26 @@ static inline uint16_t bswap_16 (uint16_t x)
+ #endif
+ #define bswap_32 __builtin_bswap32
+ #define bswap_64 __builtin_bswap64
++
++// https://stackoverflow.com/questions/52988769/writing-own-memmem-for-windows
++void *memmem(const void *haystack, size_t haystack_len,
++    const void * const needle, const size_t needle_len)
++{
++    if (haystack == NULL) return NULL;
++    if (haystack_len == 0) return NULL;
++    if (needle == NULL) return NULL;
++    if (needle_len == 0) return NULL;
++
++    for (const char *h = haystack;
++            haystack_len >= needle_len;
++            ++h, --haystack_len) {
++        if (!memcmp(h, needle, needle_len)) {
++            return h;
++        }
++    }
++    return NULL;
++}
++
+ #elif _MSC_VER
+ #define bswap_16 _byteswap_ushort
+ #define bswap_32 _byteswap_ulong
