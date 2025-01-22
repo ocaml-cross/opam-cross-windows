@@ -103,7 +103,7 @@ jobs:
               [...result, ...revdeps[key]], []);
             console.log(`Collected revdeps: ${result}`);
             core.setOutput("revdeps", JSON.stringify(result));
-            core.setOutput("has_revdeps", result.length !== 0);
+            core.setOutput("has_revdeps", result.length !== 0 ? "true" : "false");
 
   build_revdeps:
     runs-on: ubuntu-latest
