@@ -9,20 +9,18 @@ dev-repo: "git+https://github.com/ocaml-ppx/ppx_deriving.git"
 tags: [ "syntax" ]
 build: [
   ["dune" "subst"] {dev}
-  ["dune" "build" "-p" "ppx_deriving" "-j" jobs "-x" "windows"]
+  ["dune" "build" "-p" "ppx_deriving" "-x" "windows" "-j" jobs]
 ]
 depends: [
-  "ocaml-windows" {>= "4.05.0" & < "5.3"}
-  "ocamlfind-windows"
+  "ocaml-windows" {>= "4.05.0"}
   "dune" {>= "1.6.3"}
-  "cppo" {build & >= "1.1.0"}
+  "cppo" {>= "1.1.0" & build}
+  "ocamlfind-windows"
   "ocamlfind"
   "ppx_derivers"
   "ppx_derivers-windows"
-  "ppxlib" {>= "0.20.0"}
-  "ppxlib-windows" {>= "0.20.0"}
-  "result"
-  "result-windows"
+  "ppxlib" {>= "0.32.0"}
+  "ppxlib-windows" {>= "0.32.0"}
 ]
 synopsis: "Type-driven code generation for OCaml"
 description: """
@@ -32,10 +30,10 @@ for common tasks.
 """
 url {
   src:
-    "https://github.com/ocaml-ppx/ppx_deriving/releases/download/v5.2.1/ppx_deriving-v5.2.1.tbz"
+    "https://github.com/ocaml-ppx/ppx_deriving/releases/download/v6.0.3/ppx_deriving-6.0.3.tbz"
   checksum: [
-    "sha256=e96b5fb25b7632570e4b329e22e097fcd4b8e8680d1e43ef003a8fbd742b0786"
-    "sha512=f28cd778a2d48ababa53f73131b25229a11b03685610d020b7b9228b1e25570891cd927b37475aeda49be72debaf5f2dda4c1518a0965db7a361c0ebe325a8d2"
+    "sha256=374aa97b32c5e01c09a97810a48bfa218c213b5b649e4452101455ac19c94a6d"
+    "sha512=971443a5df0acbdad577360deed8c9af137695bec6d826ef517a382941371f3546aef53456dda7c89d0ed30fefadf45d5dae2a8b1940a75aee7f7382c68cedb0"
   ]
 }
-x-commit-hash: "7211546d6527bf57d3eff8174c90fc3c22250dae"
+x-commit-hash: "275140702ca6f97e0407f80e86de9d3940ee3ac8"
