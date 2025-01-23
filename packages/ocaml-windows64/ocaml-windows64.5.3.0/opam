@@ -1,0 +1,78 @@
+opam-version: "2.0"
+license: "LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception"
+synopsis: "OCaml 5.3.0 cross-compiler for windows"
+maintainer: [
+  "Pierre Boutillier <pierre.boutillier@laposte.net>"
+]
+authors: [
+  "Xavier Leroy"
+  "Damien Doligez"
+  "Alain Frisch"
+  "Jacques Garrigue"
+  "Didier Rémy"
+  "KC Sivaramakrishnan"
+  "Jérôme Vouillon"
+]
+homepage: "https://ocaml.org"
+bug-reports: "https://github.com/ocaml/opam-repository/issues"
+dev-repo: "git+https://github.com/ocaml/ocaml.git#5.3"
+depends: [
+  "ocaml" {= version}
+  "flexdll-windows"
+  "conf-gcc-windows64"
+  "ocamlfind"
+]
+setenv: [
+  [PATH =+ "%{flexdll-windows:lib}%"]
+]
+build-env: [
+  [PATH =+ "%{flexdll-windows:lib}%"]
+]
+substs: [
+  "windows.conf"
+]
+build: [
+  [ "./configure"
+    "--target=%{conf-gcc-windows64:host}%"
+    "--prefix=%{prefix}%/windows-sysroot"
+    "--without-flexdll"
+    "--without-zstd"
+    "--enable-systhreads"
+    "CC=%{conf-gcc-windows64:prefix}%gcc"
+    "DIRECT_LD=%{conf-gcc-windows64:prefix}%ld"
+    "-C"
+    "--with-afl" {ocaml-option-afl:installed}
+    "--disable-flat-float-array" {ocaml-option-no-flat-float-array:installed}
+    "--enable-flambda" {ocaml-option-flambda:installed}
+    "--enable-frame-pointers" {ocaml-option-fp:installed}
+    "--enable-tsan" {ocaml-option-tsan:installed}
+    "--disable-warn-error"
+  ]
+  [make "-j%{jobs}%" "crossopt"]
+]
+install: [
+  [make "installcross"]
+  [ "ln" "-s" "ocaml.exe" "%{prefix}%/windows-sysroot/bin/ocaml" ]
+]
+url {
+  src: "https://github.com/ocaml/ocaml/releases/download/5.3.0/ocaml-5.3.0.tar.gz"
+  checksum: "sha256=22c1dd9de21bf43b62d1909041fb5fad648905227bf69550a6a6bef31e654f38"
+}
+patches: ["ocross-squashed.patch"]
+depopts: [
+  "ocaml-option-afl"
+  "ocaml-option-no-flat-float-array"
+  "ocaml-option-flambda"
+  "ocaml-option-fp"
+  "ocaml-option-tsan"
+]
+extra-files: [
+  ["windows.conf.in" "sha256=f56062c6ff2320eb70743c3bd5b4495c1e63dc9ece7ddcb408ce4a47b0eb2b7c"]
+  ["ocaml-windows64.install" "sha256=d55b4e322b06f0124aa6fa209de728e2b3b8786f5569c135b1ec224f04922788"]
+]
+extra-source "ocross-squashed.patch" {
+  src:
+    "https://github.com/shym/ocaml/commit/1515ed9f7c8e2e7feb9864115b12040532a07230.patch"
+  checksum:
+    "sha256=709f9cdcff74a76d6884e43a3274799e509a980456555f15c7b1002b8392ff55"
+}
