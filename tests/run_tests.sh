@@ -5,23 +5,15 @@
 TEST_PWD=$(cd `dirname $0` && pwd)
 BASE_PWD=$(cd ${TEST_PWD}/.. && pwd)
 
-if [ -z "${SYSTEM_TYPE}" ]; then
-  SYSTEM_TYPE="x64"
-fi
-
 if [ -z "${OCAML_VERSION}" ]; then
   OCAML_VERSION=4.14.1
 fi
 
  COMPILER="${OCAML_VERSION}"
 
-if [ "${SYSTEM_TYPE}" = "x64" ]; then
-  IMAGE="dockcross/windows-static-x64"
-else
-  IMAGE="dockcross/windows-static-x86"
-fi
+ IMAGE="dockcross/windows-static-x64"
 
-BASE_IMAGE="ghcr.io/ocaml-cross/windows-${SYSTEM_TYPE}-base:${OCAML_VERSION}"
+BASE_IMAGE="ghcr.io/ocaml-cross/windows-x64-base:${OCAML_VERSION}"
 
 if [ -n "${BUILD_BASE}" ]; then
   printf "Building ${BASE_IMAGE}.. "
@@ -29,7 +21,6 @@ if [ -n "${BUILD_BASE}" ]; then
   DOCKER_CMD="docker build -f ${TEST_PWD}/Dockerfile.base \
                            --build-arg COMPILER=\"${COMPILER}\" \
                            --build-arg IMAGE=\"${IMAGE}\" \
-                           --build-arg SYSTEM=\"${SYSTEM_TYPE}\" \
                            -t \"${BASE_IMAGE}\" ${BASE_PWD}"
 
   if [ -n "${VERBOSE}" ]; then
@@ -51,7 +42,7 @@ SKIPPED="ocaml-windows32.${OCAML_VERSION} ocaml-windows64.${OCAML_VERSION} ocaml
 # these packages just fail
 SKIPPED="${SKIPPED} lwt-zmq-windows.2.1.0 zmq-windows.4.0-7"
 
-PRETEST_IMAGE="ocamlcross/windows-${SYSTEM_TYPE}-pretest:${OCAML_VERSION}"
+PRETEST_IMAGE="ocamlcross/windows-x64-pretest:${OCAML_VERSION}"
 
 if [ -z "${OUTPUT_ONLY}" ]; then
   printf "Building ${PRETEST_IMAGE}.."
@@ -87,7 +78,7 @@ build_package() {
     if [ -n "${OUTPUT_ONLY}" ]; then
       echo "${PACKAGE}"
     else
-      SYSTEM_TYPE="${SYSTEM_TYPE}" OCAML_VERSION="${OCAML_VERSION}" ${TEST_PWD}/run_test.sh "${PACKAGE}"
+      OCAML_VERSION="${OCAML_VERSION}" ${TEST_PWD}/run_test.sh "${PACKAGE}"
 
       if [ "$?" -ne "0" ]; then
         exit 128
