@@ -45,6 +45,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Build package
+        # Do not recompile compilers here
+        if: ${{ ! startsWith(matrix.package,'ocaml-windows') }}
         env:
           PKG_CONFIG_PATH: ${{ matrix.arch == 'x64' && '/usr/src/mxe/usr/x86_64-w64-mingw32.static/lib/pkgconfig/' || '/usr/src/mxe/usr/i686-w64-mingw32.static/lib/pkgconfig/' }}
           TOOLPREF64: /usr/src/mxe/usr/bin/x86_64-w64-mingw32.static-
