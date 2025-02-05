@@ -58,7 +58,7 @@ url {
   src: "https://github.com/ocaml/ocaml/releases/download/5.3.0/ocaml-5.3.0.tar.gz"
   checksum: "sha256=22c1dd9de21bf43b62d1909041fb5fad648905227bf69550a6a6bef31e654f38"
 }
-patches: ["ocross-squashed.patch"]
+patches: ["patches/ocross-squashed.patch"]
 depopts: [
   "ocaml-option-afl"
   "ocaml-option-no-flat-float-array"
@@ -69,10 +69,5 @@ depopts: [
 extra-files: [
   ["windows.conf.in" "sha256=f56062c6ff2320eb70743c3bd5b4495c1e63dc9ece7ddcb408ce4a47b0eb2b7c"]
   ["ocaml-windows64.install" "sha256=d55b4e322b06f0124aa6fa209de728e2b3b8786f5569c135b1ec224f04922788"]
+  ["patches/ocross-squashed.patch" "sha256=709f9cdcff74a76d6884e43a3274799e509a980456555f15c7b1002b8392ff55"]
 ]
-extra-source "ocross-squashed.patch" {
-  src:
-    "https://github.com/shym/ocaml/commit/1515ed9f7c8e2e7feb9864115b12040532a07230.patch"
-  checksum:
-    "sha256=709f9cdcff74a76d6884e43a3274799e509a980456555f15c7b1002b8392ff55"
-}
