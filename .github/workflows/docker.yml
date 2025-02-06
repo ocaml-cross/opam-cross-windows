@@ -1,0 +1,41 @@
+name: Docker image deploy
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "packages/ocaml-windows*/**"
+      - ".github/workflows/docker.yml"
+  workflow_dispatch:
+
+
+env:
+  BASE_IMAGE: dockcross/windows-static-x64
+
+jobs:
+  docker-deploy:
+    strategy:
+      fail-fast: false
+      matrix:
+        ocaml_version: [4.14.1, 5.3.0] # synchronize with .github/workflows/ci.yml
+    name: Deploy ${{ matrix.ocaml_version }} image
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Docker Builder
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push base image
+        run: |
+          docker build -t ghcr.io/ocaml-cross/windows-x64-base:${{ matrix.ocaml_version }} -f tests/Dockerfile.base . \
+            --build-arg IMAGE=${{env.BASE_IMAGE}} --build-arg SYSTEM=x64 --build-arg COMPILER=${{ matrix.ocaml_version }}
+          docker push ghcr.io/ocaml-cross/windows-x64-base:${{ matrix.ocaml_version }}
