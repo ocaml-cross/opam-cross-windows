@@ -21,7 +21,7 @@ else
   IMAGE="dockcross/windows-static-x86"
 fi
 
-BASE_IMAGE="ocamlcross/windows-${SYSTEM_TYPE}-base:${OCAML_VERSION}"
+BASE_IMAGE="ghcr.io/ocaml-cross/windows-${SYSTEM_TYPE}-base:${OCAML_VERSION}"
 
 if [ -n "${BUILD_BASE}" ]; then
   printf "Building ${BASE_IMAGE}.. "
