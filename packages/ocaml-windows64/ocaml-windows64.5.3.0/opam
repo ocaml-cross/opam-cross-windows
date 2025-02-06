@@ -53,6 +53,7 @@ build: [
 install: [
   [make "installcross"]
   [ "ln" "-s" "ocaml.exe" "%{prefix}%/windows-sysroot/bin/ocaml" ]
+  ["/bin/sh" "./install.sh" "%{prefix}%"]
 ]
 url {
   src: "https://github.com/ocaml/ocaml/releases/download/5.3.0/ocaml-5.3.0.tar.gz"
@@ -70,4 +71,5 @@ extra-files: [
   ["windows.conf.in" "sha256=f56062c6ff2320eb70743c3bd5b4495c1e63dc9ece7ddcb408ce4a47b0eb2b7c"]
   ["ocaml-windows64.install" "sha256=d55b4e322b06f0124aa6fa209de728e2b3b8786f5569c135b1ec224f04922788"]
   ["patches/ocross-squashed.patch" "sha256=709f9cdcff74a76d6884e43a3274799e509a980456555f15c7b1002b8392ff55"]
+  ["install.sh" "md5=313889260b26e911ce10b08ca8a3c782"]
 ]
