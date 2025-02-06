@@ -19,6 +19,7 @@ patches: [
 ]
 substs: [
   "Makefile.config"
+  "gen_META.sh"
 ]
 depends: [
   "ocaml-windows" {>= "4.00.0"}
@@ -26,6 +27,7 @@ depends: [
 ]
 depopts: ["graphics"]
 build: [
+  ["sh" "gen_META.sh"]
   ["env" "OCAMLFIND_TOOLCHAIN=windows" make "all"]
   ["env" "OCAMLFIND_TOOLCHAIN=windows" make "opt"] {ocaml:native}
 ]
@@ -34,7 +36,8 @@ install: [
 ]
 extra-files: [
   ["patches/use-host-ocamlfind.patch" "md5=3d2b8e64f8cd4f0aad9af2d667da43b3"]
-  ["Makefile.config.in" "md5=361631c295fc31df6a163b0fdf78df0e"]
+  ["Makefile.config.in" "md5=af3b53ced7b0be94faaa22d196e9b662"]
+  ["gen_META.sh.in" "md5=4e77091f9b51f404dbb677c64aec149e"]
 ]
 dev-repo: "git+https://github.com/ocaml/ocamlfind.git"
 url {
