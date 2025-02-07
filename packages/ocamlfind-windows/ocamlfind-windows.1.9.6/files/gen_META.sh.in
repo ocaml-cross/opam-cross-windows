@@ -1,0 +1,9 @@
+#!/bin/sh
+
+for part in `cd src; echo *`; do
+    [ -f "src/$part/META.in" ] && \
+        sed -e "s/@VERSION@/%{version}%/g" \
+	    -e "s/@REQUIRES@//g" \
+	    "src/$part/META.in" > "src/$part/META" \
+	    || true
+done
