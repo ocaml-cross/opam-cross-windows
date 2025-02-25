@@ -3,21 +3,13 @@
 TEST_PWD=$(cd `dirname $0` && pwd)
 PACKAGE=$1
 
-if [ -z "${SYSTEM_TYPE}" ]; then
-  SYSTEM_TYPE="x64"
-fi
-
-if [ "${SYSTEM_TYPE}" = "x64" ]; then
-  PKG_CONFIG_PATH="/usr/src/mxe/usr/x86_64-w64-mingw32.static/lib/pkgconfig/"
-else
-  PKG_CONFIG_PATH="/usr/src/mxe/usr/i686-w64-mingw32.static/lib/pkgconfig/"
-fi
+PKG_CONFIG_PATH="/usr/src/mxe/usr/x86_64-w64-mingw32.static/lib/pkgconfig/"
 
 if [ -z "${OCAML_VERSION}" ]; then
   OCAML_VERSION="4.14.0"
 fi
 
-IMAGE="ocamlcross/windows-${SYSTEM_TYPE}-pretest:${OCAML_VERSION}"
+IMAGE="ocamlcross/windows-x64-pretest:${OCAML_VERSION}"
 
 printf "Building ${PACKAGE} using ${IMAGE}.. "
 

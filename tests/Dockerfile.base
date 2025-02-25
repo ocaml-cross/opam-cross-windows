@@ -3,7 +3,6 @@ FROM $IMAGE AS base
 MAINTAINER Romain Beauxis <toots@rastageeks.org>
 
 ARG COMPILER
-ARG SYSTEM
 
 RUN (apt-get update || true) && \
       apt-get install -y --force-yes gawk aspcud binutils automake lzip && \
@@ -35,17 +34,10 @@ WORKDIR /home/opam/opam-cross-windows
 
 RUN opam repository add windows /home/opam/opam-cross-windows
 
-RUN if [ "$SYSTEM" = "x64" ]; then \
-      export TOOLPREF64=/usr/src/mxe/usr/bin/x86_64-w64-mingw32.static- && \
-      eval $(opam env) && \
-      opam install -y -v ocaml-windows ocaml-windows64; \
-    fi
-
-RUN if [ "$SYSTEM" = "x86" ]; then \
-      export TOOLPREF32=/usr/src/mxe/usr/bin/i686-w64-mingw32.static- && \
-      eval $(opam env) && \
-      opam install -y ocaml-windows ocaml-windows32; \
-    fi
+RUN export TOOLPREF64=/usr/src/mxe/usr/bin/x86_64-w64-mingw32.static- && \
+    eval $(opam env) && \
+    opam install -y -v ocaml-windows ocaml-windows64 && \
+    opam clean
 
 FROM $IMAGE
 COPY --from=base / /
