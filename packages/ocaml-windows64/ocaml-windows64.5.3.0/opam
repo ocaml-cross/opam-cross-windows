@@ -40,6 +40,7 @@ build: [
     "--enable-systhreads"
     "CC=%{conf-gcc-windows64:prefix}%gcc"
     "DIRECT_LD=%{conf-gcc-windows64:prefix}%ld"
+    "LD=%{conf-gcc-windows64:prefix}%ld"
     "-C"
     "--with-afl" {ocaml-option-afl:installed}
     "--disable-flat-float-array" {ocaml-option-no-flat-float-array:installed}
