@@ -59,6 +59,7 @@ jobs:
             cd /usr/src/mxe/ && cat /home/opam/mxe-deps | xargs make
           fi
           eval $(sudo -u opam opam env)
+          unset CC CPP CXX AR
           sudo -u opam opam reinstall --verbose -y ${{ matrix.package }} ocaml-windows.${{ matrix.ocaml_version }}
       - name: Export revdeps
         id: revdeps
@@ -135,4 +136,5 @@ jobs:
             cd /usr/src/mxe/ && cat /home/opam/mxe-deps | xargs make
           fi
           eval $(sudo -u opam opam env)
+          unset CC CPP CXX AR
           sudo -u opam opam reinstall --verbose -y ${{ matrix.package }} ocaml-windows.${{ matrix.ocaml_version }}
