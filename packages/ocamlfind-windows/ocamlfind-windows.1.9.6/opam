@@ -37,7 +37,7 @@ install: [
 extra-files: [
   ["patches/use-host-ocamlfind.patch" "md5=3d2b8e64f8cd4f0aad9af2d667da43b3"]
   ["Makefile.config.in" "md5=af3b53ced7b0be94faaa22d196e9b662"]
-  ["gen_META.sh.in" "md5=4e77091f9b51f404dbb677c64aec149e"]
+  ["gen_META.sh.in" "md5=1f083e40cef39cc08e4743f165db2f59"]
 ]
 dev-repo: "git+https://github.com/ocaml/ocamlfind.git"
 url {
