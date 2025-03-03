@@ -21,7 +21,6 @@ if [ -n "${BUILD_BASE}" ]; then
   DOCKER_CMD="docker build -f ${TEST_PWD}/Dockerfile.base \
                            --build-arg COMPILER=\"${COMPILER}\" \
                            --build-arg IMAGE=\"${IMAGE}\" \
-                           --build-arg SYSTEM=\"${SYSTEM_TYPE}\" \
                            -t \"${BASE_IMAGE}\" ${BASE_PWD}"
 
   if [ -n "${VERBOSE}" ]; then

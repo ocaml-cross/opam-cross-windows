@@ -1,5 +1,5 @@
 ARG IMAGE
-FROM $IMAGE
+FROM $IMAGE AS base
 MAINTAINER Romain Beauxis <toots@rastageeks.org>
 
 RUN (apt-get update || true) && \
@@ -30,19 +30,13 @@ RUN opam init --auto --compiler=$COMPILER --disable-sandboxing
 
 RUN opam repository add windows /home/opam/opam-cross-windows
 
-ARG SYSTEM
+RUN export TOOLPREF64=/usr/src/mxe/usr/bin/x86_64-w64-mingw32.static- && \
+    eval $(opam env) && \
+    opam install -y -v ocaml-windows ocaml-windows64
 
-RUN if [ "$SYSTEM" = "x64" ]; then \
-      export TOOLPREF64=/usr/src/mxe/usr/bin/x86_64-w64-mingw32.static- && \
-      eval $(opam env) && \
-      opam install -y -v ocaml-windows ocaml-windows64; \
-    fi
-
-RUN if [ "$SYSTEM" = "x86" ]; then \
-      export TOOLPREF32=/usr/src/mxe/usr/bin/i686-w64-mingw32.static- && \
-      eval $(opam env) && \
-      opam install -y ocaml-windows ocaml-windows32; \
-    fi
-
-FROM $IMAGE
+FROM scratch
+ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/src/mxe/usr/bin \
+    WINEARCH=win64 \
+    CMAKE_TOOLCHAIN_FILE=/usr/src/mxe/usr/x86_64-w64-mingw32.static/share/cmake/mxe-conf.cmake \
+    CROSS_TRIPLE=x86_64-w64-mingw32.static
 COPY --from=base / /

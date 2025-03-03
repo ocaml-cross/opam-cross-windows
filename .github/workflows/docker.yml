@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - "packages/ocaml-windows*/**"
+      - "tests/Dockerfile.base"
       - ".github/workflows/docker.yml"
   workflow_dispatch:
 
