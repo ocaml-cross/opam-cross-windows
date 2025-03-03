@@ -46,6 +46,3 @@ RUN if [ "$SYSTEM" = "x86" ]; then \
       eval $(opam env) && \
       opam install -y ocaml-windows ocaml-windows32; \
     fi
-
-FROM $IMAGE
-COPY --from=base / /
