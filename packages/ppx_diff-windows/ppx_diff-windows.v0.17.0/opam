@@ -13,6 +13,7 @@ depends: [
   "ocaml-windows"         {>= "5.1.0"}
   "base"          {>= "v0.17" & < "v0.18"}
   "base-windows"          {>= "v0.17" & < "v0.18"}
+  "gel"           {>= "v0.17" & < "v0.18"}
   "gel-windows"           {>= "v0.17" & < "v0.18"}
   "ppx_compare"   {>= "v0.17" & < "v0.18"}
   "ppx_compare-windows"   {>= "v0.17" & < "v0.18"}

@@ -16,9 +16,9 @@ fi
  COMPILER="${OCAML_VERSION}"
 
 if [ "${SYSTEM_TYPE}" = "x64" ]; then
-  IMAGE="dockcross/windows-static-x64"
+  IMAGE="docker.io/dockcross/windows-static-x64"
 else
-  IMAGE="dockcross/windows-static-x86"
+  IMAGE="docker.io/dockcross/windows-static-x86"
 fi
 
 BASE_IMAGE="ghcr.io/ocaml-cross/windows-${SYSTEM_TYPE}-base:${OCAML_VERSION}"

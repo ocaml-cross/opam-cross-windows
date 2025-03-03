@@ -13,6 +13,7 @@ depends: [
   "ocaml-windows"          {>= "5.1.0"}
   "base"           {>= "v0.17" & < "v0.18"}
   "base-windows"           {>= "v0.17" & < "v0.18"}
+  "capitalization" {>= "v0.17" & < "v0.18"}
   "capitalization-windows" {>= "v0.17" & < "v0.18"}
   "ppx_let"        {>= "v0.17" & < "v0.18"}
   "ppx_let-windows"        {>= "v0.17" & < "v0.18"}
