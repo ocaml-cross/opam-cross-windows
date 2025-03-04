@@ -36,9 +36,9 @@ jobs:
       matrix:
         package: ${{ fromJson(needs.build_details.outputs.packages) }}
         # ocaml compiler 4.14.1 does not have an option to build in 32 bit mode anymore.
-        ocaml_version: [4.14.1, 5.3.0]
+        ocaml_version: [4.14.1]
     container:
-      image: ghcr.io/ocaml-cross/windows-x64-base:${{ matrix.ocaml_version }}
+      image: ocamlcross/windows-x64-base:${{ matrix.ocaml_version }}-scratch
       options: --user root
     steps:
       - name: Checkout code
