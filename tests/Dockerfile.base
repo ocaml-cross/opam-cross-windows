@@ -2,8 +2,6 @@ ARG IMAGE
 FROM $IMAGE AS base
 MAINTAINER Romain Beauxis <toots@rastageeks.org>
 
-ARG COMPILER
-
 RUN (apt-get update || true) && \
       apt-get install -y --force-yes gawk aspcud binutils automake lzip && \
       apt-get -y --force-yes autoremove && apt-get -y --force-yes clean
@@ -13,14 +11,6 @@ RUN cd /usr/src/mxe && git fetch && git checkout master && git pull && make
 RUN wget https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh -O /tmp/install.sh && echo /usr/local/bin | sh /tmp/install.sh
 
 RUN useradd -g staff --create-home opam
-
-USER opam
-
-ENV CC="" CPP="" CXX="" LD="" AS="" AR=""
-
-RUN opam init --auto --compiler=$COMPILER --disable-sandboxing
-
-USER root
 
 ADD packages/ /home/opam/opam-cross-windows/packages
 
@@ -32,12 +22,21 @@ USER opam
 
 WORKDIR /home/opam/opam-cross-windows
 
+ENV CC="" CPP="" CXX="" LD="" AS="" AR=""
+
+ARG COMPILER
+
+RUN opam init --auto --compiler=$COMPILER --disable-sandboxing
+
 RUN opam repository add windows /home/opam/opam-cross-windows
 
 RUN export TOOLPREF64=/usr/src/mxe/usr/bin/x86_64-w64-mingw32.static- && \
     eval $(opam env) && \
-    opam install -y -v ocaml-windows ocaml-windows64 && \
-    opam clean
+    opam install -y -v ocaml-windows ocaml-windows64
 
-FROM $IMAGE
+FROM scratch
+ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/src/mxe/usr/bin \
+    WINEARCH=win64 \
+    CMAKE_TOOLCHAIN_FILE=/usr/src/mxe/usr/x86_64-w64-mingw32.static/share/cmake/mxe-conf.cmake \
+    CROSS_TRIPLE=x86_64-w64-mingw32.static
 COPY --from=base / /

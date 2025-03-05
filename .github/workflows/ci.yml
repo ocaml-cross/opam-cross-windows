@@ -22,7 +22,7 @@ jobs:
         id: packages
         run: |
           PACKAGES_TO_RUN=$(OUTPUT_ONLY=true ./tests/run_tests.sh | while read i; do echo "\\\"$i\\\""; done | xargs | sed -e 's# #,#g' | tr -d '\n')
-          SHOULD_RUN=$(if [ -n "${PACKAGES_TO_RUN}"]; then echo "false"; else echo "true"; fi)
+          SHOULD_RUN=$(if [ -n "${PACKAGES_TO_RUN}" ]; then echo "true"; else echo "false"; fi)
           echo "Packages to run: ${PACKAGES_TO_RUN}"
           echo "packages=[${PACKAGES_TO_RUN}]" >> "${GITHUB_OUTPUT}"
           echo "should_run=${SHOULD_RUN}" >> "${GITHUB_OUTPUT}"
