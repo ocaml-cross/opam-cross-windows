@@ -86,25 +86,22 @@ jobs:
       revdeps: ${{ steps.revdeps.outputs.revdeps }}
       has_revdeps: ${{ steps.revdeps.outputs.has_revdeps }}
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
       - name: Collect revdeps
         uses: cloudposse/github-action-matrix-outputs-read@main
         id: collect_revdeps
         with:
           matrix-step-name: build_package
+      - name: Install exporter deps
+        run: |
+          cd ./.github/export_revdeps
+          npm install
       - name: Export all revdeps
-        uses: satackey/action-js-inline@v0.0.2
+        uses: ./.github/export_revdeps
         id: revdeps
         with:
-          script: |
-            const core = require("@actions/core")
-            const { revdeps } = JSON.parse('${{ steps.collect_revdeps.outputs.result }}')
-            const resultHash = Object.keys(revdeps).reduce((result, key) =>
-              revdeps[key].reduce((result, key) =>
-                ({...result, [key]: true}), result), {});
-            const result = Object.keys(resultHash);
-            console.log(`Collected revdeps: ${result}`);
-            core.setOutput("revdeps", JSON.stringify(result));
-            core.setOutput("has_revdeps", result.length !== 0 ? "true" : "false");
+          collected_revdeps: ${{ steps.collect_revdeps.outputs.result }}
 
   build_revdeps:
     runs-on: ubuntu-latest

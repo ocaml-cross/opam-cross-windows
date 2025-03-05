@@ -9,8 +9,8 @@ tags: [ "xml" "codec" "org:erratique" ]
 license: "ISC"
 depends: [
   "ocaml-windows" {>= "4.05.0"}
-  "ocamlfind" {build}
   "ocamlbuild" {build}
+  "ocamlfind" {build}
   "topkg" {build & >= "1.0.3"}
   "opam-installer" {build}
   "topkg" {build & >= "0.9.0"}

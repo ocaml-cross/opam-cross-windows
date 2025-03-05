@@ -3,3 +3,4 @@ archives
 *.sw*
 .tested
 depot.json
+node_modules/
