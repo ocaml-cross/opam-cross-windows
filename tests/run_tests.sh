@@ -4,16 +4,14 @@
 
 TEST_PWD=$(cd `dirname $0` && pwd)
 BASE_PWD=$(cd ${TEST_PWD}/.. && pwd)
-SYSTEM_TYPE="x64"
-IMAGE="docker.io/dockcross/windows-static-x64"
 
 if [ -z "${OCAML_VERSION}" ]; then
-  OCAML_VERSION=4.14.1
+  OCAML_VERSION=5.3.0
 fi
 
 COMPILER="${OCAML_VERSION}"
-
-BASE_IMAGE="ghcr.io/ocaml-cross/windows-${SYSTEM_TYPE}-base:${OCAML_VERSION}"
+IMAGE="dockcross/windows-static-x64"
+BASE_IMAGE="ghcr.io/ocaml-cross/windows-x64-base:${OCAML_VERSION}"
 
 if [ -n "${BUILD_BASE}" ]; then
   printf "Building ${BASE_IMAGE}.. "
@@ -42,7 +40,7 @@ SKIPPED="ocaml-windows32.${OCAML_VERSION} ocaml-windows64.${OCAML_VERSION} ocaml
 # these packages just fail
 SKIPPED="${SKIPPED} lwt-zmq-windows.2.1.0 zmq-windows.4.0-7"
 
-PRETEST_IMAGE="ocamlcross/windows-${SYSTEM_TYPE}-pretest:${OCAML_VERSION}"
+PRETEST_IMAGE="ocamlcross/windows-x64-pretest:${OCAML_VERSION}"
 
 if [ -z "${OUTPUT_ONLY}" ]; then
   printf "Building ${PRETEST_IMAGE}.."
@@ -78,7 +76,7 @@ build_package() {
     if [ -n "${OUTPUT_ONLY}" ]; then
       echo "${PACKAGE}"
     else
-      SYSTEM_TYPE="${SYSTEM_TYPE}" OCAML_VERSION="${OCAML_VERSION}" ${TEST_PWD}/run_test.sh "${PACKAGE}"
+      OCAML_VERSION="${OCAML_VERSION}" ${TEST_PWD}/run_test.sh "${PACKAGE}"
 
       if [ "$?" -ne "0" ]; then
         exit 128

@@ -1,18 +1,18 @@
 opam-cross-windows
 ==================
 
-This repository contains an up-to-date Windows toolchain featuring OCaml `4.07.0`, `4.08.0`, `4.12.0`, `4.14.0` and `5.1.1`, as well as some commonly used packages.
+This repository contains an up-to-date Windows toolchain featuring OCaml `4.07.0`, `4.08.0`, `4.12.0`, `4.14.1`, `5.1.1` and `5.3.0`, as well as some commonly used packages.
 
 The supported build systems are 32-bit and 64-bit x86 Linux and `arm64` macos (Apple Silicon). The supported target systems are 32-bit and 64-bit x86 Windows.
 
-Only 64-bit build and target are supported for OCaml `5.1.1`.
+Only 64-bit build and target are supported now on (from OCaml `5.1.1`.
 
 If you need support for other platforms or versions, please [open an issue](https://github.com/ocaml-cross/opam-cross-windows/issues).
 
 Prerequisites
 -------------
 
-A C cross-compiler targeting the appropriate Windows platform must be installed. On Debian derivatives they are provided in the `gcc-mingw-w64-i686` (for 32-bit x86 Windows targets) or `gcc-mingw-w64-x86-64` (for 64-bit x86 Windows targets) packages. Alternatively, the [MXE environment](http://mxe.cc) can be used.
+A C cross-compiler targeting the appropriate Windows platform must be installed. On Debian derivatives they are provided in the `gcc-mingw-w64-x86-64` packages (`gcc-mingw-w64-i686` for 32-bit x86 Windows targets). Alternatively, the [MXE environment](http://mxe.cc) can be used.
 
 Installation
 ------------
@@ -23,33 +23,36 @@ Add this repository to OPAM:
 
 The version of the regular compiler installed in your current `opam` switch must match the version of the cross-compiler:
 
-    opam switch 4.14.1
+    opam switch 5.3.0
     eval `opam config env`
 
-If desired, request the compiler to be built with [flambda][] optimizers:
+Before 5.3.0, if desired, request the compiler to be built with [flambda][] optimizers:
 
     opam install conf-flambda-windows
 
 [flambda]: https://caml.inria.fr/pub/docs/manual-ocaml/flambda.html
 
-If you are compiling for 32bit windows on a 64bit `x86_64` architecture, you will also need to install `ocaml-option-32bit` to make sure 
-that your ocaml compiler is configured to output 32bit binary objects. This does not seem to be required on `arm64` macos (Apple Silicon).
+From 5.3.0, `ocaml-option-*` packages are taken into account by the cross-compiler (so simply install `ocaml-option-flambda` to get [flambda][]).
+
+Legagy: If you are compiling for 32bit windows on a 64bit `x86_64`
+architecture, you will also need to install `ocaml-option-32bit` to
+make sure that your ocaml compiler is configured to output 32bit
+binary objects. This does not seem to be required on `arm64` macos
+(Apple Silicon).
 
 Install the compiler:
 
     opam install ocaml-windows
 
-The compiler version is selected automatically based on the current OPAM switch;
-either ocaml-windows32 or ocaml-windows64 can be installed in any single one.
+The compiler version is selected automatically based on the current OPAM switch.
 
 Alternatively, specify the path to the C toolchain explicitly:
 
-    TOOLPREF32=~/mxe/usr/bin/i686-w64-mingw32.static- opam install ocaml-windows
     TOOLPREF64=~/mxe/usr/bin/x86_64-w64-mingw32.static- opam install ocaml-windows
 
 The options have the following meaning:
 
-  * `TOOLPREF32` and `TOOLPREF64` specify the compiler path prefix. The tools named `${TOOLPREF*}gcc`, `${TOOLPREF*}as`, `${TOOLPREF*}ar`, `${TOOLPREF*}ranlib` and `${TOOLPREF*}ld` must be possible to locate via `PATH`.
+  * `TOOLPREF64` specify the compiler path prefix. The tools named `${TOOLPREF*}gcc`, `${TOOLPREF*}as`, `${TOOLPREF*}ar`, `${TOOLPREF*}ranlib` and `${TOOLPREF*}ld` must be possible to locate via `PATH`.
 
     The values above are suitable for use with the [MXE environment](http://mxe.cc) located in `~/mxe` after running `make gcc`.
 
