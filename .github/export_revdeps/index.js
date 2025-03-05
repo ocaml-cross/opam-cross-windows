@@ -2,7 +2,7 @@ const core = require("@actions/core");
 
 const { revdeps } = JSON.parse(core.getInput("collected_revdeps"));
 
-const resultHash = Object.keys(revdeps).reduce(
+const resultHash = Object.keys(revdeps || {}).reduce(
   (result, key) =>
     revdeps[key].reduce((result, key) => ({ ...result, [key]: true }), result),
   {},
