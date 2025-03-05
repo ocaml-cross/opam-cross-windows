@@ -4,22 +4,14 @@
 
 TEST_PWD=$(cd `dirname $0` && pwd)
 BASE_PWD=$(cd ${TEST_PWD}/.. && pwd)
-
-if [ -z "${SYSTEM_TYPE}" ]; then
-  SYSTEM_TYPE="x64"
-fi
+SYSTEM_TYPE="x64"
+IMAGE="docker.io/dockcross/windows-static-x64"
 
 if [ -z "${OCAML_VERSION}" ]; then
   OCAML_VERSION=4.14.1
 fi
 
- COMPILER="${OCAML_VERSION}"
-
-if [ "${SYSTEM_TYPE}" = "x64" ]; then
-  IMAGE="dockcross/windows-static-x64"
-else
-  IMAGE="dockcross/windows-static-x86"
-fi
+COMPILER="${OCAML_VERSION}"
 
 BASE_IMAGE="ghcr.io/ocaml-cross/windows-${SYSTEM_TYPE}-base:${OCAML_VERSION}"
 
