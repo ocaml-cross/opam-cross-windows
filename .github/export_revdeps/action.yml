@@ -1,0 +1,13 @@
+name: Collect revdeps
+inputs:
+  collected_revdeps:
+    description: JSON encoded collection of exported revdeps.
+    required: true
+outputs:
+  revdeps:
+    description: JSON encoded array of revdeps
+  has_revdeps:
+    description: true if the action returned any revdep.
+runs:
+  using: node20
+  main: index.js
