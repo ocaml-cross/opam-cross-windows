@@ -9,10 +9,8 @@ if [ -z "${OCAML_VERSION}" ]; then
   OCAML_VERSION=5.3.0
 fi
 
- COMPILER="${OCAML_VERSION}"
-
- IMAGE="dockcross/windows-static-x64"
-
+COMPILER="${OCAML_VERSION}"
+IMAGE="dockcross/windows-static-x64"
 BASE_IMAGE="ghcr.io/ocaml-cross/windows-x64-base:${OCAML_VERSION}"
 
 if [ -n "${BUILD_BASE}" ]; then
