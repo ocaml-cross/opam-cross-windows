@@ -1,0 +1,59 @@
+opam-version: "2.0"
+synopsis: "Unicode character properties for OCaml"
+description: """\
+Uucp is an OCaml library providing efficient access to a selection of
+character properties of the [Unicode character database].
+
+Uucp is distributed under the ISC license. It has no dependency.
+
+Home page: <http://erratique.ch/software/uucp>
+
+[Unicode character database]: http://www.unicode.org/reports/tr44/"""
+maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+authors: "The uucp programmers"
+license: "ISC"
+tags: ["unicode" "text" "character" "org:erratique"]
+homepage: "https://erratique.ch/software/uucp"
+doc: "https://erratique.ch/software/uucp/doc/"
+bug-reports: "https://github.com/dbuenzli/uucp/issues"
+depends: [
+  "ocaml-windows" {>= "4.14.0"}
+  "ocamlfind" {build}
+  "ocamlbuild" {build}
+  "opam-installer" {build}
+  "topkg" {build & >= "1.0.3"}
+  "uucd-windows" {with-test & dev & >= "16.0.0" & < "17.0.0"}
+  "uunf-windows" {with-test}
+]
+depopts: ["uunf-windows" "cmdliner-windows"]
+conflicts: [
+  "uunf-windows" {< "16.0.0" | >= "17.0.0"}
+  "cmdliner-windows" {< "1.1.0"}
+]
+build: [
+  "ocaml"
+  "pkg/pkg.ml"
+  "build"
+  "--toolchain"
+  "windows"
+  "--pkg-name"
+  "uucp"
+  "--dev-pkg"
+  "%{dev}%"
+  "--with-uunf"
+  "%{uunf-windows:installed}%"
+  "--with-cmdliner"
+  "%{cmdliner-windows:installed}%"
+]
+install: ["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "uucp.install"]
+remove: ["ocamlfind" "-toolchain" "windows" "remove" "uucp"]
+post-messages:
+  "If the build fails with \"ocamlopt.opt got signal and exited\", issue 'ulimit -s unlimited' and retry."
+    {failure & (arch = "ppc64" | arch = "arm64")}
+dev-repo: "git+https://erratique.ch/repos/uucp.git"
+url {
+  src: "https://erratique.ch/software/uucp/releases/uucp-16.0.0.tbz"
+  checksum:
+    "sha512=5c06d8cadb2b011b1e4ac52e14732044f6ab8e9c11e1184950ff8629b26bd173f1264247623a635b8aa4033e287bfe42d709994f19a3d79f7cbfd20158aa4992"
+}
+x-maintenance-intent: ["(latest)"]
