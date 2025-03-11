@@ -60,10 +60,6 @@ jobs:
           fi
           eval $(sudo -u opam opam env)
           sudo -u opam opam reinstall --verbose -y ${{ matrix.package }} ocaml-windows.${{ matrix.ocaml_version }}
-          # exit code 20 signals that the package is not installable
-          if [ "$?" = "20" ]; then
-            exit 0;
-          fi
       - name: Export revdeps
         id: revdeps
         run: |
@@ -137,7 +133,3 @@ jobs:
           fi
           eval $(sudo -u opam opam env)
           sudo -u opam opam reinstall --verbose -y ${{ matrix.package }} ocaml-windows.${{ matrix.ocaml_version }}
-          # exit code 20 signals that the package is not installable
-          if [ "$?" = "20" ]; then
-            exit 0;
-          fi
