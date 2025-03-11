@@ -1,5 +1,7 @@
 #!/bin/sh
 
+cat site-lib-src/bytes/META.in > site-lib-src/bytes/META
+
 for part in `cd src; echo *`; do
     [ -f "src/$part/META.in" ] && \
         sed -e "s/@VERSION@/%{version}%/g" \

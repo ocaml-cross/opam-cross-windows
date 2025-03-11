@@ -10,7 +10,7 @@ build: [
   ["dune" "build" "-p" "typerep" "-x" "windows" "-j" jobs]
 ]
 depends: [
-  "ocaml-windows" {>= "4.14.0"}
+  "ocaml-windows" {>= "4.14.0" & < "5.3"}
   "base-windows"  {>= "v0.16" & < "v0.17"}
   "dune"  {>= "2.0.0"}
 ]
