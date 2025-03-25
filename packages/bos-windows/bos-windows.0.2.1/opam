@@ -1,31 +1,35 @@
 opam-version: "2.0"
-maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
-authors: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
-homepage: "http://erratique.ch/software/bos"
-doc: "http://erratique.ch/software/bos/doc"
-dev-repo: "git+http://erratique.ch/repos/bos.git"
+synopsis: """Basic OS interaction for OCaml"""
+maintainer: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
+authors: ["The bos programmers"]
+homepage: "https://erratique.ch/software/bos"
+doc: "https://erratique.ch/software/bos/doc"
+dev-repo: "git+https://erratique.ch/repos/bos.git"
 bug-reports: "https://github.com/dbuenzli/bos/issues"
-tags: [ "os" "system" "cli" "command" "file" "path" "log" "unix" "org:erratique" ]
-license: "ISC"
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlbuild" {build}
-  "topkg" {build & >= "0.7.4"}
-  "rresult-windows"
-  "astring-windows"
-  "fpath-windows"
-  "fmt-windows" {>= "0.8.0"}
-  "logs-windows"
-  "ocaml-windows"
-  "opam-installer" {build}
-]
+license: ["ISC"]
+tags: ["os" "system" "cli" "command" "file" "path" "log" "unix"
+       "org:erratique"]
+depends: ["ocaml" {>= "4.08.0"}
+          "ocamlfind" {build}
+          "ocamlbuild" {build}
+          "topkg" {build & >= "1.0.3"}
+          "rresult-windows" {>= "0.7.0"}
+          "astring-windows"
+          "fpath-windows" {>= "0.7.3"}
+          "fmt-windows" {>= "0.8.10"}
+          "logs-windows"
+          "ocaml-windows"
+          "opam-installer" {build}
+  ]
 build: [[
   "ocaml" "pkg/pkg.ml" "build"
           "--toolchain" "windows"
           "--pinned" "%{pinned}%" ]]
 install: [["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "bos.install"]]
 remove: [["ocamlfind" "-toolchain" "windows" "remove" "bos"]]
-synopsis: "Basic OS interaction for OCaml"
+url {
+  src: "https://erratique.ch/software/bos/releases/bos-0.2.1.tbz"
+  checksum: "sha512=8daeb8a4c2dd1f2460f6274ada19f4f1b6ebe875ff83a938c93418ce0e6bdb74b8afc5c9a7d410c1c9df2dad030e4fa276b6ed2da580639484e8b5bc92610b1d"}
 description: """
 Bos provides support for basic and robust interaction with the
 operating system in OCaml. It has functions to access the process
@@ -44,7 +48,5 @@ distributed under the ISC license.
 [fpath]: http://erratique.ch/software/fpath
 [logs]: http://erratique.ch/software/logs"""
 flags: light-uninstall
-url {
-  src: "http://erratique.ch/software/bos/releases/bos-0.2.0.tbz"
-  checksum: "md5=aeae7447567db459c856ee41b5a66fd2"
-}
+
+x-maintenance-intent: ["(latest)"]
