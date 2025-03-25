@@ -36,6 +36,7 @@ depends: [
 ]
 build: ["env" "PTIME_OS=Win32" "ocaml" "pkg/pkg.ml" "build" "--toolchain" "windows"]
 install: [["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "ptime.install"]]
+remove: [["ocamlfind" "-toolchain" "windows" "remove" "ptime"]]
 flags: light-uninstall
 dev-repo: "git+https://erratique.ch/repos/ptime.git"
 url {
