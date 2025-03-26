@@ -11,6 +11,9 @@ depends: [
   "ocaml-windows" {>= "4.03.0"}
   "dune-configurator"
 ]
+build-env: [
+  [PKG_CONFIG = "%{conf-gcc-windows64:prefix}%pkg-config"]
+]
 build: [
   ["dune" "subst"] {dev}
   [
