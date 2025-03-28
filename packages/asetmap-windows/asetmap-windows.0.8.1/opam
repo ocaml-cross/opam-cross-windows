@@ -1,0 +1,31 @@
+opam-version: "2.0"
+maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+authors: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
+homepage: "http://erratique.ch/software/asetmap"
+doc: "http://dune-universe.github.io/asetmap"
+license: "ISC"
+dev-repo: "git+https://github.com/dune-universe/asetmap.git"
+bug-reports: "https://github.com/dbuenzli/asetmap/issues"
+tags: [ "org:erratique" "set" "map" "stdlib" ]
+depends: [
+  "dune" {build}
+  "ocaml-windows" {>= "4.01.0"}
+]
+synopsis: "Alternative, compatible, OCaml standard library Sets and Maps"
+description: """
+asetmap provides slightly tweaked OCaml standard library Set and Map
+functors. asetmap tries to maximize compatibility with the standard
+library. It essentially gets rid of `Not_found` exceptions and provide
+pretty-printers for the data types.
+
+asetmap has no dependency is distributed under the ISC license."""
+build: [[ "dune" "build" "-p" "asetmap" "-x" "windows" ]]
+url {
+  src:
+    "https://github.com/dune-universe/asetmap/releases/download/v0.8.1%2Bdune2/asetmap-0.8.1.dune2.tbz"
+  checksum: [
+    "sha256=3153ebdac79d2c8444e0b9c1d5fa1c8544dbd79507b5d74811a55bde59c228ba"
+    "sha512=1683bb62ba9570192a1d313e114cb44c1143c70118c94b363f3fcbc581d596896c2e6add911f0b70a2d245f6895745f9ecfc70559ef05882bb348562cf71d094"
+  ]
+}
+x-commit-hash: "dfe4502945bf5f8befe8847c080edfc97ce54df5"
