@@ -20,7 +20,6 @@ depends: [
   "ocamlfind"
   "ctypes" {>= "0.21.1"}
   "ctypes-windows" {>= "0.21.1"}
-  "ctypes-foreign" {>= "0.21.1"}
   "ctypes-foreign-windows" {>= "0.21.1"}
   "integers"
   "integers-windows"
