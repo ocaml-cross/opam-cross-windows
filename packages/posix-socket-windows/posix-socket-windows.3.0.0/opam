@@ -1,0 +1,39 @@
+opam-version: "2.0"
+synopsis: "Bindings for posix sockets"
+description:
+  "posix-socket provides the types and bindings of posix sockets APIs available on both unix and windows."
+maintainer: ["romain.beauxis@gmail.com"]
+authors: ["Romain Beauxis"]
+license: "MIT"
+homepage: "https://github.com/savonet/ocaml-posix"
+bug-reports: "https://github.com/savonet/ocaml-posix/issues"
+depends: [
+  "dune" {>= "2.9"}
+  "ocaml-windows" {>= "4.12"}
+  "ctypes"
+  "ctypes-windows"
+  "posix-base" {>= "2.2"}
+  "posix-base-windows" {>= "2.2"}
+]
+build: [
+  [
+    "dune"
+    "build"
+    "-p"
+    "posix-socket"
+    "-x"
+    "windows"
+    "-j"
+    jobs
+    "@install"
+  ]
+]
+dev-repo: "git+https://github.com/savonet/ocaml-posix.git"
+url {
+  src:
+    "https://github.com/savonet/ocaml-posix/archive/refs/tags/posix-socket.3.0.0.tar.gz"
+  checksum: [
+    "md5=640bc79494d30dfa547627c718024a5f"
+    "sha512=361a8a95a56cc27c9dd59336b8852148d7461146d3d6c4a894e7ef3aad25149f7284efbef6f90ea9189b7920ddc5a917e428e8f1b672073c66f17ebeb3a98bb3"
+  ]
+}
