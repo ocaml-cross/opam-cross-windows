@@ -23,7 +23,7 @@ depends: [
   "ctypes-foreign-windows" {>= "0.21.1"}
   "integers"
   "integers-windows"
-  "posix-socket-windows" {>= "2.1.0"}
+  "posix-socket-windows" {>= "2.1.0" & < "3.0.0"}
 ]
 build: [
   ["dune" "subst"] {dev}
