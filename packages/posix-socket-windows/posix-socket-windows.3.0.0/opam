@@ -33,7 +33,7 @@ url {
   src:
     "https://github.com/savonet/ocaml-posix/archive/refs/tags/posix-socket.3.0.0.tar.gz"
   checksum: [
-    "md5=296752ee68054b31a32f16e6bd35122f"
-    "sha512=eedb38093dea2081b219f9b2a16a9609ad4c635f575fa7920a937ad13f5637ed76bdd286b2fdd61448c2b2d432c30f72c492552057c05435a9b623e4665ad914"
+    "md5=ff577298fce21bcd5350a250dea61404"
+    "sha512=44f052e4c2a493e958cc0926fe5b5852d84d9ce14032872c197b6360abc3f8908a46fabde2f1af80d1a93e2a51559f2ef1f072bd58f853a236204feccf948a3f"
   ]
 }
