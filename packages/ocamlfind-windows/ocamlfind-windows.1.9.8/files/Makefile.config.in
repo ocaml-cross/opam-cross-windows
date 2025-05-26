@@ -26,3 +26,5 @@ OPAQUE=-opaque
 CHECK_BEFORE_INSTALL=0
 INSTALLFILE=install -c
 INSTALLDIR=install -d
+SH=sh
+CP=cp
