@@ -28,11 +28,11 @@ build: [
   ["env" "OCAMLFIND_TOOLCHAIN=windows" make "opt"] {ocaml:native}
 ]
 install: [
-  ["env" "OCAMLFIND_TOOLCHAIN=windows" "INSTALLDIR=mkdir -p" "INSTALLFILE=cp" make "install"]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" make "install"]
 ]
 extra-files: [
   ["patches/use-host-ocamlfind.patch" "md5=9eb73b859a3bd796f2eb98abba4fd89b"]
-  ["Makefile.config.in" "md5=2fe1b2e830f2c3da135aebad72b938a6"]
+  ["Makefile.config.in" "md5=341d7d81447468a605b5b2d106862ba6"]
   ["gen_META.sh.in" "md5=1f083e40cef39cc08e4743f165db2f59"]
 ]
 dev-repo: "git+https://github.com/ocaml/ocamlfind.git"
