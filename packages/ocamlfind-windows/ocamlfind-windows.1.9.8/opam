@@ -1,0 +1,46 @@
+opam-version: "2.0"
+synopsis: "A library manager for OCaml"
+description: """\
+Findlib is a library manager for OCaml. It provides a convention how
+to store libraries, and a file format ("META") to describe the
+properties of libraries. There is also a tool (ocamlfind) for
+interpreting the META files, so that it is very easy to use libraries
+in programs and scripts."""
+maintainer: "Thomas Gazagnaire <thomas@gazagnaire.org>"
+authors: "Gerd Stolpmann <gerd@gerd-stolpmann.de>"
+license: "MIT"
+homepage: "http://projects.camlcity.org/projects/findlib.html"
+bug-reports: "https://github.com/ocaml/ocamlfind/issues"
+patches: [
+  "patches/use-host-ocamlfind.patch"
+]
+substs: [
+  "Makefile.config"
+  "gen_META.sh"
+]
+depends: [
+  "ocaml-windows" {>= "4.00.0"}
+  "ocamlfind" {build}
+]
+build: [
+  ["sh" "gen_META.sh"]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" make "all"]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" make "opt"] {ocaml:native}
+]
+install: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" make "install"]
+]
+extra-files: [
+  ["patches/use-host-ocamlfind.patch" "md5=63f75d4950f512de45be4852ddbeb64f"]
+  ["Makefile.config.in" "md5=2e3ee8bf4657b6c56932f6d26c7f87be"]
+  ["gen_META.sh.in" "md5=1f083e40cef39cc08e4743f165db2f59"]
+]
+dev-repo: "git+https://github.com/ocaml/ocamlfind.git"
+url {
+  src:
+    "https://github.com/ocaml/ocamlfind/archive/refs/tags/findlib-1.9.8.tar.gz"
+  checksum: [
+    "md5=ca770e5806032a96131b670f6e07f146"
+    "sha512=8967986de2ab4ec5993f437b0a4206742adf37aa7a292a3bba0a04438d78539b84d001191e60b2d5bde98a695b38cba2593b7051f7749adbdb964a0df3c4b661"
+  ]
+}
