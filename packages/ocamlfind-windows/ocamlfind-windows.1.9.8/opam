@@ -31,7 +31,7 @@ install: [
   ["env" "OCAMLFIND_TOOLCHAIN=windows" make "install"]
 ]
 extra-files: [
-  ["patches/use-host-ocamlfind.patch" "md5=63f75d4950f512de45be4852ddbeb64f"]
+  ["patches/use-host-ocamlfind.patch" "md5=1077b2d4ec3ce40b297d7bac99142dd3"]
   ["Makefile.config.in" "md5=2e3ee8bf4657b6c56932f6d26c7f87be"]
   ["gen_META.sh.in" "md5=1f083e40cef39cc08e4743f165db2f59"]
 ]

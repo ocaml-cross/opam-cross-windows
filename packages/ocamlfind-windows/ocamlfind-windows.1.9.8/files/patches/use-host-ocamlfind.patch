@@ -2,6 +2,20 @@ diff --git a/src/findlib/Makefile b/src/findlib/Makefile
 index b2317c1..e99e412 100644
 --- a/src/findlib/Makefile
 +++ b/src/findlib/Makefile
+@@ -13,10 +13,10 @@ include $(TOP)/Makefile.config
+ NAME = findlib
+ 
+ # Need compiler-libs since ocaml-4.00
+-OCAMLC = ocamlc -I +compiler-libs
+-OCAMLOPT = ocamlopt -I +compiler-libs $(OCAMLOPT_G)
++OCAMLC = ocamlfind ocamlc -I +compiler-libs
++OCAMLOPT = ocamlfind ocamlopt -I +compiler-libs $(OCAMLOPT_G)
+ OCAMLOPT_SHARED = $(OCAMLOPT)
+-OCAMLDEP = ocamldep
++OCAMLDEP = ocamlfind ocamldep
+ OCAMLLEX = ocamllex
+ #CAMLP4O =  camlp4 pa_o.cmo pa_op.cmo pr_o.cmo --
+ #CAMLP4O =  camlp4 pa_o.cmo pa_op.cmo pr_dump.cmo --
 @@ -42,10 +42,10 @@ DYNLOAD_OBJECTS  = fl_dynload.cmo
  DYNLOAD_XOBJECTS = $(DYNLOAD_OBJECTS:.cmo=.cmx)
  
