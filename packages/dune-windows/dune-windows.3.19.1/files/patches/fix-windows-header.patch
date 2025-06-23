@@ -1,9 +1,16 @@
-commit ac15c297c93e48644ff507daa10aa723fbae937a
-Author: Romain Beauxis <toots@rastageeks.org>
-Date:   Mon Jun 23 21:58:42 2025 +0200
-
-    Lowercase.
-
+diff --git a/otherlibs/xdg/xdg_stubs.c b/otherlibs/xdg/xdg_stubs.c
+index b0984dcaa..5eed1bf0b 100644
+--- a/otherlibs/xdg/xdg_stubs.c
++++ b/otherlibs/xdg/xdg_stubs.c
+@@ -10,7 +10,7 @@
+ #undef _WIN32_WINNT
+ #define _WIN32_WINNT 0x0600
+ 
+-#include <Windows.h>
++#include <windows.h>
+ #include <Knownfolders.h>
+ #include <Shlobj.h>
+ 
 diff --git a/src/fswatch_win/fswatch_win_stubs.c b/src/fswatch_win/fswatch_win_stubs.c
 index 7cb248623..d226f9c20 100644
 --- a/src/fswatch_win/fswatch_win_stubs.c
@@ -16,4 +23,17 @@ index 7cb248623..d226f9c20 100644
 +#include <windows.h>
  
  #define FILE_NOTIFY_BUFFER_LENGTH ((sizeof(DWORD) * 4) * 1000)
+ 
+diff --git a/vendor/opam/src/core/custom_opamStubs.c b/vendor/opam/src/core/custom_opamStubs.c
+index e459dcefb..1e0dc9230 100644
+--- a/vendor/opam/src/core/custom_opamStubs.c
++++ b/vendor/opam/src/core/custom_opamStubs.c
+@@ -6,7 +6,7 @@
+ #include <caml/memory.h>
+ #include <caml/osdeps.h>
+ #include <caml/alloc.h>
+-#include <Windows.h>
++#include <windows.h>
+ 
+ typedef BOOL (WINAPI *LPFN_ISWOW64PROCESS2) (HANDLE, USHORT *, USHORT *);
  
