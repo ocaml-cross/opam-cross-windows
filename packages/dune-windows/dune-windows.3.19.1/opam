@@ -28,7 +28,7 @@ bug-reports: "https://github.com/ocaml/dune/issues"
 dev-repo: "git+https://github.com/ocaml/dune.git"
 x-maintenance-intent: ["(latest)"]
 build: [
-  ["dune" "build" "-x" "windows" "-p" "ordering,stdune,xdg,dyn,dune-rpc,chrome-trace,dune-build-info,fiber,ocamlc-loc,dune-private-libs,dune-action-plugin,dune-glob,dune" "@install"]
+  ["dune" "build" "-x" "windows" "-p" "ordering,stdune,xdg,dyn,dune-rpc,chrome-trace,dune-build-info,ocamlc-loc,dune-private-libs,dune-action-plugin,dune-glob,dune-site,dune" "@install"]
 ]
 depends: [
   "dune"
