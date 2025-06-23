@@ -1,39 +1,59 @@
+commit ef13aeea2f4bca48a70a853ff2fd9aa535210d1c
+Author: Romain Beauxis <toots@rastageeks.org>
+Date:   Mon Jun 23 21:58:42 2025 +0200
+
+    Lowercase.
+
 diff --git a/otherlibs/xdg/xdg_stubs.c b/otherlibs/xdg/xdg_stubs.c
-index b0984dcaa..5eed1bf0b 100644
+index b0984dcaa..a31086f83 100644
 --- a/otherlibs/xdg/xdg_stubs.c
 +++ b/otherlibs/xdg/xdg_stubs.c
-@@ -10,7 +10,7 @@
+@@ -10,9 +10,15 @@
  #undef _WIN32_WINNT
  #define _WIN32_WINNT 0x0600
  
--#include <Windows.h>
++#if defined(__MINGW32__) || defined(__MINGW64__)
 +#include <windows.h>
++#include <knownfolders.h>
++#include <shlobj.h>
++#else
+ #include <Windows.h>
  #include <Knownfolders.h>
  #include <Shlobj.h>
++#endif
  
+ value dune_xdg__get_known_folder_path(value v_known_folder)
+ {
 diff --git a/src/fswatch_win/fswatch_win_stubs.c b/src/fswatch_win/fswatch_win_stubs.c
-index 7cb248623..d226f9c20 100644
+index 7cb248623..8bba53546 100644
 --- a/src/fswatch_win/fswatch_win_stubs.c
 +++ b/src/fswatch_win/fswatch_win_stubs.c
-@@ -52,7 +52,7 @@
+@@ -52,7 +52,11 @@
  #ifdef _WIN32
  
  #define WIN32_LEAN_AND_MEAN
--#include <Windows.h>
++#if defined(__MINGW32__) || defined(__MINGW64__)
 +#include <windows.h>
++#else
+ #include <Windows.h>
++#endif
  
  #define FILE_NOTIFY_BUFFER_LENGTH ((sizeof(DWORD) * 4) * 1000)
  
 diff --git a/vendor/opam/src/core/custom_opamStubs.c b/vendor/opam/src/core/custom_opamStubs.c
-index e459dcefb..1e0dc9230 100644
+index e459dcefb..1714eaeee 100644
 --- a/vendor/opam/src/core/custom_opamStubs.c
 +++ b/vendor/opam/src/core/custom_opamStubs.c
-@@ -6,7 +6,7 @@
+@@ -6,7 +6,12 @@
  #include <caml/memory.h>
  #include <caml/osdeps.h>
  #include <caml/alloc.h>
--#include <Windows.h>
++
++#if defined(__MINGW32__) || defined(__MINGW64__)
 +#include <windows.h>
++#else
+ #include <Windows.h>
++#endif
  
  typedef BOOL (WINAPI *LPFN_ISWOW64PROCESS2) (HANDLE, USHORT *, USHORT *);
  

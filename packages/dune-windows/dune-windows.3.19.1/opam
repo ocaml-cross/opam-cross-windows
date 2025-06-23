@@ -38,7 +38,7 @@ patches: [
   "patches/fix-windows-header.patch"
 ]
 extra-files: [
-  ["patches/fix-windows-header.patch" "md5=0aa042a52d4ccc277abdbe4308eec249"]
+  ["patches/fix-windows-header.patch" "md5=d6ea0010a420dd3a6f2f7a4dcd546870"]
 ]
 url {
   src:
