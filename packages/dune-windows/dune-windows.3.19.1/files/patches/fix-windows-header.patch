@@ -1,0 +1,19 @@
+commit ac15c297c93e48644ff507daa10aa723fbae937a
+Author: Romain Beauxis <toots@rastageeks.org>
+Date:   Mon Jun 23 21:58:42 2025 +0200
+
+    Lowercase.
+
+diff --git a/src/fswatch_win/fswatch_win_stubs.c b/src/fswatch_win/fswatch_win_stubs.c
+index 7cb248623..d226f9c20 100644
+--- a/src/fswatch_win/fswatch_win_stubs.c
++++ b/src/fswatch_win/fswatch_win_stubs.c
+@@ -52,7 +52,7 @@
+ #ifdef _WIN32
+ 
+ #define WIN32_LEAN_AND_MEAN
+-#include <Windows.h>
++#include <windows.h>
+ 
+ #define FILE_NOTIFY_BUFFER_LENGTH ((sizeof(DWORD) * 4) * 1000)
+ 
