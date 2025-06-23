@@ -1,0 +1,51 @@
+opam-version: "2.0"
+synopsis: "Fast, portable, and opinionated build system"
+description: """
+
+Dune is a build system that was designed to simplify the release of
+Jane Street packages. It reads metadata from "dune" files following a
+very simple s-expression syntax.
+
+Dune is fast, has very low-overhead, and supports parallel builds on
+all platforms. It has no system dependencies; all you need to build
+dune or packages using dune is OCaml. You don't need make or bash
+as long as the packages themselves don't use bash explicitly.
+
+Dune is composable; supporting multi-package development by simply
+dropping multiple repositories into the same directory.
+
+Dune also supports multi-context builds, such as building against
+several opam roots/switches simultaneously. This helps maintaining
+packages across several versions of OCaml and gives cross-compilation
+for free.
+"""
+maintainer: ["Jane Street Group, LLC <opensource@janestreet.com>"]
+authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
+license: "MIT"
+homepage: "https://github.com/ocaml/dune"
+doc: "https://dune.readthedocs.io/"
+bug-reports: "https://github.com/ocaml/dune/issues"
+dev-repo: "git+https://github.com/ocaml/dune.git"
+x-maintenance-intent: ["(latest)"]
+build: [
+  ["dune" "build" "-x" "windows" "-p" "ordering,stdune,xdg,dyn,dune-rpc,chrome-trace,dune-build-info,ocamlc-loc,dune-private-libs,dune-action-plugin,dune-glob,dune-site,dune" "@install"]
+]
+depends: [
+  "dune"
+  "ocaml-windows" {>= "4.08"}
+]
+patches: [
+  "patches/fix-windows-header.patch"
+]
+extra-files: [
+  ["patches/fix-windows-header.patch" "md5=d6ea0010a420dd3a6f2f7a4dcd546870"]
+]
+url {
+  src:
+    "https://github.com/ocaml/dune/releases/download/3.19.1/dune-3.19.1.tbz"
+  checksum: [
+    "sha256=a10386f980cda9417d1465466bed50dd2aef9c93b9d06a0f7feeedb0a1541158"
+    "sha512=d1622939713133a1f28617229896298d6ef194c48a47d011e4b752490fc83893cc920a8395d7ac60bc384a6c9b233ebf0665f38f74f2774a983e9d3b241a7746"
+  ]
+}
+x-commit-hash: "76c0c3941798f81dcc13a305d7abb120c191f5fa"
