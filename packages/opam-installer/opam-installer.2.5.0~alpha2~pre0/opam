@@ -24,7 +24,7 @@ homepage: "https://opam.ocaml.org"
 bug-reports: "https://github.com/ocaml/opam/issues"
 depends: [
   "ocaml" {>= "4.08.0"}
-  "opam-format" {= version}
+  "opam-format" {= "2.5.0~alpha1"}
   "dune" {>= "2.8.0"}
 ]
 available: opam-version >= "2.1.0"
