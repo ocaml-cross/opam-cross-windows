@@ -13,12 +13,15 @@ substs: [
   "windows.conf"
 ]
 build: [
+  ["chmod" "+x" "./build.sh"]
   ["./build.sh"]
 ]
 install: [
+  ["chmod" "+x" "./install.sh"]
   ["./install.sh" "%{prefix}%"]
 ]
 remove: [
+  ["chmod" "+x" "./remove.sh"]
   ["./remove.sh" "%{prefix}%"]
 ]
 depends: [
