@@ -67,8 +67,21 @@ depopts: [
   "ocaml-option-fp"
   "ocaml-option-tsan"
 ]
-extra-files: [
-  ["windows.conf.in" "sha256=f56062c6ff2320eb70743c3bd5b4495c1e63dc9ece7ddcb408ce4a47b0eb2b7c"]
-  ["ocaml-windows64.install" "sha256=d55b4e322b06f0124aa6fa209de728e2b3b8786f5569c135b1ec224f04922788"]
-  ["patches/ocross-squashed.patch" "sha256=709f9cdcff74a76d6884e43a3274799e509a980456555f15c7b1002b8392ff55"]
-]
+extra-source "windows.conf.in" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows64/ocaml-windows64.5.3.0/windows.conf.in"
+  checksum:
+    "sha256=f56062c6ff2320eb70743c3bd5b4495c1e63dc9ece7ddcb408ce4a47b0eb2b7c"
+}
+extra-source "ocaml-windows64.install" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows64/ocaml-windows64.5.3.0/ocaml-windows64.install"
+  checksum:
+    "sha256=d55b4e322b06f0124aa6fa209de728e2b3b8786f5569c135b1ec224f04922788"
+}
+extra-source "patches/ocross-squashed.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows64/ocaml-windows64.5.3.0/patches/ocross-squashed.patch"
+  checksum:
+    "sha256=709f9cdcff74a76d6884e43a3274799e509a980456555f15c7b1002b8392ff55"
+}

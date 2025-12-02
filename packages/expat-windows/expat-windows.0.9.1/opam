@@ -20,9 +20,6 @@ An ocaml wrapper for the Expat XML parsing library. It allows you to
 write XML-Parsers using the SAX method. An XML document is parsed on
 the fly without needing to load the entire XML-Tree into memory."""
 flags: light-uninstall
-extra-files: [
-  "patches/Makefile.patch" "md5=4a5a42fb2d6f5bc5ee5b3eb3db4dfb25"
-]
 url {
   src: "http://mmzeeman.home.xs4all.nl/ocaml/ocaml-expat-0.9.1.tar.gz"
   checksum: "md5=17aa00a46c5edeb815f1b0555bad7ed2"
@@ -30,3 +27,9 @@ url {
 depexts: [
   ["expat"] {os-distribution = "mxe"}
 ]
+extra-source "patches/Makefile.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/expat-windows/expat-windows.0.9.1/patches/Makefile.patch"
+  checksum:
+    "sha256=501ce6d3e3606214b073851132d25d505de145fb22aa6ec904221ce691fc6d53"
+}

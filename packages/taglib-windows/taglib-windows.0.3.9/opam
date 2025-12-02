@@ -11,9 +11,6 @@ bug-reports: "https://github.com/savonet/ocaml-taglib/issues"
 patches: [
   "patches/fix-include.diff"
 ]
-extra-files: [
-  ["patches/fix-include.diff" "md5=8fa8c26e6a77bfbaa7489a974c5bf5be"]
-]
 depends: [
   "dune" {>= "2.8"}
   "ocaml-windows" {>= "4.07"}
@@ -42,4 +39,10 @@ url {
     "md5=4e99661c99ff48cdc742cb47626eb06e"
     "sha512=7ec9cd2439c10079be0ab96a759557ef7254bd5dbb49fb82f8d628b880a70b0f768c22fd6b69100567eda67290b2c3c9272addb2ae3578e050a6a891688e2427"
   ]
+}
+extra-source "patches/fix-include.diff" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/taglib-windows/taglib-windows.0.3.9/patches/fix-include.diff"
+  checksum:
+    "sha256=59ba07ba86e0f61ce3a7f5c9fc1af6207457c6e52f8fc442afa143e09013407e"
 }

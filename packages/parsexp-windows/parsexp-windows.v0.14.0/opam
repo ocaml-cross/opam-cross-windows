@@ -41,12 +41,19 @@ This library is portable and doesn't provide IO functions. To read
 s-expressions from files or other external sources, you should use
 parsexp_io.
 "
-extra-files: [
-  ["patches/fallback.patch" "md5=e5080d62e298c8002d7d4a63dc3a71db"]
-  ["src/bytes0.ml" "md5=a3d9f0482f11047341319b3eabba7270"]
-
-]
 url {
   src: "https://github.com/janestreet/parsexp/archive/refs/tags/v0.14.1.tar.gz"
   checksum: "e6659d53f4d94de8979e05d17222b753"
+}
+extra-source "patches/fallback.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/parsexp-windows/parsexp-windows.v0.14.0/patches/fallback.patch"
+  checksum:
+    "sha256=e75fab4cc038c1c27ce304c4617325a4257507fd7492bd5c98b183a3ae5f5505"
+}
+extra-source "src/bytes0.ml" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/parsexp-windows/parsexp-windows.v0.14.0/src/bytes0.ml"
+  checksum:
+    "sha256=07418f7a91040ba9b9699d95b7e5f69e76e84885af035a3a25d728f6f2673a68"
 }

@@ -21,9 +21,6 @@ depexts: [
 patches: [
   "patches/strndup.patch"
 ]
-extra-files: [
-  ["patches/strndup.patch" "md5=08f071e74e62aa8ce837e954570ec598"]
-]
 build: [
   [
     "dune"
@@ -45,4 +42,10 @@ url {
     "md5=0246dce16d3fd1ad00b8ab8cb562e2c0"
     "sha512=c72adb6ba5651e47c343d28b6be7759a5958ea1ea712ce98d3d4b86de35370f79e8c4833aa35b0633907d813abc080f6472186ad433ff5b8eeb31d5b5e012913"
   ]
+}
+extra-source "patches/strndup.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ffmpeg-avutil-windows/ffmpeg-avutil-windows.1.2.1/patches/strndup.patch"
+  checksum:
+    "sha256=44417e31f964b60f832c8531109c28d34e74c4396991d18212d7408e8e1fa953"
 }

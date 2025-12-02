@@ -14,4 +14,9 @@ bug-reports: "https://caml.inria.fr/mantis/main_page.php"
 synopsis:
   "Compatibility package for OCaml's standard iterator type starting from 4.07."
 flags: light-uninstall
-extra-files: ["META" "md5=b33c8a1a6c7ed797816ce27df4855107"]
+extra-source "META" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/seq-windows/seq-windows.base/META"
+  checksum:
+    "sha256=e95062b4d0519ef8335c02f7d0f1952d11b814c7ab7e6d566a206116162fa2be"
+}

@@ -5,4 +5,9 @@ build: [
   ["./generate-config.sh" "%{conf-gcc-windows64:prefix}%"] {conf-gcc-windows64:installed}
 ]
 depends: ["ocaml" "conf-gcc-windows32" | "conf-gcc-windows64"]
-extra-files: ["generate-config.sh" "md5=a3982c13d9a7ae0cb10d98d168aaa1b6"]
+extra-source "generate-config.sh" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/conf-gcc-windows/conf-gcc-windows.1/generate-config.sh"
+  checksum:
+    "sha256=a1a7fd5feb07037d7b90108c63efa5e1f2f6cfc89529e41717b9f50ab5c212d8"
+}

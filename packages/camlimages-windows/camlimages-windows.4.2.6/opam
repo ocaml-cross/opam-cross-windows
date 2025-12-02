@@ -201,10 +201,6 @@ image formats with an interface for the Caml graphics library. It has
 also an interface with the freetype library to draw texts using
 truetype fonts."""
 flags: light-uninstall
-extra-files: [
-  ["src/camlimages.ml.in" "md5=354bff8da8ce51e4a4602847abb9597a"]
-  ["src/META.in" "md5=f378ff23958af424f6e0f71f6ef8df32"]
-]
 url {
   src: "https://bitbucket.org/camlspotter/camlimages/get/4.2.6.tar.gz"
   checksum: "md5=1e16ba8381ccec229d128342e58d2f19"
@@ -212,3 +208,15 @@ url {
 depexts: [
   ["libpng" "jpeg" "freetype"] {os-distribution = "mxe"}
 ]
+extra-source "src/camlimages.ml.in" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/camlimages-windows/camlimages-windows.4.2.6/src/camlimages.ml.in"
+  checksum:
+    "sha256=b30c79d24d9d3c162034eb1db2b72e5389d627fd31f4874fe24dd621dc1ec23a"
+}
+extra-source "src/META.in" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/camlimages-windows/camlimages-windows.4.2.6/src/META.in"
+  checksum:
+    "sha256=a0c7a4c3d2bc8884d9114ebab74742d2cffe74dd315da6391d2ffd3d846fcbed"
+}

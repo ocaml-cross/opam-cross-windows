@@ -12,7 +12,15 @@ depends: [
   "ocaml-windows32" {= "4.08.0"} | "ocaml-windows64" {= "4.08.0"}
 ]
 synopsis: "A meta-package depending on any OCaml cross-compiler"
-extra-files: [
-  ["remove.sh" "md5=b97c542567963902a748467b7edf90d8"]
-  ["install.sh" "md5=e4136c0c84d4794a3709aa5e7db6f970"]
-]
+extra-source "remove.sh" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows/ocaml-windows.4.08.0/remove.sh"
+  checksum:
+    "sha256=5c38b140e49d820cdd4ed7a50ac8b64222cbd20b6ad4f1e2b54026671ed1339c"
+}
+extra-source "install.sh" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows/ocaml-windows.4.08.0/install.sh"
+  checksum:
+    "sha256=4769c02de74d9f2cd28c5d38769cdb43dd09bbfb0d40474479bda397df769027"
+}

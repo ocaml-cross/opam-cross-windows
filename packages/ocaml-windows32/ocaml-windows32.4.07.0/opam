@@ -35,31 +35,85 @@ conflicts: [
   "ocaml-windows64"
 ]
 synopsis: "OCaml cross-compiler for 32-bit x86 Windows targets"
-extra-files: [
-  ["windows.conf.in" "md5=8457fb3000403fb7145f20e8a0095f89"]
-  ["remove.sh" "md5=d2ebe7ce54e4a93a4d71d5fd889f17e3"]
-  ["install.sh" "md5=585356cd8b5f6a17c9769d1deb2bda57"]
-  ["build.sh" "md5=661e39ae28fb81178637519169313521"]
-  ["byterun/caml/s.h" "md5=cea41384207dddbdeb1f662af40bd067"]
-  ["byterun/caml/m.h" "md5=04983943424ca21bdad1e6a0e808fdc3"]
-  ["config/Makefile.in" "md5=1c759ecb31a405cfa08bc5202cc0cd63"]
-  [
-    "patches/use-host-ocamlrun-for-stdlib-doc.patch"
-    "md5=bb186ecb914bde3a0a356b691ee8b945"
-  ]
-  ["patches/use-host-ocamldoc.patch" "md5=f6820ab4e19f83df95ece3a35fb62df1"]
-  ["patches/ostype-fix.patch" "md5=46756d0d1b93768c1a85fea2b0695b3d"]
-  ["patches/no-ocamltest.patch" "md5=f47a32e277ed1e66ad8aa09a721a439c"]
-  [
-    "patches/avoid-cygwin-specifics.patch"
-    "md5=ad2c2113ccfee31ac8d31a8683514ea1"
-  ]
-  [
-    "patches/ocamlopt-config-returns-target-os_type.patch"
-    "md5=6aef55b54bd47813545a03ececf25a29"
-  ]
-]
 url {
   src: "https://github.com/ocaml/ocaml/archive/4.07.0.tar.gz"
   checksum: "md5=1f78bb35a2f15d5ec737ee6a8dc6890d"
+}
+extra-source "windows.conf.in" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows32/ocaml-windows32.4.07.0/windows.conf.in"
+  checksum:
+    "sha256=5db7d0f9d8d0a494db3984c7e78cd7e0c06bad0f7d34904e6f1e8d30dd11f343"
+}
+extra-source "remove.sh" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows32/ocaml-windows32.4.07.0/remove.sh"
+  checksum:
+    "sha256=8802e7c23d30b6889e4a731641e64520c9e01ec1d4086bc3a55e5f6bb06918b9"
+}
+extra-source "install.sh" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows32/ocaml-windows32.4.07.0/install.sh"
+  checksum:
+    "sha256=265d6c23664e73d769348cb54123904ef89956eb3acf0f5f7c7f85e5684cef2f"
+}
+extra-source "build.sh" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows32/ocaml-windows32.4.07.0/build.sh"
+  checksum:
+    "sha256=34b006178400943b8415dc3d1b8a59cf1b5b635fb4f237228ccc16de97607864"
+}
+extra-source "byterun/caml/s.h" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows32/ocaml-windows32.4.07.0/byterun/caml/s.h"
+  checksum:
+    "sha256=0432539166f90224f68b897a23546173e25683eda0f771a33d639c90a0f4770b"
+}
+extra-source "byterun/caml/m.h" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows32/ocaml-windows32.4.07.0/byterun/caml/m.h"
+  checksum:
+    "sha256=1b141b457bf12fe3651468a8b57f139eb4d58b8d2a74179b5009cf070f418be6"
+}
+extra-source "config/Makefile.in" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows32/ocaml-windows32.4.07.0/config/Makefile.in"
+  checksum:
+    "sha256=81559e9f6f27661140b172a0425836d3e26096d13a432e026df0fbcd2f58f4c5"
+}
+extra-source "patches/use-host-ocamlrun-for-stdlib-doc.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows32/ocaml-windows32.4.07.0/patches/use-host-ocamlrun-for-stdlib-doc.patch"
+  checksum:
+    "sha256=4d8efb7e50b7cd92788ad6c7e002442e0af7c3d4044913bb162ac41ad784ef81"
+}
+extra-source "patches/use-host-ocamldoc.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows32/ocaml-windows32.4.07.0/patches/use-host-ocamldoc.patch"
+  checksum:
+    "sha256=8cbccf0039019f3502cd0f0fe7e84ed28cf749529854f014251260a65900b5b5"
+}
+extra-source "patches/ostype-fix.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows32/ocaml-windows32.4.07.0/patches/ostype-fix.patch"
+  checksum:
+    "sha256=d87d9a29534c629a8ee7507ec2b05758da8b55032808e2a62d37ff6021ef5d4a"
+}
+extra-source "patches/ocamlopt-config-returns-target-os_type.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows32/ocaml-windows32.4.07.0/patches/ocamlopt-config-returns-target-os_type.patch"
+  checksum:
+    "sha256=1027556f2431acf1ef02abc39ee4c9f1cf441ef2a37ada813e191e3232b7da1d"
+}
+extra-source "patches/no-ocamltest.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows32/ocaml-windows32.4.07.0/patches/no-ocamltest.patch"
+  checksum:
+    "sha256=e2948d9c8af09855abece58d9747cb32e104f081a694ca155bb9710f6095b09f"
+}
+extra-source "patches/avoid-cygwin-specifics.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows32/ocaml-windows32.4.07.0/patches/avoid-cygwin-specifics.patch"
+  checksum:
+    "sha256=465ae826dbf3487e930bf6e1d336a7d857f583676042cdba9b134adb99125fd9"
 }

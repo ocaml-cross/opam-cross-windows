@@ -26,6 +26,9 @@ url {
   src: "https://github.com/ocaml-ppx/ppx_tools/archive/5.1+4.06.0.tar.gz"
   checksum: "md5=6ba2e9690b1f579ba562b86022d1c308"
 }
-extra-files: [
-  "patches/use-ocamlfind.patch" "md5=96b4cdf6fbff8a22458ed57f479e8834"
-]
+extra-source "patches/use-ocamlfind.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ppx_tools-windows/ppx_tools-windows.5.1+4.06.0/patches/use-ocamlfind.patch"
+  checksum:
+    "sha256=050af31275c1dedad3abf3b0611466f2f748ac308469cd4c74a825a3507eb8b6"
+}

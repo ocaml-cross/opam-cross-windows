@@ -15,11 +15,19 @@ depends: [
 ]
 synopsis: "Interface to Alan Murta's General Polygon Clipper"
 flags: light-uninstall
-extra-files: [
-  ["patches/install-cmx.patch" "md5=da628c1c9706f5fc46caf3c85e081a38"]
-  ["patches/cross-compilation.patch" "md5=2af129da4bfc271223d8bc28b71b09fd"]
-]
 url {
   src: "https://github.com/johnwhitington/camlgpc/archive/v1.0.tar.gz"
   checksum: "md5=d00bf0237fda31301f9cc8e1cd8db2af"
+}
+extra-source "patches/install-cmx.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/camlgpc-windows/camlgpc-windows.1.0/patches/install-cmx.patch"
+  checksum:
+    "sha256=ba490d91b5fe171e0de8b644daa2aae89527fcc851cb8534cfa41eb4603f69d7"
+}
+extra-source "patches/cross-compilation.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/camlgpc-windows/camlgpc-windows.1.0/patches/cross-compilation.patch"
+  checksum:
+    "sha256=9e025c225751006fe211386855153945b17f9235c94ed2912f24f7a7be02180a"
 }

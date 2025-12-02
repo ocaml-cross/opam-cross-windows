@@ -22,9 +22,6 @@ depends: [
 synopsis:
   "Provides easy access to compressed files in ZIP, GZIP and JAR format"
 flags: light-uninstall
-extra-files: [
-  "patches/cross-compilation.patch" "md5=e5528079ab1ff8571f9b36f6177a0f34"
-]
 url {
   src: "https://github.com/xavierleroy/camlzip/archive/rel107.zip"
   checksum: "md5=fb6b251fe6bf129cb25b5fd9f5938514"
@@ -32,3 +29,9 @@ url {
 depexts: [
   ["zlib"] {os-distribution = "mxe"}
 ]
+extra-source "patches/cross-compilation.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/camlzip-windows/camlzip-windows.1.07/patches/cross-compilation.patch"
+  checksum:
+    "sha256=819bf26da0595b00d7462c4524ba7fcdd9d03cd9f87ab48ecc8f229242633be3"
+}

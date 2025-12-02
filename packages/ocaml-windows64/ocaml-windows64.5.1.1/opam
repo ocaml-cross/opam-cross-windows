@@ -28,16 +28,49 @@ conflicts: [
   "ocaml-windows32"
 ]
 synopsis: "OCaml cross-compiler for 64-bit x86 Windows targets"
-extra-files: [
-  ["build.sh" "md5=3c18095f474f74dc832262fe7f3dd587"]
-  ["install.sh" "md5=166b007726c8a1de4a172eb2ae5a4355"]
-  ["patches/configure.patch" "md5=11532eb26b881d38db59a00341823b99"]
-  ["patches/ostype-fix.patch" "md5=57404edca01e9a353f28d3b3c0139f55"]
-  ["patches/windows-append.patch" "md5=137c69d696dc857d663f49df7385923b"]
-  ["remove.sh" "md5=d2ebe7ce54e4a93a4d71d5fd889f17e3"]
-  ["windows.conf.in" "md5=e3b6250be08dc3a108695b6610bcd7f8"]
-]
 url {
   src: "https://github.com/ocaml/ocaml/archive/5.1.1.tar.gz"
   checksum: "md5=ac4a19e57d1ed6c2efc70d1a9b97c567"
+}
+extra-source "windows.conf.in" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows64/ocaml-windows64.5.1.1/windows.conf.in"
+  checksum:
+    "sha256=7c3faae57b0dca47d99a635e3a54f6d52a3268f5797fe7071c44952e8e9bfd56"
+}
+extra-source "remove.sh" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows64/ocaml-windows64.5.1.1/remove.sh"
+  checksum:
+    "sha256=8802e7c23d30b6889e4a731641e64520c9e01ec1d4086bc3a55e5f6bb06918b9"
+}
+extra-source "install.sh" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows64/ocaml-windows64.5.1.1/install.sh"
+  checksum:
+    "sha256=93aad77618cc381d56becf43863fe804002c401ed17f7307ef9a814104331252"
+}
+extra-source "build.sh" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows64/ocaml-windows64.5.1.1/build.sh"
+  checksum:
+    "sha256=c219c212295e33e1ae5b932c81f5c3b3e2e80599ae1d2c210337c4b4f7ca2a0f"
+}
+extra-source "patches/windows-append.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows64/ocaml-windows64.5.1.1/patches/windows-append.patch"
+  checksum:
+    "sha256=f78dfc806c98be7860d9e5394aed3d4403f12febf7b5b70c164ab794cee746c2"
+}
+extra-source "patches/ostype-fix.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows64/ocaml-windows64.5.1.1/patches/ostype-fix.patch"
+  checksum:
+    "sha256=6a8739e5e6ac1844f9456aacdea16e330e4b592b862515265393305e4c07b0e7"
+}
+extra-source "patches/configure.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows64/ocaml-windows64.5.1.1/patches/configure.patch"
+  checksum:
+    "sha256=95a5d9f8e889882c9b25a2f6908733af449e0a3d3bb447589f99e238151acf1c"
 }

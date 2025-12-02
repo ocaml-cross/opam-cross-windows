@@ -37,9 +37,6 @@ depends: [
 patches: [
   "patches/fix-windows-header.patch"
 ]
-extra-files: [
-  ["patches/fix-windows-header.patch" "md5=d6ea0010a420dd3a6f2f7a4dcd546870"]
-]
 url {
   src:
     "https://github.com/ocaml/dune/releases/download/3.19.1/dune-3.19.1.tbz"
@@ -49,3 +46,9 @@ url {
   ]
 }
 x-commit-hash: "76c0c3941798f81dcc13a305d7abb120c191f5fa"
+extra-source "patches/fix-windows-header.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/dune-windows/dune-windows.3.19.1/patches/fix-windows-header.patch"
+  checksum:
+    "sha256=d5daad472f7c829917a0c353a9461035709236216f46a9497858c83a3706a77b"
+}

@@ -61,6 +61,9 @@ url {
     "sha512=5f9f4400b6e42b74ffd57223cb67884368d324739565bbb20162547ede8bd6d0ece3cc265503b674829f9cf373784e8036d4c73e26e9196aa5446de69b63e181"
   ]
 }
-extra-files: [
-  "patches/no-endian-header.patch" "md5=1398b42006ed9109a2b3c05b98739f65"
-]
+extra-source "patches/no-endian-header.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/core-windows/core-windows.v0.16.1/patches/no-endian-header.patch"
+  checksum:
+    "sha256=c8759cd51a30e58294acbebc17f4bd477f07ac6d82fa4ec5f60d539736afb9e7"
+}

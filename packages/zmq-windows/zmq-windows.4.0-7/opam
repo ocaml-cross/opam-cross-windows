@@ -22,10 +22,13 @@ depends: [
 ]
 synopsis: "OCaml bindings for ZeroMQ 4.0"
 flags: light-uninstall
-extra-files: [
-  "patches/no-usr-local.patch" "md5=51bd6b19bfdd6e7385ca774e1b82080d"
-]
 url {
   src: "https://github.com/issuu/ocaml-zmq/archive/4.0-7.tar.gz"
   checksum: "md5=3adf5ccef1afa9a5d07ecea59dc77ab1"
+}
+extra-source "patches/no-usr-local.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/zmq-windows/zmq-windows.4.0-7/patches/no-usr-local.patch"
+  checksum:
+    "sha256=9e15e42e0296b21eb8cfad14178ac78746ac096a4c22052c79932194d656ca41"
 }

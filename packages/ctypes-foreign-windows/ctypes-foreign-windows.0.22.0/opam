@@ -31,9 +31,6 @@ build: [
     "@install"
   ]
 ]
-extra-files: [
-  ["patches/fix-config.patch" "md5=aabfea16327b5549e9a559f3ae99ba21"]
-]
 patches: [
   "patches/fix-config.patch"
 ]
@@ -44,4 +41,10 @@ dev-repo: "git+https://github.com/yallop/ocaml-ctypes.git"
 url {
   src: "https://github.com/yallop/ocaml-ctypes/archive/refs/tags/0.22.0.tar.gz"
   checksum: "md5=8a301a3e3b79156448a6659859ad506c"
+}
+extra-source "patches/fix-config.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ctypes-foreign-windows/ctypes-foreign-windows.0.22.0/patches/fix-config.patch"
+  checksum:
+    "sha256=98cfcdb399296b79a4d618062b16294931e7f9b51ea035152324256a089aa7b5"
 }

@@ -41,8 +41,13 @@ Lwt provides typed, composable cooperative threads. These make it easy to run
 normally-blocking I/O operations concurrently in a single process. Also, in many
 cases, Lwt threads can interact without the need for locks or other
 synchronization primitives."""
-extra-files: ["patches/os_type.patch" "md5=4591e8e77a95eefd436540ce10b04ff5"]
 url {
   src: "https://github.com/ocsigen/lwt/archive/3.2.1.tar.gz"
   checksum: "md5=13613bbf6b27d198bafcbd9b253a0076"
+}
+extra-source "patches/os_type.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/lwt-windows/lwt-windows.3.2.1/patches/os_type.patch"
+  checksum:
+    "sha256=e1742667aab51b37f246a6c0986f4935e09175ec268bc7be4be83403e05f8007"
 }

@@ -31,11 +31,39 @@ url {
   src: "https://github.com/ocaml/ocaml/archive/4.14.0.tar.gz"
   checksum: "md5=32cfb000312c9d0e2c187e891c34e8d3"
 }
-extra-files: [
-  ["build.sh" "md5=0c02dc9cf4fa5bb98b8771d22ffd15d9"]
-  ["install.sh" "md5=0e6b4e3f042e7443f35cfe7a9980e905"]
-  ["patches/configure.patch" "md5=2947eb1d16daec3d35f769093574249f"]
-  ["patches/ostype-fix.patch" "md5=05919aebf4e0894bf8f0bc60a6932b46"]
-  ["remove.sh" "md5=d2ebe7ce54e4a93a4d71d5fd889f17e3"]
-  ["windows.conf.in" "md5=69f2a64db241a28e172eb316ddd9cef1"]
-]
+extra-source "windows.conf.in" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows64/ocaml-windows64.4.14.0/windows.conf.in"
+  checksum:
+    "sha256=183129166188ee3d21bf2c7bd732f2ef8bc9e0f2819d8316cf9c17fed1814446"
+}
+extra-source "remove.sh" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows64/ocaml-windows64.4.14.0/remove.sh"
+  checksum:
+    "sha256=8802e7c23d30b6889e4a731641e64520c9e01ec1d4086bc3a55e5f6bb06918b9"
+}
+extra-source "install.sh" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows64/ocaml-windows64.4.14.0/install.sh"
+  checksum:
+    "sha256=6009d7369ffd0dae009134284945d2e4880bbb6df6ca442eda3136a2add94c6e"
+}
+extra-source "build.sh" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows64/ocaml-windows64.4.14.0/build.sh"
+  checksum:
+    "sha256=c0639f12fc0bdec0e47f4c7a68e166085e2abfca9824025067379adc020a373e"
+}
+extra-source "patches/ostype-fix.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows64/ocaml-windows64.4.14.0/patches/ostype-fix.patch"
+  checksum:
+    "sha256=5a8fe3fa2df61fedde9bc356bfa39a8d37fad793d3c316f8110f1f1a8c076526"
+}
+extra-source "patches/configure.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows64/ocaml-windows64.4.14.0/patches/configure.patch"
+  checksum:
+    "sha256=57891a571a818ad7f103022d6dd2c4820f548bba332ac1cc15c3e109b76aa451"
+}

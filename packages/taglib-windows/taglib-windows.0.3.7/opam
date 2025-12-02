@@ -10,9 +10,6 @@ bug-reports: "https://github.com/savonet/ocaml-taglib/issues"
 patches: [
   "patches/fix-const.diff"
 ]
-extra-files: [
-  ["patches/fix-const.diff" "md5=c688bc2112061f8fda71eb22e9c525cc"]
-]
 depends: [
   "dune" {>= "2.7"}
   "dune-configurator"
@@ -43,4 +40,10 @@ url {
     "md5=4f6df8b09126897a394e9acfc6193d59"
     "sha512=04e498d1fc2e3937bc25583175436d1cee8a25aabfdf43df4f30d1878aac97fde1d25be8dca44273fb2223785c3872088d667d6ba3e6cc644730b2f9b4d0491f"
   ]
+}
+extra-source "patches/fix-const.diff" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/taglib-windows/taglib-windows.0.3.7/patches/fix-const.diff"
+  checksum:
+    "sha256=5cfe8b7a11dcc006151778608a6d0501e91f02255121dfb7a97feacc59f7ad66"
 }

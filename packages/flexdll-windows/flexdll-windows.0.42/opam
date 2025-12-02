@@ -63,14 +63,37 @@ build: [
 depends: ["ocaml" "conf-gcc-windows32" | "conf-gcc-windows64"]
 synopsis:
   "FlexDLL is a Windows dynamic linker extension allowing DLLs to depend on each other"
-extra-files: [
-  ["flexlink" "md5=f9261c5b75e177d0ccc64eba5442264c"]
-  ["version.ml.in" "md5=f1bb53b9442eeda71d4963c02bf9fa84"]
-  ["flexdll-windows.install" "md5=d2a0e6caf837c1f9e1c687089eee7869"]
-  ["patches/no-gcc_eh.patch" "md5=65bdd2a32d0777a9d8b315df91632166"]
-  ["patches/pthread.patch" "md5=b7bf5fff6fa4e477fe12c0819c548f2b"]
-]
 url {
   src: "https://github.com/alainfrisch/flexdll/archive/0.42.tar.gz"
   checksum: "9464ae7a7e566ba7c96336cf2f34cc73"
+}
+extra-source "version.ml.in" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/flexdll-windows/flexdll-windows.0.42/version.ml.in"
+  checksum:
+    "sha256=3f2e54470b5e8df56ecc16627d647f29ee3fecf7feb673477e7c93eedb825c65"
+}
+extra-source "flexlink" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/flexdll-windows/flexdll-windows.0.42/flexlink"
+  checksum:
+    "sha256=23576b559903d22455e713c7bca6be08ce4f872a6db47a0b11854bd4426b9a86"
+}
+extra-source "flexdll-windows.install" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/flexdll-windows/flexdll-windows.0.42/flexdll-windows.install"
+  checksum:
+    "sha256=ee3531a49484b3accf796047ab744a2d59819584c43973166e2d6c0e07171b23"
+}
+extra-source "patches/pthread.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/flexdll-windows/flexdll-windows.0.42/patches/pthread.patch"
+  checksum:
+    "sha256=d02dc5d2621ce109ba0d7b14c6208fc3425bae11c28215be97c364380afff7e4"
+}
+extra-source "patches/no-gcc_eh.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/flexdll-windows/flexdll-windows.0.42/patches/no-gcc_eh.patch"
+  checksum:
+    "sha256=541b9303c6499ab86c081cc8d106d8a510652d86952c14627d696801d04f575d"
 }

@@ -32,13 +32,16 @@ dev-repo: "git+https://github.com/savonet/ocaml-mad.git"
 depexts: [
   ["libmad"] {os-distribution = "mxe"}
 ]
-extra-files: [
-  ["patches/fix-discover.diff" "md5=e11f4c3c0405f662b71ca25841d0e8bc"]
-]
 url {
   src: "https://github.com/savonet/ocaml-mad/archive/v0.5.0.tar.gz"
   checksum: [
     "md5=7918a0b2b590fad0b6cfbc20bc3ed801"
     "sha512=284e2be07f73d5d26378341194c34c28498aceb26d26dd3fd685016e19baba59943c8b4df08eb4be715430a92265a856cd594209ee9d7aed5d10b29b63857dff"
   ]
+}
+extra-source "patches/fix-discover.diff" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/mad-windows/mad-windows.0.5.0/patches/fix-discover.diff"
+  checksum:
+    "sha256=6fead9325ed4b239ab05c5f3657de7ade76861e154e89916e06bba31e6865c58"
 }

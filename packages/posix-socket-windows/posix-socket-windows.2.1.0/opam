@@ -38,3 +38,9 @@ url {
     "sha512=735c6afd48e36af0a032f51217e7558629a198fd39a0484883831bdbff511b331033696b8ad73c6896fa9df0a0b1fd2f27336c2b0b7447dd10902e6bc64e4886"
   ]
 }
+extra-source "patches/fix-wine-call.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/posix-socket-windows/posix-socket-windows.2.1.0/patches/fix-wine-call.patch"
+  checksum:
+    "sha256=40f4dbd4c2082eb0dec69ba0c149448158f4752306cab96c709da632d94a090d"
+}

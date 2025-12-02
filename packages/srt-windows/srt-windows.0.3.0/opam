@@ -38,9 +38,6 @@ build: [
 patches: [
   "patches/fix-wine-call.patch"
 ]
-extra-files: [
-  ["patches/fix-wine-call.patch" "md5=ba87c13e7913a3f667824ede80b937ae"]
-]
 depexts: [
   ["libsrt"] {os-distribution = "mxe"}
 ]
@@ -51,4 +48,10 @@ url {
     "md5=7f4ccc71036fb5c8365690ccdec0498c"
     "sha512=a79286afeed4f8ef161b9fe1f32e54581ef658f25975727351478b0a1fe16975f5c5b47f247dae4909df73f75ce8022b2201c1272f78528bf11efe8507174820"
   ]
+}
+extra-source "patches/fix-wine-call.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/srt-windows/srt-windows.0.3.0/patches/fix-wine-call.patch"
+  checksum:
+    "sha256=08f53ab67b80dda4e36b91754fdc20239b4556292584968e5d62f44ed1463283"
 }

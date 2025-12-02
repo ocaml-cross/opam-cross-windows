@@ -26,6 +26,9 @@ url {
   src: "https://github.com/thelema/bench/releases/download/v1.3/bench-1.3.tar.gz"
   checksum: "md5=8878462e1be5b580b84a3761de699e92"
 }
-extra-files: [
-  ["patches/oasis-version.patch" "md5=bf811e6899e3d991b6c89fc97a1ab7ca"]
-]
+extra-source "patches/oasis-version.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/bench-windows/bench-windows.1.3/patches/oasis-version.patch"
+  checksum:
+    "sha256=7384394ea1e94b6070ca7bdbe011fa7105e865fd6f73d16a78768aedb25e4ed8"
+}

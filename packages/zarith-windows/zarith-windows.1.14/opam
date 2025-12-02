@@ -40,6 +40,9 @@ url {
     "sha512=8a7f3e82dfa5699c8dda54dd5398c712f3ac4fe04f5208d43d8ba198fb8152de5f91cbb59c15c0a4ba010d4dfcc79f52e405bdd0abbf2798167e9e4216bcb3dd"
   ]
 }
-extra-files: [
-  ["patches/use-ocamlfind-to-build.diff" "sha256=1ee7a2fcc3356f9f3843a288302226816012a4b0050f68c00ad37c946fe41bf9"]
-]
+extra-source "patches/use-ocamlfind-to-build.diff" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/zarith-windows/zarith-windows.1.14/patches/use-ocamlfind-to-build.diff"
+  checksum:
+    "sha256=1ee7a2fcc3356f9f3843a288302226816012a4b0050f68c00ad37c946fe41bf9"
+}

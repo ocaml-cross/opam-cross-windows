@@ -23,10 +23,6 @@ depopts: ["lwt-windows" "lwt_ppx-windows"]
 depexts: [
   ["curl"] {os-distribution = "mxe"}
 ]
-extra-files: [
-  "patches/00-use-ocamlfind.patch"
-  "md5=6c2595909e6d59950cecc24d1f516cb7"
-]
 patches: [
   "patches/00-use-ocamlfind.patch"
 ]
@@ -40,4 +36,10 @@ url {
     "sha512=1ec21065f67ac227efb071ad696648ab4ac488ce77db091b4f212821b863fdcb2b23b6b9d579e8878fe8f1a6b2f0ec81c2751a72a1df201ea47f016012107429"
   ]
   mirrors: "https://github.com/ygrek/ocurl/releases/download/0.9.1/ocurl-0.9.1.tar.gz"
+}
+extra-source "patches/00-use-ocamlfind.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocurl-windows/ocurl-windows.0.9.1/patches/00-use-ocamlfind.patch"
+  checksum:
+    "sha256=a6210bd37183013254283acda7f236b12c89e04996ac3deb5b30126fa3d0925e"
 }

@@ -59,11 +59,19 @@ build: [
 depends: ["ocaml" "conf-gcc-windows32" | "conf-gcc-windows64"]
 synopsis:
   "FlexDLL is a Windows dynamic linker extension allowing DLLs to depend on each other"
-extra-files: [
-  ["version.ml.in" "md5=f1bb53b9442eeda71d4963c02bf9fa84"]
-  ["flexdll-windows.install" "md5=0c2e036b485aab29b553ddf4d7677cd7"]
-]
 url {
   src: "https://github.com/alainfrisch/flexdll/archive/0.37.tar.gz"
   checksum: "md5=cc456a89382e60d84130cddd53977486"
+}
+extra-source "version.ml.in" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/flexdll-windows/flexdll-windows.0.37/version.ml.in"
+  checksum:
+    "sha256=3f2e54470b5e8df56ecc16627d647f29ee3fecf7feb673477e7c93eedb825c65"
+}
+extra-source "flexdll-windows.install" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/flexdll-windows/flexdll-windows.0.37/flexdll-windows.install"
+  checksum:
+    "sha256=7534e5177c7781ec6502526c2b4d0794be70f9613fd165ca69b74e576d74db6b"
 }

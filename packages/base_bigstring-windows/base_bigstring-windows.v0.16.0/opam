@@ -28,6 +28,9 @@ url {
 src: "https://ocaml.janestreet.com/ocaml-core/v0.16/files/base_bigstring-v0.16.0.tar.gz"
 checksum: "sha256=19fcbf8fa1fa557d513679413a9087e4ff1cb846cef1e8a78eaffb293fa926c3"
 }
-extra-files: [
-  "patches/memmem-shim.patch" "md5=f75d95f1b88dabf4ff7c24622e6dd113"
-]
+extra-source "patches/memmem-shim.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/base_bigstring-windows/base_bigstring-windows.v0.16.0/patches/memmem-shim.patch"
+  checksum:
+    "sha256=7faa27fb718d69ac46e7b1333b69cf50778160a3237dd0ce2a1ba2f9b272b64d"
+}

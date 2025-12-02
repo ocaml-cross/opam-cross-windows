@@ -29,10 +29,6 @@ patches: [
   "patches/undef.patch"
   "patches/link.patch"
 ]
-extra-files: [
-  ["patches/undef.patch" "md5=6a9b6d85af9f73c6c22ae918baa36ed9"]
-  ["patches/link.patch" "md5=08ab5ee99d00ac5c7986f60037448cb4"]
-]
 depends: [
   "ocaml-windows" {>= "4.02.0"}
   "dune"
@@ -46,4 +42,16 @@ synopsis: "Bindings to libcurl"
 description: "libcurl is a client-side URL transfer library, supporting HTTP and a multitude of other network protocols (FTP/SMTP/RTSP/etc). This library wrap easy synchronous API (Curl), synchronous parallel and generic asynchronous API (Curl.Multi), and provides an Lwt-enabled asynchronous interface (Curl_lwt)."
 url {
   src: "git+https://github.com/ygrek/ocurl.git#1bc75b8"
+}
+extra-source "patches/undef.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/curl-windows/curl-windows.0.9.2/patches/undef.patch"
+  checksum:
+    "sha256=8ebd8075d8cfe69f4f3989715450d6044475492c4b43fab77c76daabdba362d2"
+}
+extra-source "patches/link.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/curl-windows/curl-windows.0.9.2/patches/link.patch"
+  checksum:
+    "sha256=74cad05c2f52fd6765556fd787cc23d2a7d2b45ce6ba12a98dd156169d1eea8e"
 }

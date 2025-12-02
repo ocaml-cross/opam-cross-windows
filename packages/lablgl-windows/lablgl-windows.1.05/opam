@@ -25,12 +25,6 @@ Interface between OCaml and OpenGL, including Togl wrapper for use
 with LablTk, and LablGlut wrapper for direct use using the glut
 library."""
 flags: light-uninstall
-extra-files: [
-  ["lablgl.install" "md5=a03d20fcd54d7277982caf03b05354fa"]
-  ["Makefile.config.in" "md5=7b3c7f4964d7b90360da48867c3e4ee8"]
-  ["META" "md5=4f941d4011a1856933610d0cb89a1de8"]
-  ["patches/ocamlmktop.patch" "md5=e39b9ec140321df79061f23769fc59e2"]
-]
 url {
   src: "https://forge.ocamlcore.org/frs/download.php/1254/lablgl-1.05.tar.gz"
   checksum: "md5=b64662bf47f2973f836d33ae1365244f"
@@ -38,3 +32,27 @@ url {
 depexts: [
   ["freeglut"] {os-distribution = "mxe"}
 ]
+extra-source "lablgl.install" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/lablgl-windows/lablgl-windows.1.05/lablgl.install"
+  checksum:
+    "sha256=cb154f04b1afccaa7a4ca6e7603ccb1114066c7d4dffa98b8d7ab9d48dbd925f"
+}
+extra-source "Makefile.config.in" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/lablgl-windows/lablgl-windows.1.05/Makefile.config.in"
+  checksum:
+    "sha256=efa650aa7ec45a96008d8997a295f6ea64992368dcc25e031d1ac323d47e653b"
+}
+extra-source "META" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/lablgl-windows/lablgl-windows.1.05/META"
+  checksum:
+    "sha256=b7c6a394d54c92fcddd38b49303427506ee6bff0e40982198f31367372f237eb"
+}
+extra-source "patches/ocamlmktop.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/lablgl-windows/lablgl-windows.1.05/patches/ocamlmktop.patch"
+  checksum:
+    "sha256=29a7aa040a43354ca5d552104c8c20fe2ae0e3b4cbf3415e356d4b2004701be0"
+}

@@ -9,9 +9,6 @@ bug-reports: "https://github.com/savonet/ocaml-ffmpeg/issues"
 patches: [
   "patches/fix-discover.diff"
 ]
-extra-files: [
-  ["patches/fix-discover.diff" "md5=8016279660b17a10bd42f26171c38a75"]
-]
 depends: [
   "conf-pkg-config" {build}
   "ocaml-windows" {>= "4.08.0"}
@@ -46,4 +43,10 @@ url {
     "md5=671e477501e6f5928517dd7034f27d07"
     "sha512=a94a21c73661b3ee9bcc8a9d6539693977b18c4fa1065701fc7b00cf0f148c154dc6b21790193fae157dbded811e28538cbe8e8fb7bcf426900d30d453225d50"
   ]
+}
+extra-source "patches/fix-discover.diff" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ffmpeg-avdevice-windows/ffmpeg-avdevice-windows.1.1.1/patches/fix-discover.diff"
+  checksum:
+    "sha256=279ca14058668933274f9f05e3dcdc6926079035d684d08939ec60f3d8bb347d"
 }

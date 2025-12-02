@@ -34,11 +34,6 @@ build: [
 install: [
   ["env" "OCAMLFIND_TOOLCHAIN=windows" "INSTALLDIR=mkdir -p" "INSTALLFILE=cp" make "install"]
 ]
-extra-files: [
-  ["patches/use-host-ocamlfind.patch" "md5=3d2b8e64f8cd4f0aad9af2d667da43b3"]
-  ["Makefile.config.in" "md5=af3b53ced7b0be94faaa22d196e9b662"]
-  ["gen_META.sh.in" "md5=1f083e40cef39cc08e4743f165db2f59"]
-]
 dev-repo: "git+https://github.com/ocaml/ocamlfind.git"
 url {
   src: "http://download.camlcity.org/download/findlib-1.9.6.tar.gz"
@@ -46,4 +41,22 @@ url {
     "md5=96c6ee50a32cca9ca277321262dbec57"
     "sha512=cfaf1872d6ccda548f07d32cc6b90c3aafe136d2aa6539e03143702171ee0199add55269bba894c77115535dc46a5835901a5d7c75768999e72db503bfd83027"
   ]
+}
+extra-source "gen_META.sh.in" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocamlfind-windows/ocamlfind-windows.1.9.6/gen_META.sh.in"
+  checksum:
+    "sha256=530ff9e647308b651444e3fcb3c62f6c61adec4428752e8408e575476c182ec0"
+}
+extra-source "Makefile.config.in" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocamlfind-windows/ocamlfind-windows.1.9.6/Makefile.config.in"
+  checksum:
+    "sha256=805faad64dcc3fa72af92aec058656d8de02fdb38102a366bdb2deb75f262faf"
+}
+extra-source "patches/use-host-ocamlfind.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocamlfind-windows/ocamlfind-windows.1.9.6/patches/use-host-ocamlfind.patch"
+  checksum:
+    "sha256=06b37e2723f5ecce0c27aba5d710e391ca1195e4b15b2f7f9885d1adcadcbd84"
 }

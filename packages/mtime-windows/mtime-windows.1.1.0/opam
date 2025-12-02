@@ -39,11 +39,19 @@ under the BSD3 license.
 
 [1]: http://ocsigen.org/js_of_ocaml/"""
 flags: light-uninstall
-extra-files: [
-  ["mtime-win32.patch" "md5=c15f8f9359d83e8f75fc2972f11ef6e7"]
-  ["mtime-os.patch" "md5=2c9e9949e74e2258a01e38f5754ef8f6"]
-]
 url {
   src: "http://erratique.ch/software/mtime/releases/mtime-1.1.0.tbz"
   checksum: "md5=2935fe4a36b721735f60c9c65ad63a26"
+}
+extra-source "mtime-win32.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/mtime-windows/mtime-windows.1.1.0/mtime-win32.patch"
+  checksum:
+    "sha256=72d6348dccccb3c5ba2693ecd24bfc85d76882d19e03b273a43f1d5fd3c2a82e"
+}
+extra-source "mtime-os.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/mtime-windows/mtime-windows.1.1.0/mtime-os.patch"
+  checksum:
+    "sha256=56f510c1a8a563414ef87b468d09518b5f1219586bd5cf278619255e49257928"
 }

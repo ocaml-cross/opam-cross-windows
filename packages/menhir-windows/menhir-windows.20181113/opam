@@ -30,12 +30,20 @@ depends: [
   "ocaml-windows"
 ]
 synopsis: "LR(1) parser generator"
-extra-files: [
-  ["patches/use-ocamlfind.patch" "md5=217bdab3a47e877319fd636dd722c869"]
-  ["patches/menhir-cross.patch" "md5=f15044c37ccf9df8ef838531eb6b1b5a"]
-]
 url {
   src: "https://github.com/savonet/mehnir/archive/refs/tags/20181113.tar.gz"
   checksum: 
     "md5=6407e402342d3a5b2c43f3455f8d81ae"
+}
+extra-source "patches/use-ocamlfind.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/menhir-windows/menhir-windows.20181113/patches/use-ocamlfind.patch"
+  checksum:
+    "sha256=6798daac5aa88eb37b812ef531b3f076f904e0ba4e3ebdb34a91728328aec9fc"
+}
+extra-source "patches/menhir-cross.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/menhir-windows/menhir-windows.20181113/patches/menhir-cross.patch"
+  checksum:
+    "sha256=07b894e5814e3e5ec02e6c871c32ae2e7adaf7f7a1ef248f48db89a5d4e925e6"
 }

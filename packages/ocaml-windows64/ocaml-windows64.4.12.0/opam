@@ -34,23 +34,73 @@ conflicts: [
 ]
 available: arch = "x86_64"
 synopsis: "OCaml cross-compiler for 64-bit x86 Windows targets"
-extra-files: [
-  ["s-nt.h" "md5=168fb57183722c5b5c03014e614a2e2e"]
-  ["m-nt.h" "md5=b021fa0ff2866387df29b2483d002db7"]
-  ["windows.conf.in" "md5=8457fb3000403fb7145f20e8a0095f89"]
-  ["build.sh" "md5=77b54628448a7f0addea75a5f654db39"]
-  ["remove.sh" "md5=d2ebe7ce54e4a93a4d71d5fd889f17e3"]
-  ["install.sh" "md5=995050a54b009b4ded377a221f4f6639"]
-  ["Makefile.cross.in" "md5=612140d098e710a988e06acd09277cf3"]
-  ["patches/use-host-ocamldoc.patch" "md5=90dabeba5331e53ad38c77130ad1535c"]
-  ["patches/use-host-ocamlrun.patch" "md5=596b86ec78d00b0c22a244be422f35b3"]
-  ["patches/ostype-fix.patch" "md5=1f4bdb07f95403db78fdb72cae704637"]
-  [
-    "patches/avoid-cygwin-specifics.patch"
-    "md5=1d2f006e8dda0316130b30f05b83965f"
-  ]
-]
 url {
   src: "https://github.com/ocaml/ocaml/archive/4.12.0.tar.gz"
   checksum: "md5=770e0b7a3cd02cf47f2233e54e7ea344"
+}
+extra-source "windows.conf.in" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows64/ocaml-windows64.4.12.0/windows.conf.in"
+  checksum:
+    "sha256=5db7d0f9d8d0a494db3984c7e78cd7e0c06bad0f7d34904e6f1e8d30dd11f343"
+}
+extra-source "s-nt.h" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows64/ocaml-windows64.4.12.0/s-nt.h"
+  checksum:
+    "sha256=034d706853ad9e9bbc8f25453e7d2ee8c629af0c9cd45087ba4a0af960c52239"
+}
+extra-source "remove.sh" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows64/ocaml-windows64.4.12.0/remove.sh"
+  checksum:
+    "sha256=8802e7c23d30b6889e4a731641e64520c9e01ec1d4086bc3a55e5f6bb06918b9"
+}
+extra-source "m-nt.h" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows64/ocaml-windows64.4.12.0/m-nt.h"
+  checksum:
+    "sha256=6a9b62535c4ad423600706a2a031e7473b04d854045d1db7b00f72223975b1d0"
+}
+extra-source "install.sh" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows64/ocaml-windows64.4.12.0/install.sh"
+  checksum:
+    "sha256=0bcc3ee37413fe856dfbc52c780c50794eb9630cd651c357c47685dcd449605e"
+}
+extra-source "build.sh" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows64/ocaml-windows64.4.12.0/build.sh"
+  checksum:
+    "sha256=c0075e76b280ad1247537a69459876831623b9369a4ebe8db8e505fd879a0775"
+}
+extra-source "Makefile.cross.in" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows64/ocaml-windows64.4.12.0/Makefile.cross.in"
+  checksum:
+    "sha256=3a1997ff57b2dbe9087b8f19e00d5487aff627232417dabf5db4a15b4cfe5337"
+}
+extra-source "patches/use-host-ocamlrun.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows64/ocaml-windows64.4.12.0/patches/use-host-ocamlrun.patch"
+  checksum:
+    "sha256=14dd889fc2ddd312b3bd0ff20ff1e3b560d018d9797ed73e7b28179b2ea92a6e"
+}
+extra-source "patches/use-host-ocamldoc.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows64/ocaml-windows64.4.12.0/patches/use-host-ocamldoc.patch"
+  checksum:
+    "sha256=ec9355cc82562e669705c735bd4c696fd0211def43c948f5111b653425b59677"
+}
+extra-source "patches/ostype-fix.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows64/ocaml-windows64.4.12.0/patches/ostype-fix.patch"
+  checksum:
+    "sha256=d78dd04f4b6fd68b2b5d678e54012d3967cbfd1189da9e142eca745619f486d9"
+}
+extra-source "patches/avoid-cygwin-specifics.patch" {
+  src:
+    "https://raw.githubusercontent.com/ocaml-cross/opam-cross-windows/main/patches/ocaml-windows64/ocaml-windows64.4.12.0/patches/avoid-cygwin-specifics.patch"
+  checksum:
+    "sha256=daa7732a762d35fa14c1d748c22c0fd220934efea5afac31965152b4b66d99e0"
 }
