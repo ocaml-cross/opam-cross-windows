@@ -1,9 +1,8 @@
 opam-version: "2.0"
 maintainer: "whitequark@whitequark.org"
 build: [
-  ["chmod" "+x" "./generate-config.sh"]
-  ["./generate-config.sh" "%{conf-gcc-windows32:prefix}%"] {conf-gcc-windows32:installed}
-  ["./generate-config.sh" "%{conf-gcc-windows64:prefix}%"] {conf-gcc-windows64:installed}
+  ["sh" "./generate-config.sh" "%{conf-gcc-windows32:prefix}%"] {conf-gcc-windows32:installed}
+  ["sh" "./generate-config.sh" "%{conf-gcc-windows64:prefix}%"] {conf-gcc-windows64:installed}
 ]
 depends: ["ocaml" "conf-gcc-windows32" | "conf-gcc-windows64"]
 extra-files: ["generate-config.sh" "md5=a3982c13d9a7ae0cb10d98d168aaa1b6"]

@@ -14,16 +14,13 @@ substs: [
   "windows.conf"
 ]
 build: [
-  ["chmod" "+x" "./build.sh"]
-  ["./build.sh"]
+  ["sh" "./build.sh"]
 ]
 install: [
-  ["chmod" "+x" "./install.sh"]
-  ["./install.sh" "%{prefix}%"]
+  ["sh" "./install.sh" "%{prefix}%"]
 ]
 remove: [
-  ["chmod" "+x" "./remove.sh"]
-  ["./remove.sh" "%{prefix}%"]
+  ["sh" "./remove.sh" "%{prefix}%"]
 ]
 depends: [
   "ocaml" {= "4.07.0"}

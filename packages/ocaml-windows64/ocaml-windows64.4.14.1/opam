@@ -9,11 +9,9 @@ substs: [
   "windows.conf"
 ]
 build: [
-  ["chmod" "+x" "./build.sh"]
   ["/bin/sh" "./build.sh" "%{conf-gcc-windows64:host}%" "%{prefix}%" "%{flexdll-windows:lib}%"]
 ]
 install: [
-  ["chmod" "+x" "./install.sh"]
   ["/bin/sh" "./install.sh" "%{prefix}%" "%{flexdll-windows:lib}%"]
 ]
 depends: [

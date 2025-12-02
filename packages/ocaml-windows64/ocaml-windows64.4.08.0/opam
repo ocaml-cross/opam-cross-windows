@@ -12,16 +12,13 @@ substs: [
   "windows.conf"
 ]
 build: [
-  ["chmod" "+x" "./build.sh"]
-  ["./build.sh" "%{conf-gcc-windows64:host}%"]
+  ["sh" "./build.sh" "%{conf-gcc-windows64:host}%"]
 ]
 install: [
-  ["chmod" "+x" "./install.sh"]
-  ["./install.sh" "%{prefix}%"]
+  ["sh" "./install.sh" "%{prefix}%"]
 ]
 remove: [
-  ["chmod" "+x" "./remove.sh"]
-  ["./remove.sh" "%{prefix}%"]
+  ["sh" "./remove.sh" "%{prefix}%"]
 ]
 depends: [
   "ocaml" {= "4.08.0"}

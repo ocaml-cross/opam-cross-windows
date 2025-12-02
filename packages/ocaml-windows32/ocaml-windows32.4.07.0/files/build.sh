@@ -1,4 +1,6 @@
-#!/bin/sh -e
+#!/bin/sh
+
+set -e
 
 if grep "WITH_SPACETIME=true" config/Makefile >/dev/null 2>/dev/null; then
   echo "#define WITH_SPACETIME" >> byterun/caml/m.h

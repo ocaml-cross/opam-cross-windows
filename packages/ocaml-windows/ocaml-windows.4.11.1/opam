@@ -1,12 +1,10 @@
 opam-version: "2.0"
 maintainer: "whitequark@whitequark.org"
 install: [
-  ["chmod" "+x" "./install.sh"]
-  ["./install.sh" "%{prefix}%" "%{conf-gcc-windows:host}%"]
+  ["sh" "./install.sh" "%{prefix}%" "%{conf-gcc-windows:host}%"]
 ]
 remove: [
-  ["chmod" "+x" "./remove.sh"]
-  ["./remove.sh" "%{prefix}%" "%{conf-gcc-windows:host}%"]
+  ["sh" "./remove.sh" "%{prefix}%" "%{conf-gcc-windows:host}%"]
 ]
 depends: [
   "ocaml"
