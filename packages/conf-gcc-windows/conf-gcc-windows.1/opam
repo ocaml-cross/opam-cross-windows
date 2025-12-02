@@ -1,6 +1,7 @@
 opam-version: "2.0"
 maintainer: "whitequark@whitequark.org"
 build: [
+  ["chmod" "+x" "./generate-config.sh"]
   ["./generate-config.sh" "%{conf-gcc-windows32:prefix}%"] {conf-gcc-windows32:installed}
   ["./generate-config.sh" "%{conf-gcc-windows64:prefix}%"] {conf-gcc-windows64:installed}
 ]
