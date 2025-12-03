@@ -38,3 +38,6 @@ url {
     "sha512=735c6afd48e36af0a032f51217e7558629a198fd39a0484883831bdbff511b331033696b8ad73c6896fa9df0a0b1fd2f27336c2b0b7447dd10902e6bc64e4886"
   ]
 }
+extra-files: [
+  "patches/fix-wine-call.patch" "md5=3edda19e24f47830691d8931c8299b84"
+]

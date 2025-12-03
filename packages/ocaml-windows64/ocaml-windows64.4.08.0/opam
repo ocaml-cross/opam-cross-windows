@@ -36,22 +36,22 @@ conflicts: [
 ]
 available: arch = "x86_64"
 synopsis: "OCaml cross-compiler for 64-bit x86 Windows targets"
-extra-files: [
-  ["windows.conf.in" "md5=8457fb3000403fb7145f20e8a0095f89"]
-  ["build.sh" "md5=b468db10dfc74dd85a6c441bbc08474c"]
-  ["remove.sh" "md5=d2ebe7ce54e4a93a4d71d5fd889f17e3"]
-  ["install.sh" "md5=995050a54b009b4ded377a221f4f6639"]
-  ["Makefile.cross.in" "md5=239f0730dc9614f270d240bc942bea3a"]
-  ["patches/use-host-ocamldoc.patch" "md5=630690f2185fc50c51847cd74b42e2d1"]
-  ["patches/use-host-ocamlrun.patch" "md5=64ab0e21a5071f790a7babf4f92bf954"]
-  ["patches/ostype-fix.patch" "md5=a582fae8bf7ad25cb87708e8d2990bf6"]
-  ["patches/no-ocamltest.patch" "md5=f1a2006f053f3d195c03f5b8cf4fba31"]
-  [
-    "patches/avoid-cygwin-specifics.patch"
-    "md5=a57e6a27b28010f740fcca2399bb83ca"
-  ]
-]
 url {
   src: "https://github.com/ocaml/ocaml/archive/4.08.0.tar.gz"
   checksum: "md5=42ed24e9a7c0e3998cab7d5e7c9f7618"
 }
+extra-files: [
+  ["Makefile.cross.in" "md5=239f0730dc9614f270d240bc942bea3a"]
+  ["build.sh" "md5=1ffb352bd8969676e417342abd288ba0"]
+  ["install.sh" "md5=77c4869bebe3d50b7c903ed0da328f99"]
+  [
+    "patches/avoid-cygwin-specifics.patch"
+    "md5=a57e6a27b28010f740fcca2399bb83ca"
+  ]
+  ["patches/no-ocamltest.patch" "md5=f1a2006f053f3d195c03f5b8cf4fba31"]
+  ["patches/ostype-fix.patch" "md5=a582fae8bf7ad25cb87708e8d2990bf6"]
+  ["patches/use-host-ocamldoc.patch" "md5=630690f2185fc50c51847cd74b42e2d1"]
+  ["patches/use-host-ocamlrun.patch" "md5=64ab0e21a5071f790a7babf4f92bf954"]
+  ["remove.sh" "md5=f2fbbda11d0f4dcd1f7001c12a621f03"]
+  ["windows.conf.in" "md5=8457fb3000403fb7145f20e8a0095f89"]
+]
