@@ -1,12 +1,10 @@
 opam-version: "2.0"
 maintainer: "whitequark@whitequark.org"
 install: [
-  ["chmod" "+x" "./install.sh"]
-  ["./install.sh" "%{prefix}%" "%{conf-gcc-windows:host}%"]
+  ["sh" "./install.sh" "%{prefix}%" "%{conf-gcc-windows:host}%"]
 ]
 remove: [
-  ["chmod" "+x" "./remove.sh"]
-  ["./remove.sh" "%{prefix}%" "%{conf-gcc-windows:host}%"]
+  ["sh" "./remove.sh" "%{prefix}%" "%{conf-gcc-windows:host}%"]
 ]
 depends: [
   "ocaml"
@@ -15,6 +13,6 @@ depends: [
 ]
 synopsis: "A meta-package depending on any OCaml cross-compiler"
 extra-files: [
-  ["remove.sh" "md5=b97c542567963902a748467b7edf90d8"]
-  ["install.sh" "md5=767ed38d97e0f3293a2f9ecdfd676fae"]
+  ["install.sh" "md5=9ff027906f0b1566f7d13fe2b54a5601"]
+  ["remove.sh" "md5=d343bcc4c33f08cd244609ce16319f3c"]
 ]

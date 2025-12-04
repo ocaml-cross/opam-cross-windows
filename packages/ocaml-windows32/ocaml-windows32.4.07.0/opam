@@ -13,16 +13,13 @@ substs: [
   "windows.conf"
 ]
 build: [
-  ["chmod" "+x" "./build.sh"]
-  ["./build.sh"]
+  ["sh" "./build.sh"]
 ]
 install: [
-  ["chmod" "+x" "./install.sh"]
-  ["./install.sh" "%{prefix}%"]
+  ["sh" "./install.sh" "%{prefix}%"]
 ]
 remove: [
-  ["chmod" "+x" "./remove.sh"]
-  ["./remove.sh" "%{prefix}%"]
+  ["sh" "./remove.sh" "%{prefix}%"]
 ]
 depends: [
   "ocaml" {"4.07.0" & arch = "x86" | "4.07.0+32bit"}
@@ -38,31 +35,31 @@ conflicts: [
   "ocaml-windows64"
 ]
 synopsis: "OCaml cross-compiler for 32-bit x86 Windows targets"
-extra-files: [
-  ["windows.conf.in" "md5=8457fb3000403fb7145f20e8a0095f89"]
-  ["remove.sh" "md5=d2ebe7ce54e4a93a4d71d5fd889f17e3"]
-  ["install.sh" "md5=585356cd8b5f6a17c9769d1deb2bda57"]
-  ["build.sh" "md5=661e39ae28fb81178637519169313521"]
-  ["byterun/caml/s.h" "md5=cea41384207dddbdeb1f662af40bd067"]
-  ["byterun/caml/m.h" "md5=04983943424ca21bdad1e6a0e808fdc3"]
-  ["config/Makefile.in" "md5=1c759ecb31a405cfa08bc5202cc0cd63"]
-  [
-    "patches/use-host-ocamlrun-for-stdlib-doc.patch"
-    "md5=bb186ecb914bde3a0a356b691ee8b945"
-  ]
-  ["patches/use-host-ocamldoc.patch" "md5=f6820ab4e19f83df95ece3a35fb62df1"]
-  ["patches/ostype-fix.patch" "md5=46756d0d1b93768c1a85fea2b0695b3d"]
-  ["patches/no-ocamltest.patch" "md5=f47a32e277ed1e66ad8aa09a721a439c"]
-  [
-    "patches/avoid-cygwin-specifics.patch"
-    "md5=ad2c2113ccfee31ac8d31a8683514ea1"
-  ]
-  [
-    "patches/ocamlopt-config-returns-target-os_type.patch"
-    "md5=6aef55b54bd47813545a03ececf25a29"
-  ]
-]
 url {
   src: "https://github.com/ocaml/ocaml/archive/4.07.0.tar.gz"
   checksum: "md5=1f78bb35a2f15d5ec737ee6a8dc6890d"
 }
+extra-files: [
+  ["build.sh" "md5=180b3bbd1799f8b24707a4e8388a029f"]
+  ["byterun/caml/m.h" "md5=04983943424ca21bdad1e6a0e808fdc3"]
+  ["byterun/caml/s.h" "md5=cea41384207dddbdeb1f662af40bd067"]
+  ["config/Makefile.in" "md5=1c759ecb31a405cfa08bc5202cc0cd63"]
+  ["install.sh" "md5=e8109061f6124dd835036ebc2ac808f5"]
+  [
+    "patches/avoid-cygwin-specifics.patch"
+    "md5=ad2c2113ccfee31ac8d31a8683514ea1"
+  ]
+  ["patches/no-ocamltest.patch" "md5=f47a32e277ed1e66ad8aa09a721a439c"]
+  [
+    "patches/ocamlopt-config-returns-target-os_type.patch"
+    "md5=6aef55b54bd47813545a03ececf25a29"
+  ]
+  ["patches/ostype-fix.patch" "md5=46756d0d1b93768c1a85fea2b0695b3d"]
+  ["patches/use-host-ocamldoc.patch" "md5=f6820ab4e19f83df95ece3a35fb62df1"]
+  [
+    "patches/use-host-ocamlrun-for-stdlib-doc.patch"
+    "md5=bb186ecb914bde3a0a356b691ee8b945"
+  ]
+  ["remove.sh" "md5=f2fbbda11d0f4dcd1f7001c12a621f03"]
+  ["windows.conf.in" "md5=8457fb3000403fb7145f20e8a0095f89"]
+]

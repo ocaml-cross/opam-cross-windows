@@ -9,11 +9,9 @@ substs: [
   "windows.conf"
 ]
 build: [
-  ["chmod" "+x" "./build.sh"]
   ["/bin/sh" "./build.sh" "%{conf-gcc-windows64:host}%" "%{prefix}%" "%{flexdll-windows:lib}%"]
 ]
 install: [
-  ["chmod" "+x" "./install.sh"]
   ["/bin/sh" "./install.sh" "%{prefix}%" "%{flexdll-windows:lib}%"]
 ]
 depends: [
@@ -36,7 +34,7 @@ extra-files: [
   ["patches/configure.patch" "md5=11532eb26b881d38db59a00341823b99"]
   ["patches/ostype-fix.patch" "md5=57404edca01e9a353f28d3b3c0139f55"]
   ["patches/windows-append.patch" "md5=137c69d696dc857d663f49df7385923b"]
-  ["remove.sh" "md5=d2ebe7ce54e4a93a4d71d5fd889f17e3"]
+  ["remove.sh" "md5=f2fbbda11d0f4dcd1f7001c12a621f03"]
   ["windows.conf.in" "md5=e3b6250be08dc3a108695b6610bcd7f8"]
 ]
 url {

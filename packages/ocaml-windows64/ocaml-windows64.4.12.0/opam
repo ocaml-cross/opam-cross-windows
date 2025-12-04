@@ -11,15 +11,12 @@ substs: [
   "windows.conf"
 ]
 build: [
-  ["chmod" "+x" "./build.sh"]
   ["/bin/sh" "./build.sh" "%{conf-gcc-windows64:host}%"]
 ]
 install: [
-  ["chmod" "+x" "./install.sh"]
   ["/bin/sh" "./install.sh" "%{prefix}%"]
 ]
 remove: [
-  ["chmod" "+x" "./remove.sh"]
   ["/bin/sh" "./remove.sh" "%{prefix}%"]
 ]
 depends: [
@@ -37,23 +34,23 @@ conflicts: [
 ]
 available: arch = "x86_64"
 synopsis: "OCaml cross-compiler for 64-bit x86 Windows targets"
-extra-files: [
-  ["s-nt.h" "md5=168fb57183722c5b5c03014e614a2e2e"]
-  ["m-nt.h" "md5=b021fa0ff2866387df29b2483d002db7"]
-  ["windows.conf.in" "md5=8457fb3000403fb7145f20e8a0095f89"]
-  ["build.sh" "md5=77b54628448a7f0addea75a5f654db39"]
-  ["remove.sh" "md5=d2ebe7ce54e4a93a4d71d5fd889f17e3"]
-  ["install.sh" "md5=995050a54b009b4ded377a221f4f6639"]
-  ["Makefile.cross.in" "md5=612140d098e710a988e06acd09277cf3"]
-  ["patches/use-host-ocamldoc.patch" "md5=90dabeba5331e53ad38c77130ad1535c"]
-  ["patches/use-host-ocamlrun.patch" "md5=596b86ec78d00b0c22a244be422f35b3"]
-  ["patches/ostype-fix.patch" "md5=1f4bdb07f95403db78fdb72cae704637"]
-  [
-    "patches/avoid-cygwin-specifics.patch"
-    "md5=1d2f006e8dda0316130b30f05b83965f"
-  ]
-]
 url {
   src: "https://github.com/ocaml/ocaml/archive/4.12.0.tar.gz"
   checksum: "md5=770e0b7a3cd02cf47f2233e54e7ea344"
 }
+extra-files: [
+  ["Makefile.cross.in" "md5=612140d098e710a988e06acd09277cf3"]
+  ["build.sh" "md5=be9985eeddf1e887c29c3bd382b6360b"]
+  ["install.sh" "md5=77c4869bebe3d50b7c903ed0da328f99"]
+  ["m-nt.h" "md5=b021fa0ff2866387df29b2483d002db7"]
+  [
+    "patches/avoid-cygwin-specifics.patch"
+    "md5=1d2f006e8dda0316130b30f05b83965f"
+  ]
+  ["patches/ostype-fix.patch" "md5=1f4bdb07f95403db78fdb72cae704637"]
+  ["patches/use-host-ocamldoc.patch" "md5=90dabeba5331e53ad38c77130ad1535c"]
+  ["patches/use-host-ocamlrun.patch" "md5=596b86ec78d00b0c22a244be422f35b3"]
+  ["remove.sh" "md5=f2fbbda11d0f4dcd1f7001c12a621f03"]
+  ["s-nt.h" "md5=168fb57183722c5b5c03014e614a2e2e"]
+  ["windows.conf.in" "md5=8457fb3000403fb7145f20e8a0095f89"]
+]
