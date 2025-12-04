@@ -25,6 +25,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Clear up disk space
+        run: rm -rf /opt/hostedtoolcache
+
       - name: Set up Docker Builder
         uses: docker/setup-buildx-action@v3
 
