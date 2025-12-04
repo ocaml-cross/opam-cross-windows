@@ -1,0 +1,72 @@
+opam-version: "2.0"
+license: "LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception"
+synopsis: "OCaml 5.4.0 cross-compiler for windows"
+maintainer: [
+  "Pierre Boutillier <pierre.boutillier@laposte.net>"
+]
+authors: [
+  "Xavier Leroy"
+  "Damien Doligez"
+  "Alain Frisch"
+  "Jacques Garrigue"
+  "Didier Rémy"
+  "KC Sivaramakrishnan"
+  "Jérôme Vouillon"
+]
+homepage: "https://ocaml.org"
+bug-reports: "https://github.com/ocaml/opam-repository/issues"
+dev-repo: "git+https://github.com/ocaml/ocaml.git#5.4"
+depends: [
+  "ocaml" {= version}
+  "flexdll-windows"
+  "conf-gcc-windows64"
+  "ocamlfind"
+]
+setenv: [
+  [PATH =+ "%{flexdll-windows:lib}%"]
+]
+build-env: [
+  [PATH =+ "%{flexdll-windows:lib}%"]
+]
+substs: [
+  "windows.conf"
+]
+build: [
+  [ "./configure"
+    "--target=%{conf-gcc-windows64:host}%"
+    "--prefix=%{prefix}%/windows-sysroot"
+    "--without-flexdll"
+    "--without-zstd"
+    "--enable-systhreads"
+    "CC=%{conf-gcc-windows64:prefix}%gcc"
+    "DIRECT_LD=%{conf-gcc-windows64:prefix}%ld"
+    "LD=%{conf-gcc-windows64:prefix}%ld"
+    "-C"
+    "--with-afl" {ocaml-option-afl:installed}
+    "--disable-flat-float-array" {ocaml-option-no-flat-float-array:installed}
+    "--enable-flambda" {ocaml-option-flambda:installed}
+    "--enable-frame-pointers" {ocaml-option-fp:installed}
+    "--enable-tsan" {ocaml-option-tsan:installed}
+    "--disable-warn-error"
+  ]
+  [make "-j%{jobs}%" "crossopt"]
+]
+install: [
+  [make "installcross"]
+  [ "ln" "-s" "ocaml.exe" "%{prefix}%/windows-sysroot/bin/ocaml" ]
+]
+url {
+  src: "https://github.com/ocaml/ocaml/releases/download/5.4.0/ocaml-5.4.0.tar.gz"
+  checksum: "sha256=6fcf1b192e389e54c4f5cb51306ab2baee2a54a25b1770366de5a8b42695996e"
+}
+depopts: [
+  "ocaml-option-afl"
+  "ocaml-option-no-flat-float-array"
+  "ocaml-option-flambda"
+  "ocaml-option-fp"
+  "ocaml-option-tsan"
+]
+extra-files: [
+  ["windows.conf.in" "sha256=f56062c6ff2320eb70743c3bd5b4495c1e63dc9ece7ddcb408ce4a47b0eb2b7c"]
+  ["ocaml-windows64.install" "sha256=d55b4e322b06f0124aa6fa209de728e2b3b8786f5569c135b1ec224f04922788"]
+]
