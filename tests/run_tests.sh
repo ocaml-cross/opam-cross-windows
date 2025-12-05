@@ -6,7 +6,7 @@ TEST_PWD=$(cd `dirname $0` && pwd)
 BASE_PWD=$(cd ${TEST_PWD}/.. && pwd)
 
 if [ -z "${OCAML_VERSION}" ]; then
-  OCAML_VERSION=5.3.0
+  OCAML_VERSION=5.4.0
 fi
 
 COMPILER="${OCAML_VERSION}"

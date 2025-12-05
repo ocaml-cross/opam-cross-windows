@@ -10,7 +10,6 @@ on:
       - ".github/workflows/docker.yml"
   workflow_dispatch:
 
-
 env:
   BASE_IMAGE: dockcross/windows-static-x64
 
@@ -19,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ocaml_version: [4.14.1, 5.3.0] # synchronize with .github/workflows/ci.yml
+        ocaml_version: [4.14.1, 5.4.0] # synchronize with .github/workflows/ci.yml
     name: Deploy ${{ matrix.ocaml_version }} image
     runs-on: ubuntu-latest
     steps:
