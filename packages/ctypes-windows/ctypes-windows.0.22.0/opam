@@ -30,6 +30,7 @@ depends: [
   "integers"
   "integers-windows"
   "dune-configurator"
+  "dune-configurator-windows"
   "bigarray-compat"
   "bigarray-compat-windows"
 ]
