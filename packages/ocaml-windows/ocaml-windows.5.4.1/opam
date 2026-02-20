@@ -1,0 +1,24 @@
+opam-version: "2.0"
+maintainer: "whitequark@whitequark.org"
+install: [
+  ["sh" "./install.sh" "%{prefix}%" "%{conf-gcc-windows:host}%"]
+]
+remove: [
+  ["sh" "./remove.sh" "%{prefix}%" "%{conf-gcc-windows:host}%"]
+]
+depends: [
+  "ocaml"
+  "conf-gcc-windows"
+  "ocaml-windows64" {= version}
+]
+synopsis: "A meta-package depending on any OCaml cross-compiler"
+extra-files: [
+  [
+  "install.sh"
+  "sha256=aba230a059c3c89bbbd76a607725fed3a64280b4e192c4f3279c7a8a3104c10f"
+]
+  [
+  "remove.sh"
+  "sha256=c6cf16a6df373bbd3b2b53ab7256ddf6135c5639bc76669687d31dff7cb5cb30"
+]
+]
