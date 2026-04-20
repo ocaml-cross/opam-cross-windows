@@ -1,6 +1,7 @@
-# opam-cross-windows
+opam-cross-windows
+==================
 
-This repository contains an up-to-date Windows toolchain featuring OCaml `4.07.0`, `4.08.0`, `4.12.0`, `4.14.1`, `5.1.1`, `5.3.0`, `5.4.0`, and `5.4.1`, as well as some commonly used packages.
+This repository contains an up-to-date Windows toolchain featuring OCaml `4.07.0`, `4.08.0`, `4.12.0`, `4.14.1`, `5.1.1`, `5.3.0`, `5.4.0` and `5.4.1`, as well as some commonly used packages.
 
 The supported build systems are 32-bit and 64-bit x86 Linux and `arm64` macos (Apple Silicon). The supported target systems are 32-bit and 64-bit x86 Windows.
 
@@ -8,11 +9,13 @@ Only 64-bit build and target are supported now on (from OCaml `5.1.1`).
 
 If you need support for other platforms or versions, please [open an issue](https://github.com/ocaml-cross/opam-cross-windows/issues).
 
-## Prerequisites
+Prerequisites
+-------------
 
 A C cross-compiler targeting the appropriate Windows platform must be installed. On Debian derivatives they are provided in the `gcc-mingw-w64-x86-64` packages (`gcc-mingw-w64-i686` for 32-bit x86 Windows targets). Alternatively, the [MXE environment](http://mxe.cc) can be used.
 
-## Installation
+Installation
+------------
 
 Add this repository to OPAM:
 
@@ -49,9 +52,9 @@ Alternatively, specify the path to the C toolchain explicitly:
 
 The options have the following meaning:
 
-- `TOOLPREF64` specify the compiler path prefix. The tools named `${TOOLPREF*}gcc`, `${TOOLPREF*}as`, `${TOOLPREF*}ar`, `${TOOLPREF*}ranlib` and `${TOOLPREF*}ld` must be possible to locate via `PATH`.
+  * `TOOLPREF64` specify the compiler path prefix. The tools named `${TOOLPREF*}gcc`, `${TOOLPREF*}as`, `${TOOLPREF*}ar`, `${TOOLPREF*}ranlib` and `${TOOLPREF*}ld` must be possible to locate via `PATH`.
 
-  The values above are suitable for use with the [MXE environment](http://mxe.cc) located in `~/mxe` after running `make gcc`.
+    The values above are suitable for use with the [MXE environment](http://mxe.cc) located in `~/mxe` after running `make gcc`.
 
 The `TOOLPREF*` options are recorded inside the `conf-gcc-windows*` packages, so make sure to reinstall those if you wish to switch to a different toolchain. Otherwise, it is not necessary to supply them while upgrading the `ocaml-windows*` packages.
 
@@ -92,13 +95,15 @@ Make a DLL out of it:
 
 With opam-windows-cross, cross-compilation is easy!
 
-## External dependencies
+External dependencies
+---------------------
 
 opam-windows-cross is designed to use native dependencies from the [MXE environment](http://mxe.cc). It is possible to automatically install all required dependencies for an OPAM package, e.g. `camlbz2-windows`, using one short command within an MXE checkout:
 
     make `opam list --short --recursive --external --vars os-distribution=mxe --required-by=camlbz2-windows`
 
-## Porting packages
+Porting packages
+----------------
 
 OCaml packages often have components that execute at compile-time (camlp4 or ppx syntax extensions, cstubs, OASIS, ...). Thus, it is not possible to just blanketly cross-compile every package in the OPAM repository; sometimes you would even need a cross-compiled and a non-cross-compiled package at once. The package definitions also often need package-specific modification in order to work.
 
@@ -131,10 +136,12 @@ For projects installing the files via OPAM's `.install` files (e.g. [topkg](http
     remove: [["ocamlfind" "-toolchain" "windows" "remove" "pkg"]]
     depends: ["ocaml-windows" ...]
 
-## License
+License
+-------
 
 All files contained in this repository are licensed under the [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/) license.
 
-## References
+References
+----------
 
 See also [opam-cross-android](https://github.com/ocaml-cross/opam-cross-android) and [opam-cross-ios](https://github.com/ocaml-cross/opam-cross-ios).
