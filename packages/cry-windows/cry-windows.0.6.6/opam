@@ -18,17 +18,8 @@ conflicts: [
 ]
 build: [
   ["dune" "subst"] {dev}
-  [
-    "dune"
-    "build"
-    "-p"
-    "cry"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "cry" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/savonet/ocaml-cry.git"
 url {
@@ -38,3 +29,4 @@ url {
     "sha512=07e2b76cf061b67fc6e822d6a05497cc3de06d7c9eeb3cf16c596486a9f452d6a77139928baa43c6aa5759fb851ba290f8189f0e7e9e093585f89df2715497ff"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "cry"]

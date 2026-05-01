@@ -14,6 +14,7 @@ depends: [
 build: [
   ["dune" "subst"] {pinned}
   ["dune" "build" "-p" "hex" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/mirage/ocaml-hex.git"
 synopsis: "Library providing hexadecimal converters"
@@ -34,3 +35,4 @@ url {
     "https://github.com/mirage/ocaml-hex/releases/download/v1.4.0/hex-v1.4.0.tbz"
   checksum: "md5=57103ff33e70f14171c46d88f5452d11"
 }
+install: ["dune" "install" "-x" "windows" "-p" "hex"]

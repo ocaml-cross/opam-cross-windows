@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_tydi/index.html"
 license: "MIT"
 build: [
   ["dune" "build" "-p" "ppx_tydi" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"  {>= "5.1.0"}
@@ -26,3 +27,4 @@ url {
 src: "https://github.com/janestreet/ppx_tydi/archive/refs/tags/v0.17.0.tar.gz"
 checksum: "sha256=8d22dc50f0ec75380b893063a2294555dc325d21777bc09d2c6e201b391e4265"
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_tydi"]

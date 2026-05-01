@@ -11,7 +11,8 @@ depends: [
   "ocaml-windows"
 ]
 build: [
-  ["dune" "build" "-p" "gen" "-x" "windows"  "-j" jobs]
+  ["dune" "build" "-p" "gen" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/c-cube/gen.git"
 url {
@@ -21,3 +22,4 @@ url {
     "sha512=c84e5ea0c9b3a678b6a5c935eacf91265a79b68a48375c44aa5f159d4cb02283c1be0786e172a153666c670bc7ee37b931004b8747a99e5f4ab90ca63e097ff5"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "gen"]

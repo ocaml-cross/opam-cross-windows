@@ -18,17 +18,8 @@ conflicts: [
 ]
 build: [
   ["dune" "subst"] {dev}
-  [
-    "dune"
-    "build"
-    "-p"
-    "ffmpeg-av"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "ffmpeg-av" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 depexts: [
   ["ffmpeg"] {os-distribution = "mxe"}
@@ -41,3 +32,4 @@ url {
     "sha512=17740d7d7148fc460066dc65b6d665b1efb541aca379986f42acc3975d76db656e08a822d0035d351efd2c371b0878603bb3c66c612123b229bc2dda15e25c9a"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "ffmpeg-av"]

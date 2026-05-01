@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_let/index.html"
 license: "MIT"
 build: [
   ["dune" "build" "-p" "ppx_let" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"    {>= "4.14.0"}
@@ -27,3 +28,4 @@ url {
 src: "https://ocaml.janestreet.com/ocaml-core/v0.16/files/ppx_let-v0.16.0.tar.gz"
 checksum: "sha256=2f4afb3100f4f0ae87be781b0ca6710f0a360ee8edd7eeaeb7574eca4d8be65c"
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_let"]

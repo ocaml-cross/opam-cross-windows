@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/typerep/index.html"
 license: "MIT"
 build: [
   ["dune" "build" "-p" "typerep" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows" {>= "4.14.0" & < "5.3"}
@@ -21,3 +22,4 @@ url {
 src: "https://ocaml.janestreet.com/ocaml-core/v0.16/files/typerep-v0.16.0.tar.gz"
 checksum: "sha256=e5157fef61e0229dacf01a5677bb93416ab59ee86046904c3d691e872ed4f72c"
 }
+install: ["dune" "install" "-x" "windows" "-p" "typerep"]

@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_enumerate/index.htm
 license: "MIT"
 build: [
   ["dune" "build" "-p" "ppx_enumerate" "-j" jobs "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"  {>= "4.04.2"}
@@ -24,3 +25,4 @@ url {
   src: "https://ocaml.janestreet.com/ocaml-core/v0.14/files/ppx_enumerate-v0.14.0.tar.gz"
   checksum: "md5=188421af960759f6e45dd748f4f08e8d"
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_enumerate"]

@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/time_now/index.html"
 license: "MIT"
 build: [
   ["dune" "build" "-p" "time_now" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"               {>= "4.14.0"}
@@ -29,3 +30,4 @@ url {
 src: "https://ocaml.janestreet.com/ocaml-core/v0.16/files/time_now-v0.16.0.tar.gz"
 checksum: "sha256=5fa084aadee6aaedbb8976e4a2bc0c1dfe69eecdd0576ff901f21eedd46dc3a1"
 }
+install: ["dune" "install" "-x" "windows" "-p" "time_now"]

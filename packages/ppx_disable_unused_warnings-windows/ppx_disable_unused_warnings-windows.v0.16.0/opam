@@ -7,7 +7,10 @@ dev-repo: "git+https://github.com/janestreet/ppx_disable_unused_warnings.git"
 doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_disable_unused_warnings/index.html"
 license: "MIT"
 build: [
-  ["dune" "build" "-p" "ppx_disable_unused_warnings" "-x" "windows" "-j" jobs]
+  [
+    "dune" "build" "-p" "ppx_disable_unused_warnings" "-x" "windows" "-j" jobs
+  ]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"  {>= "4.14.0"}
@@ -25,3 +28,4 @@ url {
 src: "https://ocaml.janestreet.com/ocaml-core/v0.16/files/ppx_disable_unused_warnings-v0.16.0.tar.gz"
 checksum: "sha256=3fd18ff840e4f84eb34683efdd56508ba330011b8f906d0f60684f8fce4298e7"
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_disable_unused_warnings"]

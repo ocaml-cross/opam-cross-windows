@@ -14,8 +14,8 @@ depends: [
   "dune" {build & >= "1.0+beta10"}
 ]
 build: [
-  ["dune" "build" 
-                      "-p" "base64" "-j" jobs "-x" "windows"]
+  ["dune" "build" "-p" "base64" "-j" jobs "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
 synopsis: "For OCaml"
 description: """
@@ -32,3 +32,4 @@ url {
     "https://github.com/mirage/ocaml-base64/releases/download/v2.2.0/base64-2.2.0.tbz"
   checksum: "md5=49f2bc4ae37b832c652277c0b701a02a"
 }
+install: ["dune" "install" "-x" "windows" "-p" "base64"]

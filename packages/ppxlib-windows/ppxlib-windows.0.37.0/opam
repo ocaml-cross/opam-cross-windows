@@ -43,13 +43,16 @@ build: [
     "dune"
     "build"
     "-p"
-    "ppxlib" "-x" "windows"
+    "ppxlib"
+    "-x"
+    "windows"
     "-j"
     jobs
     "@install"
     "@runtest" {with-test}
     "@doc" {with-doc}
   ]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/ocaml-ppx/ppxlib.git"
 x-maintenance-intent: ["(latest)"]
@@ -62,3 +65,4 @@ url {
   ]
 }
 x-commit-hash: "df39675d8ff0c3490ece8157c681691cfb67fdaf"
+install: ["dune" "install" "-x" "windows" "-p" "ppxlib"]

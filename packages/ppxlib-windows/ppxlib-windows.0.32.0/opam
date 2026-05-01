@@ -36,17 +36,8 @@ conflicts: [
   "base-effects-windows"
 ]
 build: [
-  [
-    "dune"
-    "build"
-    "-p"
-    "ppxlib"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "ppxlib" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/ocaml-ppx/ppxlib.git"
 url {
@@ -58,3 +49,4 @@ url {
   ]
 }
 x-commit-hash: "ad46a4c87f99a44dc70b2ec4c42caec2ccacc3c3"
+install: ["dune" "install" "-x" "windows" "-p" "ppxlib"]

@@ -14,17 +14,8 @@ depends: [
   "base-bytes"
 ]
 build: [
-  [
-    "dune"
-    "build"
-    "-p"
-    "cry"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "cry" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/savonet/ocaml-cry.git"
 url {
@@ -34,3 +25,4 @@ url {
     "sha512=34e8fe3dc9fe61f3a20e84940e9cc23d2a936717ae410b04d26e75ac655e2d7c5b20f549dd706ef0594f448680bd63d9a3cc68e95d5ac82b067b82bd96ce68ec"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "cry"]

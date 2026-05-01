@@ -12,7 +12,17 @@ depends: [
   "ppx_tools_versioned"
   "ocaml-windows" {>= "4.04.0"}
 ]
-build: ["dune" "build" "-p" "ocaml-monadic" "-x" "windows" "-j" jobs]
+build: [
+  ["dune"
+  "build"
+  "-p"
+  "ocaml-monadic"
+  "-x"
+  "windows"
+  "-j"
+  jobs]
+  ["rm" "%{name}%.install"]
+]
 dev-repo: "git+https://github.com/zepalmer/ocaml-monadic.git"
 url {
   src:
@@ -22,3 +32,4 @@ url {
     "sha512=35d16c6d7671fecbb698e9ef6a71bac25afc99293f90a070a4a044f4c939f95a9ebcf4c24ff64b4ebfa7c7aa9f3d5bad2b27c0617b23aa18f41912df9607cfec"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "ocaml-monadic"]

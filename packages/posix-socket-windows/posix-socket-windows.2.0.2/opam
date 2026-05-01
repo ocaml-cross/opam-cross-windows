@@ -17,17 +17,8 @@ depends: [
   "posix-base-windows" {= version}
 ]
 build: [
-  [
-    "dune"
-    "build"
-    "-p"
-    "posix-socket"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "posix-socket" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 patches: [
   "patches/fix-wine-call.patch"
@@ -44,3 +35,4 @@ url {
     "sha512=6f5fa0fd5f3f0b845c2c9cd46a53e518dc5187f1ea7450fc04bbdc4c7b6fbcc427253e60847cc14f5bff895622e18aea404fbd8e14d4b50f52a7c0e682621ac8"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "posix-socket"]

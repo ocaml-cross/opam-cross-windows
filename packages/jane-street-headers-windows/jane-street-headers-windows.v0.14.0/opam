@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/jane-street-headers/ind
 license: "MIT"
 build: [
   ["dune" "build" "-p" "jane-street-headers" "-j" jobs "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml" {>= "4.04.2"}
@@ -22,3 +23,4 @@ url {
   src: "https://ocaml.janestreet.com/ocaml-core/v0.14/files/jane-street-headers-v0.14.0.tar.gz"
   checksum: "md5=e8d253ac44d25c8c66367153a0c77495"
 }
+install: ["dune" "install" "-x" "windows" "-p" "jane-street-headers"]

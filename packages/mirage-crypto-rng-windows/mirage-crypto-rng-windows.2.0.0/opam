@@ -8,8 +8,10 @@ maintainer:   "Hannes Mehnert <hannes@mehnert.org>"
 license:      "ISC"
 synopsis:     "A cryptographically secure PRNG"
 
-build: [ ["dune" "build" "-p" "mirage-crypto-rng" "-x" "windows" "-j" jobs ] ]
-
+build: [
+  ["dune" "build" "-p" "mirage-crypto-rng" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
+]
 depends: [
   "ocaml-windows" {>= "4.14.0"}
   "dune" {>= "2.7"}
@@ -34,3 +36,4 @@ url {
   ]
 }
 x-commit-hash: "cadf0e1230cada9f108e63321b30af24642e2b74"
+install: ["dune" "install" "-x" "windows" "-p" "mirage-crypto-rng"]

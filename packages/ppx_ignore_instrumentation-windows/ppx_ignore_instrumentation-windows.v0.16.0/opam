@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_ignore_instrumentat
 license: "MIT"
 build: [
   ["dune" "build" "-p" "ppx_ignore_instrumentation" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"  {>= "4.14.0"}
@@ -24,3 +25,4 @@ url {
 src: "https://ocaml.janestreet.com/ocaml-core/v0.16/files/ppx_ignore_instrumentation-v0.16.0.tar.gz"
 checksum: "sha256=522f50ef213300812658b5ea260299c072c24130502bde7e4f74eeda4c709305"
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_ignore_instrumentation"]

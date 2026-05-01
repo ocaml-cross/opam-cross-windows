@@ -6,7 +6,8 @@ homepage: "https://github.com/diml/ppx_derivers"
 bug-reports: "https://github.com/diml/ppx_derivers/issues"
 dev-repo: "git://github.com/diml/ppx_derivers.git"
 build: [
-  ["dune" "build"  "-p" "ppx_derivers" "-j" jobs "-x" "windows"]
+  ["dune" "build" "-p" "ppx_derivers" "-j" jobs "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml"
@@ -22,3 +23,4 @@ url {
   src: "https://github.com/diml/ppx_derivers/archive/1.0.tar.gz"
   checksum: "md5=4ddce8f43fdb9b0ef0ab6a7cbfebc3e3"
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_derivers"]

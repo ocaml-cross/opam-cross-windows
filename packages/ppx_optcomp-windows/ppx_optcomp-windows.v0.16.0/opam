@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_optcomp/index.html"
 license: "MIT"
 build: [
   ["dune" "build" "-p" "ppx_optcomp" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"  {>= "4.14.0"}
@@ -26,3 +27,4 @@ url {
 src: "https://ocaml.janestreet.com/ocaml-core/v0.16/files/ppx_optcomp-v0.16.0.tar.gz"
 checksum: "sha256=99b209084a5375dafce4c6b128979661ab2ab6bf898a6872d596e65ded590ba2"
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_optcomp"]

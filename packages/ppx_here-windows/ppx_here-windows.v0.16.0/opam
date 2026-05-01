@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_here/index.html"
 license: "MIT"
 build: [
   ["dune" "build" "-p" "ppx_here" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"  {>= "4.14.0"}
@@ -25,3 +26,4 @@ url {
 src: "https://ocaml.janestreet.com/ocaml-core/v0.16/files/ppx_here-v0.16.0.tar.gz"
 checksum: "sha256=278198b92500c306fab3411e3dede264d678f203eb3295dd8dd79b70ed9273f0"
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_here"]

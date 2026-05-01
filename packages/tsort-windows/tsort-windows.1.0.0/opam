@@ -16,6 +16,7 @@ dev-repo: "git+https://github.com/dmbaturin/ocaml-tsort.git"
 license: "MIT"
 build: [
   ["dune" "build" "-p" "tsort" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows" {>= "4.03.0"}
@@ -30,3 +31,4 @@ url {
     "sha512=b4153c9f266b2b8f468e04e9c3823a9c2a14a92d463825a0b8f1d5777091c425b9327d4f5518fb72ba0b04fc9b54b03fc3a49eeb85e252e9c0cddb06adb7ffb6"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "tsort"]

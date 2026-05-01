@@ -36,16 +36,8 @@ depends: [
 ]
 build: [
   ["dune" "subst"] {dev}
-  [
-    "dune"
-    "build"
-    "-p"
-    "camlp-streams"
-    "-x" "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "camlp-streams" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/ocaml/camlp-streams.git"
 url {
@@ -55,3 +47,4 @@ url {
     "sha512=2efa8dd4a636217c8d49bac1e4e7e5558fc2f45cfea66514140a59fd99dd08d61fb9f1e17804997ff648b71b13820a5d4a1eb70fed9d848aa2abd6e41f853c86"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "camlp-streams"]

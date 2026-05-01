@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_expect/index.html"
 license: "MIT"
 build: [
   ["dune" "build" "-p" "ppx_expect" "-j" jobs "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"           {>= "4.04.2"}
@@ -30,3 +31,4 @@ url {
   src: "https://github.com/janestreet/ppx_expect/archive/v0.14.1.tar.gz"
   checksum: "md5=9cc03dcabb00c72e17f7f5b0e4d28603"
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_expect"]

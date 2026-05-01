@@ -18,17 +18,8 @@ conflicts: [
   "alsa-windows" {< "0.3.0"}
 ]
 build: [
-  [
-    "dune"
-    "build"
-    "-p"
-    "mm"
-    "-j"
-    jobs
-    "-x"
-    "windows"
-    "@install"
-  ]
+  ["dune" "build" "-p" "mm" "-j" jobs "-x" "windows" "@install"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/savonet/ocaml-mm.git"
 depexts: [
@@ -41,3 +32,4 @@ url {
     "sha512=de153182cd51a52e55e7df6bf4abf46a19d7ebfc81dc13c6715a7f6321f77b8b321ee80343db9e84fdf7d0ea08d31c16fe0f646ad770937e884da7500a8e65e5"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "mm"]

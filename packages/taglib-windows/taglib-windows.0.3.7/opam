@@ -32,6 +32,7 @@ build: [
     "@runtest" {with-test}
     "@doc" {with-doc}
   ]
+  ["rm" "%{name}%.install"]
 ]
 depexts: [
  ["taglib"] {os-distribution = "mxe"}
@@ -44,3 +45,4 @@ url {
     "sha512=04e498d1fc2e3937bc25583175436d1cee8a25aabfdf43df4f30d1878aac97fde1d25be8dca44273fb2223785c3872088d667d6ba3e6cc644730b2f9b4d0491f"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "taglib"]

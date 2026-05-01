@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/gel/index.html"
 license: "MIT"
 build: [
   ["dune" "build" "-p" "gel" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"    {>= "5.1.0"}
@@ -25,3 +26,4 @@ url {
 src: "https://github.com/janestreet/gel/archive/refs/tags/v0.17.0.tar.gz"
 checksum: "sha256=80e3c39fa654d770329d8e2e1bb792e8eb18ceb2dd16fb2d9037830ad73c434f"
 }
+install: ["dune" "install" "-x" "windows" "-p" "gel"]

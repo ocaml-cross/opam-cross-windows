@@ -27,17 +27,8 @@ depends: [
 ]
 build: [
   ["dune" "subst"] {dev}
-  [
-    "dune"
-    "build"
-    "-p"
-    "srt"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "srt" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/savonet/ocaml-srt.git"
 conflicts: [ "ocaml-option-bytecode-only" ]
@@ -49,3 +40,4 @@ url {
     "sha512=567aa2dd05ca9d1b20dcf81bc8d38dc21d0e7e9f75b8f54097f98c33656ae237f22d70eac7505f15a14ed4ecf1da38f45176b2a0900b623c770802656005230b"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "srt"]

@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_stable_witness/inde
 license: "MIT"
 build: [
   ["dune" "build" "-p" "ppx_stable_witness" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"  {>= "4.14.0"}
@@ -25,3 +26,4 @@ url {
 src: "https://ocaml.janestreet.com/ocaml-core/v0.16/files/ppx_stable_witness-v0.16.0.tar.gz"
 checksum: "sha256=4f9857612d9d65c3844bd8940b946a19472e2d5b9df29e91c829d6d0aa78c5ef"
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_stable_witness"]

@@ -8,22 +8,14 @@ dev-repo: "git+https://github.com/ygrek/ocurl.git"
 bug-reports: "https://github.com/ygrek/ocurl/issues"
 tags: ["org:ygrek" "clib:curl"]
 build: [
-  [ "./configure"
+  [
+    "./configure"
     "--host=%{conf-gcc-windows:host}%"
     "--prefix=%{prefix}%"
     "OCAMLFIND_TOOLCHAIN=windows"
   ]
-  [
-    "dune"
-    "build"
-    "-p"
-    "curl"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "curl" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 patches: [
   "patches/undef.patch"
@@ -47,3 +39,4 @@ description: "libcurl is a client-side URL transfer library, supporting HTTP and
 url {
   src: "git+https://github.com/ygrek/ocurl.git#1bc75b8"
 }
+install: ["dune" "install" "-x" "windows" "-p" "curl"]

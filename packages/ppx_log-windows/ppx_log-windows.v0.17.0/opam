@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_log/index.html"
 license: "MIT"
 build: [
   ["dune" "build" "-p" "ppx_log" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"             {>= "5.1.0"}
@@ -50,3 +51,4 @@ url {
 src: "https://github.com/janestreet/ppx_log/archive/refs/tags/v0.17.0.tar.gz"
 checksum: "sha256=2208f047b699d0661e94415868e8e9e4a6e5287a8eceaf7318f572ccd622859a"
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_log"]

@@ -7,6 +7,7 @@ bug-reports: "https://github.com/ocaml-ppx/ppx_derivers/issues"
 dev-repo: "git://github.com/ocaml-ppx/ppx_derivers.git"
 build: [
   ["dune" "build" "-p" "ppx_derivers" "-j" jobs "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"
@@ -21,3 +22,4 @@ url {
   src: "https://github.com/ocaml-ppx/ppx_derivers/archive/1.2.1.tar.gz"
   checksum: "md5=5dc2bf130c1db3c731fe0fffc5648b41"
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_derivers"]

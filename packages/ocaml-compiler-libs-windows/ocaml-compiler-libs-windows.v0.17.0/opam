@@ -7,6 +7,7 @@ dev-repo: "git+https://github.com/janestreet/ocaml-compiler-libs.git"
 license: "MIT"
 build: [
   ["dune" "build" "-p" "ocaml-compiler-libs" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows" {>= "5.2.0"}
@@ -26,3 +27,4 @@ url {
     "sha512=c5cd418b0eb74e00c3f63235754bbdb3a3328ac743d6ae885424d8c50b4edaa7068572e689cb3456d222793283927f2984a1ff840b1bc3817f810b5314faf897"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "ocaml-compiler-libs"]

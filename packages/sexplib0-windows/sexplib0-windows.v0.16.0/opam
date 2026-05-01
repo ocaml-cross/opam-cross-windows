@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/sexplib0/index.html"
 license: "MIT"
 build: [
   ["dune" "build" "-p" "sexplib0" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows" {>= "4.08.0"}
@@ -24,3 +25,4 @@ url {
 src: "https://ocaml.janestreet.com/ocaml-core/v0.16/files/sexplib0-v0.16.0.tar.gz"
 checksum: "sha256=86dba26468194512f789f2fb709063515a9cb4e5c4461c021c239a369590701d"
 }
+install: ["dune" "install" "-x" "windows" "-p" "sexplib0"]

@@ -18,11 +18,17 @@ patches: [
   "patches/os_type.patch"
 ]
 build: [
-  [ "ocaml" "src/util/configure.ml" "-use-libev" "false" ]
-  [ "dune" "build"
-                        "-x" "windows"
-                       "-p" "lwt" "-j" jobs ]
-  [ "sed" "-r" "-e" "s!(-sysroot/lib/lwt/)(unix|preemptive|log|options|syntax|simple-top|ppx)/!\\1!" "-i" "lwt-windows.install" ]
+  ["ocaml" "src/util/configure.ml" "-use-libev" "false"]
+  ["dune" "build" "-x" "windows" "-p" "lwt" "-j" jobs]
+  [
+    "sed"
+    "-r"
+    "-e"
+    "s!(-sysroot/lib/lwt/)(unix|preemptive|log|options|syntax|simple-top|ppx)/!\\1!"
+    "-i"
+    "lwt-windows.install"
+  ]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows" {< "4.08.0"}
@@ -46,3 +52,4 @@ url {
   src: "https://github.com/ocsigen/lwt/archive/3.2.1.tar.gz"
   checksum: "md5=13613bbf6b27d198bafcbd9b253a0076"
 }
+install: ["dune" "install" "-x" "windows" "-p" "lwt"]

@@ -30,7 +30,8 @@ depends: [
   "dune" {build}
 ]
 build: [
-    ["dune" "build" "-p" "cmdliner" "-x" "windows" "-j" jobs]
+  ["dune" "build" "-p" "cmdliner" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://erratique.ch/repos/cmdliner.git"
 url {
@@ -39,3 +40,4 @@ url {
     "sha512=a7bd4eeb0cef7c08bca73b0077a65f748c19a230544133b39fc3360feb2cf0af08416a8b84031c94a2f4a007d5920a4db1368d87b9eeca561671828e2dad2885"
 }
 x-maintenance-intent: ["(latest)"]
+install: ["dune" "install" "-x" "windows" "-p" "cmdliner"]

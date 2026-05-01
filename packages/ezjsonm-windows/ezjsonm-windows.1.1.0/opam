@@ -17,6 +17,7 @@ depends: [
 build: [
   ["dune" "subst"] {pinned}
   ["dune" "build" "-p" "ezjsonm" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/mirage/ezjsonm.git"
 synopsis: "Simple interface on top of the Jsonm JSON library"
@@ -34,3 +35,4 @@ url {
     "https://github.com/mirage/ezjsonm/releases/download/v1.1.0/ezjsonm-v1.1.0.tbz"
   checksum: "md5=e8f207c6cd2226b2c4784b1e56556797"
 }
+install: ["dune" "install" "-x" "windows" "-p" "ezjsonm"]

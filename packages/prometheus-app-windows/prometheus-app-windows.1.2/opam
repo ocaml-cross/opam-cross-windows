@@ -40,6 +40,7 @@ depends: [
 ]
 build: [
   ["dune" "build" "-p" "prometheus-app" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/mirage/prometheus.git"
 url {
@@ -51,3 +52,4 @@ url {
   ]
 }
 x-commit-hash: "d1669d0e0d7e44b104755a0fd9700ae87e140f34"
+install: ["dune" "install" "-x" "windows" "-p" "prometheus-app"]

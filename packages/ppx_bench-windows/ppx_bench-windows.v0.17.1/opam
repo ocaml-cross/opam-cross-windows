@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_bench/index.html"
 license: "MIT"
 build: [
   ["dune" "build" "-p" "ppx_bench" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"           {>= "5.1.0"}
@@ -30,3 +31,4 @@ url {
     "sha512=7492c19b408709368f5a1ed020bea2c439ff562f765cd706637dbfb7ecdfc33478f9dd814fcf195292bf634769ae95f8b89b5b33b714e0fd6248f0754e1d37a4"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_bench"]

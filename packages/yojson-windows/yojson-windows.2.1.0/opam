@@ -38,6 +38,7 @@ build: [
     "@runtest" {with-test}
     "@doc" {with-doc}
   ]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/ocaml-community/yojson.git"
 url {
@@ -49,3 +50,4 @@ url {
   ]
 }
 x-commit-hash: "42fa0887cb870bdbd1751d98cd23f99d6b29751d"
+install: ["dune" "install" "-x" "windows" "-p" "yojson"]

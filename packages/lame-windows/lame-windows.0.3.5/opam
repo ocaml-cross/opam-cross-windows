@@ -27,6 +27,7 @@ build: [
     "@runtest" {with-test}
     "@doc" {with-doc}
   ]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/savonet/ocaml-lame.git"
 depexts: [
@@ -39,3 +40,4 @@ url {
     "sha512=204753eaa79623549cacc4be5627d8bd3f2bdd33da60026cf0d756637da26f13802f8300957300cca0651a2a2233b7063be20ee72ba45e3c02b8f9f19e54f518"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "lame"]

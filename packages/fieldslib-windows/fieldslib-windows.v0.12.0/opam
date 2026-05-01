@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/fieldslib/index.html"
 license: "MIT"
 build: [
   ["dune" "build" "-p" "fieldslib" "-j" jobs "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows" {>= "4.04.2"}
@@ -25,3 +26,4 @@ url {
   src: "https://ocaml.janestreet.com/ocaml-core/v0.12/files/fieldslib-v0.12.0.tar.gz"
   checksum: "md5=7cb44f0fb396b6645fc9965ebb8e6741"
 }
+install: ["dune" "install" "-x" "windows" "-p" "fieldslib"]

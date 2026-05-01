@@ -27,17 +27,8 @@ depexts: [
 ]
 build: [
   ["dune" "subst"] {dev}
-  [
-    "dune"
-    "build"
-    "-p"
-    "srt"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "srt" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/savonet/ocaml-srt.git"
 url {
@@ -47,3 +38,4 @@ url {
     "sha512=05fa8294af8e649879cc8f06a34d1c1d62c1064d5638ac5fbdccd69d36f1edf4ac5df581913c63d6ce9ec468cad3a51cfa0e9a74560dec7e7b7c7f3b098299be"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "srt"]

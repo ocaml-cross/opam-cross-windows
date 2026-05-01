@@ -10,17 +10,8 @@ depends: [
   "ocaml-windows" {>= "4.12.0"}
 ]
 build: [
-  [
-    "dune"
-    "build"
-    "-p"
-    "multicore-magic"
-    "-j"
-    jobs
-    "-x"
-    "windows"
-    "@install"
-  ]
+  ["dune" "build" "-p" "multicore-magic" "-j" jobs "-x" "windows" "@install"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/ocaml-multicore/multicore-magic.git"
 url {
@@ -32,3 +23,4 @@ url {
   ]
 }
 x-commit-hash: "360c2e829c9addeca9ccaee1c71f4ad36bb14a79"
+install: ["dune" "install" "-x" "windows" "-p" "multicore-magic"]

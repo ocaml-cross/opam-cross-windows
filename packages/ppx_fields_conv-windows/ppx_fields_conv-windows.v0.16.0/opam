@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_fields_conv/index.h
 license: "MIT"
 build: [
   ["dune" "build" "-p" "ppx_fields_conv" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"     {>= "4.14.0"}
@@ -26,3 +27,4 @@ url {
 src: "https://ocaml.janestreet.com/ocaml-core/v0.16/files/ppx_fields_conv-v0.16.0.tar.gz"
 checksum: "sha256=b098fab38b5204114623a791e7034ff1316e676ba984ca70cadb4084dfc61898"
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_fields_conv"]

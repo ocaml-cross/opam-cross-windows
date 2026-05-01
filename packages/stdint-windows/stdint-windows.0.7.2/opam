@@ -28,17 +28,8 @@ depends: [
 dev-repo: "git+https://github.com/andrenth/ocaml-stdint.git"
 build: [
   ["dune" "subst"] {dev}
-  [
-    "dune"
-    "build"
-    "-p"
-    "stdint"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "stdint" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 url {
   src:
@@ -49,3 +40,4 @@ url {
   ]
 }
 x-commit-hash: "11c1e6b4e6ef4142cff0f82b685b317284e354c5"
+install: ["dune" "install" "-x" "windows" "-p" "stdint"]

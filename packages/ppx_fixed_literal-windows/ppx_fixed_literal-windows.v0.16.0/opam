@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_fixed_literal/index
 license: "MIT"
 build: [
   ["dune" "build" "-p" "ppx_fixed_literal" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"  {>= "4.14.0"}
@@ -26,3 +27,4 @@ url {
 src: "https://ocaml.janestreet.com/ocaml-core/v0.16/files/ppx_fixed_literal-v0.16.0.tar.gz"
 checksum: "sha256=a7d1a3d4f8ac3e9db9a6e03a8fb58d07c2b9c4050d154d782c4057789e488339"
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_fixed_literal"]

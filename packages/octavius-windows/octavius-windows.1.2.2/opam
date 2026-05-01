@@ -11,17 +11,8 @@ depends: [
 ]
 build: [
   ["dune" "subst"] {pinned}
-  [
-    "dune"
-    "build"
-    "-p"
-    "octavius"
-    "-j"
-    jobs
-    "@install"
-    "-x"
-    "windows"
-  ]
+  ["dune" "build" "-p" "octavius" "-j" jobs "@install" "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/ocaml-doc/octavius.git"
 
@@ -31,3 +22,4 @@ url {
   src: "https://github.com/ocaml-doc/octavius/archive/v1.2.2.tar.gz"
   checksum: "md5=72f9e1d996e6c5089fc513cc9218607b"
 }
+install: ["dune" "install" "-x" "windows" "-p" "octavius"]

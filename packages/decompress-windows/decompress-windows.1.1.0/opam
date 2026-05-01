@@ -12,8 +12,17 @@ description: """Decompress is an implementation of Zlib and GZip in OCaml
 It provides a pure non-blocking interface to inflate and deflate data flow.
 """
 
-build: [ "dune" "build" "-p" "decompress" "-j" jobs "-x" "windows" ]
-
+build: [
+  ["dune"
+  "build"
+  "-p"
+  "decompress"
+  "-j"
+  jobs
+  "-x"
+  "windows"]
+  ["rm" "%{name}%.install"]
+]
 depends: [
   "ocaml-windows"
   "dune"
@@ -29,3 +38,4 @@ url {
     "sha512=abb4994150ef724b4cbf0612e0215092818139a5eca33c2365b6fdac61e4e33323da490fd8ea1adf8348c136b11a6448b1500173352f7b61f7641d32c02f3874"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "decompress"]

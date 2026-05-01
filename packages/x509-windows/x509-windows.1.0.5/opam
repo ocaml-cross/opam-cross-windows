@@ -32,6 +32,7 @@ depends: [
 conflicts: [ "result-windows" {< "1.5"} ]
 build: [
   ["dune" "build" "-p" "x509" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/mirleft/ocaml-x509.git"
 synopsis: "Public Key Infrastructure (RFC 5280, PKCS) purely in OCaml"
@@ -54,3 +55,4 @@ url {
 }
 x-commit-hash: "297df4ce6002deae0c34409cf505a09905699427"
 x-maintenance-intent: [ "(latest)" ]
+install: ["dune" "install" "-x" "windows" "-p" "x509"]

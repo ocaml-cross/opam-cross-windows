@@ -15,17 +15,8 @@ depends: [
 ]
 build: [
   ["dune" "subst"] {dev}
-  [
-    "dune"
-    "build"
-    "-p"
-    "portaudio"
-    "-j"
-    jobs
-    "-x"
-    "windows"
-    "@install"
-  ]
+  ["dune" "build" "-p" "portaudio" "-j" jobs "-x" "windows" "@install"]
+  ["rm" "%{name}%.install"]
 ]
 depexts: [
   ["portaudio"] {os-distribution = "mxe"}
@@ -38,3 +29,4 @@ url {
     "sha512=9f292e7e9dc073472488eff97e28ddc538a6f6f6fcfd2bbdc94d0fe7a40c94c0c30685c26df96eb7a9e1b6ceac933ec0fde6779322b8649adecd248ca4f41379"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "portaudio"]

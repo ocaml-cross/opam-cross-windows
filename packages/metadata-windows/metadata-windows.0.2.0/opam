@@ -12,17 +12,8 @@ depends: [
   "ocaml-windows" {>= "4.14.0"}
 ]
 build: [
-  [
-    "dune"
-    "build"
-    "-p"
-    "metadata"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "metadata" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/savonet/ocaml-metadata.git"
 url {
@@ -33,3 +24,4 @@ url {
     "sha512=551177bf59767bdce327aab5ee16d5785f150e6e31f7399933fc4779b47bd4739c9eeec83320851a55165364083e48c4556896f7d9f21578ef1ef92cab886724"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "metadata"]

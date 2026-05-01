@@ -10,17 +10,8 @@ homepage: "https://github.com/ocaml/num/"
 bug-reports: "https://github.com/ocaml/num/issues"
 dev-repo: "git+https://github.com/ocaml/num.git"
 build: [
-  [
-    "dune"
-    "build"
-    "-p"
-    "num"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "num" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows" {>= "4.06.0" & < "5.4"}
@@ -36,3 +27,4 @@ url {
     "sha512=110dd01140c1c96f5f067aa824bb63f74a26411dcaa65aaf04cb6c44b116ca02aaab9505f431c66964388ce4a31d86da5928b4c0e5557800e834de80bed46495"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "num"]

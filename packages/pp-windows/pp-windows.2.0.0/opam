@@ -32,17 +32,8 @@ depends: [
   "ocaml-windows" {>= "4.08"}
 ]
 build: [
-  [
-    "dune"
-    "build"
-    "-p"
-    "pp"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "pp" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/ocaml-dune/pp.git"
 url {
@@ -54,3 +45,4 @@ url {
   ]
 }
 x-commit-hash: "b6741dd41ef5fc5bda8b3640097ac29818a43577"
+install: ["dune" "install" "-x" "windows" "-p" "pp"]

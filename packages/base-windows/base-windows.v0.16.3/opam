@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/base/index.html"
 license: "MIT"
 build: [
   ["dune" "build" "-p" "base" "-j" jobs "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"             {>= "4.14.0"}
@@ -39,3 +40,4 @@ url {
     "sha512=69380ed392faf4495459f97f70a10a6959fce71d2e6ba093472fc272141646307fd7872407de855dfa48ef0435f6587eae5aa50f4a67eac40a9e1946d0c3c070"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "base"]

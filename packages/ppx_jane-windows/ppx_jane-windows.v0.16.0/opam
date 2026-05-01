@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_jane/index.html"
 license: "MIT"
 build: [
   ["dune" "build" "-p" "ppx_jane" "-j" jobs "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"                       {>= "4.14.0"}
@@ -76,3 +77,4 @@ url {
 src: "https://ocaml.janestreet.com/ocaml-core/v0.16/files/ppx_jane-v0.16.0.tar.gz"
 checksum: "sha256=9d53b01dd2e38bbe82b6927f43fa27e347418045409fd2cd3e2a203a9951c133"
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_jane"]

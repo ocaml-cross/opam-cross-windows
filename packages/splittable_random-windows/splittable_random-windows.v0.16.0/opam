@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/splittable_random/index
 license: "MIT"
 build: [
   ["dune" "build" "-p" "splittable_random" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"            {>= "4.14.0"}
@@ -37,3 +38,4 @@ url {
 src: "https://ocaml.janestreet.com/ocaml-core/v0.16/files/splittable_random-v0.16.0.tar.gz"
 checksum: "sha256=e16f1b063f03e3c18ce39f2037bebf803e13f4e5bbe824f2481ff12d121ff6d3"
 }
+install: ["dune" "install" "-x" "windows" "-p" "splittable_random"]

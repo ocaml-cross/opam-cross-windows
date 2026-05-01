@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_custom_printf/index
 license: "MIT"
 build: [
   ["dune" "build" "-p" "ppx_custom_printf" "-j" jobs "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"         {>= "4.04.2"}
@@ -26,3 +27,4 @@ url {
   src: "https://github.com/janestreet/ppx_custom_printf/archive/v0.14.1.tar.gz"
   checksum: "md5=18518b0464d61d165f4c73475d648ccb"
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_custom_printf"]

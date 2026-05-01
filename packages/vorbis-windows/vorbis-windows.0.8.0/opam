@@ -14,17 +14,8 @@ depends: [
 ]
 build: [
   ["dune" "subst"] {dev}
-  [
-    "dune"
-    "build"
-    "-p"
-    "vorbis"
-    "-j"
-    jobs
-    "-x"
-    "windows"
-    "@install"
-  ]
+  ["dune" "build" "-p" "vorbis" "-j" jobs "-x" "windows" "@install"]
+  ["rm" "%{name}%.install"]
 ]
 depexts: [
   ["vorbis"] {os-distribution = "mxe"}
@@ -37,3 +28,4 @@ url {
     "sha512=b2d3940492552fdda27785623cc563758aca061fedfdf577ab1ef22fb1958c27af9fe68c1ed7bd5cf323e1a1b7b42cc53ae6d2c09dc6cae7ead37f740d106ba8"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "vorbis"]

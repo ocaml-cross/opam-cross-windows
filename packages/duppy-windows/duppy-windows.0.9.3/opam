@@ -13,17 +13,8 @@ depends: [
 ]
 build: [
   ["dune" "subst"] {dev}
-  [
-    "dune"
-    "build"
-    "-p"
-    "duppy"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "duppy" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/savonet/ocaml-duppy.git"
 url {
@@ -34,3 +25,4 @@ url {
     "sha512=a28afdf46521b3c3e4730af142dc24a7cdd7073857f30e394737caf5ca17afb97374078c2d54cfd9a5016d73203f03d5bd43d74e8c5fc96599dc6c81d861738a"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "duppy"]

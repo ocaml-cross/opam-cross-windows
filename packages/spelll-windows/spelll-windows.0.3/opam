@@ -13,6 +13,7 @@ depends: [
 ]
 build: [
   ["dune" "build" "@install" "-p" "spelll" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git://github.com/c-cube/spelll"
 url {
@@ -22,3 +23,4 @@ url {
     "sha512=5ba25cf300538bcb27bd63f272f001114b0f07a7fe45d287d33d13261d6c366ee59f897867d76fcabc898efd7ac400b598cb445f11051db7cb1448448f3a4020"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "spelll"]

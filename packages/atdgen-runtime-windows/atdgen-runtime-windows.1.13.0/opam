@@ -7,8 +7,8 @@ bug-reports: "https://github.com/mjambon/atd/issues"
 dev-repo: "git+https://github.com/mjambon/atd.git"
 build: [
   ["dune" "build" "-p" "atdgen-runtime" "-j" jobs "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
-
 depends: [
   "dune" {build}
   "biniou-windows"
@@ -19,3 +19,4 @@ url {
   src: "https://github.com/mjambon/atd/archive/1.13.0.tar.gz"
   checksum: "md5=da11b6157d5674e2d27cfd401eb8003a"
 }
+install: ["dune" "install" "-x" "windows" "-p" "atdgen-runtime"]

@@ -29,6 +29,7 @@ build: [
     "@runtest" {with-test}
     "@doc" {with-doc}
   ]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/savonet/ocaml-cry.git"
 url {
@@ -38,3 +39,4 @@ url {
     "sha512=bfbd7e585f0a2e552b128a24094e1eb06281d3a332c143a1d6551ec005551add338668553df057346433f378416da7fe3e3289d21b8aa0244f15c509d8d8d0fa"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "cry"]

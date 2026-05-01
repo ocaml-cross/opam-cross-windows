@@ -13,17 +13,8 @@ depends: [
 conflicts: ["base-domains"]
 build: [
   ["dune" "subst"] {dev}
-  [
-    "dune"
-    "build"
-    "-p"
-    "mem_usage"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "mem_usage" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/savonet/ocaml-mem_usage.git"
 url {
@@ -33,3 +24,4 @@ url {
     "sha512=0d9b70da8965c0df70bfc8b50e476d10e2166ef09a7277bb012842317ecd995e9d21605983ecadd41b9b351582279ab4eef9f1388d623a5d6f000b928438c903"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "mem_usage"]

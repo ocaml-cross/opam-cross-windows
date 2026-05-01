@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_pipebang/index.html
 license: "MIT"
 build: [
   ["dune" "build" "-p" "ppx_pipebang" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"  {>= "5.1.0"}
@@ -24,3 +25,4 @@ url {
 src: "https://github.com/janestreet/ppx_pipebang/archive/refs/tags/v0.17.0.tar.gz"
 checksum: "sha256=b50995e2e31fa1f93c2468780f5f082e0859782f8826cc05ad3ec2ad4f8c02ff"
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_pipebang"]

@@ -13,17 +13,8 @@ depends: [
   "saturn_lockfree-windows" {= version}
 ]
 build: [
-  [
-    "dune"
-    "build"
-    "-p"
-    "saturn"
-    "-j"
-    jobs
-    "-x"
-    "windows"
-    "@install"
-  ]
+  ["dune" "build" "-p" "saturn" "-j" jobs "-x" "windows" "@install"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/ocaml-multicore/saturn.git"
 url {
@@ -35,3 +26,4 @@ url {
   ]
 }
 x-commit-hash: "60dd353c9b9b6fae8a3a61d0fcf30d599e0a68a9"
+install: ["dune" "install" "-x" "windows" "-p" "saturn"]

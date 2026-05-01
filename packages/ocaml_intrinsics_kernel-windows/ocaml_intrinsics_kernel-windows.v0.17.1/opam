@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/ocaml_intrinsics_kernel
 license: "MIT"
 build: [
   ["dune" "build" "-p" "ocaml_intrinsics_kernel" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows" {>= "5.1.0"}
@@ -28,3 +29,4 @@ url {
     "sha512=21e596d6407a620866cee7cab47ef1a9446d6a733b4994e809ea5566d5fa956682a5c6a6190ffb0ed48458abd658301944ed10c4389d91ecb8df677a5f87f2ab"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "ocaml_intrinsics_kernel"]

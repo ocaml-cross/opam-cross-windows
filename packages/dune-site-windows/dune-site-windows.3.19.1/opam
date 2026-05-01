@@ -15,17 +15,8 @@ x-maintenance-intent: ["(latest)"]
 build: [
   ["rm" "-rf" "vendor/csexp"]
   ["rm" "-rf" "vendor/pp"]
-  [
-    "dune"
-    "build"
-    "-p"
-    "dune-site,dyn"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "dune-site,dyn" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 url {
   src:
@@ -36,3 +27,4 @@ url {
   ]
 }
 x-commit-hash: "76c0c3941798f81dcc13a305d7abb120c191f5fa"
+install: ["dune" "install" "-x" "windows" "-p" "dune-site"]

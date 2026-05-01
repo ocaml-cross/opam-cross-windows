@@ -10,6 +10,7 @@ tags: [ "syntax" ]
 build: [
   ["dune" "subst"] {dev}
   ["dune" "build" "-p" "ppx_deriving" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows" {>= "4.05.0"}
@@ -37,3 +38,4 @@ url {
   ]
 }
 x-commit-hash: "275140702ca6f97e0407f80e86de9d3940ee3ac8"
+install: ["dune" "install" "-x" "windows" "-p" "ppx_deriving"]

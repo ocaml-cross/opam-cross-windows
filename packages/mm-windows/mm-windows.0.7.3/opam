@@ -31,6 +31,7 @@ build: [
     "@runtest" {with-test}
     "@doc" {with-doc}
   ]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/savonet/ocaml-mm.git"
 depexts: [
@@ -43,3 +44,4 @@ url {
     "sha512=7760190cdf17d8e914b3c0b9e4eb3207cdc3f0f75c98a9a6dcb687935298b5eb3ca2a1c821513ce2f003b6865eef5fd7f2b375e44a2b6ce3abf01bae4725de09"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "mm"]

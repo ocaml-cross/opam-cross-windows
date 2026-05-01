@@ -17,7 +17,8 @@ depends: [
 ]
 build: [
   ["dune" "subst" "-x" "windows"] {pinned}
-  ["dune" "build"  "-p" "octavius" "-j" jobs "-x" "windows"]
+  ["dune" "build" "-p" "octavius" "-j" jobs "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
 synopsis: "Ocamldoc comment syntax parser"
 description: "Octavius is a library to parse the `ocamldoc` comment syntax."
@@ -25,3 +26,4 @@ url {
   src: "https://github.com/ocaml-doc/octavius/archive/v1.2.0.tar.gz"
   checksum: "md5=3e6049c39045354853d9dc3a197133ac"
 }
+install: ["dune" "install" "-x" "windows" "-p" "octavius"]

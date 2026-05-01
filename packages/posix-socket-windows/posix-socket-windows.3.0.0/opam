@@ -16,17 +16,8 @@ depends: [
   "posix-base-windows" {>= "2.2"}
 ]
 build: [
-  [
-    "dune"
-    "build"
-    "-p"
-    "posix-socket"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "posix-socket" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/savonet/ocaml-posix.git"
 url {
@@ -37,3 +28,4 @@ url {
     "sha512=bfe8ff032d87abfc73df33662a5313a6eb8b78f8365523f7b68f9867868cfc5ad20c4d542c6db27cdb2544d209fa3dc658653fc20af9f2c92035e17b6d7c8982"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "posix-socket"]

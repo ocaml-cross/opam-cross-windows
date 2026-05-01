@@ -9,6 +9,7 @@ doc: "https://gildor478.github.io/ocaml-fileutils/"
 
 build: [
   ["dune" "build" "-p" "fileutils" "-j" jobs "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows" {>= "4.03"}
@@ -44,3 +45,4 @@ url {
   ]
 }
 
+install: ["dune" "install" "-x" "windows" "-p" "fileutils"]

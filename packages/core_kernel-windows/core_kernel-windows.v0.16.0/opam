@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/core_kernel/index.html"
 license: "MIT"
 build: [
   ["dune" "build" "-p" "core_kernel" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"        {>= "4.14.0"}
@@ -33,3 +34,4 @@ url {
 src: "https://ocaml.janestreet.com/ocaml-core/v0.16/files/core_kernel-v0.16.0.tar.gz"
 checksum: "sha256=e37370bad978cfb71fdaf2b1a25ab1506b98ef0b91e0dbd189ffd9d853245ce2"
 }
+install: ["dune" "install" "-x" "windows" "-p" "core_kernel"]

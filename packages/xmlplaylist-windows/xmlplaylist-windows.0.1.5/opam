@@ -12,17 +12,8 @@ depends: [
   "xmlm-windows"
 ]
 build: [
-  [
-    "dune"
-    "build"
-    "-p"
-    "xmlplaylist"
-    "-j"
-    jobs
-    "-x"
-    "windows"
-    "@install"
-  ]
+  ["dune" "build" "-p" "xmlplaylist" "-j" jobs "-x" "windows" "@install"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/savonet/ocaml-xmlplaylist.git"
 url {
@@ -32,3 +23,4 @@ url {
     "sha512=e49f0025405c6a1b8b70c3e387e03c246650ffd1a47d984a2f84c9e2d5a69eb6a146cc351140cff367a8e8ca758b22298e08c9b5dcf04ecfef04831dcc73a13e"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "xmlplaylist"]

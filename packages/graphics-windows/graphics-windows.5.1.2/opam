@@ -22,17 +22,8 @@ depends: [
 ]
 build: [
   ["dune" "subst"] {dev}
-  [
-    "dune"
-    "build"
-    "-p"
-    "graphics"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "graphics" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/ocaml/graphics.git"
 x-commit-hash: "fbfa38f50f9df5d562d5c892ae12cec2c695776d"
@@ -44,3 +35,4 @@ url {
     "sha512=1387c1ecf5dfd62c3927f1f8ce0bcc8b162ef22f15bfd41eba47c955091f7ce5f19395beab550d31cff38d22c4ad097350975381e60936a0004271e96f65b09b"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "graphics"]

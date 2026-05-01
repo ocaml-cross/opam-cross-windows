@@ -7,7 +7,10 @@ license: "ISC"
 dev-repo: "git+https://github.com/mirleft/ocaml-asn1-combinators.git"
 bug-reports: "https://github.com/mirleft/ocaml-asn1-combinators/issues"
 synopsis: "Embed typed ASN.1 grammars in OCaml"
-build: [ ["dune" "build" "-p" "asn1-combinators" "-x" "windows" "-j" jobs ] ]
+build: [
+  ["dune" "build" "-p" "asn1-combinators" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
+]
 depends: [
   "ocaml-windows" {>="4.13.0"}
   "dune" {>= "1.2.0"}
@@ -31,3 +34,4 @@ url {
 }
 x-commit-hash: "2f80f3495ccfa88a506d83b811d74f0a2bd63114"
 x-maintenance-intent: [ "(latest)" ]
+install: ["dune" "install" "-x" "windows" "-p" "asn1-combinators"]

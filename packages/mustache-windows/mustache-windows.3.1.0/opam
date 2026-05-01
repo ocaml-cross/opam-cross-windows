@@ -16,6 +16,7 @@ depends: [
 build: [
   ["dune" "subst"] {pinned}
   ["dune" "build" "-p" "mustache" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/rgrinberg/ocaml-mustache.git"
 synopsis: "Mustache logic-less templates in OCaml"
@@ -27,3 +28,4 @@ url {
   src: "https://github.com/rgrinberg/ocaml-mustache/archive/v3.1.0.zip"
   checksum: "md5=ee15623d0f699b6aff31904fedf4945e"
 }
+install: ["dune" "install" "-x" "windows" "-p" "mustache"]

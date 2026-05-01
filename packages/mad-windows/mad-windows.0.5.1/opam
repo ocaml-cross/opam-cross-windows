@@ -15,17 +15,8 @@ depends: [
 ]
 build: [
   ["dune" "subst"] {dev}
-  [
-    "dune"
-    "build"
-    "-p"
-    "mad"
-    "-j"
-    jobs
-    "-x"
-    "windows"
-    "@install"
-  ]
+  ["dune" "build" "-p" "mad" "-j" jobs "-x" "windows" "@install"]
+  ["rm" "%{name}%.install"]
 ]
 depexts: [
   ["libmad"] {os-distribution = "mxe"}
@@ -44,3 +35,4 @@ url {
     "sha512=98893912c62f37ff30a84ce9f06426781bdc22781eb7971be7ec32f46ed5a8b33b2474fc3c2dfb1afcacee9be7391fb7347a5be25b473b67abb994a66faca6d8"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "mad"]

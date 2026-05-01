@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_inline_test/index.h
 license: "MIT"
 build: [
   ["dune" "build" "-p" "ppx_inline_test" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"    {>= "5.1.0"}
@@ -27,3 +28,4 @@ url {
 src: "https://github.com/janestreet/ppx_inline_test/archive/refs/tags/v0.17.0.tar.gz"
 checksum: "sha256=b71e4f01ab8aed418a3358688241a94b6d16d723deec7caaf5e4e917c2a76d2c"
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_inline_test"]

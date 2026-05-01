@@ -14,17 +14,8 @@ depends: [
 ]
 build: [
   ["dune" "subst"] {pinned}
-  [
-    "dune"
-    "build"
-    "-p"
-    "samplerate"
-    "-j"
-    jobs
-    "-x"
-    "windows"
-    "@install"
-  ]
+  ["dune" "build" "-p" "samplerate" "-j" jobs "-x" "windows" "@install"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/savonet/ocaml-samplerate.git"
 depexts: [
@@ -37,3 +28,4 @@ url {
     "sha512=7fee25fdacdc282217bf810628b1b899f0df41c6111dcfd6933c9b6737ce955c13bbb95e15d78f98dad7c9abf29ef64e45a62d79550b33bf5d955ce1526889e8"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "samplerate"]

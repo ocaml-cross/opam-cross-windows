@@ -7,6 +7,7 @@ license: "LGPL-2.1-only WITH OCaml-LGPL-linking-exception"
 build: [
   ["dune" "subst"] {dev}
   ["dune" "build" "-p" "ssl" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows" {>= "4.02.0"}
@@ -27,3 +28,4 @@ url {
   ]
 }
 x-commit-hash: "d9f9695947498b43afe47d7078b6d53f77104717"
+install: ["dune" "install" "-x" "windows" "-p" "ssl"]

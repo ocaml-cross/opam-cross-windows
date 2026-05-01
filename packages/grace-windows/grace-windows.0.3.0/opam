@@ -27,13 +27,16 @@ build: [
     "dune"
     "build"
     "-p"
-    "grace" "-x" "windows"
+    "grace"
+    "-x"
+    "windows"
     "-j"
     jobs
     "@install"
     "@runtest" {with-test}
     "@doc" {with-doc}
   ]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/johnyob/grace.git"
 url {
@@ -45,3 +48,4 @@ url {
   ]
 }
 x-commit-hash: "15251666a11a780dfd09f23e1b0c1e6b0e366dcf"
+install: ["dune" "install" "-x" "windows" "-p" "grace"]

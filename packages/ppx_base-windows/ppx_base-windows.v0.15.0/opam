@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_base/index.html"
 license: "MIT"
 build: [
   ["dune" "build" "-p" "ppx_base" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"         {>= "4.08.0"}
@@ -36,3 +37,4 @@ url {
 src: "https://ocaml.janestreet.com/ocaml-core/v0.15/files/ppx_base-v0.15.0.tar.gz"
 checksum: "sha256=d6bbad352ea547c9c0a3636abe87287d5a680b46a06ddd70d6126905853f3ca0"
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_base"]

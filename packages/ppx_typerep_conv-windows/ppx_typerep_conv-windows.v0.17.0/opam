@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_typerep_conv/index.
 license: "MIT"
 build: [
   ["dune" "build" "-p" "ppx_typerep_conv" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"   {>= "5.1.0"}
@@ -27,3 +28,4 @@ url {
 src: "https://github.com/janestreet/ppx_typerep_conv/archive/refs/tags/v0.17.0.tar.gz"
 checksum: "sha256=eef7c7ff1e94343dd1bd25f8bf1f74b5f3adc097b454f0c1adb7e4962754809c"
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_typerep_conv"]

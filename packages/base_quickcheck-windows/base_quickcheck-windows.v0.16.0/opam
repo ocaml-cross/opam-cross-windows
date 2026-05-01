@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/base_quickcheck/index.h
 license: "MIT"
 build: [
   ["dune" "build" "-p" "base_quickcheck" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"             {>= "4.14.0"}
@@ -36,3 +37,4 @@ url {
 src: "https://ocaml.janestreet.com/ocaml-core/v0.16/files/base_quickcheck-v0.16.0.tar.gz"
 checksum: "sha256=88f80a75d224ceed33d0f891e6bb931979ec24397871b3347b8be22ef96d2e7e"
 }
+install: ["dune" "install" "-x" "windows" "-p" "base_quickcheck"]

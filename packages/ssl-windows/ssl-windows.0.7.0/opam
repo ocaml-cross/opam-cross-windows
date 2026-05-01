@@ -16,17 +16,8 @@ build-env: [
 ]
 build: [
   ["dune" "subst"] {dev}
-  [
-    "dune"
-    "build"
-    "-p"
-    "ssl"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "ssl" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 depexts: [
   ["openssl"] {os-distribution = "mxe"}
@@ -39,3 +30,4 @@ url {
     "sha512=969c4d64828449a49bdef26ca5f8faa72d2fe2a2304ccbf589a3ff097c2bf8ae9eb83ae1c90216f6b4d6f359e462ea47e0106a7386e26848d14910138fcb07f8"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "ssl"]

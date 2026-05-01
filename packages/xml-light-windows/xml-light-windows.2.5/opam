@@ -15,7 +15,17 @@ depends: [
   "ocaml-windows" {>= "4.03"}
   "dune" {>= "2.7"}
 ]
-build: ["dune" "build" "-p" "xml-light" "-j" jobs "-x" "windows"]
+build: [
+  ["dune"
+  "build"
+  "-p"
+  "xml-light"
+  "-j"
+  jobs
+  "-x"
+  "windows"]
+  ["rm" "%{name}%.install"]
+]
 dev-repo: "git+https://github.com/ncannasse/xml-light"
 url {
   src:
@@ -26,3 +36,4 @@ url {
   ]
 }
 x-commit-hash: "fd62588fb7515e61d43771d885f585d3cd3fb9ca"
+install: ["dune" "install" "-x" "windows" "-p" "xml-light"]

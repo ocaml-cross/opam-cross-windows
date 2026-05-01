@@ -8,7 +8,8 @@ depends: [
   "ocaml-windows"
 ]
 build: [
-  ["dune" "build" "-p" "gen" "-x" "windows"  "-j" jobs]
+  ["dune" "build" "-p" "gen" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 tags: [ "gen" "iterator" "iter" "fold" ]
 homepage: "https://github.com/c-cube/gen/"
@@ -23,3 +24,4 @@ url {
     "sha512=192178de106d2ae5f936caead8b21b4b9ec1b8fe35ba56296825900ea15a4ea702caf8824ac34d4478d107b954e22c3dffd81f12d4c08fbd6d9760f49a0deb14"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "gen"]

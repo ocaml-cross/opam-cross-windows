@@ -18,9 +18,8 @@ depends: [
 dev-repo: "git+https://github.com/yoriyuki/Camomile.git"
 build: [
   ["ocaml" "configure.ml" "--share" "%{share}%/camomile"]
-  ["dune" "build" "-p" "camomile" "-j" jobs "-x" "windows"
-    "@install"
-  ]
+  ["dune" "build" "-p" "camomile" "-j" jobs "-x" "windows" "@install"]
+  ["rm" "%{name}%.install"]
 ]
 url {
   src:
@@ -31,3 +30,4 @@ url {
   ]
 }
 available: arch != "ppc64"
+install: ["dune" "install" "-x" "windows" "-p" "camomile"]

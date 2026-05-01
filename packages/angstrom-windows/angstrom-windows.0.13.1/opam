@@ -8,6 +8,7 @@ dev-repo: "git+https://github.com/inhabitedtype/angstrom.git"
 build: [
   ["dune" "subst"] {pinned}
   ["dune" "build" "-p" "angstrom" "-j" jobs "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows" {>= "4.04.0"}
@@ -30,3 +31,4 @@ url {
   checksum: "md5=090267a7b843769d319073564fb3bb9a"
 }
 
+install: ["dune" "install" "-x" "windows" "-p" "angstrom"]

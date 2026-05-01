@@ -7,6 +7,7 @@ bug-reports: "https://github.com/inhabitedtype/angstrom/issues"
 dev-repo: "git+https://github.com/inhabitedtype/angstrom.git"
 build: [
   ["dune" "build" "-p" "angstrom" "-j" jobs "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows" {>= "4.04.0"}
@@ -28,3 +29,4 @@ url {
   src: "https://github.com/inhabitedtype/angstrom/archive/0.15.0.tar.gz"
   checksum: "md5=5104768c404ea92fd0a53a5b0f75cd50"
 }
+install: ["dune" "install" "-x" "windows" "-p" "angstrom"]
