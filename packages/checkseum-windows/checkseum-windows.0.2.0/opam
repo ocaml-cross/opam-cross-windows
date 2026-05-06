@@ -16,9 +16,9 @@ This library use the linking trick to choose between the C implementation
 top of optint to get the best representation of an int32. """
 
 build: [
-  [ "dune" "build" "-p" "checkseum" "-j" jobs "-x" "windows"]
+  ["dune" "build" "-p" "checkseum" "-j" jobs "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
-
 depends: [
   "ocaml-windows"
   "dune"              {>= "2.0.0"}
@@ -35,3 +35,4 @@ url {
     "sha512=63e3bdb03996551d127a7233590d7f36783e18659bbdf455ac0d6ed55798374122661e1da25b45ea0f5468d3876f617b1aac0699858f04f94137579726d5d323"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "checkseum"]

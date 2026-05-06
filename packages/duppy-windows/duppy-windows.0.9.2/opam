@@ -10,17 +10,8 @@ depends: [
   "pcre-windows"
 ]
 build: [
-  [
-    "dune"
-    "build"
-    "-p"
-    "duppy"
-    "-j"
-    jobs
-    "-x"
-    "windows"
-    "@install"
-  ]
+  ["dune" "build" "-p" "duppy" "-j" jobs "-x" "windows" "@install"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/savonet/ocaml-duppy.git"
 url {
@@ -30,3 +21,4 @@ url {
     "sha512=380947d4fa4d03c46ad5de82d8e9fbbd1fe3f0489ca7d3ef14de28f65aa189128a5496a194a35f833d29b0e7f32a4b90da76c68b83b729c536991c47fc4813b4"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "duppy"]

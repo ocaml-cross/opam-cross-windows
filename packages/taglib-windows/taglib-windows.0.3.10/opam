@@ -14,17 +14,8 @@ depends: [
 ]
 build: [
   ["dune" "subst"] {dev}
-  [
-    "dune"
-    "build"
-    "-p"
-    "taglib"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "taglib" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 depexts: [
  ["taglib"] {os-distribution = "mxe"}
@@ -37,3 +28,4 @@ url {
     "sha512=70193babf3ddca744de00ad43de12d71bdfbdd2d2081435a546ecccd1ead15c20b2ea91e226a98638935c20d6cd546e4b20111164a28255867192acec1a78ef2"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "taglib"]

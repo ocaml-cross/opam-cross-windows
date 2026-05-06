@@ -13,6 +13,7 @@ depends: [
 ]
 build: [
   ["dune" "build" "-p" "kdf" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/robur-coop/kdf.git"
 synopsis: "Key Derivation Functions: HKDF RFC 5869, PBKDF RFC 2898, SCRYPT RFC 7914"
@@ -31,3 +32,4 @@ url {
 }
 x-commit-hash: "a6da77f39fd1b3acc6865a9a20dca567a5e1fe89"
 x-maintenance-intent: [ "(latest)" ]
+install: ["dune" "install" "-x" "windows" "-p" "kdf"]

@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_sexp_message/index.
 license: "MIT"
 build: [
   ["dune" "build" "-p" "ppx_sexp_message" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"         {>= "4.14.0"}
@@ -29,3 +30,4 @@ url {
 src: "https://ocaml.janestreet.com/ocaml-core/v0.16/files/ppx_sexp_message-v0.16.0.tar.gz"
 checksum: "sha256=1829931dc8670232b4687b74187777061b0df5a667478e6b9dad324e30a47d38"
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_sexp_message"]

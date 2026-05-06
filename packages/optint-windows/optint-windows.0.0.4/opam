@@ -15,8 +15,17 @@ On x86, this library use a boxed int32.
 Implementation depends on target architecture.
 """
 
-build: ["dune" "build" "-p" "optint" "-j" jobs "-x" "windows"]
-
+build: [
+  ["dune"
+  "build"
+  "-p"
+  "optint"
+  "-j"
+  jobs
+  "-x"
+  "windows"]
+  ["rm" "%{name}%.install"]
+]
 depends: [
   "ocaml-windows"
   "dune"
@@ -29,3 +38,4 @@ url {
     "sha512=6127f5d216a66a376b75a309627e2c52c08d655c4a88a2d1df2b622d98abfe011fb10175f5f99737e950c8095596ef8fd680fe2338f53383e2263edb2d3a5c49"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "optint"]

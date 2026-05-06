@@ -35,20 +35,12 @@ depends: [
   "bigarray-compat-windows"
 ]
 build: [
-  [
-    "dune"
-    "build"
-    "-p"
-    "ctypes"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "ctypes" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/yallop/ocaml-ctypes.git"
 url {
   src: "https://github.com/yallop/ocaml-ctypes/archive/refs/tags/0.22.0.tar.gz"
   checksum: "md5=8a301a3e3b79156448a6659859ad506c"
 }
+install: ["dune" "install" "-x" "windows" "-p" "ctypes"]

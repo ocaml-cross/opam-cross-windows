@@ -12,17 +12,8 @@ depends: [
   "domain_shims-windows" {>= "0.1.0"}
 ]
 build: [
-  [
-    "dune"
-    "build"
-    "-p"
-    "saturn_lockfree"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "saturn_lockfree" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/ocaml-multicore/saturn.git"
 url {
@@ -34,3 +25,4 @@ url {
   ]
 }
 x-commit-hash: "978b876ab512828ba36c068944dac64682784f9e"
+install: ["dune" "install" "-x" "windows" "-p" "saturn_lockfree"]

@@ -12,17 +12,8 @@ depends: [
   "ogg-windows" {>= "0.7.1"}
 ]
 build: [
-  [
-    "dune"
-    "build"
-    "-p"
-    "opus"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "opus" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 depexts: [
   ["opus"] {os-distribution = "mxe"}
@@ -35,3 +26,4 @@ url {
     "sha512=e9931a80550ed3566cebc4e07204192319fdb02c88519f6711c57ec2cb8d68e13f641bd843c815244010e4be8fbada95d826063e33297113a5c3743c3a4e2a5d"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "opus"]

@@ -6,7 +6,9 @@ synopsis: "Simple abstraction over `iter` functions, intended to iterate efficie
 build: [
   ["dune" "build" "@install" "-p" "iter" "-x" "windows" "-j" jobs]
   ["dune" "build" "@doc" "-p" name "-j" jobs] {with-doc}
-  ["dune" "runtest" "-p" name "-j" jobs] {with-test & arch != "arm32" & arch != "x86_32"}
+  ["dune" "runtest" "-p" name "-j" jobs]
+    {with-test & arch != "arm32" & arch != "x86_32"}
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows" { >= "4.08.0" }
@@ -32,3 +34,4 @@ url {
   ]
 }
 x-commit-hash: "a525d4902c9fb71e6acd84ee1f2ab8e1f3eefb10"
+install: ["dune" "install" "-x" "windows" "-p" "iter"]

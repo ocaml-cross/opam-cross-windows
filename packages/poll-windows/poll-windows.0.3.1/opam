@@ -20,17 +20,8 @@ depends: [
   "ocaml-windows" {>= "4.13"}
 ]
 build: [
-  [
-    "dune"
-    "build"
-    "-p"
-    "poll"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "poll" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/anuragsoni/poll.git"
 conflicts: [
@@ -46,3 +37,4 @@ url {
   ]
 }
 x-commit-hash: "303cd7b5254b6a7f1557507651d9ae34eecf8f14"
+install: ["dune" "install" "-x" "windows" "-p" "poll"]

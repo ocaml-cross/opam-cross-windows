@@ -17,17 +17,8 @@ depends: [
 ]
 build: [
   ["dune" "subst"] {dev}
-  [
-    "dune"
-    "build"
-    "-p"
-    "posix-base"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "posix-base" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/savonet/ocaml-posix.git"
 url {
@@ -38,3 +29,4 @@ url {
     "sha512=a0fae5a98b9ab63d5273d357292a74ac69c694bdd672b0cbd62b5beb5847e63c17fb0de0a1fb9f36b7bc9f10f7b990298ee63853d8399b9b8a9005c1c7b37ba3"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "posix-base"]

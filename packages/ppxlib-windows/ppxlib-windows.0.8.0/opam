@@ -9,6 +9,7 @@ license: "MIT"
 build: [
   ["dune" "subst"] {pinned}
   ["dune" "build" "-p" "ppxlib" "-j" jobs "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"                   {>= "4.04.1"}
@@ -40,3 +41,4 @@ url {
     "https://github.com/ocaml-ppx/ppxlib/archive/0.8.0.tar.gz"
   checksum: "md5=9b1cfe1ae58d7ad851ed5618c1bf64a0"
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppxlib"]

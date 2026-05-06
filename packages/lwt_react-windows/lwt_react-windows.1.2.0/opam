@@ -24,6 +24,7 @@ depends: [
 
 build: [
   ["dune" "build" "-p" "lwt_react" "-j" jobs "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
 url {
   src: "https://github.com/ocsigen/lwt/archive/5.6.0.tar.gz"
@@ -32,3 +33,4 @@ url {
     "sha512=d616389bc9e0da11f25843ab7541ac2d40c9543700a89455f14115b339bbe58cef2b8acf0ae97fd54e15a4cb93149cfe1ebfda301aa93933045f76b7d9344160"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "lwt_react"]

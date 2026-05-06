@@ -11,6 +11,7 @@ dev-repo: "git://github.com/ocaml-ppx/ppx_tools_versioned.git"
 tags: [ "syntax" ]
 build: [
   ["dune" "build" "-p" "ppx_tools_versioned" "-j" jobs "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows" {>= "4.02.0"}
@@ -26,3 +27,4 @@ url {
     "sha512=68c168ebc01af46fe8766ad7e36cc778caabb97d8eb303db284d106450cb79974c2a640ce459e197630b9e84b02caa24b59c97c9a8d39ddadc7efc7284e42a70"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_tools_versioned"]

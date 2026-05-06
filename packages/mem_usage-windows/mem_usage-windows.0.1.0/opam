@@ -11,17 +11,8 @@ depends: [
 ]
 build: [
   ["dune" "subst"] {dev}
-  [
-    "dune"
-    "build"
-    "-p"
-    "mem_usage"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "mem_usage" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/savonet/ocaml-mem_usage.git"
 url {
@@ -32,3 +23,4 @@ url {
     "sha512=19a2772e0fdb55c6dd0cd01df2fba7ff8c8cf63dd3cd4361d4964464fe2acea664db75a0c97c5fd47b7b1a662cc23bdce61ae0d5298fcfc93b60a99d8ebab3a2"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "mem_usage"]

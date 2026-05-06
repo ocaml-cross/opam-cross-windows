@@ -12,17 +12,8 @@ depends: [
   "ocaml-windows"
 ]
 build: [
-  [
-    "dune"
-    "build"
-    "-p"
-    "faad"
-    "-j"
-    jobs
-    "-x"
-    "windows"
-    "@install"
-  ]
+  ["dune" "build" "-p" "faad" "-j" jobs "-x" "windows" "@install"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/savonet/ocaml-faad.git"
 depexts: [
@@ -35,3 +26,4 @@ url {
     "sha512=0983cdf7552f03f021ca20e86ed6ebc67419db8900dd0e3fc316c18af83851259d91b8829092a2e1e307638ce31d6c3ee4810889f43632070122ee24e7971874"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "faad"]

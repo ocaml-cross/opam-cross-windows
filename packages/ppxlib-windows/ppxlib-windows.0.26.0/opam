@@ -45,6 +45,7 @@ build: [
     "@runtest" {with-test}
     "@doc" {with-doc}
   ]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/ocaml-ppx/ppxlib.git"
 url {
@@ -56,3 +57,4 @@ url {
   ]
 }
 x-commit-hash: "18b1ad68b59d151d662147661e43b159ac491f68"
+install: ["dune" "install" "-x" "windows" "-p" "ppxlib"]

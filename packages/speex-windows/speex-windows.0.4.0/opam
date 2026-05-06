@@ -26,6 +26,7 @@ build: [
     "@runtest" {with-test}
     "@doc" {with-doc}
   ]
+  ["rm" "%{name}%.install"]
 ]
 depexts: [
   ["speex"] {os-distribution = "mxe"}
@@ -38,3 +39,4 @@ url {
     "sha512=812dcd25336729a6bcacd80f6a54ffc984c08961ffa1b151b7a4fd36b5c9c5f6429bf6cc0a698aae3efa630be029bf93d0e55f070f5db2de1b1efa7a692ef3d8"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "speex"]

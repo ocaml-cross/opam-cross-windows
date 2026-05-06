@@ -11,8 +11,8 @@ license: "MIT"
 
 build: [
   ["dune" "build" "-p" "integers" "-j" jobs "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
-
 depends: [
   "ocaml-windows" {>= "4.02" & < "5.0"}
   "dune"
@@ -23,3 +23,4 @@ url {
   src: "https://github.com/ocamllabs/ocaml-integers/archive/0.4.0.tar.gz"
   checksum: "md5=c1492352e6525048790508c57aad93c3"
 }
+install: ["dune" "install" "-x" "windows" "-p" "integers"]

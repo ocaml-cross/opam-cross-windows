@@ -9,8 +9,8 @@ bug-reports: "https://github.com/mmottl/pcre-ocaml/issues"
 
 build: [
   ["dune" "build" "-p" "pcre" "-j" jobs "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
-
 depends: [
   "ocaml-windows" {>= "4.04"}
   "dune"          {build & >= "1.4.0"}
@@ -31,3 +31,4 @@ url {
 depexts: [
   ["pcre"] {os-distribution = "mxe"}
 ]
+install: ["dune" "install" "-x" "windows" "-p" "pcre"]

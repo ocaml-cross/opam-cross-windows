@@ -27,6 +27,7 @@ build: [
     "@runtest" {with-test}
     "@doc" {with-doc}
   ]
+  ["rm" "%{name}%.install"]
 ]
 depexts: [
   ["opus"] {os-distribution = "mxe"}
@@ -39,3 +40,4 @@ url {
     "sha512=4c1f4ecbdad31e140ee512d95bdf74f8ff64260575a5202f8a013fe1b2768f34911eea6e7e029600ce028e0245e46bf227af3407e28e120feafa121f5ef3e686"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "opus"]

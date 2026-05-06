@@ -12,17 +12,8 @@ depends: [
   "dune-configurator"
 ]
 build: [
-  [
-    "dune"
-    "build"
-    "-p"
-    "ao"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "ao" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 depexts: [
   ["dlfcn-win32" "libao"] {os-distribution = "mxe"}
@@ -35,3 +26,4 @@ url {
     "sha512=bea743458241e3c46c1ea9008a85058fc46c8798defb983cc6a9a6530e3e62cb8d982d6ed29a91933faa23bb422c96412c973ff004ed4d79f864941188ca234a"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "ao"]

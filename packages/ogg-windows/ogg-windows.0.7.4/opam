@@ -12,17 +12,8 @@ depends: [
   "ocaml-windows"
 ]
 build: [
-  [
-    "dune"
-    "build"
-    "-p"
-    "ogg"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "ogg" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 depexts: [
   ["ogg"] {os-distribution = "mxe"}
@@ -35,3 +26,4 @@ url {
     "sha512=5f23ee730d234a89e9b402e83fd2185f65b4cb9612b3f0f15f267baf43f45c28fe9273a57fc8d7d3882fb7817ad628b3f3c847cfe989594190b9e5150a9ab3a2"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "ogg"]

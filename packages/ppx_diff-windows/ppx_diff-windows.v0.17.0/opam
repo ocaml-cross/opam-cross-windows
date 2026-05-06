@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_diff/index.html"
 license: "MIT"
 build: [
   ["dune" "build" "-p" "ppx_diff" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"         {>= "5.1.0"}
@@ -36,3 +37,4 @@ url {
 src: "https://github.com/janestreet/ppx_diff/archive/refs/tags/v0.17.0.tar.gz"
 checksum: "sha256=5e817094edf127d384110227ecfdc3e23f0f130266d48d1f326a03f6f58a2609"
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_diff"]

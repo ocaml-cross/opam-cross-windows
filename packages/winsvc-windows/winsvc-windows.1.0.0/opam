@@ -11,17 +11,8 @@ depends: [
 ]
 build: [
   ["dune" "subst"] {pinned}
-  [
-    "dune"
-    "build"
-    "-p"
-    "winsvc"
-    "-j"
-    jobs
-    "-x"
-    "windows"
-    "@install"
-  ]
+  ["dune" "build" "-p" "winsvc" "-j" jobs "-x" "windows" "@install"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/savonet/ocaml-winsvc.git"
 url {
@@ -31,3 +22,4 @@ url {
     "sha512=30e208d35ed7eb30e90d5fd4f0dde3ff4f527155df90e2d9cffadec15513b65b72503fc223bd784203f2b9081f68bedd5a2b157ffb0b2d9b765546dac1094875"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "winsvc"]

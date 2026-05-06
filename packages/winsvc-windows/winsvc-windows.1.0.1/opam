@@ -24,6 +24,7 @@ build: [
     "@runtest" {with-test}
     "@doc" {with-doc}
   ]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/savonet/ocaml-winsvc.git"
 url {
@@ -33,3 +34,4 @@ url {
     "sha512=d63a033d590d910239a377ef128847328b377ff2974e5e20e0daa5460d9fa6d3102c3205159b9c5ddce049bd43e96adb7ce4fdab24141832119196f006f68fb3"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "winsvc"]

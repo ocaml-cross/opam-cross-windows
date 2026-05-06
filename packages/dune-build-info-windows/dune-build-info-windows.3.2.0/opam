@@ -33,6 +33,7 @@ build: [
     "@install"
     "@doc" {with-doc}
   ]
+  ["rm" "%{name}%.install"]
 ]
 url {
   src:
@@ -43,3 +44,4 @@ url {
   ]
 }
 x-commit-hash: "43af00f79e41ce9101d42b36dab13e1f68d49a7a"
+install: ["dune" "install" "-x" "windows" "-p" "dune-build-info"]

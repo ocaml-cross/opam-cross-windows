@@ -16,17 +16,8 @@ dev-repo: "git+https://github.com/ocaml/dune.git"
 build: [
   ["rm" "-rf" "vendor/csexp"]
   ["rm" "-rf" "vendor/pp"]
-  [
-    "dune"
-    "build"
-    "-p"
-    "xdg"
-    "-j"
-    jobs
-    "-x"
-    "windows"
-    "@install"
-  ]
+  ["dune" "build" "-p" "xdg" "-j" jobs "-x" "windows" "@install"]
+  ["rm" "%{name}%.install"]
 ]
 url {
   src:
@@ -37,3 +28,4 @@ url {
   ]
 }
 x-commit-hash: "43af00f79e41ce9101d42b36dab13e1f68d49a7a"
+install: ["dune" "install" "-x" "windows" "-p" "xdg"]

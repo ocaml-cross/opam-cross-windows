@@ -6,7 +6,8 @@ bug-reports: "https://github.com/ocaml-community/yojson/issues"
 dev-repo: "git+https://github.com/ocaml-community/yojson.git"
 doc: "https://ocaml-community.github.io/yojson/"
 build: [
-  ["dune" "build"  "-p" "yojson" "-j" jobs "-x" "windows"]
+  ["dune" "build" "-p" "yojson" "-j" jobs "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "dune" {build}
@@ -32,3 +33,4 @@ url {
     "https://github.com/ocaml-community/yojson/releases/download/1.5.0/yojson-1.5.0.tbz"
   checksum: "md5=d80de1bacdde292af42f7c78b323da7b"
 }
+install: ["dune" "install" "-x" "windows" "-p" "yojson"]

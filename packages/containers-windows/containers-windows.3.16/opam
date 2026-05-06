@@ -17,6 +17,7 @@ depopts: ["base-unix" "base-threads"]
 dev-repo: "git+https://github.com/c-cube/ocaml-containers.git"
 build: [
   ["dune" "build" "-p" "containers" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 url {
   src:
@@ -27,3 +28,4 @@ url {
   ]
 }
 x-commit-hash: "99dba20fa6ba0f2db4b9b9ae2acbf4185fa502f4"
+install: ["dune" "install" "-x" "windows" "-p" "containers"]

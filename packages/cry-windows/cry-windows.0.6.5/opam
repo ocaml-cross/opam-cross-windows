@@ -18,17 +18,8 @@ conflicts: [
   "ssl-windows" {< "0.5.9"}
 ]
 build: [
-  [
-    "dune"
-    "build"
-    "-p"
-    "cry"
-    "-j"
-    jobs
-    "-x"
-    "windows"
-    "@install"
-  ]
+  ["dune" "build" "-p" "cry" "-j" jobs "-x" "windows" "@install"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/savonet/ocaml-cry.git"
 url {
@@ -38,3 +29,4 @@ url {
     "sha512=43de3513ee2a0f5e5ad496f48137519de270f836081870b48768e45146a4aab84ad7a0781eac56f7b69ce8724a7fd49e7f9fd9d2d771f133aeef2db96d7254af"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "cry"]

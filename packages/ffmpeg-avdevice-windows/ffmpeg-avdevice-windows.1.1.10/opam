@@ -19,17 +19,8 @@ depexts: [
   ["ffmpeg"] {os-distribution = "mxe"}
 ]
 build: [
-  [
-    "dune"
-    "build"
-    "-p"
-    "ffmpeg-avdevice"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "ffmpeg-avdevice" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/savonet/ocaml-ffmpeg.git"
 url {
@@ -40,3 +31,4 @@ url {
     "sha512=f4d35e93d847b2a00965ab6a8ef33698612eb77f7667477ee3308ef192ecc082787ef26ac5dae2bee12c579ef36028a66e698fe3de46309ac2bd90e5ba09314d"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "ffmpeg-avdevice"]

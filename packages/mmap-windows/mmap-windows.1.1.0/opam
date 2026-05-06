@@ -8,6 +8,7 @@ dev-repo: "git+https://github.com/mirage/mmap.git"
 license: "LGPL 2.1 with linking exception"
 build: [
   ["dune" "build" "-x" "windows" "-p" "mmap" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"
@@ -22,3 +23,4 @@ url {
     "https://github.com/mirage/mmap/releases/download/v1.1.0/mmap-v1.1.0.tbz"
   checksum: "md5=8c5d5fbc537296dc525867535fb878ba"
 }
+install: ["dune" "install" "-x" "windows" "-p" "mmap"]

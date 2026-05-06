@@ -4,6 +4,7 @@ synopsis: "Iterators for OCaml, both restartable and consumable"
 license: "BSD-2-Clause"
 build: [
   ["dune" "build" "@install" "-p" "gen" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "dune" {>= "1.1"}
@@ -25,3 +26,4 @@ url {
     "sha512=fb4ec2ab35a1aba0dcc8439b11f14a0a785d939f661f505aec88a6f2ca6ca87e14ddfda860d9c180b215190b76690de87040c144582f069224f7e58d37ef48a0"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "gen"]

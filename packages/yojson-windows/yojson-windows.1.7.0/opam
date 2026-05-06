@@ -8,8 +8,8 @@ doc: "https://ocaml-community.github.io/yojson/"
 build: [
   ["dune" "subst"] {pinned}
   ["dune" "build" "-p" "yojson" "-j" jobs "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
-
 depends: [
   "ocaml" {>= "4.02.3"}
   "dune"
@@ -35,3 +35,4 @@ url {
     "https://github.com/ocaml-community/yojson/releases/download/1.7.0/yojson-1.7.0.tbz"
   checksum: "md5=b89d39ca3f8c532abe5f547ad3b8f84d"
 }
+install: ["dune" "install" "-x" "windows" "-p" "yojson"]

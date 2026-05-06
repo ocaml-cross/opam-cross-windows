@@ -12,6 +12,7 @@ depends: [
 build: [
   ["dune" "subst"] {pinned}
   ["dune" "build" "-p" "bigarray-compat" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/mirage/bigarray-compat.git"
 url {
@@ -21,3 +22,4 @@ url {
     "sha512=c365fee15582aca35d7b05268cde29e54774ad7df7be56762b4aad78ca1409d4326ad3b34af0f1cc2c7b872837290a9cd9ff43b47987c03bba7bba32fe8a030f"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "bigarray-compat"]

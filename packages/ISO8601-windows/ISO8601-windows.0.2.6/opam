@@ -15,6 +15,7 @@ depends: [
 build: [
   ["dune" "build" "-p" "ISO8601" "-x" "windows" "-j" jobs]
   ["dune" "build" "@doc" "-p" "ISO8601" "-j" jobs] {with-doc}
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/ocaml-community/ISO8601.ml.git"
 url {
@@ -24,3 +25,4 @@ url {
     "sha512=82b5cbbb636346e8d010ee569c0fad2f00bef31c3177cfee80fc02a081c5fcfb7880bf2670fe4f46423e3ae99370626c7efffc9d332cae5cbd6377c975517b3f"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "ISO8601"]

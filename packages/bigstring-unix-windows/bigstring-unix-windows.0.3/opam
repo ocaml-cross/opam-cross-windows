@@ -7,7 +7,8 @@ homepage: "https://github.com/c-cube/ocaml-bigstring/"
 bug-reports: "https://github.com/c-cube/ocaml-bigstring/issues"
 dev-repo: "git+https://github.com/c-cube/ocaml-bigstring.git"
 build: [
-  [ "dune" "build" "-p" "bigstring-unix" "-j" jobs "-x" "windows" ]
+  ["dune" "build" "-p" "bigstring-unix" "-j" jobs "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "dune" {>= "1.2"}
@@ -20,3 +21,4 @@ url {
     "sha512=d0c530603e9bb37a704d736137953e4f2a1b1e16517587010f2fb323a5c3e4d887f558775349231ea15a98d3c085ed9daaf0a7603f165cdd0097ff2548ce790a"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "bigstring-unix"]

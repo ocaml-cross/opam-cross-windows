@@ -32,9 +32,11 @@ build: [
     "camomile"
     "-j"
     jobs
-    "-x" "windows"
+    "-x"
+    "windows"
     "@install"
   ]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/savonet/Camomile.git"
 url {
@@ -44,3 +46,4 @@ url {
     "sha512=b0ae3d921f65390e8ec88a04901dd097b568db9f9ae70fb328e9d3ddb2dd8922b9a8e8da9ace91ad9cb5f6a1310ae5b6ba502e287d6c828f4d60622289316ac8"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "camomile"]

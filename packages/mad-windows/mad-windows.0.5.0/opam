@@ -16,17 +16,8 @@ depends: [
   "ocaml-windows"
 ]
 build: [
-  [
-    "dune"
-    "build"
-    "-p"
-    "mad"
-    "-j"
-    jobs
-    "-x"
-    "windows"
-    "@install"
-  ]
+  ["dune" "build" "-p" "mad" "-j" jobs "-x" "windows" "@install"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/savonet/ocaml-mad.git"
 depexts: [
@@ -42,3 +33,4 @@ url {
     "sha512=284e2be07f73d5d26378341194c34c28498aceb26d26dd3fd685016e19baba59943c8b4df08eb4be715430a92265a856cd594209ee9d7aed5d10b29b63857dff"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "mad"]

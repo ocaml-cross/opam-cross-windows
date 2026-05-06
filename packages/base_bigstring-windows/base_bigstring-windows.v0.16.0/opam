@@ -11,6 +11,7 @@ patches: [
 ]
 build: [
   ["dune" "build" "-p" "base_bigstring" "-j" jobs "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"    {>= "4.14.0"}
@@ -31,3 +32,4 @@ checksum: "sha256=19fcbf8fa1fa557d513679413a9087e4ff1cb846cef1e8a78eaffb293fa926
 extra-files: [
   "patches/memmem-shim.patch" "md5=f75d95f1b88dabf4ff7c24622e6dd113"
 ]
+install: ["dune" "install" "-x" "windows" "-p" "base_bigstring"]

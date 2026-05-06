@@ -19,17 +19,8 @@ depends: [
 ]
 build: [
   ["dune" "subst"] {dev}
-  [
-    "dune"
-    "build"
-    "-p"
-    "ffmpeg"
-    "-j"
-    jobs
-    "-x"
-    "windows"
-    "@install"
-  ]
+  ["dune" "build" "-p" "ffmpeg" "-j" jobs "-x" "windows" "@install"]
+  ["rm" "%{name}%.install"]
 ]
 depexts: [
   ["ffmpeg"] {os-distribution = "mxe"}
@@ -42,3 +33,4 @@ url {
     "sha512=a94a21c73661b3ee9bcc8a9d6539693977b18c4fa1065701fc7b00cf0f148c154dc6b21790193fae157dbded811e28538cbe8e8fb7bcf426900d30d453225d50"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "ffmpeg"]

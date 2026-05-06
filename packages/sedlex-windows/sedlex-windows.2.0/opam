@@ -18,6 +18,7 @@ dev-repo: "git+https://github.com/ocaml-community/sedlex.git"
 bug-reports: "https://github.com/ocaml-community/sedlex/issues"
 build: [
   ["dune" "build" "-x" "windows" "-p" "sedlex" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows" {>= "4.02.3"}
@@ -33,3 +34,4 @@ url {
   src: "https://github.com/ocaml-community/sedlex/archive/v2.0.zip"
   checksum: "md5=807023962f25342b0a2c386a3742414c"
 }
+install: ["dune" "install" "-x" "windows" "-p" "sedlex"]

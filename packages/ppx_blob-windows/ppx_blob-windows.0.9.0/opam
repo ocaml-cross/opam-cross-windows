@@ -9,6 +9,7 @@ license: "Unlicense"
 build: [
   ["dune" "build" "-p" "ppx_blob" "-x" "windows" "-j" jobs]
   ["dune" "runtest" "-p" name "-j" jobs] {with-test}
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows" {>= "4.08"}
@@ -29,3 +30,4 @@ url {
   ]
 }
 x-commit-hash: "38c7693141bd629b70cd8a17306f5ce359ea9c59"
+install: ["dune" "install" "-x" "windows" "-p" "ppx_blob"]

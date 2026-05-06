@@ -30,11 +30,10 @@ We provides implementation of:
 """
 
 build: [
-  [ "dune" "build" "-p" "digestif" "-x" "windows" "-j" jobs ]
+  ["dune" "build" "-p" "digestif" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
-install:  [
-]
-
+install: ["dune" "install" "-x" "windows" "-p" "digestif"]
 depends: [
   "ocaml-windows"
   "dune"            {>= "2.6.0"}

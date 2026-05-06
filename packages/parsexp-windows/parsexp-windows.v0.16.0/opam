@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/parsexp/index.html"
 license: "MIT"
 build: [
   ["dune" "build" "-p" "parsexp" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"    {>= "4.14.0"}
@@ -40,3 +41,4 @@ url {
 src: "https://ocaml.janestreet.com/ocaml-core/v0.16/files/parsexp-v0.16.0.tar.gz"
 checksum: "sha256=b6e2572c8e6191a85cb8f9c3276ed87fe00522c81ba7a268179fb08185e55e12"
 }
+install: ["dune" "install" "-x" "windows" "-p" "parsexp"]

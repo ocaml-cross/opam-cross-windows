@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_module_timer/index.
 license: "MIT"
 build: [
   ["dune" "build" "-p" "ppx_module_timer" "-j" jobs "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"    {>= "4.04.2"}
@@ -28,3 +29,4 @@ url {
   src: "https://ocaml.janestreet.com/ocaml-core/v0.14/files/ppx_module_timer-v0.14.0.tar.gz"
   checksum: "md5=7ec9de2d5f07a1ceecdbefce0f0dea2c"
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_module_timer"]

@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_stable/index.html"
 license: "MIT"
 build: [
   ["dune" "build" "-p" "ppx_stable" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"  {>= "5.1.0"}
@@ -31,3 +32,4 @@ url {
     "sha512=aff081814ac95dc4ebcaa275ccd6fb4e6d7de5de4ef3fc6a633debeeae213136d46c526fb8dc33896542dcde0319957d04308f4a5b8012342fc6a9ccfb5dc072"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_stable"]

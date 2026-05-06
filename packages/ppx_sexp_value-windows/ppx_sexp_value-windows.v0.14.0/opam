@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_sexp_value/index.ht
 license: "MIT"
 build: [
   ["dune" "build" "-p" "ppx_sexp_value" "-j" jobs "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"         {>= "4.04.2"}
@@ -29,3 +30,4 @@ url {
   src: "https://ocaml.janestreet.com/ocaml-core/v0.14/files/ppx_sexp_value-v0.14.0.tar.gz"
   checksum: "md5=8bc8a75c992e8af371dfd71804ac2133"
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_sexp_value"]

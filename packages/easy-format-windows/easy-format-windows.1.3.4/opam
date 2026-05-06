@@ -30,17 +30,8 @@ depends: [
   "ocaml-windows"
 ]
 build: [
-  [
-    "dune"
-    "build"
-    "-p"
-    "easy-format"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "easy-format" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/ocaml-community/easy-format.git"
 url {
@@ -52,3 +43,4 @@ url {
   ]
 }
 x-commit-hash: "ba4962884509ceec63905dd6e0ccb429be4f9f66"
+install: ["dune" "install" "-x" "windows" "-p" "easy-format"]

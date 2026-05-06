@@ -12,17 +12,8 @@ depends: [
 ]
 build: [
   ["dune" "subst"] {dev}
-  [
-    "dune"
-    "build"
-    "-p"
-    "ogg"
-    "-j"
-    jobs
-    "-x"
-    "windows"
-    "@install"
-  ]
+  ["dune" "build" "-p" "ogg" "-j" jobs "-x" "windows" "@install"]
+  ["rm" "%{name}%.install"]
 ]
 depexts: [
   ["ogg"] {os-distribution = "mxe"}
@@ -35,3 +26,4 @@ url {
     "sha512=fdf7a474ed8fa3748f46d5b8e07fdd2d0a11774a7b48b02276f105c188db30fe6278f5858947259b9a468489c53addb272bfc9c17816b7a9e0848e12793aa623"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "ogg"]

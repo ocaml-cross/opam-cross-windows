@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_bin_prot/index.html
 license: "MIT"
 build: [
   ["dune" "build" "-p" "ppx_bin_prot" "-j" jobs "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"    {>= "4.04.2"}
@@ -27,3 +28,4 @@ url {
   src: "https://ocaml.janestreet.com/ocaml-core/v0.14/files/ppx_bin_prot-v0.14.0.tar.gz"
   checksum: "md5=016e777c366b9b464f016d70ae4d7b7f"
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_bin_prot"]

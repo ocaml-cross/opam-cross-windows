@@ -33,17 +33,8 @@ depends: [
 ]
 dev-repo: "git+https://github.com/ocaml-dune/csexp.git"
 build: [
-  [
-    "dune"
-    "build"
-    "-p"
-    "csexp"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "csexp" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 url {
   src:
@@ -54,3 +45,4 @@ url {
   ]
 }
 x-commit-hash: "e6c4768e10c61bcb04d09748744dad55602149c6"
+install: ["dune" "install" "-x" "windows" "-p" "csexp"]

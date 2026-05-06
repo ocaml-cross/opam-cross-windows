@@ -12,6 +12,7 @@ build: [
   ["dune" "subst"] {dev}
   ["dune" "build" "-p" "csv" "-x" "windows" "-j" jobs]
   ["dune" "runtest" "-p" "csv" "-x" "windows" "-j" jobs] {with-test}
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml" {>= "4.03.0"}
@@ -34,3 +35,4 @@ url {
     "sha512=a8a952315950fc7fcca36c758b69618296060fd4eab3140ac364ad62172cf665b3c0c9d892ddb586929217466a42f33f432e32e3bd0c1e549ea22bef6ef8a900"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "csv.2.4"]

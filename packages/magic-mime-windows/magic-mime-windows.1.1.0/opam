@@ -6,10 +6,10 @@ bug-reports: "https://github.com/mirage/ocaml-magic-mime/issues"
 dev-repo: "git+https://github.com/mirage/ocaml-magic-mime.git"
 doc: "https://mirage.github.io/ocaml-magic-mime"
 license: "ISC"
-build: [[
-  "dune" "build"
-                      "-x" "windows"
-                     "-p" "magic-mime" "-j" jobs ]]
+build: [
+  ["dune" "build" "-x" "windows" "-p" "magic-mime" "-j" jobs]
+  ["rm" "%{name}%.install"]
+]
 depends: [
   "ocaml" {>= "4.03.0"}
   "dune" {build & >= "1.0+beta9"}
@@ -41,3 +41,4 @@ url {
     "https://github.com/mirage/ocaml-magic-mime/releases/download/v1.1.0/magic-mime-1.1.0.tbz"
   checksum: "md5=341ab5133c2e17ca645f23a0149025d1"
 }
+install: ["dune" "install" "-x" "windows" "-p" "magic-mime"]

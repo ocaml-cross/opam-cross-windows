@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/jst-config/index.html"
 license: "MIT"
 build: [
   ["dune" "build" "-p" "jst-config" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"             {>= "4.14.0"}
@@ -31,3 +32,4 @@ url {
 src: "https://ocaml.janestreet.com/ocaml-core/v0.16/files/jst-config-v0.16.0.tar.gz"
 checksum: "sha256=faead56d8582868cdc099ad54f9bae059cc48710b724600cc64013e73c14d95b"
 }
+install: ["dune" "install" "-x" "windows" "-p" "jst-config"]

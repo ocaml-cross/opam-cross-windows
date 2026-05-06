@@ -8,8 +8,8 @@ dev-repo: "git://github.com/mjambon/atd.git"
 
 build: [
   ["dune" "build" "-p" "atdgen-runtime" "-j" jobs "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
-
 depends: [
   "dune" {build & < "2"}
   "biniou-windows"
@@ -20,3 +20,4 @@ url {
   src: "https://github.com/mjambon/atd/releases/download/2.0.0/atd-2.0.0.tbz"
   checksum: "md5=14e47609397c524ea0eae7c3f14f7ccf"
 }
+install: ["dune" "install" "-x" "windows" "-p" "atdgen-runtime"]

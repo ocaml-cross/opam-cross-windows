@@ -24,15 +24,8 @@ depends: [
 ]
 build: [
   ["dune" "subst"] {dev}
-  [
-    "dune"
-    "build"
-    "-p"
-    "sedlex" "-x" "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "sedlex" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/ocaml-community/sedlex.git"
 doc: "https://ocaml-community.github.io/sedlex/index.html"
@@ -44,3 +37,4 @@ url {
     "sha512=053bceea4944309705e6b8014381711a2c4f7f0ab235cd239e2d2f5a2dbd3efe1b1c2d533631a8545dacf563cdb5b7469fe53982ef79ace270ee8a4a471f1fe2"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "sedlex"]

@@ -11,6 +11,7 @@ depends: [
 ]
 build: [
   ["dune" "build" "-p" "gmap" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/hannesm/gmap.git"
 synopsis: "Heterogenous maps over a GADT"
@@ -31,3 +32,4 @@ url {
   ]
 }
 x-maintenance-intent: [ "(latest)" ]
+install: ["dune" "install" "-x" "windows" "-p" "gmap"]

@@ -25,6 +25,7 @@ depends: [
 build: [
   ["dune" "subst"] {dev}
   ["dune" "build" "-p" "ppx_deriving" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/ocaml-ppx/ppx_deriving.git"
 url {
@@ -35,3 +36,4 @@ url {
     "sha512=9d64fd1a7c908e70ac11164db6732d69e74eac28c29ba6d76d40711554615c0af5a8c491eb6f05181b99294b50fc2c50b454b6d75d022db9d33133188d071102"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_deriving"]

@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_variants_conv/index
 license: "MIT"
 build: [
   ["dune" "build" "-p" "ppx_variants_conv" "-j" jobs "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"       {>= "4.04.2"}
@@ -25,3 +26,4 @@ url {
   src: "https://ocaml.janestreet.com/ocaml-core/v0.12/files/ppx_variants_conv-v0.12.0.tar.gz"
   checksum: "md5=0661be686b476e1a9c6e891e45fb3581"
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_variants_conv"]

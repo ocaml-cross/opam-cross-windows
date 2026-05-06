@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_hash/index.html"
 license: "MIT"
 build: [
   ["dune" "build" "-p" "ppx_hash" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"         {>= "4.08.0"}
@@ -29,3 +30,4 @@ url {
 src: "https://ocaml.janestreet.com/ocaml-core/v0.15/files/ppx_hash-v0.15.0.tar.gz"
 checksum: "sha256=45bb666a0f93aab5bc120126c4c7d4081d611c64969606799248b2d8418d1711"
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_hash"]

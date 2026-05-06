@@ -11,7 +11,17 @@ depends: [
   "dune"
   "ocaml-windows"
 ]
-build: [ "dune" "build" "-x" "windows" "-p" "stdlib-shims" "-j" jobs ]
+build: [
+  ["dune"
+  "build"
+  "-x"
+  "windows"
+  "-p"
+  "stdlib-shims"
+  "-j"
+  jobs]
+  ["rm" "%{name}%.install"]
+]
 synopsis: "Backport some of the new stdlib features to older compiler"
 description: """
 Backport some of the new stdlib features to older compiler,
@@ -25,3 +35,4 @@ url {
     "https://github.com/ocaml/stdlib-shims/releases/download/0.1.0/stdlib-shims-0.1.0.tbz"
   checksum: "md5=12b5704eed70c6bff5ac39a16db1425d"
 }
+install: ["dune" "install" "-x" "windows" "-p" "stdlib-shims"]

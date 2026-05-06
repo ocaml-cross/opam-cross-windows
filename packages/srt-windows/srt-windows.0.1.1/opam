@@ -19,17 +19,8 @@ depends: [
   "posix-socket"
 ]
 build: [
-  [
-    "dune"
-    "build"
-    "-p"
-    "srt"
-    "-j"
-    jobs
-    "-x"
-    "windows"
-    "@install"
-  ]
+  ["dune" "build" "-p" "srt" "-j" jobs "-x" "windows" "@install"]
+  ["rm" "%{name}%.install"]
 ]
 depexts: [
   ["libsrt"] {os-distribution = "mxe"}
@@ -41,3 +32,4 @@ url {
     "md5=299ed6660507f0a68b8b24e5617a0e4c"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "srt"]

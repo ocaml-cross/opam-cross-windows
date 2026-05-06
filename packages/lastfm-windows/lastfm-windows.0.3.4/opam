@@ -15,17 +15,8 @@ depends: [
 ]
 depopts: ["ocamlnet"]
 build: [
-  [
-    "dune"
-    "build"
-    "-p"
-    "lastfm"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "lastfm" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/savonet/ocaml-lastfm.git"
 url {
@@ -36,3 +27,4 @@ url {
     "sha512=49ef0a9257ef9cb2ee90db827bd7025d88bde496499c2193953cea1e9859093fea2d9b1505cc2111757ab82f6f6bd2e7b7abfe8e6df089d0e01b59da129747c6"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "lastfm"]

@@ -23,17 +23,8 @@ depends: [
 ]
 build: [
   ["dune" "subst"] {dev}
-  [
-    "dune"
-    "build"
-    "-p"
-    "srt"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "srt" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 depexts: [
   ["libsrt"] {os-distribution = "mxe"}
@@ -45,3 +36,4 @@ url {
     "sha512=8051282fbfcf271d388e46dea6d3816ac9928fd456ca1ead50b9248d2c092c54dc2325bb76cb3e47fddfbaab9c5cb396cf55b0423a1fda4bf65ceb8197993030"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "srt"]

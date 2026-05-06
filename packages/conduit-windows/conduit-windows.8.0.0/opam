@@ -21,6 +21,7 @@ depends: [
 ]
 build: [
   ["dune" "build" "-p" "conduit" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/mirage/ocaml-conduit.git"
 synopsis: "A network connection establishment library"
@@ -55,3 +56,4 @@ url {
   ]
 }
 x-commit-hash: "cb1e6cfed4a24bf3fa49627424fb9d43bdc20d0f"
+install: ["dune" "install" "-x" "windows" "-p" "conduit"]

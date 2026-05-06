@@ -28,6 +28,7 @@ depends: [
 ]
 build: [
   ["dune" "build" "-p" "magic-mime" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 url {
   src:
@@ -38,3 +39,4 @@ url {
   ]
 }
 x-commit-hash: "605338f0e3684425d99d853c15d5ea9a1478b5ee"
+install: ["dune" "install" "-x" "windows" "-p" "magic-mime"]

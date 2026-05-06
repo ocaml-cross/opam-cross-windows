@@ -12,6 +12,7 @@ doc: "https://ocaml-ppx.github.io/ocaml-migrate-parsetree/"
 tags: [ "syntax" "org:ocamllabs" ]
 build: [
   ["dune" "build" "-p" "ocaml-migrate-parsetree" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "dune" {>= "2.3"}
@@ -37,3 +38,4 @@ url {
   ]
 }
 x-commit-hash: "aeeb9317936937d360aa6cdb0cab953d11ff2c5d"
+install: ["dune" "install" "-x" "windows" "-p" "ocaml-migrate-parsetree"]

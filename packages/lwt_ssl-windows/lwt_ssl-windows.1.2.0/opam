@@ -22,6 +22,7 @@ depends: [
 
 build: [
   ["dune" "build" "-p" "lwt_ssl" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 url {
   src:
@@ -32,3 +33,4 @@ url {
   ]
 }
 x-commit-hash: "d9ea0ab93da68f0d13ed710cc16f80983923f9ba"
+install: ["dune" "install" "-x" "windows" "-p" "lwt_ssl"]

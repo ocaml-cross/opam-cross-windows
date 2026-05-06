@@ -9,6 +9,7 @@ doc: "https://gildor478.github.io/ocaml-fileutils/"
 
 build: [
   ["dune" "build" "-p" "fileutils" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows" {>= "4.03"}
@@ -44,3 +45,4 @@ url {
   ]
 }
 x-commit-hash: "324a05938d88c4b645287adbf5ceb74f4ce0daec"
+install: ["dune" "install" "-x" "windows" "-p" "fileutils"]

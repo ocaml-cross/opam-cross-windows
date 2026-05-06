@@ -15,8 +15,8 @@ dev-repo: "git+https://github.com/ocaml/ocaml-re.git"
 
 build: [
   ["dune" "build" "-p" "re" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
-
 depends: [
   "ocaml-windows" {>= "4.12"}
   "dune" {>= "2.0"}
@@ -41,3 +41,4 @@ url {
   ]
 }
 x-commit-hash: "f09672608781dc05172ad980a6e9a483c3b9d534"
+install: ["dune" "install" "-x" "windows" "-p" "re"]

@@ -8,8 +8,8 @@ license:      "BSD-2-Clause"
 
 build: [
   ["dune" "build" "-p" "tls" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
-
 depends: [
   "ocaml-windows" {>= "4.13.0"}
   "dune" {>= "3.0"}
@@ -57,3 +57,4 @@ url {
   ]
 }
 x-commit-hash: "a1ba8944ded768ca439a4ded809a819042ffcb1e"
+install: ["dune" "install" "-x" "windows" "-p" "tls"]

@@ -42,6 +42,7 @@ build: [
     "@install"
     "@doc" {with-doc}
   ]
+  ["rm" "%{name}%.install"]
 ]
 tags: ["org:mirage"]
 url {
@@ -54,3 +55,4 @@ url {
 }
 x-commit-hash: "2c5c0bcc2a336f77ec4bb843265334217996c559"
 x-maintenance-intent: [ "(latest)" ]
+install: ["dune" "install" "-x" "windows" "-p" "ca-certs"]

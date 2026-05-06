@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/variantslib/index.html"
 license: "MIT"
 build: [
   ["dune" "build" "-p" "variantslib" "-j" jobs "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows" {>= "4.04.2"}
@@ -25,3 +26,4 @@ url {
   src: "https://ocaml.janestreet.com/ocaml-core/v0.14/files/variantslib-v0.14.0.tar.gz"
   checksum: "md5=c0a0481de7df3df028bdec76d9993892"
 }
+install: ["dune" "install" "-x" "windows" "-p" "variantslib"]

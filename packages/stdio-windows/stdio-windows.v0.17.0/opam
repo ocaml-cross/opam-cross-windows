@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/stdio/index.html"
 license: "MIT"
 build: [
   ["dune" "build" "-p" "stdio" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows" {>= "5.1.0"}
@@ -26,3 +27,4 @@ url {
 src: "https://github.com/janestreet/stdio/archive/refs/tags/v0.17.0.tar.gz"
 checksum: "sha256=e7cb473d4bffcf419f307c658cf2599fab03a2b4fe655bfd0be699f8f7af176e"
 }
+install: ["dune" "install" "-x" "windows" "-p" "stdio"]

@@ -35,6 +35,7 @@ build: [
     "@runtest" {with-test}
     "@doc" {with-doc}
   ]
+  ["rm" "%{name}%.install"]
 ]
 depexts: [
   ["libsrt"] {os-distribution = "mxe"}
@@ -47,3 +48,4 @@ url {
     "sha512=f42a685a60bd7b5b0be5c89177a9e1b948c8b64f6cacff6fa8988697d95c5746de84f1c9048ea931fe6ae53efeeeabcc669ad3332437898c2513e0d78c2fe293"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "srt"]

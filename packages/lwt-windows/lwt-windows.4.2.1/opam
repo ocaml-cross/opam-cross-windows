@@ -29,8 +29,8 @@ depends: [
 
 build: [
   ["dune" "build" "-x" "windows" "-p" "lwt" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
-
 description: "A promise is a value that may become determined in the future.
 
 Lwt provides typed, composable promises. Promises that are resolved by I/O are
@@ -44,3 +44,4 @@ url {
   src: "https://github.com/ocsigen/lwt/archive/4.2.1.tar.gz"
   checksum: "md5=9d648386ca0a9978eb9487de36b781cc"
 }
+install: ["dune" "install" "-x" "windows" "-p" "lwt"]

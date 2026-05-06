@@ -34,17 +34,8 @@ depends: [
 ]
 build: [
   ["dune" "subst"] {pinned}
-  [
-    "dune"
-    "build"
-    "-p"
-    "ppxlib"
-    "-j"
-    jobs
-    "-x"
-    "windows"
-    "@install"
-  ]
+  ["dune" "build" "-p" "ppxlib" "-j" jobs "-x" "windows" "@install"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/ocaml-ppx/ppxlib.git"
 x-commit-hash: "3cf57772fef4666a2992041cf3a670dd2be98603"
@@ -56,3 +47,4 @@ url {
     "sha512=6010a59be6af873eaf193670f9cc8c9a7f091cfd89ec6c5b68d1f0c72d7c6015eec6371c009fc473cf2cb37d24f0934d04d0eacefa567a4945234197c3b31741"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppxlib"]

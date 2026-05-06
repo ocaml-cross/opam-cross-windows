@@ -13,17 +13,8 @@ depends: [
 ]
 build: [
   ["dune" "subst"] {dev}
-  [
-    "dune"
-    "build"
-    "-p"
-    "theora"
-    "-j"
-    jobs
-    "-x"
-    "windows"
-    "@install"
-  ]
+  ["dune" "build" "-p" "theora" "-j" jobs "-x" "windows" "@install"]
+  ["rm" "%{name}%.install"]
 ]
 depexts: [
   ["theora"] {os-distribution = "mxe"}
@@ -36,3 +27,4 @@ url {
     "sha512=513765188edc36219df0fb4d9801d2483e53a545c5491a22eaf4274b4b9c8a950d1d58063ffa0ac02639af1362c4fd0ce56ea3d3dccfd6e330929de15b30ce0e"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "theora"]

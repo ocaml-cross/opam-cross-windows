@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_cold/index.html"
 license: "MIT"
 build: [
   ["dune" "build" "-p" "ppx_cold" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"  {>= "4.08.0"}
@@ -25,3 +26,4 @@ url {
 src: "https://ocaml.janestreet.com/ocaml-core/v0.15/files/ppx_cold-v0.15.0.tar.gz"
 checksum: "sha256=8b9fae3341332411e46209d6639d75810260caa897aff4945500612db8abf88d"
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_cold"]

@@ -7,6 +7,7 @@ bug-reports: "https://github.com/inhabitedtype/angstrom/issues"
 dev-repo: "git+https://github.com/inhabitedtype/angstrom.git"
 build: [
   ["dune" "build" "-p" "angstrom" "-j" jobs "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"
@@ -30,3 +31,4 @@ url {
     "sha256=143536fb4d049574c539b9990840615e078ed3dd94e1d24888293f68349a100b"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "angstrom"]

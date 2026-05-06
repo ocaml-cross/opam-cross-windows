@@ -71,17 +71,8 @@ depends: [
 dev-repo: "git+https://github.com/ahrefs/atd.git"
 build: [
   ["dune" "subst"] {dev}
-  [
-    "dune"
-    "build"
-    "-p"
-    "atdgen-runtime"
-    "-j"
-    jobs
-    "-x"
-    "windows"
-    "@install"
-  ]
+  ["dune" "build" "-p" "atdgen-runtime" "-j" jobs "-x" "windows" "@install"]
+  ["rm" "%{name}%.install"]
 ]
 url {
   src:
@@ -92,3 +83,4 @@ url {
   ]
 }
 x-commit-hash: "695b060b60c1eb6f8d68d3b7eec68495e54d655a"
+install: ["dune" "install" "-x" "windows" "-p" "atdgen-runtime"]

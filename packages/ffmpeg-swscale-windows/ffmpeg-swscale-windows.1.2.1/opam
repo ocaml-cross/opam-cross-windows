@@ -19,17 +19,8 @@ depexts: [
   ["ffmpeg"] {os-distribution = "mxe"}
 ]
 build: [
-  [
-    "dune"
-    "build"
-    "-p"
-    "ffmpeg-swscale"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "ffmpeg-swscale" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/savonet/ocaml-ffmpeg.git"
 url {
@@ -40,3 +31,4 @@ url {
     "sha512=c72adb6ba5651e47c343d28b6be7759a5958ea1ea712ce98d3d4b86de35370f79e8c4833aa35b0633907d813abc080f6472186ad433ff5b8eeb31d5b5e012913"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "ffmpeg-swscale"]

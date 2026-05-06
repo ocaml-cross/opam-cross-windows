@@ -13,6 +13,7 @@ synopsis: "A variant of ppx_tools based on ocaml-migrate-parsetree"
 tags: [ "syntax" ]
 build: [
   ["dune" "build" "-p" "ppx_tools_versioned" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows" {>= "4.02.0"}
@@ -24,3 +25,4 @@ url {
   src: "https://github.com/ocaml-ppx/ppx_tools_versioned/archive/5.4.0.tar.gz"
   checksum: "md5=3e809a11cae99f57c051d3d0100311f6"
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_tools_versioned"]

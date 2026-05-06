@@ -23,17 +23,8 @@ depends: [
 ]
 build: [
   ["dune" "subst"] {dev}
-  [
-    "dune"
-    "build"
-    "-p"
-    "srt"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "srt" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 patches: [
   "patches/fix-wine-call.patch"
@@ -52,3 +43,4 @@ url {
     "sha512=a79286afeed4f8ef161b9fe1f32e54581ef658f25975727351478b0a1fe16975f5c5b47f247dae4909df73f75ce8022b2201c1272f78528bf11efe8507174820"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "srt"]

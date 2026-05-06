@@ -8,6 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_assert/index.html"
 license: "MIT"
 build: [
   ["dune" "build" "-p" "ppx_assert" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"         {>= "4.14.0"}
@@ -33,3 +34,4 @@ url {
 src: "https://ocaml.janestreet.com/ocaml-core/v0.16/files/ppx_assert-v0.16.0.tar.gz"
 checksum: "sha256=57dc6e241827eb1d5112c958f2f682ddd0addf5a8e9d589f5361ec2669883fd5"
 }
+install: ["dune" "install" "-x" "windows" "-p" "ppx_assert"]

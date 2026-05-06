@@ -13,6 +13,7 @@ bug-reports: "https://github.com/mackwic/To.ml/issues"
 dev-repo: "git+https://github.com/mackwic/To.ml.git"
 build: [
   ["dune" "build" "-p" "toml" "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
 license: "LGPL-3.0-only"
 depends: [
@@ -33,3 +34,4 @@ url {
   src: "https://github.com/ocaml-toml/to.ml/archive/v5.0.0.tar.gz"
   checksum: "md5=e68d21fdbb6b255909305f8707a54951"
 }
+install: ["dune" "install" "-x" "windows" "-p" "toml"]

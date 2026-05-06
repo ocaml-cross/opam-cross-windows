@@ -2,6 +2,7 @@ opam-version: "2.0"
 build: [
   ["dune" "subst"] {pinned}
   ["dune" "build" "-p" "pcre" "-j" jobs "-x" "windows"]
+  ["rm" "%{name}%.install"]
 ]
 maintainer: ["Markus Mottl <markus.mottl@gmail.com>"]
 authors: ["Markus Mottl <markus.mottl@gmail.com>"]
@@ -33,3 +34,4 @@ url {
     "sha512=917e98aa86a75d2e17b0df9eb546c5dc568eacd0f2df0c5621467246142beff449e11544d88bc42eabf1cc288f7aa19aaebe90283ca8cf72dc023e52c6c21e02"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "pcre"]

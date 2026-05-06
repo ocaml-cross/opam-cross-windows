@@ -19,17 +19,8 @@ build-env: [
   [PKG_CONFIG = "%{conf-gcc-windows64:prefix}%pkg-config"]
 ]
 build: [
-  [
-    "dune"
-    "build"
-    "-p"
-    "pcre"
-    "-x"
-    "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
+  ["dune" "build" "-p" "pcre" "-x" "windows" "-j" jobs "@install"]
+  ["rm" "%{name}%.install"]
 ]
 depexts: [
   ["pcre"] {os-distribution = "mxe"}
@@ -43,3 +34,4 @@ url {
     "sha512=be60f13ddb6bbfe20e30ca5d92434d85e1d1371479e1e2c725588af83fcc9366ed0435021b6a800c20336ac521f2134c767420136438684656a44ac1f9924be4"
   ]
 }
+install: ["dune" "install" "-x" "windows" "-p" "pcre"]
