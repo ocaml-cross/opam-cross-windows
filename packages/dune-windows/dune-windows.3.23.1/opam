@@ -47,6 +47,8 @@ depends: [
   "re-windows"
   "re"
   "spawn-windows" {>= "v0.15.1"}
+  "spawn" {>= "v0.15.1"}
+  "uutf-windows"
 ]
 url {
   src:
