@@ -45,6 +45,8 @@ depends: [
   "pp-windows" {>= "2.0.0"}
   "csexp-windows" {>= "1.5.0"}
   "re-windows"
+  "re"
+  "spawn-windows" {>= "v0.15.1"}
 ]
 url {
   src:
