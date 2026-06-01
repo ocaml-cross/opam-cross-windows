@@ -42,6 +42,7 @@ build: [
 depends: [
   "dune"
   "ocaml-windows" {>= "4.08"}
+  "pp-windows" {>= "2.0.0"}
 ]
 url {
   src:
