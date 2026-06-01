@@ -44,6 +44,7 @@ depends: [
   "ocaml-windows" {>= "4.08"}
   "pp-windows" {>= "2.0.0"}
   "csexp-windows" {>= "1.5.0"}
+  "re-windows"
 ]
 url {
   src:
