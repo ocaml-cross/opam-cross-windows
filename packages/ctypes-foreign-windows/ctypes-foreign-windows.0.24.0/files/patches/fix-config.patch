@@ -1,0 +1,16 @@
+diff --git a/src/ctypes-foreign/config/discover.ml b/src/ctypes-foreign/config/discover.ml
+index 7be7ae3..85de869 100644
+--- a/src/ctypes-foreign/config/discover.ml
++++ b/src/ctypes-foreign/config/discover.ml
+@@ -14,10 +14,7 @@ let () =
+            | None -> default
+            | Some v -> v)
+       in
+-      let backend =
+-        match Sys.os_type with
+-        | "Win32" | "Cygwin" -> "win"
+-        | _ -> "unix" in
++      let backend = "win" in
+
+       let f = "as_needed_test" in
+       let ml = f ^ ".ml" in
