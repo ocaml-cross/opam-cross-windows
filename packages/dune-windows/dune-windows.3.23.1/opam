@@ -52,6 +52,7 @@ depends: [
   "spawn" {>= "v0.15.1"}
   "uutf-windows"
   "ppx_expect"
+  "ppx_expect-windows"
 ]
 url {
   src:
