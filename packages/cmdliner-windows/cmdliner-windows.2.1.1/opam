@@ -42,11 +42,7 @@ install: [
     "install-byte"
     "install-native"
     "OCAMLFIND_TOOLCHAIN=windows"
-    "BINDIR=%{_:bin}%"
-    "LIBDIR=%{_:lib}%"
-    "DOCDIR=%{_:doc}%"
-    "SHAREDIR=%{share}%"
-    "MANDIR=%{man}%"
+    "PREFIX=%{prefix}%/windows-sysroot"
   ]
 ]
 dev-repo: "git+https://erratique.ch/repos/cmdliner.git"
