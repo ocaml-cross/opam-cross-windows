@@ -30,7 +30,9 @@ build: [
     jobs
     "@install"
   ]
+  ["rm" "%{name}%.install"]
 ]
+install: ["dune" "install" "-x" "windows" "-p" "yojson"]
 dev-repo: "git+https://github.com/ocaml-community/yojson.git"
 url {
   src:
