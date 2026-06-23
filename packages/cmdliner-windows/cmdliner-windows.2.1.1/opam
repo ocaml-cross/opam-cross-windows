@@ -44,11 +44,7 @@ install: [
     "install-native"
     "OCAMLFIND_TOOLCHAIN=windows"
     "PREFIX=%{prefix}%/windows-sysroot"
-    "BINDIR=%{cmdliner:bin}%"
-    "LIBDIR=%{cmdliner:lib}%"
-    "DOCDIR=%{cmdliner:doc}%"
-    "SHAREDIR=%{share}%"
-    "MANDIR=%{man}%"
+    "LIBDIR=%{prefix}%/windows-sysroot/lib/cmdliner"
   ]
 ]
 dev-repo: "git+https://erratique.ch/repos/cmdliner.git"
