@@ -1,0 +1,64 @@
+opam-version: "2.0"
+maintainer: "Jane Street developers"
+authors: ["Jane Street Group, LLC"]
+homepage: "https://github.com/janestreet/core"
+bug-reports: "https://github.com/janestreet/core/issues"
+dev-repo: "git+https://github.com/janestreet/core.git"
+doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/core/index.html"
+license: "MIT"
+build: [
+  ["dune" "build" "-p" "core" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
+]
+install: ["dune" "install" "-x" "windows" "-p" "core"]
+depends: [
+  "ocaml-windows"               {>= "5.1.0"}
+  "base-windows"                {>= "v0.17" & < "v0.18"}
+  "base_bigstring-windows"      {>= "v0.17" & < "v0.18"}
+  "base_quickcheck-windows"     {>= "v0.17" & < "v0.18"}
+  "bin_prot-windows"            {>= "v0.17" & < "v0.18"}
+  "fieldslib-windows"           {>= "v0.17" & < "v0.18"}
+  "jane-street-headers-windows" {>= "v0.17" & < "v0.18"}
+  "jst-config-windows"          {>= "v0.17" & < "v0.18"}
+  "ppx_assert"          {>= "v0.17" & < "v0.18"}
+  "ppx_assert-windows"          {>= "v0.17" & < "v0.18"}
+  "ppx_base"            {>= "v0.17" & < "v0.18"}
+  "ppx_base-windows"            {>= "v0.17" & < "v0.18"}
+  "ppx_diff"            {>= "v0.17" & < "v0.18"}
+  "ppx_diff-windows"            {>= "v0.17" & < "v0.18"}
+  "ppx_hash"            {>= "v0.17" & < "v0.18"}
+  "ppx_hash-windows"            {>= "v0.17" & < "v0.18"}
+  "ppx_inline_test"     {>= "v0.17" & < "v0.18"}
+  "ppx_inline_test-windows"     {>= "v0.17" & < "v0.18"}
+  "ppx_jane"            {>= "v0.17" & < "v0.18"}
+  "ppx_jane-windows"            {>= "v0.17" & < "v0.18"}
+  "ppx_optcomp"         {>= "v0.17" & < "v0.18"}
+  "ppx_optcomp-windows"         {>= "v0.17" & < "v0.18"}
+  "ppx_sexp_conv"       {>= "v0.17" & < "v0.18"}
+  "ppx_sexp_conv-windows"       {>= "v0.17" & < "v0.18"}
+  "ppx_sexp_message"    {>= "v0.17" & < "v0.18"}
+  "ppx_sexp_message-windows"    {>= "v0.17" & < "v0.18"}
+  "sexplib-windows"             {>= "v0.17" & < "v0.18"}
+  "splittable_random-windows"   {>= "v0.17" & < "v0.18"}
+  "stdio-windows"               {>= "v0.17" & < "v0.18"}
+  "time_now-windows"            {>= "v0.17" & < "v0.18"}
+  "typerep-windows"             {>= "v0.17" & < "v0.18"}
+  "variantslib-windows"         {>= "v0.17" & < "v0.18"}
+  "dune"                {>= "3.11.0"}
+]
+available: arch != "x86_32"
+synopsis: "Industrial strength alternative to OCaml's standard library"
+description: "
+The Core suite of libraries is an industrial strength alternative to
+OCaml's standard library that was developed by Jane Street, the
+largest industrial user of OCaml.
+
+This is the system-independent part of Core. Unix-specific parts were moved to [core_unix].
+"
+url {
+  src: "https://github.com/janestreet/core/archive/refs/tags/v0.17.2.tar.gz"
+  checksum: [
+    "md5=6f07bb82d51d695ac4e76c8ac7f55902"
+    "sha512=c3c401fded188f74cf7ce6b1b07e7bc59fe18441eec602d174bfd48db13370fda986dd9f66d4ff9c26254ea2b381e7c51b366df9d2dfbf66fda281b4def3166a"
+  ]
+}
