@@ -6,7 +6,7 @@ TEST_PWD=$(cd `dirname $0` && pwd)
 BASE_PWD=$(cd ${TEST_PWD}/.. && pwd)
 
 if [ -z "${OCAML_VERSION}" ]; then
-  OCAML_VERSION=5.4.1
+  OCAML_VERSION=5.5.0
 fi
 
 COMPILER="${OCAML_VERSION}"
@@ -101,4 +101,3 @@ find packages -maxdepth 2 -mindepth 2 -type d | cut -d '/' -f 3 | sort -u | whil
     fi
   fi
 done
-
