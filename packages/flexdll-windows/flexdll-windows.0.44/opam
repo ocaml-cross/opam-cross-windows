@@ -1,0 +1,75 @@
+opam-version: "2.0"
+authors: "Alain Frisch"
+maintainer: "David Allsopp <david@tarides.com>"
+bug-reports: "https://github.com/ocaml/flexdll/issues"
+dev-repo: "git+https://github.com/ocaml/flexdll.git"
+homepage: "https://github.com/ocaml/flexdll#readme"
+license: "Zlib"
+synopsis: "FlexDLL Sources"
+description: "Source package for FlexDLL. Installs the required files for
+bootstrapping FlexDLL as part of an OCaml build."
+substs: [
+  "version.ml"
+]
+build: [
+  ["touch" "Compat.ml"]
+  [
+    "%{conf-gcc-windows32:prefix}%gcc"
+    "-c"
+    "-DMINGW"
+    "flexdll.c"
+    "-o"
+    "flexdll_mingw.o"
+  ] {conf-gcc-windows32:installed}
+  [
+    "%{conf-gcc-windows32:prefix}%gcc"
+    "-c"
+    "-DMINGW"
+    "flexdll_initer.c"
+    "-o"
+    "flexdll_initer_mingw.o"
+  ] {conf-gcc-windows32:installed}
+  [
+    "%{conf-gcc-windows64:prefix}%gcc"
+    "-c"
+    "-DMINGW"
+    "flexdll.c"
+    "-o"
+    "flexdll_mingw64.o"
+  ] {conf-gcc-windows64:installed}
+  [
+    "%{conf-gcc-windows64:prefix}%gcc"
+    "-c"
+    "-DMINGW"
+    "flexdll_initer.c"
+    "-o"
+    "flexdll_initer_mingw64.o"
+  ] {conf-gcc-windows64:installed}
+  [
+    "ocamlopt"
+    "version.ml"
+    "Compat.ml"
+    "coff.ml"
+    "cmdline.ml"
+    "create_dll.ml"
+    "reloc.ml"
+    "-g"
+    "-w"
+    "-165"
+    "-o"
+    "flexlink.exe"
+  ]
+]
+depends: ["ocaml" "conf-gcc-windows32" | "conf-gcc-windows64"]
+extra-files: [
+  ["flexlink" "md5=f9261c5b75e177d0ccc64eba5442264c"]
+  ["version.ml.in" "md5=2e1a03fd0290e0bec4e630b6891b0b79"]
+  ["flexdll-windows.install" "md5=d2a0e6caf837c1f9e1c687089eee7869"]
+]
+url {
+  src: "https://github.com/ocaml/flexdll/archive/refs/tags/0.44.tar.gz"
+  checksum: [
+    "sha256=b7c6a92286f1f3065324d51083dcb16eec436a4e6e3b8df7cf836b6d7a8b9491"
+    "sha512=87c5e38810dcf4bba43472e6c4e2ea25081a92664e37269f782ef9412e81d37d53edbbeb0acbf5eb821cc5105085a99337b30e55409057121a68472eb51db7c8"
+  ]
+}
