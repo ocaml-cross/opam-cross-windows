@@ -1,0 +1,11 @@
+let version = "%{version}%"
+let mingw_prefix = "%{conf-gcc-windows32:prefix}%"
+let mingw64_prefix = "%{conf-gcc-windows64:prefix}%"
+let mingw = "%{conf-gcc-windows32:prefix}%gcc"
+let mingw64 = "%{conf-gcc-windows64:prefix}%gcc"
+
+(* these should be unused by the cross compilation *)
+let msvc = ""
+let msvc64 = ""
+let cygwin64 = ""
+let gnat = ""
