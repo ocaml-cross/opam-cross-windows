@@ -34,7 +34,6 @@ depends: [
 ]
 build: [
   ["dune" "build" "-p" "ctypes" "-x" "windows" "-j" jobs "@install"]
-  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/yallop/ocaml-ctypes.git"
 url {
@@ -45,4 +44,3 @@ url {
     "md5=064316aaf508a9db203f114bb8401dee"
   ]
 }
-install: ["dune" "install" "-x" "windows" "-p" "ctypes"]

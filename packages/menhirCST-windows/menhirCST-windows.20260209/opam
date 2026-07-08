@@ -10,9 +10,7 @@ bug-reports: "https://gitlab.inria.fr/fpottier/menhir/-/issues"
 license: "LGPL-2.0-only WITH OCaml-LGPL-linking-exception"
 build: [
   ["dune" "build" "-p" "menhirCST" "-x" "windows" "-j" jobs]
-  ["rm" "%{name}%.install"]
 ]
-install: ["dune" "install" "-x" "windows" "-p" "menhirCST"]
 depends: [
   "ocaml-windows"  { >= "4.08" }
   "dune"   { >= "2.8.0"  }

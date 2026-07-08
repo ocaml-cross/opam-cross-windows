@@ -36,8 +36,8 @@ build: [
     "ppx_expect_nobase" "-x" "windows"
     "-j"
     jobs
+    "@install"
   ]
-  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/Kakadu/ppx_expect_nobase.git"
 x-maintenance-intent: ["(latest)"]
@@ -53,4 +53,3 @@ url {
   ]
 }
 x-commit-hash: "dee8fe38f1ba3c9d3f1f909c4e6e37df2d7539ef"
-install: ["dune" "install" "-x" "windows" "-p" "ppx_expect_nobase"]

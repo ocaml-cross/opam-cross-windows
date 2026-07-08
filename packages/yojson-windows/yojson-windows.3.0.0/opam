@@ -21,18 +21,8 @@ depends: [
 ]
 build: [
   ["dune" "subst"] {dev}
-  [
-    "dune"
-    "build"
-    "-p"
-    "yojson" "-x" "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
-  ["rm" "%{name}%.install"]
+  ["dune" "build" "-p" "yojson" "-x" "windows" "-j" jobs "@install"]
 ]
-install: ["dune" "install" "-x" "windows" "-p" "yojson"]
 dev-repo: "git+https://github.com/ocaml-community/yojson.git"
 url {
   src:

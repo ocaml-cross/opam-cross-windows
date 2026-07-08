@@ -37,7 +37,6 @@ build: [
     "ordering,stdune,xdg,dyn,dune-rpc,chrome-trace,dune-build-info,ocamlc-loc,dune-private-libs,dune-action-plugin,dune-glob,dune-site,dune-action-trace,fs-io,top-closure,dune"
     "@install"
   ]
-  ["rm" "%{name}%.install"]
 ]
 depends: [
   "dune"
@@ -63,4 +62,3 @@ url {
   ]
 }
 x-commit-hash: "6f6eee69eda59e355bae2ca4e3ad1af678271883"
-install: ["dune" "install" "-x" "windows" "-p" "dune"]
