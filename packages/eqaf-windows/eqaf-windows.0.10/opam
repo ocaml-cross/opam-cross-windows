@@ -12,9 +12,9 @@ This package provides an equal function on string in constant-time to avoid timi
 """
 
 build: [
-  ["dune" "build" "-p" "eqaf" "-x" "windows" "-j" jobs]
-  ["rm" "%{name}%.install"]
+  [ "dune" "build" "-p" "eqaf" "-x" "windows" "-j" jobs ]
 ]
+
 depends: [
   "ocaml-windows"
   "dune"           {>= "2.0"}
@@ -27,4 +27,3 @@ url {
   ]
 }
 x-commit-hash: "7bec047f8bfa1a233d24fc4a4b77e8eb18988155"
-install: ["dune" "install" "-x" "windows" "-p" "eqaf"]

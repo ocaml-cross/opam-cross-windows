@@ -5,10 +5,7 @@ homepage: "https://github.com/janestreet/result"
 dev-repo: "git+https://github.com/janestreet/result.git"
 bug-reports: "https://github.com/janestreet/result/issues"
 license: "BSD-3-Clause"
-build: [
-  ["dune" "build" "-p" "result" "-j" jobs "-x" "windows"]
-  ["rm" "%{name}%.install"]
-]
+build: [["dune" "build" "-p" "result" "-j" jobs "-x" "windows"]]
 depends: [
   "ocaml-windows"
   "dune" {>= "1.0"}
@@ -23,4 +20,3 @@ url {
     "https://github.com/janestreet/result/releases/download/1.5/result-1.5.tbz"
   checksum: "md5=1b82dec78849680b49ae9a8a365b831b"
 }
-install: ["dune" "install" "-x" "windows" "-p" "result"]

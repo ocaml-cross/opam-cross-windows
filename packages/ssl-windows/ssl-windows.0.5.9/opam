@@ -5,7 +5,6 @@ dev-repo: "git+https://github.com/savonet/ocaml-ssl.git"
 bug-reports: "https://github.com/savonet/ocaml-ssl/issues"
 build: [
   ["dune" "build" "-p" "ssl" "-j" jobs "-x" "windows"]
-  ["rm" "%{name}%.install"]
 ]
 remove: [["ocamlfind" "-toolchain" "windows" "remove" "ssl"]]
 depends: [
@@ -28,4 +27,3 @@ url {
 depexts: [
   ["openssl"] {os-distribution = "mxe"}
 ]
-install: ["dune" "install" "-x" "windows" "-p" "ssl"]

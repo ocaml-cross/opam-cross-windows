@@ -13,8 +13,17 @@ depends: [
   "ocaml-windows"
 ]
 build: [
-  ["dune" "build" "-p" "lame" "-x" "windows" "-j" jobs "@install"]
-  ["rm" "%{name}%.install"]
+  [
+    "dune"
+    "build"
+    "-p"
+    "lame"
+    "-x"
+    "windows"
+    "-j"
+    jobs
+    "@install"
+  ]
 ]
 dev-repo: "git+https://github.com/savonet/ocaml-lame.git"
 depexts: [
@@ -27,4 +36,3 @@ url {
     "sha512=d4737a8e4395bea5d361cc739a9a13aeb41f69b9dfc8e508e3e5b0249ae998fc38a809c7700b0ad95a7bdfb029d3b6c8bede3043e2709336f37c4450f2cda6cc"
   ]
 }
-install: ["dune" "install" "-x" "windows" "-p" "lame"]

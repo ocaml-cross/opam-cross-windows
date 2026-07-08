@@ -19,10 +19,7 @@ library. It essentially gets rid of `Not_found` exceptions and provide
 pretty-printers for the data types.
 
 asetmap has no dependency is distributed under the ISC license."""
-build: [
-  ["dune" "build" "-p" "asetmap" "-x" "windows"]
-  ["rm" "%{name}%.install"]
-]
+build: [[ "dune" "build" "-p" "asetmap" "-x" "windows" ]]
 url {
   src:
     "https://github.com/dune-universe/asetmap/releases/download/v0.8.1%2Bdune2/asetmap-0.8.1.dune2.tbz"
@@ -32,4 +29,3 @@ url {
   ]
 }
 x-commit-hash: "dfe4502945bf5f8befe8847c080edfc97ce54df5"
-install: ["dune" "install" "-x" "windows" "-p" "asetmap"]

@@ -26,8 +26,17 @@ depends: [
 dev-repo: "git+https://github.com/mirage/ocaml-cohttp.git"
 build: [
   ["dune" "subst"] {dev}
-  ["dune" "build" "-p" "http" "-x" "windows" "-j" jobs "@install"]
-  ["rm" "%{name}%.install"]
+  [
+    "dune"
+    "build"
+    "-p"
+    "http"
+    "-x"
+    "windows"
+    "-j"
+    jobs
+    "@install"
+  ]
 ]
 url {
   src:
@@ -38,4 +47,3 @@ url {
   ]
 }
 x-commit-hash: "de25ba68286866577bd8a81c002176cc22dd49e4"
-install: ["dune" "install" "-x" "windows" "-p" "http"]

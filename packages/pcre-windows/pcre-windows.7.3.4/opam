@@ -8,21 +8,11 @@ dev-repo: "git+https://github.com/mmottl/pcre-ocaml.git"
 bug-reports: "https://github.com/mmottl/pcre-ocaml/issues"
 
 build: [
-  ["dune" "subst"] {pinned}
-  [
-    "env"
-    "PKG_CONFIG_PATH=%{conf-gcc-windows:c-lib}%/pkgconfig"
-    "dune"
-    "build"
-    "-p"
-    "pcre"
-    "-j"
-    jobs
-    "-x"
-    "windows"
-  ]
-  ["rm" "%{name}%.install"]
+  ["dune" "subst"]{pinned}
+  ["env" "PKG_CONFIG_PATH=%{conf-gcc-windows:c-lib}%/pkgconfig" 
+   "dune" "build"  "-p" "pcre" "-j" jobs "-x" "windows"]
 ]
+
 depends: [
   "ocaml" {>= "4.04"}
   "base-windows" {build}
@@ -44,4 +34,3 @@ url {
 depexts: [
   ["pcre"] {os-distribution = "mxe"}
 ]
-install: ["dune" "install" "-x" "windows" "-p" "pcre"]

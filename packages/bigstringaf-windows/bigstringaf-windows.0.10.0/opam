@@ -6,8 +6,17 @@ homepage: "https://github.com/inhabitedtype/bigstringaf"
 bug-reports: "https://github.com/inhabitedtype/bigstringaf/issues"
 dev-repo: "git+https://github.com/inhabitedtype/bigstringaf.git"
 build: [
-  ["dune" "build" "-p" "bigstringaf" "-j" jobs "-x" "windows" "@install"]
-  ["rm" "%{name}%.install"]
+  [
+    "dune"
+    "build"
+    "-p"
+    "bigstringaf"
+    "-j"
+    jobs
+    "-x"
+    "windows"
+    "@install"
+  ]
 ]
 depends: [
   "dune" {>= "3.0"}
@@ -31,4 +40,3 @@ url {
   src: "https://github.com/inhabitedtype/bigstringaf/archive/0.10.0.tar.gz"
   checksum: "md5=be0a44416840852777651150757a0a3b"
 }
-install: ["dune" "install" "-x" "windows" "-p" "bigstringaf"]

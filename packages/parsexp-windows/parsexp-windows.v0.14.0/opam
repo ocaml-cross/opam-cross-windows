@@ -11,7 +11,6 @@ patches: [
 ]
 build: [
   ["dune" "build" "-p" "parsexp" "-j" jobs "-x" "windows"]
-  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"    {>= "4.04.2"}
@@ -51,4 +50,3 @@ url {
   src: "https://github.com/janestreet/parsexp/archive/refs/tags/v0.14.1.tar.gz"
   checksum: "e6659d53f4d94de8979e05d17222b753"
 }
-install: ["dune" "install" "-x" "windows" "-p" "parsexp"]

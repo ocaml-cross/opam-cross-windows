@@ -10,8 +10,17 @@ depends: [
   "dune" {>= "2.8"}
 ]
 build: [
-  ["dune" "build" "-p" "dtools" "-j" jobs "-x" "windows" "@install"]
-  ["rm" "%{name}%.install"]
+  [
+    "dune"
+    "build"
+    "-p"
+    "dtools"
+    "-j"
+    jobs
+    "-x"
+    "windows"
+    "@install"
+  ]
 ]
 dev-repo: "git+https://github.com/savonet/ocaml-dtools.git"
 url {
@@ -21,4 +30,3 @@ url {
     "sha512=8416c3bfc49de7bfb92e6921c37512882589f3b7a6b9f51cb75e761697204b99a37827028a828861134c067a2efc06e80073dc0b5f5fb6529c7f4ff04f957984"
   ]
 }
-install: ["dune" "install" "-x" "windows" "-p" "dtools"]

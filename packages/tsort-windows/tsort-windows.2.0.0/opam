@@ -18,17 +18,7 @@ depends: [
   "containers-windows" {>= "2.7"}
   "dune" {>= "1.9"}
 ]
-build: [
-  ["dune"
-  "build"
-  "-p"
-  "tsort"
-  "-x"
-  "windows"
-  "-j"
-  jobs]
-  ["rm" "%{name}%.install"]
-]
+build: ["dune" "build" "-p" "tsort" "-x" "windows" "-j" jobs]
 dev-repo: "git+https://github.com/dmbaturin/ocaml-tsort.git"
 url {
   src: "https://github.com/dmbaturin/ocaml-tsort/archive/2.0.0.zip"
@@ -38,4 +28,3 @@ url {
   ]
 }
 
-install: ["dune" "install" "-x" "windows" "-p" "tsort"]

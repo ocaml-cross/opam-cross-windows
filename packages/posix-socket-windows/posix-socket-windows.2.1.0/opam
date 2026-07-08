@@ -17,8 +17,17 @@ depends: [
   "posix-base-windows" {= version}
 ]
 build: [
-  ["dune" "build" "-p" "posix-socket" "-x" "windows" "-j" jobs "@install"]
-  ["rm" "%{name}%.install"]
+  [
+    "dune"
+    "build"
+    "-p"
+    "posix-socket"
+    "-x"
+    "windows"
+    "-j"
+    jobs
+    "@install"
+  ]
 ]
 dev-repo: "git+https://github.com/savonet/ocaml-posix.git"
 url {
@@ -32,4 +41,3 @@ url {
 extra-files: [
   "patches/fix-wine-call.patch" "md5=3edda19e24f47830691d8931c8299b84"
 ]
-install: ["dune" "install" "-x" "windows" "-p" "posix-socket"]

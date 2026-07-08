@@ -9,7 +9,6 @@ license: "MIT"
 patches: [ "remove-outdated-mirage-xen-cross-compilation-rules.patch" ]
 build: [
   ["dune" "build" "-p" "bin_prot" "-x" "windows" "-j" jobs]
-  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows"              {>= "5.1.0"}
@@ -50,4 +49,3 @@ extra-source "remove-outdated-mirage-xen-cross-compilation-rules.patch" {
     "md5=0b9ecf65c743f358ead5ad9f586cdee0"
   ]
 }
-install: ["dune" "install" "-x" "windows" "-p" "bin_prot"]

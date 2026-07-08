@@ -8,10 +8,8 @@ maintainer:   "Hannes Mehnert <hannes@mehnert.org>"
 license:      "ISC"
 synopsis:     "Simple symmetric cryptography for the modern age"
 
-build: [
-  ["dune" "build" "-p" "mirage-crypto" "-x" "windows" "-j" jobs]
-  ["rm" "%{name}%.install"]
-]
+build: [ ["dune" "build" "-p" "mirage-crypto" "-x" "windows" "-j" jobs ] ]
+
 depends: [
   "ocaml-windows" {>= "4.13.0"}
   "dune" {>= "2.7"}
@@ -34,4 +32,3 @@ url {
   ]
 }
 x-commit-hash: "cadf0e1230cada9f108e63321b30af24642e2b74"
-install: ["dune" "install" "-x" "windows" "-p" "mirage-crypto"]
