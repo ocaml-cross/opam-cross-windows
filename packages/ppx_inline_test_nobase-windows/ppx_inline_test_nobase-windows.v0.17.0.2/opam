@@ -12,8 +12,8 @@ build: [
 depends: [
   "ocaml-windows" {>= "4.14.2" }
   "dune"     {>= "3.11.0"}
-  "ppxlib" {>= "0.37.0" }
-  "ppxlib-windows" {>= "0.37.0" }
+  "ppxlib" {>= "0.28.0" & < "0.36.0"}
+  "ppxlib-windows" {>= "0.28.0" & < "0.36.0"}
   "mtime-windows" { >= "2" }
   "sexplib0-windows" {>= "v0.16" & < "v0.18~"}
 ]
@@ -24,7 +24,7 @@ Testing framework: fork of ppx_inline_test, but with less dependecies.
 Original ppx_inline_test is a part of the Jane Street's PPX rewriters collection.
 "
 url {
-src: "https://github.com/Kakadu/ppx_inline_test_nobase/archive/refs/tags/v0.17.0.3.tar.gz"
-checksum: "sha256=9a4ec14d7b62edf71bfb4be25146b930d240d3caaab34eb186c6113dbc9b4b5a"
+src: "https://github.com/Kakadu/ppx_inline_test_nobase/archive/refs/tags/v0.17+nobase-2.tar.gz"
+checksum: "sha256=04cd4314e7dbd247a9280cab6313bc0bdd39dc3c1fe96ebb89fd415a2ce25d34"
 }
 x-maintenance-intent: [ "(latest)" ]
