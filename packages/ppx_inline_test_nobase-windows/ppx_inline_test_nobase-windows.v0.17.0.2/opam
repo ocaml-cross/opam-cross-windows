@@ -8,6 +8,7 @@ dev-repo: "git+https://github.com/Kakadu/ppx_inline_test_nobase.git"
 license: "MIT"
 build: [
   ["dune" "build" "-p" "ppx_inline_test_nobase" "-x" "windows" "-j" jobs]
+  ["rm" "%{name}%.install"]
 ]
 depends: [
   "ocaml-windows" {>= "4.14.2" }
@@ -28,3 +29,4 @@ src: "https://github.com/Kakadu/ppx_inline_test_nobase/archive/refs/tags/v0.17+n
 checksum: "sha256=04cd4314e7dbd247a9280cab6313bc0bdd39dc3c1fe96ebb89fd415a2ce25d34"
 }
 x-maintenance-intent: [ "(latest)" ]
+install: ["dune" "install" "-x" "windows" "-p" "ppx_inline_test_nobase"]
