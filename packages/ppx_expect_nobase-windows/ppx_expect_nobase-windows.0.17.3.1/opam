@@ -9,14 +9,15 @@ license: "MIT"
 homepage: "https://github.com/Kakadu/ppx_expect_nobase"
 bug-reports: "https://github.com/Kakadu/ppx_expect_nobase/issues"
 depends: [
-  "dune" {>= "3.11"}
-  "ocaml-windows" {>= "4.14.2" & < "5.0.0" | >= "5.3.0" }
-  # There are not plans to maintain 5.1 and 5.2 right now
-  "ppx_inline_test_nobase" {>= "v0.17.0.2" & < "v0.17.0.3" }
-  "ppx_inline_test_nobase-windows" {>= "v0.17.0.2" & < "v0.17.0.3" }
+  "dune" {>= "3.23"}
+  "ocaml-windows" {>= "4.14.2" & < "5.0.0" | >= "5.3.0" & < "5.6.0"}
+  "ppx_inline_test_nobase" {>= "v0.17.0.3"}
+  "ppx_inline_test_nobase-windows" {>= "v0.17.0.3"}
   "sexplib-windows"
   "ppxlib" {>= "0.35.0"}
   "ppxlib-windows" {>= "0.35.0"}
+  "opam-core-windows"
+  "dune-build-info-windows"
   "odoc-windows" {with-doc}
 ]
 build: [
@@ -38,11 +39,11 @@ dev-repo: "git+https://github.com/Kakadu/ppx_expect_nobase.git"
 x-maintenance-intent: ["(latest)"]
 url {
   src:
-    "https://github.com/Kakadu/ppx_expect_nobase/releases/download/v0.17.3.0/ppx_expect_nobase-0.17.3.0.tbz"
+    "https://github.com/Kakadu/ppx_expect_nobase/releases/download/0.17.3.1/ppx_expect_nobase-0.17.3.1.tbz"
   checksum: [
-    "sha256=ff2cb97c867a4bd3a0778ff0924c1cb8a82c7c531f81f2b0aa220b7c29758e40"
-    "sha512=3eae2efe081aeed87d44d46f960a66744ed6d90c78f07ba91639ff2694aea655d4b71c5865d97dd88c1681e3752b90c06c252595f67ff135fcce87c38085b81f"
+    "sha256=c4fdd0b6c620d2b357c07669aadf0a25f89d86b57f77e4b460179263e20bf084"
+    "sha512=c5398e16907ca57e7b811e72fd209f76c4e5f1fcac199995eb74af87de4edac3285d21cd015aab196f82b9303958fc6d3a94a27dce9b808f608f79e75976ea73"
   ]
 }
-x-commit-hash: "13d7b425ef7c358609f51a9c05c5b503ca670ab7"
+x-commit-hash: "dee8fe38f1ba3c9d3f1f909c4e6e37df2d7539ef"
 install: ["dune" "install" "-x" "windows" "-p" "ppx_expect_nobase"]
