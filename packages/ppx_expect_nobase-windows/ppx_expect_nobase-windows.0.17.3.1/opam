@@ -16,12 +16,20 @@ depends: [
   "sexplib-windows"
   "ppxlib" {>= "0.35.0"}
   "ppxlib-windows" {>= "0.35.0"}
-  "opam-core-windows"
   "dune-build-info-windows"
   "odoc-windows" {with-doc}
 ]
+patches: [
+  "no-opam-core-dep.patch"
+]
 build: [
   ["dune" "subst"] {dev}
+  ["rm" "-rf" "./bin"]
+  ["mkdir" "-p" "src/config"]
+  ["sh" "-c" "printf \"true\" >> src/config/lt38.txt"] {ppxlib:version < "0.38.0"}
+  ["sh" "-c" "printf \"false\" >> src/config/ge38.txt"] {ppxlib:version < "0.38.0"}
+  ["sh" "-c" "printf \"false\" >> src/config/lt38.txt"] {ppxlib:version >= "0.38.0"}
+  ["sh" "-c" "printf \"true\" >> src/config/ge38.txt"] {ppxlib:version >= "0.38.0"}
   [
     "dune"
     "build"
@@ -37,6 +45,9 @@ build: [
 ]
 dev-repo: "git+https://github.com/Kakadu/ppx_expect_nobase.git"
 x-maintenance-intent: ["(latest)"]
+extra-files: [
+  "no-opam-core-dep.patch" "md5=007d6d7bc2a6fe048f89132ee27acca5"
+]
 url {
   src:
     "https://github.com/Kakadu/ppx_expect_nobase/releases/download/0.17.3.1/ppx_expect_nobase-0.17.3.1.tbz"
