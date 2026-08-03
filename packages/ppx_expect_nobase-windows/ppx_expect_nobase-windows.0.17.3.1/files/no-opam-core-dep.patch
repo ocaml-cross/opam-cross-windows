@@ -1,0 +1,16 @@
+diff --git 1/dune2 2/dune
+index 85c92cc..8d2db2a 100644
+--- a/src/dune
++++ b/src/dune
+@@ -37,11 +37,3 @@
+  (enabled_if
+   (and %{read:config/ge38.txt}))
+  (libraries))
+-
+-(subdir
+- config
+- (rule
+-  (targets lt38.txt ge38.txt)
+-  (deps ../../bin/version_check.exe)
+-  (action
+-   (run ../../bin/version_check.exe))))

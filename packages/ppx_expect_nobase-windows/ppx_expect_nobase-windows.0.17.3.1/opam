@@ -1,0 +1,56 @@
+opam-version: "2.0"
+synopsis: "Cram like framework for OCaml (with stripped dependencies)"
+description: """
+Testing framework: fork of ppx_expect, but with less dependecies.
+Original ppx_expect is a part of the Jane Street's PPX rewriters collection."""
+maintainer: ["Jane Street Group, LLC" "Dmitrii Kosarev a.k.a. Kakadu"]
+authors: ["Jane Street Group, LLC"]
+license: "MIT"
+homepage: "https://github.com/Kakadu/ppx_expect_nobase"
+bug-reports: "https://github.com/Kakadu/ppx_expect_nobase/issues"
+depends: [
+  "dune" {>= "3.23"}
+  "ocaml-windows" {>= "4.14.1" & < "5.0.0" | >= "5.3.0" & < "5.6.0"}
+  "ppx_inline_test_nobase" {>= "v0.17.0.3"}
+  "ppx_inline_test_nobase-windows" {>= "v0.17.0.3"}
+  "sexplib"
+  "sexplib-windows"
+  "ppxlib" {>= "0.35.0"}
+  "ppxlib-windows" {>= "0.35.0"}
+]
+patches: [
+  "no-opam-core-dep.patch"
+]
+build: [
+  ["dune" "subst"] {dev}
+  ["rm" "-rf" "./bin"]
+  ["mkdir" "-p" "src/config"]
+  ["sh" "-c" "printf \"true\" >> src/config/lt38.txt"] {ppxlib:version < "0.38.0"}
+  ["sh" "-c" "printf \"false\" >> src/config/ge38.txt"] {ppxlib:version < "0.38.0"}
+  ["sh" "-c" "printf \"false\" >> src/config/lt38.txt"] {ppxlib:version >= "0.38.0"}
+  ["sh" "-c" "printf \"true\" >> src/config/ge38.txt"] {ppxlib:version >= "0.38.0"}
+  [
+    "dune"
+    "build"
+    "-p"
+    "ppx_expect_nobase" "-x" "windows"
+    "-j"
+    jobs
+  ]
+  ["rm" "%{name}%.install"]
+]
+dev-repo: "git+https://github.com/Kakadu/ppx_expect_nobase.git"
+x-maintenance-intent: ["(latest)"]
+extra-files: [
+  "no-opam-core-dep.patch" "md5=007d6d7bc2a6fe048f89132ee27acca5"
+]
+url {
+  src:
+    "https://github.com/Kakadu/ppx_expect_nobase/releases/download/0.17.3.1/ppx_expect_nobase-0.17.3.1.tbz"
+  checksum: [
+    "sha256=c4fdd0b6c620d2b357c07669aadf0a25f89d86b57f77e4b460179263e20bf084"
+    "sha512=c5398e16907ca57e7b811e72fd209f76c4e5f1fcac199995eb74af87de4edac3285d21cd015aab196f82b9303958fc6d3a94a27dce9b808f608f79e75976ea73"
+  ]
+}
+x-commit-hash: "dee8fe38f1ba3c9d3f1f909c4e6e37df2d7539ef"
+install: ["dune" "install" "-x" "windows" "-p" "ppx_expect_nobase"]
