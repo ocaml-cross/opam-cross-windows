@@ -10,8 +10,17 @@ depends: [
   "ocaml-windows" {>= "4.13"}
 ]
 build: [
-  ["dune" "build" "-p" "backoff" "-j" jobs "-x" "windows" "@install"]
-  ["rm" "%{name}%.install"]
+  [
+    "dune"
+    "build"
+    "-p"
+    "backoff"
+    "-j"
+    jobs
+    "-x"
+    "windows"
+    "@install"
+  ]
 ]
 dev-repo: "git+https://github.com/ocaml-multicore/backoff.git"
 url {
@@ -23,4 +32,3 @@ url {
   ]
 }
 x-commit-hash: "2ffac8ca51a822234b1e47af0430443b9c86cb13"
-install: ["dune" "install" "-x" "windows" "-p" "backoff"]

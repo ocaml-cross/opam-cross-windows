@@ -11,7 +11,6 @@ depends: [
 ]
 build: [
   ["dune" "build" "-p" "domain-name" "-x" "windows" "-j" jobs]
-  ["rm" "%{name}%.install"]
 ]
 dev-repo: "git+https://github.com/hannesm/domain-name.git"
 synopsis: "RFC 1035 Internet domain names"
@@ -33,4 +32,3 @@ url {
   ]
 }
 x-commit-hash: "26c8a60f57d73e5f767ca8049dba29ca0a214d55"
-install: ["dune" "install" "-x" "windows" "-p" "domain-name"]

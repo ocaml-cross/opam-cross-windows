@@ -14,8 +14,17 @@ depends: [
   "ocaml-windows" {>= "4.12"}
 ]
 build: [
-  ["dune" "build" "-p" "kqueue" "-x" "windows" "-j" jobs "@install"]
-  ["rm" "%{name}%.install"]
+  [
+    "dune"
+    "build"
+    "-p"
+    "kqueue"
+    "-x"
+    "windows"
+    "-j"
+    jobs
+    "@install"
+  ]
 ]
 dev-repo: "git+https://github.com/anuragsoni/kqueue-ml.git"
 conflicts: [
@@ -30,4 +39,3 @@ url {
   ]
 }
 x-commit-hash: "dd9e92b2efd0c9d2a87917dd4b4c25bf95f87722"
-install: ["dune" "install" "-x" "windows" "-p" "kqueue"]

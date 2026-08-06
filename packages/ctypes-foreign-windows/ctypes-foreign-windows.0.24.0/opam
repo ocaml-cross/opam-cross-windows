@@ -23,7 +23,6 @@ build-env: [
 build: [
   ["dune" "subst"] {dev}
   ["dune" "build" "-p" "ctypes-foreign" "-x" "windows" "-j" jobs "@install"]
-  ["rm" "%{name}%.install"]
 ]
 extra-files: [
   ["patches/fix-config.patch" "md5=aabfea16327b5549e9a559f3ae99ba21"]
@@ -43,4 +42,3 @@ url {
     "md5=064316aaf508a9db203f114bb8401dee"
   ]
 }
-install: ["dune" "install" "-x" "windows" "-p" "ctypes-foreign"]

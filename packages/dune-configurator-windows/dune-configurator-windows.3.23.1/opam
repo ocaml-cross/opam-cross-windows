@@ -27,16 +27,7 @@ x-maintenance-intent: ["(latest)"]
 build: [
   ["rm" "-rf" "vendor/csexp"]
   ["rm" "-rf" "vendor/pp"]
-  [
-    "dune"
-    "build"
-    "-p"
-    "dune-configurator"
-    "-x"
-    "windows"
-    "@install"
-  ]
-  ["rm" "%{name}%.install"]
+  ["dune" "build" "-p" "dune-configurator" "-x" "windows" "@install"]
 ]
 url {
   src:
@@ -47,4 +38,3 @@ url {
   ]
 }
 x-commit-hash: "6f6eee69eda59e355bae2ca4e3ad1af678271883"
-install: ["dune" "install" "-x" "windows" "-p" "dune-configurator"]

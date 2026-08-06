@@ -38,7 +38,6 @@ build: [
     jobs
     "@install"
   ]
-  ["rm" "%{name}%.install"]
 ]
 url {
   src:
@@ -49,4 +48,3 @@ url {
   ]
 }
 x-commit-hash: "de25ba68286866577bd8a81c002176cc22dd49e4"
-install: ["dune" "install" "-x" "windows" "-p" "cohttp-server-lwt-unix"]

@@ -8,9 +8,7 @@ doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/base/index.html"
 license: "MIT"
 build: [
   ["dune" "build" "-p" "base" "-x" "windows" "-j" jobs]
-  ["rm" "%{name}%.install"]
 ]
-install: ["dune" "install" "-x" "windows" "-p" "base"]
 depends: [
   "ocaml-windows"                   {>= "5.1.0"}
   "ocaml_intrinsics_kernel-windows" {>= "v0.17.0" & < "v0.18~"}

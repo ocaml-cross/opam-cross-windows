@@ -11,9 +11,7 @@ bug-reports: "https://gitlab.inria.fr/fpottier/menhir/-/issues"
 license: "GPL-2.0-only"
 build: [
   ["dune" "build" "-p" "menhir" "-x" "windows" "-j" jobs]
-  ["rm" "%{name}%.install"]
 ]
-install: ["dune" "install" "-x" "windows" "-p" "menhir"]
 depends: [
   "ocaml-windows" {>= "4.08"}
   "dune" {>= "2.8.0"}

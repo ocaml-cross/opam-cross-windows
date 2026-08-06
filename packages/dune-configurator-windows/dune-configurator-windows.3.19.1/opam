@@ -38,7 +38,6 @@ build: [
     jobs
     "@install"
   ]
-  ["rm" "%{name}%.install"]
 ]
 url {
   src:
@@ -49,4 +48,3 @@ url {
   ]
 }
 x-commit-hash: "76c0c3941798f81dcc13a305d7abb120c191f5fa"
-install: ["dune" "install" "-x" "windows" "-p" "dune-configurator"]

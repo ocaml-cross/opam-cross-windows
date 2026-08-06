@@ -30,7 +30,6 @@ depends: [
 ]
 build: [
   ["dune" "build" "-p" "spawn" "-x" "windows" "-j" jobs "@install"]
-  ["rm" "%{name}%.install"]
 ]
 x-commit-hash: "13d279ebfa8c40d4bafe18cddfdff0de54b4eaff"
 url {
@@ -41,4 +40,3 @@ url {
     "sha512=efdb31d5ec5ea36d0bc80224d4ee04e46ce3428d1662870e6cebece92bc313d6eebee378802c0c059dd6e0cafea515308c31b7dfaf04a098eb4566583c1e9ed4"
   ]
 }
-install: ["dune" "install" "-x" "windows" "-p" "spawn"]

@@ -40,18 +40,8 @@ conflicts: [
 ]
 build: [
   ["dune" "subst"] {dev}
-  [
-    "dune"
-    "build"
-    "-p"
-    "ppxlib" "-x" "windows"
-    "-j"
-    jobs
-    "@install"
-  ]
-  ["rm" "%{name}%.install"]
+  ["dune" "build" "-p" "ppxlib" "-x" "windows" "-j" jobs "@install"]
 ]
-install: ["dune" "install" "-x" "windows" "-p" "ppxlib"]
 dev-repo: "git+https://github.com/ocaml-ppx/ppxlib.git"
 x-maintenance-intent: ["(latest)"]
 url {

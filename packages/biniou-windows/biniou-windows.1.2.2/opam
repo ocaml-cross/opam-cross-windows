@@ -2,7 +2,6 @@ opam-version: "2.0"
 build: [
   ["dune" "subst"] {dev}
   ["dune" "build" "-p" "biniou" "-j" jobs "-x" "windows"]
-  ["rm" "%{name}%.install"]
 ]
 maintainer: ["martin@mjambon.com"]
 authors: ["Martin Jambon"]
@@ -44,4 +43,3 @@ url {
   ]
 }
 x-commit-hash: "b434dd9ad488e042cf71554af7296b7bd98c9a6a"
-install: ["dune" "install" "-x" "windows" "-p" "biniou"]
