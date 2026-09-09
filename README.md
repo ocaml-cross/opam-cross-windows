@@ -1,11 +1,12 @@
 opam-cross-windows
 ==================
 
-This repository contains an up-to-date Windows toolchain featuring OCaml `4.07.0`, `4.08.0`, `4.12.0`, `4.14.1`, `5.1.1`, `5.3.0`, `5.4.0`, `5.4.1`, and `5.5.1`, as well as some commonly used packages.
+This repository contains an up-to-date Windows toolchain featuring selected OCaml
+versions between `4.07.0` and `5.5.1`, as well as some commonly used packages.
 
-The supported build systems are 32-bit and 64-bit x86 Linux and `arm64` macos (Apple Silicon). The supported target systems are 32-bit and 64-bit x86 Windows.
+The supported build systems are 64-bit x86 Linux and `arm64` macos (Apple Silicon). The supported target systems is 64-bit x86 Windows.
 
-Only 64-bit build and target are supported now on (from OCaml `5.1.1`).
+For older versions (pre OCaml `5.1.1`), 32-bit build and target systems were supported.
 
 If you need support for other platforms or versions, please [open an issue](https://github.com/ocaml-cross/opam-cross-windows/issues).
 
@@ -23,7 +24,7 @@ Add this repository to OPAM:
 
 The version of the regular compiler installed in your current `opam` switch must match the version of the cross-compiler:
 
-    opam switch 5.5.0
+    opam switch 5.5.1
     eval `opam config env`
 
 Before 5.3.0, if desired, request the compiler to be built with [flambda][] optimizers:
