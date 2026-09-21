@@ -9,5 +9,5 @@ outputs:
   has_revdeps:
     description: true if the action returned any revdep.
 runs:
-  using: node20
+  using: node24
   main: index.js

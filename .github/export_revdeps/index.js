@@ -1,4 +1,5 @@
-const core = require("@actions/core");
+import * as core from '@actions/core';
+
 
 const { revdeps } = JSON.parse(core.getInput("collected_revdeps"));
 
