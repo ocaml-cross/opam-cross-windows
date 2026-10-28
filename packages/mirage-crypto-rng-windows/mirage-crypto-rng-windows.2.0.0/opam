@@ -8,6 +8,7 @@ maintainer:   "Hannes Mehnert <hannes@mehnert.org>"
 license:      "ISC"
 synopsis:     "A cryptographically secure PRNG"
 
+patches: ["target-system-bcrypt.patch"]
 build: [ ["dune" "build" "-p" "mirage-crypto-rng" "-x" "windows" "-j" jobs ] ]
 
 depends: [
@@ -34,3 +35,6 @@ url {
   ]
 }
 x-commit-hash: "cadf0e1230cada9f108e63321b30af24642e2b74"
+extra-files: [
+  "target-system-bcrypt.patch" "md5=9788dccbbdb2b91064b1a24e15627f95"
+]
